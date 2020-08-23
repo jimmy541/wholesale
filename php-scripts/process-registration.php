@@ -64,7 +64,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 
 				$query = "INSERT INTO `clients`(`clientid`, `company_name`, `date_created`) VALUES ('$clientid', ?, now())";
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("s", $company_name)
+					$stmt->bind_param("s", $company_name);
 					$stmt->execute();
 					$stmt->close();
 				}
