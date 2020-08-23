@@ -36,7 +36,7 @@ if (isset($_SESSION['user'])){
 			}
 		}
 	
-	echo '<h1>Please Check your email</h1>';
+	echo '<br><h1>Please Check your email</h1>';
 	echo "We've sent you a link in your email to confirm your account<br>";
 	echo "Please click the link to complete the registration process.<br>";
 	
