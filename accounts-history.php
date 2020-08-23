@@ -124,7 +124,7 @@ function validateDate($date, $format = 'Y-m-d')
 
 
 
-
+<input type="hidden"></input>
 <input type="hidden" id="customerhash" value="<?php echo $hashed_customer_number; ?>"/>
 <input type="hidden" id="datefrom" value="<?php echo $datefrom; ?>"/>
 <input type="hidden" id="dateto" value="<?php echo $dateto; ?>"/>
