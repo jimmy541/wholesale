@@ -26,8 +26,8 @@ if (isset($_SESSION['user'])){
 		}
 
 		//check if user is still not activated via email
-		/*
-		$result = mysqli_query($link, "SELECT * FROM `users` WHERE `email_address` = '$user' AND `active` = '0'");
+		
+		$result = mysqli_query($link, "SELECT * FROM `users` WHERE `email_address` = '$user' AND `email_verified` = '0'");
 		$found = 'false';
 		while ($row=mysqli_fetch_array($result)){
 		$found = 'true';
@@ -36,7 +36,7 @@ if (isset($_SESSION['user'])){
 		if ($found == 'true' && basename($_SERVER['PHP_SELF']) <> 'profile.php' && basename($_SERVER['PHP_SELF']) <> 'activate.php'){
 		header("location: profile");
 		}
-		*/
+		
 	}else{
 	unset($_SESSION['user']);
 	$pass1 = 'false';
