@@ -25,7 +25,7 @@ if (isset($_SESSION['user'])){
 	}
 	
 	if ($email_verified == '0'){
-		<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+		
 	$message = '<br /><a href="resend-activation-link.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Resend Activation Link</a>';
 		if (isset($_GET['sent'])){
 		
