@@ -51,11 +51,12 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 			
 			
 			if ($found == 'false'){
-				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `emai1_verified`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?)";
 				$activeV = '1';
 				$fatmps = '0';
+				$email_verified = '0';
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("sssssssssss", $password,$salt,$firstName,$lastName,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid);
+					$stmt->bind_param("ssssssssssss", $password,$salt,$firstName,$lastName,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $email_verified);
 					
 
 					$stmt->execute();
@@ -86,9 +87,14 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 
 				   /* Set the subject. */
 				   $mail->Subject = "Account Acivation";
+				   
+				   /*Enable html */
+				   $mail->isHTML(true);
 
 				   /* Set the mail message body. */
-				   $mail->Body = "Welcome to Dalysoft. Please activate your account using the following link.";
+				   $mail->Body = '<p>Dear '.$firstName.',</p><p>Welcome to Wholesale.</p><p>To activate the account please <a href="https://dalysoft.com/wholesale/activate-account.php?token='.$activationCode.'">click here</a>.</p>
+				   <p>Thanks for joining Wholesale. We know you will enjoy the power and simplicity of Wholesale. </p><p>Sincerely,<br>Wholesale Customer Service</p>
+				   <p>If you are unable to activate your account by clicking on the link above, please copy and paste the entire URL below into your web browser:<br> https://dalysoft.com/wholesale/activate-account.php?token='.$activationCode.'</p>';
 					
 					// Attachments
 					
