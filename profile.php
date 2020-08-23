@@ -25,7 +25,8 @@ if (isset($_SESSION['user'])){
 	}
 	
 	if ($email_verified == '0'){
-	$message = '<br /><span style="font-size:20px; padding:20px;"><a href="resend-activation-link.php">Resend Activation Link</span>';
+		<a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Primary link</a>
+	$message = '<br /><a href="resend-activation-link.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Resend Activation Link</a>';
 		if (isset($_GET['sent'])){
 		
 			if ($_GET['sent'] == '1'){
@@ -35,7 +36,11 @@ if (isset($_SESSION['user'])){
 			}
 		}
 	
-	echo '<span style="font-size:20px; display:block; padding:20px; margin-top:20px;">Please activate your account to continue. An email was sent to the email address provided to activate your account.</span>';
+	echo '<h1>Please Check your email</h1>';
+	echo "We've sent you a link in your email to confirm your account<br>";
+	echo "Please click the link to complete the registration process.<br>";
+	
+		
 	echo $message;
 	}
 	else{
