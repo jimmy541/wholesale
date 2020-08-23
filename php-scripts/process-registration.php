@@ -51,7 +51,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 			
 			
 			if ($found == 'false'){
-				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `emai1_verified`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?)";
 				$activeV = '1';
 				$fatmps = '0';
 				$email_verified = '0';
