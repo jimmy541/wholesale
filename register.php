@@ -68,9 +68,6 @@ if (isset($_GET['status']) && $_GET['reason'] && isset($_GET['email'])){
 	<label class="sr-only" for="email">* Email Address</label>
 	<input class="form-control" type="text" name="email" id="email" placeholder="* Email Address" autocomplete="off" /><br>
 	
-	<label class="sr-only" for="email_verified">* Verify Email Address</label>
-	<input class="form-control" type="text" name="email_verified" id="email_verified" placeholder="* Verify Email Address" autocomplete="off" /><br>
-	
 	<label class="sr-only" for="password">* Password</label>
 	<input class="form-control" type="password" name="password" placeholder="* Password" id="password" /><br>
 	
