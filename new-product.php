@@ -1,0 +1,349 @@
+<?php $page_title = 'Add Product';
+$more_script = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
+<script type="text/javascript" src="js/jquery.dataTables.min.js"></script><script type="text/javascript" src="js/popup-requesting-page.js"></script>
+<script type="text/javascript" src="js/form-validation.js"></script>';
+?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<?php
+function getSelectItemsSimple($link, $tbl, $clientid){
+	$options = '<option></option>';
+	$descCol = 'description';
+	if($tbl == 'supplier'){$descCol = 'name';}
+	$result = mysqli_query($link, "SELECT `id`, `$descCol` FROM `$tbl` WHERE `clientid` = '$clientid' ORDER BY `$descCol` ASC");
+	
+	while($row=mysqli_fetch_array($result)){
+		$options .= '<option value="'.$row['id'].'">'.htmlspecialchars($row[$descCol]).'</option>';
+	}
+	return $options;
+}
+
+$code_return = '1000';
+$stmt = $link->prepare("SELECT MAX(`cert_code`)as mx FROM `grocery_products` WHERE `clientid` = '$clientid'");
+$stmt->execute();
+$stmt->bind_result($sv);
+while ($stmt->fetch()) {$settingvalue = $sv;}
+$stmt->close();
+if(!empty($settingvalue)){
+	if (is_numeric($settingvalue)){
+		$code_return = $settingvalue + 1;
+	}
+	
+}
+	$roundformat = '4';
+	$query = "SELECT `setting_value` FROM `settings` WHERE `clientid` = '$clientid' AND `setting_name` = 'round_number_format'";
+	$stmt = $link->prepare($query);
+	$stmt->execute();
+	$stmt->bind_result($vl);
+	$stmt->fetch();
+	$stmt->close();
+	$roundformat = $vl;
+
+	
+$found = 'false';
+$size_unit = ''; 
+	$description = ''; 
+	$Pack = ''; 
+	$size_amount = ''; 
+	$package = ''; 
+	$normal_price = ''; 
+	$case_price = ''; 
+	$cost = ''; 
+	$case_cost = ''; 
+	$weight_case = ''; 
+	$weight_unit = ''; 
+	$memo = ''; 
+	$supplier = ''; 
+	$a_category = ''; 
+	$b_category = ''; 
+	$c_category = ''; 
+	$brand = '';
+	$tax_id = '';
+if(isset($_GET['clone']) && !empty($_GET['clone'])){
+	$uniqueid = $_GET['clone'];
+	
+	
+
+	$query="SELECT `size_unit`, `description`, `Pack`, `size_amount`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `a_category`, `b_category`, `c_category`, `brand`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	
+	
+	$stmt = $link->prepare($query);
+	$stmt->bind_param('ss', $uniqueid, $clientid);
+	
+	$stmt->execute();
+	$stmt->bind_result($size_unitV, $descriptionV, $PackV, $size_amountV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $a_categoryV, $b_categoryV, $c_categoryV, $brandV, $tax_idV);
+	 //switch to false when done testing
+	while ($stmt->fetch()) {
+		$found = 'true';
+		$size_unit = $size_unitV; 
+		$description = $descriptionV; 
+		$Pack = $PackV; 
+		$size_amount = $size_amountV; 
+		$package = $packageV; 
+		$normal_price = $normal_priceV; 
+		$case_price = $case_priceV; 
+		$cost = $costV; 
+		$case_cost = $case_costV; 
+		$weight_case = $weight_caseV; 
+		$weight_unit = $weight_unitV; 
+		$memo = $memoV; 
+		$supplier = $supplierV; 
+		$a_category = $a_categoryV; 
+		$b_category = $b_categoryV; 
+		$c_category = $c_categoryV; 
+		$brand = $brandV; 
+		$tax_id = $tax_idV;
+		
+	}
+	
+}	
+	
+	
+	
+	
+$responseMsg = '';
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+?>
+<?php echo $products_links; ?>
+
+<!-- open container -->
+<div class="container">
+<!-- open row -->
+	<div class="row">
+	<!-- open col -->
+	<div class="col">
+		<h1>Add new product</h1>
+	
+		<?php echo $responseMsg; ?>
+		<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
+		<input autocomplete="false" name="hidden" type="text" style="display:none;">
+			
+				<h4 class="mb-3">About</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="cert_code">Item Code: *</label>
+						<input class="form-control" type="text" id="cert_code" value="<?php echo $code_return; ?>" name="cert_code" autocomplete="off"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="cert_code">UPC: </label>
+						<input class="form-control" type="text" id="upc"  name="upc" autocomplete="off"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="brand">Brand:</label>
+						<select class="form-control" id="brand" name="brand"><?php if ($found=='true'){echo getValue($link, $clientid, 'brands', $brand);} ?></select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="description">Description: *</label>
+						<input class="form-control"  type="text" id="description" name="description" value="<?php if ($found=='true'){echo htmlspecialchars($description);} ?>"/>
+					</div>
+				</div>
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Product Info</h4>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<label for="case-barcode">Case Code:</label>
+						<input class="form-control"  type="text" id="case-barcode" name="case-barcode"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="size_amount">Size: <span class="ex55">Number Only</span></label>
+						<input class="form-control" type="number" min="0" step="0.01" id="size_amount" name="size_amount" value="<?php if($found=='true'){echo htmlspecialchars($size_amount);} ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="size_unit">Size Unit:</label>
+						<select class="form-control" id="size_unit" name="size_unit"><?php if($found=='true'){echo getValue($link, $clientid, 'weight_units', $size_unit);}else{echo getSelectItemsSimple($link, 'weight_units', $clientid);} ?></select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<label for="Pack">Pack:</label>
+						<input class="form-control" type="number" min="0" id="Pack" name="Pack" value="<?php if($found=='true'){echo htmlspecialchars($Pack);} ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="case_cost">Cost:</label>
+						<input class="form-control" type="number" min="0" step="0.01" id="case_cost" name="case_cost" value="<?php if($found=='true'){ echo htmlspecialchars($case_cost);} ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="case_price">Retail Price:</label>
+						<div class="input-group">
+							<input class="form-control" type="number" min="0" step="0.01" id="case_price" name="case_price" value="<?php if($found=='true') {echo htmlspecialchars($case_price); }?>"/>
+							<div class="input-group-append">
+								<button type="button" class="btn btn-primary btn-sm" id="calccaseprice">Calculate</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Section</h4>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<label for="a_category">Department:</label>
+						<select class="form-control" id="a_category" name="a_category"><?php if($found=='true'){echo getValue($link, $clientid, 'acategory', $a_category);} ?></select>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="b_category">Sub Department:</label>
+						<select class="form-control"  id="b_category" name="b_category"><?php if($found=='true'){echo getValue($link, $clientid, 'bcategory', $b_category);} ?></select>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="c_category">Category:</label>
+						<select class="form-control"  id="c_category" name="c_category"><?php if($found=='true'){echo getValue($link, $clientid, 'ccategory', $c_category);} ?></select>
+					</div>
+				</div>
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Supplier Info</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="supplier_code">Supplier Item Code:</label>
+						<input class="form-control" type="text" id="supplier_code" name="supplier_code" />
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="supplier">Supplier Name:</label>
+						<select class="form-control" id="supplier" name="supplier"><?php  if($found=='true'){ echo getValue($link, $clientid, 'supplier', $supplier); } ?></select>
+					</div>
+				</div>
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Inventory</h4>
+				<div class="mb-3">
+					<label for="QtyOnHand">Quantity on Hand:<span class="ex55">(cases)</span></label>
+					<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand"/>
+				</div>
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Other</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="package">Package:</label>
+						<select class="form-control" id="package" name="package"><?php  if($found=='true'){echo getValue($link, $clientid, 'packages', $package);} ?></select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="memo">Keywords:<span class="ex55">(seperate by space)</span></label>
+						<input class="form-control" type="text" id="memo" name="memo" value="<?php if($found=='true'){echo htmlspecialchars($memo);} ?>"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="weight_case">Case Weight:</label>
+						<input class="form-control" type="number" min="0" step="0.01" id="weight_case" name="weight_case" value="<?php if($found=='true'){ echo htmlspecialchars($weight_case);} ?>"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="weight_unit">Weight Unit:</label>
+						<select class="form-control" id="weight_unit" name="weight_unit">
+							<option></option>
+							<option <?php if($weight_unit == 'LB'){echo 'selected';} ?>>LB</option>
+							<option <?php if($weight_unit == 'KG'){echo 'selected';} ?>>KG</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="row">
+				<div class="col-md-6 mb-3">
+					<label for="" >Tax:</label>
+					<select class="form-control" id="tax_id" name="tax_id"><?php echo getValue($link, $clientid, 'product_tax_types', $tax_id); ?>
+					</select>
+				</div>
+			</div>
+				
+				<hr class="mb-4">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-lg btn-block" type="submit"> Save</button>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-lg btn-block"  name="sac" type="submit">Save and Copy</button>
+					</div>
+				</div>
+		<input type="hidden" id="poprequester" value="" />
+		</form>
+		<!-- close col -->
+		</div>
+	<!-- close row -->
+	</div>
+<!-- close container -->
+</div>
+<div class="populateDiv" id="popBrand"></div>
+<input type="hidden" value="<?php echo $roundformat; ?>" id="roundformat" />
+<div class="populateDivGen" id="calculateprice">
+	<div class="container">
+		<div class="row">
+			<!-- open col -->
+			<div class="col">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label>Pack:</label>
+						<input class="form-control" type="number" min="1" id="PackDP" disabled/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label>Case Cost:</label>
+						<input class="form-control" type="number" min="1" step="0.01" id="case_costDP" disabled/>
+					</div>
+				</div>
+				<hr class="mb-4">
+				<h4 class="mb-3">Case Retail</h4>
+				<div class="mb-3">
+						<label>Margin Desired:<span class="ex55">Ex.: Enter 35 for 35%</span></label>
+						<div class="input-group">
+							<input class="form-control"  type="number" min="0.01" step="0.01" id="margindesired" />
+							<div class="input-group-append">
+								<button type="button" class="btn btn-primary btn-sm" id="applymrgcase">Apply</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="mb-3">
+						<label>Retail Price</label>
+						<input class="form-control"  type="number" min="1" step="0.01" id="caseretaildesired" />
+					</div>
+				
+				
+				<hr class="mb-4">
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-lg btn-block" id="cancelcalcprice" type="button">Cancel</button>
+					</div>
+					<div class="col-md-6 mb-3">
+						<button class="btn btn-primary btn-lg btn-block" id="donecalcprice" type="button">Done</button>
+					</div>
+				</div>
+				
+			<!-- close col -->
+			</div>
+		<!-- close row -->
+		</div>
+	<!-- close container -->
+	</div>
+<!-- close Popup div -->
+</div>
+<?php 
+function getValue($link, $clientid, $table, $id){
+	$vl = '';
+	$options = '<option></option>';
+	$descColumn = 'description';
+	if ($table == 'supplier'){$descColumn = 'name';}
+	$query = "SELECT `id`, `$descColumn` FROM `$table` WHERE `clientid` = ?";
+	
+	$stmt = $link->prepare($query);
+	$stmt->bind_param('s', $clientid);
+	$stmt->execute();
+	$stmt->bind_result($idd, $vl);
+	while($stmt->fetch()){
+		$selected = '';
+		if ($idd == $id){$selected = ' selected';}
+		$options .= '<option value="'.$idd.'" '.$selected.'>'.htmlspecialchars($vl).'</option>';
+	}
+	
+	return $options;
+}
+?>
+
+
+
+
+
+<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
