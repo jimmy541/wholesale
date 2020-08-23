@@ -35,7 +35,7 @@ if (isset($_SESSION['user'])){
 			}
 		}
 	
-	echo '<span style="font-size:20px; display:block; padding:20px; margin-top:20px;">Not Sure what this is</span>';
+	echo '<span style="font-size:20px; display:block; padding:20px; margin-top:20px;">Please activate your account to continue. An email was sent to the email address provided to activate your account.</span>';
 	echo $message;
 	}
 	else{
