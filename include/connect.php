@@ -33,7 +33,7 @@ if (isset($_SESSION['user'])){
 		$found = 'true';
 		$role = $row['role'];
 		}
-		if ($found == 'true' && basename($_SERVER['PHP_SELF']) <> 'profile.php' && basename($_SERVER['PHP_SELF']) <> 'activate.php'){
+		if ($found == 'true' && basename($_SERVER['PHP_SELF']) <> 'profile.php' && basename($_SERVER['PHP_SELF']) <> 'activate-account.php'){
 		header("location: profile");
 		}
 		

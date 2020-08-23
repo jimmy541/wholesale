@@ -7,6 +7,7 @@ if (isset($_SESSION['user'])){
 	$result = mysqli_query($link, "SELECT * FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
 	
 	$active = '0';
+	$email_verified = '0';
 	$user_first_name = '';
 	$user_last_name = '';
 	$profile_picture = '';
@@ -15,6 +16,7 @@ if (isset($_SESSION['user'])){
 	
 	while($row=mysqli_fetch_array($result)){
 		$active = $row['active'];
+		$email_verified = $row['email_verified'];
 		$user_first_name = htmlspecialchars($row['first_name']);
 		$user_last_name = htmlspecialchars($row['last_name']);
 		$profile_picture = htmlspecialchars($row['profile-picture']);
@@ -22,7 +24,7 @@ if (isset($_SESSION['user'])){
 		$role = htmlspecialchars($row['role']);
 	}
 	
-	if ($active == '0'){
+	if ($email_verified == '0'){
 	$message = '<br /><span style="font-size:20px; padding:20px;"><a href="resend-activation-link.php">Resend Activation Link</span>';
 		if (isset($_GET['sent'])){
 		
