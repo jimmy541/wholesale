@@ -8,7 +8,7 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 	
 if (isset($_SESSION['user'])){
-	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '".$_SESSION['user']."' AND `clientid` = '$clientid'");
+	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
 	
 	$activationcode = '';
 	
