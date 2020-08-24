@@ -81,11 +81,12 @@ if (isset($_SESSION['user'])){
 			//error uploading the file
 			$uploadmessage = '<div class="alert alert-danger" role="alert">Error uploading the image. Please try again.</div>';
 			}
-			if ($_GET['accountactivated'] == 'success'){
-			//error uploading the file
-			$uploadmessage = '<div class="alert alert-success" role="alert">Email address has been verified.</div>';
-			}
+			
 		
+		}
+		if ($_GET['accountactivated'] == 'success'){
+			//email activated
+			$uploadmessage = '<div class="alert alert-success" role="alert">Email address has been verified.</div>';
 		}
 		?>
 		
