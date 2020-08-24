@@ -79,6 +79,7 @@ if (isset($_GET['status']) && $_GET['reason'] && isset($_GET['email'])){
 	?>
 	<!--<div class="g-recaptcha" data-sitekey="6LedkEgUAAAAAAwqNg6VHY9ei5T8VjKRD29xl3w5"></div>-->
 	<button class="btn btn-lg btn-primary btn-block" id="registerbtn" type="submit">Register</button>
+	<span><a href="login.php" style="text-decoration:none;">Login</a></span> | <span><a href="reset-password.php" style="text-decoration:none;">Forgot Password</a></span>
 	</form>
 </div>
 
