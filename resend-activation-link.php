@@ -10,10 +10,10 @@ require 'php-scripts/SMTP.php';
 if (isset($_SESSION['user'])){
 	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
 	
-	$activationcode = '';
+	$activationCode = '';
 	
 	while($row=mysqli_fetch_array($result)){
-		$activationcode = $row['activation-code'];
+		$activationCode = $row['activation-code'];
 	}
 	
 	/* Create a new PHPMailer object. Passing TRUE to the constructor enables exceptions. */
