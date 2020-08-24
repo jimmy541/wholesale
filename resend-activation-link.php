@@ -3,9 +3,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');
 
-require 'Exception.php';
-require 'PHPMailer.php';
-require 'SMTP.php';
+require 'php-scripts/Exception.php';
+require 'php-scripts/PHPMailer.php';
+require 'php-scripts/SMTP.php';
 	
 if (isset($_SESSION['user'])){
 	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
