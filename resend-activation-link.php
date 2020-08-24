@@ -43,7 +43,7 @@ if (isset($_SESSION['user'])){
 					
 				   /* Finally send the mail. */
 				   $mail->send();
-				   
+				   header("location: profile.php?activationlink=sent");
 				}
 				catch (Exception $e)
 				{
