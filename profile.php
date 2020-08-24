@@ -23,9 +23,10 @@ if (isset($_SESSION['user'])){
 		$display_code = htmlspecialchars($row['display_code']);
 		$role = htmlspecialchars($row['role']);
 	}
+	
 	if(isset($_GET['activationlink']) && $_GET['activationlink'] == 'sent'){
 		
-		$message = '<div class="alert alert-success" role="alert">Activation link has been sent.</div>';
+		echo '<div class="alert alert-success" role="alert">Activation link has been sent.</div>';
 		
 	}
 	if ($email_verified == '0'){
