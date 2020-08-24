@@ -16,6 +16,12 @@ if (isset($_GET['status'])){
 		if ($_GET['status'] == 'sent'){
 			$success_message = '<div class="alert alert-success" role="alert">An email with reset instruction has been sent to you.</div>';
 		}
+		if ($_GET['status'] == '2'){
+			$success_message = '<div class="alert alert-danger" role="alert">Email address provided is not valid.</div>';
+		}
+		if ($_GET['status'] == '1'){
+			$success_message = '<div class="alert alert-danger" role="alert">Please enter an email address.</div>';
+		}
 	}
 }
 
