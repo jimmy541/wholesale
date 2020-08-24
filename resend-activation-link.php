@@ -6,9 +6,9 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');
 require 'Exception.php';
 require 'PHPMailer.php';
 require 'SMTP.php';
-	$query = "SELECT `id` FROM `users` WHERE `activation-code` = ?";
+	
 if (isset($_SESSION['user'])){
-	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
+	$result = mysqli_query($link, "SELECT `activation-code` FROM `users` WHERE `email_address` = '".$_SESSION['user']."' AND `clientid` = '$clientid'");
 	
 	$activationcode = '';
 	
