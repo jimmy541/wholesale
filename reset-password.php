@@ -14,7 +14,7 @@ $success_message = '';
 if (isset($_GET['status'])){
 	if (!empty($_GET['status'])){
 		if ($_GET['status'] == 'sent'){
-			$success_message = 'An email with reset instruction has been sent to you.';
+			$success_message = '<div class="alert alert-success" role="alert">An email with reset instruction has been sent to you.</div>';
 		}
 	}
 }
@@ -27,7 +27,7 @@ if (isset($_GET['status'])){
 <center><div class="text-center" id="login-form">
 	
 	<span style="display:none; color:red;" id="email-status"></span>
-	<?php echo '<div class="alert alert-success" role="alert">'.$success_message.'</div>'; ?>
+	<?php echo $success_message; ?>
 	
 	<form method="post" action="php-scripts/send-reset-password-link.php" class="form-signin">
 	<h1 class="h3 mb-3 font-weight-normal">Reset Password</h1>
