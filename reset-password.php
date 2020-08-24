@@ -31,7 +31,7 @@ if (isset($_GET['status'])){
 	
 	<form method="post" action="php-scripts/send-reset-password-link.php" class="form-signin">
 	<h1 class="h3 mb-3 font-weight-normal">Reset Password</h1>
-		
+	<span>Enter the you used to register with Wholesale and we will send you instructions to reset your password.</span>	
 	<label class="sr-only" for="email">* Email Address</label>
 	<input class="form-control" type="text" name="email" id="email" placeholder="* Email Address" autocomplete="off" /><br>
 	
