@@ -1,6 +1,8 @@
 <?php $page_title = 'Replace Lost Password';
 $preventLoginPageLoop = 'fd5as431';
+$more_script = '<script type="text/javascript" src="js/form-validation.js"></script>';
 ?>
+
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <?php
 if (isset($_SESSION['user'])){
