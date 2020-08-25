@@ -1,5 +1,5 @@
 <?php require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
-
+/*
 if (isset($_POST['currpswd']) && isset($_POST['newpswd']) && isset($_POST['connewpswd']) && isset($_POST['email']) && isset($_POST['id']) && isset($_POST['token']) ){
 	//make sure password length is minimum 6 chars.
 	if (strlen($_POST['newpswd']) > 5 || strlen($_POST['connewpswd']) > 5 && $_POST['connewpswd'] == $_POST['newpswd']){
@@ -54,5 +54,5 @@ if (isset($_POST['currpswd']) && isset($_POST['newpswd']) && isset($_POST['conne
 		header("location: ../login.php?error=2");
 	}
 }
-
+*/
 ?>
