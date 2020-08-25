@@ -34,8 +34,8 @@ if (isset($_GET['email']) && isset($_GET['id']) && isset($_GET['token'])){
 			
 			?>
 		
-			<center><div class="text-center" id="reset-password">
-				<form method="post" action="php-scripts/process-reset-password.php" class="form-signin">
+			<center><div class="text-center" id="login-form">
+				<form method="post" id="reset-password" action="php-scripts/process-reset-password.php" class="form-signin">
 					<h1 class="h3 mb-3 font-weight-normal">Enter new password</h1>
 					
 					<label class="sr-only" for="newpswd">* New Password</label>
