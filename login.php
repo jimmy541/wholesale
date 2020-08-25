@@ -43,7 +43,7 @@ if(isset($_GET['pwdrst']) && $_GET['pwdrst'] == '1'){
 	
 }
 if(isset($_GET['pwdrst']) && $_GET['pwdrst'] == '2'){
-	echo '<div class="alert alert-danger" role="alert">There was an error resetting your password. Please click on forgot password link before.</div>';
+	echo '<div class="alert alert-danger" role="alert">There was an error resetting your password. Please click on forgot password link below.</div>';
 	
 }
 
