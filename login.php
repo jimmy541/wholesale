@@ -38,6 +38,14 @@ if (isset($_GET['passreset']) && isset($_SESSION['token'])){
 	}
 
 }
+if(isset($_GET['pwdrst']) && $_GET['pwdrst'] == '1'){
+	echo '<div class="alert alert-success" role="alert">Password has been changed.</div>';
+	
+}
+if(isset($_GET['pwdrst']) && $_GET['pwdrst'] == '2'){
+	echo '<div class="alert alert-danger" role="alert">There was an error resetting your password. Please click on forgot password link before.</div>';
+	
+}
 
 
 ?>
