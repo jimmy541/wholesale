@@ -1,4 +1,6 @@
-<?php require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
+<?php 
+preventLoginPageLoop = '4f5das4a';
+require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
 /*
 if (isset($_POST['currpswd']) && isset($_POST['newpswd']) && isset($_POST['connewpswd']) && isset($_POST['email']) && isset($_POST['id']) && isset($_POST['token']) ){
 	//make sure password length is minimum 6 chars.
