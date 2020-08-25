@@ -223,6 +223,44 @@ $(document).ready(function(){
 	});
 	
 	
+	$( "#reset-password" ).submit(function( event ) {
+		var oktoproceed = 'true';
+		var currentinput = '';
+		$( ".errordiv" ).remove();
+		$( ".mb-3 input" ).css("background-color", "white");
+		$( ".mb-3 select" ).css("background-color", "white");
+		
+		
+		
+		currentinput = '#newpswd';
+		if (checklength(currentinput, 6) == 'false'){
+			oktoproceed = 'false';
+			$(currentinput).css("background-color", "#FEDCDC");
+			displayerrormsg(currentinput, 'Password must be 6 chars. minimum.');
+		}
+		
+		currentinput = '#connewpswd';
+		if (checklength(currentinput, 6) == 'false'){
+			oktoproceed = 'false';
+			$(currentinput).css("background-color", "#FEDCDC");
+			displayerrormsg(currentinput, 'Password must be 6 chars. minimum.');
+		}
+		
+		currentinput = '#connewpswd';
+		var pass1 = $.trim($('#newpswd').val());
+		var pass2 = $.trim($('#connewpswd').val());
+		if (pass1 != pass2){
+			oktoproceed = 'false';
+			$(currentinput).css("background-color", "#FEDCDC");
+			displayerrormsg(currentinput, 'Passwords don\'t match');
+		}
+			
+		if(oktoproceed == 'false'){
+			event.preventDefault();
+		}
+	});
+	
+	
 	$('#calccaseprice, #calccaseprice2').click(function(){
 		roundformat = $('#roundformat').val();
 		
