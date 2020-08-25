@@ -1,5 +1,5 @@
 <?php 
-$preventLoginPageLoop = '4f5das4a';
+$preventLoginPageLoop = 'fd5as431';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
 
 if (isset($_POST['currpswd']) && isset($_POST['newpswd']) && isset($_POST['connewpswd']) && isset($_POST['email']) && isset($_POST['id']) && isset($_POST['token']) ){
