@@ -54,14 +54,14 @@ if (isset($_GET['email']) && isset($_GET['id']) && isset($_GET['token'])){
 			<?php }else{
 				
 				//record don't match
-				echo '<div class="alert alert-danger" role="alert">Sorry, the page you have requested does not exist.</div>';
+				echo '<div class="alert alert-danger" role="alert">Sorry, the page you have requested does not exist. Error code 5ffh98</div>';
 			}
 			
 				
 			
 			}else{
 				//email is not valid
-				echo '<div class="alert alert-danger" role="alert">Sorry, the page you have requested does not exist.</div>';
+				echo '<div class="alert alert-danger" role="alert">Sorry, the page you have requested does not exist. Error code 5llj5</div>';
 			}
 	}
 }
