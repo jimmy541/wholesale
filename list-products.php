@@ -33,17 +33,6 @@ if(isset($_GET['rs'])){
 	<thead>
 		
 		<tr>
-			<th><input type="text" id="search_item" placeholder="Search Item"></th>
-			<th><input type="text" id="search_brand" placeholder="Search Brand"></th>
-			<th><input type="text" id="search_description" placeholder="Search Description"></th>
-			<th><input type="text" id="search_size" placeholder="Search Size"></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<tr>
 			<th>Item</th>
 			<th>Brand</th>
 			<th>Description</th>
@@ -55,6 +44,20 @@ if(isset($_GET['rs'])){
 			<th>Action</th>
 		</tr>
 	</thead>
+	<tfoot>
+		
+		<tr>
+			<th>Item</th>
+			<th>Brand</th>
+			<th>Description</th>
+			<th>Size</th>
+			<th>Cost</th>
+			<th>Retail</th>
+			<th>Margin</th>
+			<th>Qty</th>
+			<th>Action</th>
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'";
@@ -81,7 +84,7 @@ if(isset($_GET['rs'])){
 </tbody>
 </table>
 <script type="text/javascript">
-
+/*
 $(document).ready(function() {
     $('#gtable').DataTable({
 		columnDefs: [
@@ -91,17 +94,36 @@ $(document).ready(function() {
 			}
 		]
 	});
-	var table = $('#gtable').DataTable();
-	$('#search_item').on('change', function(){
-    
-    table
-    .column(0)
-    .search(this.value)
-    .draw();
-
-	});
+	
 	
 });
+*/
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#gtable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#gtable').DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+ 
+} );
 
 </script>
 <!-- The following div closes the main body div -->

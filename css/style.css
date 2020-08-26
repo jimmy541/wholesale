@@ -9,6 +9,9 @@
 a{
 	text-decoration:none !important;
 }
+tfoot {
+        display: table-header-group;
+    }
 .thumbnail {
 	border-radius:0px;
 	
