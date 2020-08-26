@@ -109,6 +109,7 @@ $(document).ready(function() {
  
     // DataTable
     var table = $('#gtable').DataTable({
+		searching: false,
         initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
