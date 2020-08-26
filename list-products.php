@@ -102,7 +102,9 @@ $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		if(title == 'Brand' || title == 'Item'){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
     } );
  
     // DataTable
