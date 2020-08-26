@@ -75,7 +75,7 @@ $(document).ready(function() {
 				className: 'dt-left'
 			}
 		]
-	
+	});
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
@@ -100,8 +100,6 @@ $(document).ready(function() {
         }
     });
  
-} );
-	
 });
 </script>
 <!-- The following div closes the main body div -->
