@@ -96,7 +96,7 @@ if(isset($_GET['rs'])){
 
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#gtable tfoot th').each( function () {
+    $('#gtable tfoot th').columns([1,2,3]).each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
@@ -105,7 +105,7 @@ $(document).ready(function() {
     var table = $('#gtable').DataTable({
         initComplete: function () {
             // Apply the search
-            this.api().columns([1,2,3]).every( function () {
+            this.api().columns().every( function () {
                 var that = this;
  
                 $( 'input', this.footer() ).on( 'keyup change clear', function () {
