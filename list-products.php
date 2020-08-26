@@ -67,7 +67,7 @@ if(isset($_GET['rs'])){
 </tbody>
 </table>
 <script type="text/javascript">
-/*$(document).ready(function() {
+$(document).ready(function() {
     $('#gtable').DataTable({
 		columnDefs: [
 			{
@@ -75,9 +75,7 @@ if(isset($_GET['rs'])){
 				className: 'dt-left'
 			}
 		]
-	});*/
 	
-	$(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
