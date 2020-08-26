@@ -4,7 +4,7 @@ $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <table class="row-border" id="gtable">
-<caption>Products New</caption>
+<caption>Clients</caption>
 	<thead>
 		<tr>
 			<th>Client ID</th>
@@ -32,7 +32,11 @@ $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.
 		?>
 </tbody>
 </table>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#gtable').DataTable();
+} );
+</script>
 <!-- The following div closes the main body div -->
 </div>
 
