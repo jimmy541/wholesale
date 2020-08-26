@@ -47,8 +47,8 @@ if(isset($_GET['rs'])){
 	<tfoot>
 		
 		<tr>
-			<th></th>
-			<th></th>
+			<th>Item</th>
+			<th>Brand</th>
 			<th></th>
 			<th></th>
 			<th></th>
