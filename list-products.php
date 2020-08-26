@@ -96,7 +96,7 @@ if(isset($_GET['rs'])){
 
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#gtable tfoot th').columns([1,2,3]).each( function () {
+    $('#gtable tfoot th').column([1,2,3]).every( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
     } );
