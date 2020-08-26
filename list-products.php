@@ -68,14 +68,14 @@ if(isset($_GET['rs'])){
 </table>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#gtable').DataTable({
+  /*  $('#gtable').DataTable({
 		columnDefs: [
 			{
 				targets: -1,
 				className: 'dt-left'
 			}
 		]
-	});
+	});*/
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
