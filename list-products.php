@@ -68,38 +68,14 @@ if(isset($_GET['rs'])){
 </table>
 <script type="text/javascript">
 $(document).ready(function() {
-  /*  $('#gtable').DataTable({
+   $('#gtable').DataTable({
 		columnDefs: [
 			{
 				targets: -1,
 				className: 'dt-left'
 			}
 		]
-	});*/
-    // Setup - add a text input to each footer cell
-    $('#gtable tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-    } );
- 
-    // DataTable
-    var table = $('#gtable').DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
- 
+	});
 });
 </script>
 <!-- The following div closes the main body div -->
