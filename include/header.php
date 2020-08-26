@@ -66,7 +66,7 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 
  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
 	<!-- BRAND -->
-	<a href="/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>
+	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>
 	<!-- toggle button for small screens -->
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
 		<span class="navbar-toggler-icon"></span>
@@ -75,7 +75,7 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 	<!-- Other Links on Navbar -->
 	<div class="collapse navbar-collapse" id="navbarmenu">
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+			<li class="nav-item"><a href="https://dalysoft.com/wholesale/contact.php" class="nav-link">Contact</a></li>
 			<?php 
 			if (isset($_SESSION['user'])){
 				$result = mysqli_query($link, "SELECT `first_name` FROM `users` WHERE `email_address` = '$user'");
@@ -89,8 +89,8 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $userFullName;?></a>
 						 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							  <a class="dropdown-item" href="profile.php">Profile</a>
-							  <a class="dropdown-item" href="php-scripts/process-logout.php">Logout</a>
+							  <a class="dropdown-item" href="https://dalysoft.com/wholesale/profile.php">Profile</a>
+							  <a class="dropdown-item" href="https://dalysoft.com/wholesale/php-scripts/process-logout.php">Logout</a>
 							  
 						</div>
 					</li>
@@ -103,8 +103,8 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 			else
 			{
 				//if logged out
-				echo '<li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>';
-				echo '<li class="nav-item"><a href="register.php" class="nav-link">Register</a></li>'; 
+				echo '<li class="nav-item"><a href="https://dalysoft.com/wholesale/login.php" class="nav-link">Login</a></li>';
+				echo '<li class="nav-item"><a href="https://dalysoft.com/wholesale/register.php" class="nav-link">Register</a></li>'; 
 			} ?>
 			
 			
