@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
 <link rel="stylesheet" href="https://dalysoft.com/wholesale/css/sidebar-themes.css">
-<script type="text/javascript" src="https://dalysoft.com/js/dashboard-page.js"></script>
+<script type="text/javascript" src="https://dalysoft.com/wholesale/js/dashboard-page.js"></script>
 <link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/populateContainers.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
