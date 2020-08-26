@@ -43,6 +43,19 @@ if(isset($_GET['rs'])){
 			<th>Action</th>
 		</tr>
 	</thead>
+	<tfoot>
+		<tr>
+			<th>Item</th>
+			<th>Brand</th>
+			<th>Description</th>
+			<th>Size</th>
+			<th>Cost</th>
+			<th>Retail</th>
+			<th>Margin</th>
+			<th>Qty</th>
+			<th>Action</th>
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'";
