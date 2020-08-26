@@ -58,5 +58,7 @@
 </div>
 
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); 
+echo getcwd();
+?>
 
