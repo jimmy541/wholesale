@@ -114,7 +114,7 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 <?php
 $pushLeftStyle = '';
 if(isset($_SESSION['user'])){
-	require("sidebar.php");
+	require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
 }else{
 	$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
 }
