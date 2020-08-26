@@ -26,6 +26,7 @@ if(isset($_GET['rs'])){
  ?>
 <?php echo $products_links; ?>
 <form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
+<input class="form-control" id="search_itemcode" type="text" placeholder="Item Code">
 <table class="row-border" id="gtable">
 <caption>Products New</caption>
 	<thead>
@@ -76,6 +77,12 @@ $(document).ready(function() {
 			}
 		]
 	});
+	 $('#search_itemcode').on('keyup', function() {
+                    $('#gtable')
+                        .DataTable()
+                        .search($('#search_itemcode').val(), false, true)
+                        .draw();
+                });
 });
 </script>
 <!-- The following div closes the main body div -->
