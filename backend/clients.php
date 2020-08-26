@@ -3,7 +3,7 @@ $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.
 <link rel="stylesheet" href="../css/jquery.dataTables.min.css">';
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
-<table class="row-border" id="gtable">
+<table class="display compact" id="gtable">
 <caption>Clients</caption>
 	<thead>
 		<tr>
