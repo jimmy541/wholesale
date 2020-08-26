@@ -47,15 +47,15 @@ if(isset($_GET['rs'])){
 	<tfoot>
 		
 		<tr>
-			<th>Item</th>
-			<th>Brand</th>
-			<th>Description</th>
-			<th>Size</th>
-			<th>Cost</th>
-			<th>Retail</th>
-			<th>Margin</th>
-			<th>Qty</th>
-			<th>Action</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
 		</tr>
 	</tfoot>
 	<tbody>
