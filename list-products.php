@@ -26,7 +26,8 @@ if(isset($_GET['rs'])){
  ?>
 <?php echo $products_links; ?>
 <form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
-<input class="form-control" id="search_itemcode" type="text" placeholder="Item Code">
+
+
 <table class="row-border" id="gtable">
 <caption>Products New</caption>
 	<thead>
@@ -68,7 +69,7 @@ if(isset($_GET['rs'])){
 </tbody>
 </table>
 <script type="text/javascript">
-$(document).ready(function() {
+/*$(document).ready(function() {
    $('#gtable').DataTable({
 		columnDefs: [
 			{
@@ -77,13 +78,36 @@ $(document).ready(function() {
 			}
 		]
 	});
-	 $('#search_itemcode').on('keyup', function() {
-                    $('#gtable')
-                        .DataTable()
-                        .search($('#search_itemcode').val(), false, true)
-                        .draw();
-                });
-});
+	
+});*/
+
+$(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#gtable tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+    } );
+ 
+    // DataTable
+    var table = $('#gtable').DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+ 
+} );
+
 </script>
 <!-- The following div closes the main body div -->
 </div>
