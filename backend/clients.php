@@ -31,19 +31,7 @@ $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.
 		?>
 </tbody>
 </table>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#gtable').DataTable({
-		columnDefs: [
-			{
-				targets: -1,
-				className: 'dt-left'
-			}
-		]
-	});
-	
-});
-</script>
+
 <!-- The following div closes the main body div -->
 </div>
 
