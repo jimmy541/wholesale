@@ -2,6 +2,7 @@
 $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="../css/jquery.dataTables.min.css">';
 ?>
+<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <table class="row-border" id="gtable">
 <caption>Products New</caption>
 	<thead>
@@ -36,7 +37,7 @@ $more_script = '<script type="text/javascript" src="../js/jquery.dataTables.min.
 </div>
 
 
-<?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+
 
 
 
