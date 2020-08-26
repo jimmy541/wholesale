@@ -29,7 +29,7 @@ if(isset($_GET['rs'])){
 
 
 <table class="row-border" id="gtable">
-<caption>Products New</caption>
+<caption>Products</caption>
 	<thead>
 		
 		<tr>
@@ -49,8 +49,8 @@ if(isset($_GET['rs'])){
 		<tr>
 			<th>Item</th>
 			<th>Brand</th>
-			<th></th>
-			<th></th>
+			<th>Description</th>
+			<th>Size</th>
 			<th></th>
 			<th></th>
 			<th></th>
@@ -102,7 +102,7 @@ $(document).ready(function() {
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
-		if(title == 'Brand' || title == 'Item'){
+		if(title == 'Brand' || title == 'Item' || title == 'Description' || title == 'Size'){
 			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
 		}
     } );
