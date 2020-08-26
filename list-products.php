@@ -105,7 +105,7 @@ $(document).ready(function() {
     var table = $('#gtable').DataTable({
         initComplete: function () {
             // Apply the search
-            this.api().columns().every( function () {
+            this.api().columns([1,2,3]).every( function () {
                 var that = this;
  
                 $( 'input', this.footer() ).on( 'keyup change clear', function () {
