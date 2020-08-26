@@ -92,7 +92,7 @@ $(document).ready(function() {
 		]
 	});
 	var table = $('#gtable').DataTable();
-	$('#search-item').on('change', function(){
+	$('#search_item').on('change', function(){
     
     table
     .column(0)
