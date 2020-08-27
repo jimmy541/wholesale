@@ -63,6 +63,18 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 					
 		</tr>
 	</thead>
+	<tfoot>
+		<tr>
+		<th style="dispay:none;"></th><!-- keep this line important -->
+			<th style="display:none;">Account Hashed ID</th>
+			<th>Account Number</th>
+			<th>Business Name</th>
+			<th></th>
+			<th></th>
+			<th></th>
+					
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$query = "SELECT b.`account_number`, b.`business_name`, b.`hashed_id`, SUM(a.`retail` + a.`tax` - a.`paid_total`) bln, a.`terms`, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` < DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as pastdue, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` >= DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as current  FROM `orders` a LEFT JOIN `customers` b on a.`customer_hash` = b.`hashed_id` WHERE a.`clientid` = '$clientid' AND a.`order_type` = 'invoice' AND (a.`retail` + a.`tax` - a.`paid_total`) <> 0 GROUP BY a.`customer_hash`";
@@ -98,6 +110,13 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
+	
+	$('#gtable tfoot th').each( function () {
+        var title = $(this).text();
+		if(title == 'Account Number' || title == 'Business Name'){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
 } );
 </script>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
