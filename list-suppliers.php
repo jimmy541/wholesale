@@ -37,7 +37,15 @@ if(isset($_GET['rs'])){
 			<th>Phone Number</th>
 			<th>Action</th>
 		</tr>
-	</thead>
+	</thead>	
+	<tfoot>
+		<tr>
+			<th>Supplier Name</th>
+			<th>Account Number</th>
+			<th>Phone Number</th>
+			<th></th>
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$query = "SELECT * FROM `supplier` WHERE `clientid` = '$clientid'";
@@ -65,7 +73,32 @@ if(isset($_GET['rs'])){
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#gtable').DataTable();
+    // Setup - add a text input to each footer cell
+    $('#gtable tfoot th').each( function () {
+        var title = $(this).text();
+		if(title == 'Supplier Name' || title == 'Account Number' || title == 'Phone Number'){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+ 
+    // DataTable
+    var table = $('#gtable').DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+ 
 } );
 </script>
 
