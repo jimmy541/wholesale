@@ -2,20 +2,6 @@ $(document).ready(function() {
 	
 	var pTable = '';
     var table = $('#gtable').DataTable({
-		 "order": [],
-		"columnDefs": [
-            {
-                "targets": [ 0 ],
-                "visible": false,
-                "searchable": false
-            },
-			{
-                "targets": [ 1 ],
-                "visible": false,
-                "searchable": false
-            },
-			
-		],
 		initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
@@ -30,6 +16,21 @@ $(document).ready(function() {
                 } );
             } );
         }
+		 "order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            },
+			
+		]
+		
 		
 	});
     $('#gtable tbody').on( 'click', 'tr', function () {
