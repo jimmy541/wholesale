@@ -141,8 +141,8 @@ function validateDate($date, $format = 'Y-m-d')
 	</thead>
 	<tbody>
 		<?php
-		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` = ? $customer_detail_query ORDER BY a.`pay_date` DESC";
-		echo $query;
+		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` LIKE ? $customer_detail_query ORDER BY a.`pay_date` DESC";
+		
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $refno);
 		$stmt->execute();
