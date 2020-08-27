@@ -1,6 +1,6 @@
 <?php
 $page_title = 'Account History';
-$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+$more_script = '<style>#gtable_filter{display:none;}</style><script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">
 <script type="text/javascript" src="js/general-list-popup.js"></script>
