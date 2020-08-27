@@ -14,6 +14,8 @@ $customer_detail_query = '';
 $customer_hashid = '';
 $datefrom = date('Y-m-d', strtotime('-90 days'));
 $dateto = date('Y-m-d');
+$method_query = '';
+$refno = '%%';
 if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	$customer_hashid = $_GET['customer'];
 	//make sure provided customer exists in database and get sanitized result
@@ -27,6 +29,19 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		$customer_detail_query = " AND a.`customer_hashed_id` = '$cuh' ";
 	}
 }
+
+if(isset($_GET['method'])){
+	if($_GET['method'] == 'Cash' || $_GET['method'] == 'Check' || $_GET['method'] == 'Money Order' || $_GET['method'] == 'EFT' || $_GET['method'] == 'Wire Payment' || $_GET['method'] == 'Online Payment'){
+		$method_query = "AND a.`payment_method` = '".$_GET['method']."'";
+	}	
+}
+
+if(isset($_GET['refno'])){
+	
+		$refno = "%".$_GET['refno']."%";
+	
+}
+
 if(isset($_GET['datefrom']) && validateDate($_GET['datefrom']) && isset($_GET['dateto']) && validateDate($_GET['dateto'])){
 		$datefrom = $_GET['datefrom'];
 		$dateto = $_GET['dateto'];
@@ -48,17 +63,17 @@ function validateDate($date, $format = 'Y-m-d')
 </ul>
 
 <form method="get">
-    <div class="form-group row">
-      <div class="col-3">
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
         <label for="datefrom">From</label>
 		
         <input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
       </div>
-      <div class="col-3">
+      <div class="col-md-3 mb-3">
         <label for="dateto">To</label>
         <input class="form-control" name="dateto" id="dateto" type="date" value="<?php echo $dateto; ?>">
       </div>
-      <div class="col-5">
+      <div class="col-md-6 mb-3">
         <label for="customer_select">Customer</label>
         <select class="customer_select form-control" id="customer_select" name="customer" style="height: 38px !important">
 			<option></option>
@@ -76,7 +91,26 @@ function validateDate($date, $format = 'Y-m-d')
 			?>
 		</select>
       </div>
-	  <div class="col-1">
+	 </div>
+	 <div class="form-row">
+	 <div class="col-md-4 mb-3">
+        <label for="method_select">Method</label>
+        <select class="customer_select form-control" id="method_select" name="method" style="height: 38px !important">
+			<option></option>
+			<option>Cash</option>
+			<option>Check</option>
+			<option>Money Order</option>
+			<option>EFT</option>
+			<option>Wire Payment</option>
+			<option>Online Payment</option>
+		</select>
+      </div>
+	   <div class="col-md-3 mb-3">
+        <label for="refno">Reference Number</label>
+		
+        <input class="form-control" name="refno" id="refno" type="text" value="">
+      </div>
+	  <div class="col-md-4 mb-3">
         <label for="" style="visibility:hidden !important;">Search</label>
         <input type="submit" class="btn btn-primary mb-2" value="Search" />
       </div>
@@ -107,8 +141,9 @@ function validateDate($date, $format = 'Y-m-d')
 	</thead>
 	<tbody>
 		<?php
-		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' $customer_detail_query ORDER BY a.`pay_date` DESC";
+		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` = ? $customer_detail_query ORDER BY a.`pay_date` DESC";
 		$stmt = $link->prepare($query);
+		$stmt->bind_param('s', $refno);
 		$stmt->execute();
 		$stmt->bind_result($pid, $inha, $pda, $pam, $pme, $rno, $inu, $bna, $chi);
 		
