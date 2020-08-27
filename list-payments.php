@@ -15,6 +15,7 @@ $customer_hashid = '';
 $datefrom = date('Y-m-d', strtotime('-90 days'));
 $dateto = date('Y-m-d');
 $method_query = '';
+$method = '';
 $refno = '%%';
 if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	$customer_hashid = $_GET['customer'];
@@ -33,6 +34,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 if(isset($_GET['method'])){
 	if($_GET['method'] == 'Cash' || $_GET['method'] == 'Check' || $_GET['method'] == 'Money Order' || $_GET['method'] == 'EFT' || $_GET['method'] == 'Wire Payment' || $_GET['method'] == 'Online Payment'){
 		$method_query = "AND a.`payment_method` = '".$_GET['method']."'";
+		$method = $_GET['method'];
 	}	
 }
 
@@ -93,24 +95,24 @@ function validateDate($date, $format = 'Y-m-d')
       </div>
 	 </div>
 	 <div class="form-row">
-	 <div class="col-md-4 mb-3">
+	 <div class="col-md-5 mb-3">
         <label for="method_select">Method</label>
         <select class="customer_select form-control" id="method_select" name="method" style="height: 38px !important">
 			<option></option>
-			<option>Cash</option>
-			<option>Check</option>
-			<option>Money Order</option>
-			<option>EFT</option>
-			<option>Wire Payment</option>
-			<option>Online Payment</option>
+			<option <?php if($method == 'Cash'){ echo 'selected'; } ?>>Cash</option>
+			<option <?php if($method == 'Check'){ echo 'selected'; } ?>>Check</option>
+			<option <?php if($method == 'Money Order'){ echo 'selected'; } ?>>Money Order</option>
+			<option <?php if($method == 'EFT'){ echo 'selected'; } ?>>EFT</option>
+			<option <?php if($method == 'Wire Payment'){ echo 'selected'; } ?>>Wire Payment</option>
+			<option <?php if($method == 'Online Payment'){ echo 'selected'; } ?>>Online Payment</option>
 		</select>
       </div>
-	   <div class="col-md-3 mb-3">
+	   <div class="col-md-5 mb-3">
         <label for="refno">Reference Number</label>
 		
         <input class="form-control" name="refno" id="refno" type="text" value="">
       </div>
-	  <div class="col-md-4 mb-3">
+	  <div class="col-md-2 mb-3">
         <label for="" style="visibility:hidden !important;">Search</label>
         <input type="submit" class="btn btn-primary mb-2" value="Search" />
       </div>
@@ -141,7 +143,7 @@ function validateDate($date, $format = 'Y-m-d')
 	</thead>
 	<tbody>
 		<?php
-		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` LIKE ? $customer_detail_query ORDER BY a.`pay_date` DESC";
+		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` LIKE ? $customer_detail_query $method_query ORDER BY a.`pay_date` DESC";
 		
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $refno);
