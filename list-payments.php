@@ -60,7 +60,7 @@ function validateDate($date, $format = 'Y-m-d')
       </div>
       <div class="col-5">
         <label for="customer_select">Customer</label>
-        <select class="customer_select form-control" id="customer_select" name="customer_select" style="height: 38px !important">
+        <select class="customer_select form-control" id="customer_select" name="customer" style="height: 38px !important">
 			<option></option>
 			<?php
 				$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
@@ -133,6 +133,7 @@ function validateDate($date, $format = 'Y-m-d')
 <?php require('include/invoice-popups.php'); ?>
 <script type="text/javascript">
 $(document).ready(function() {
+	$('.customer_select').select2();
     Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
