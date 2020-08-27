@@ -111,12 +111,6 @@ $(document).ready(function() {
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
 	
-	$('#gtable tfoot th').each( function () {
-        var title = $(this).text();
-		if(title == 'Account Number' || title == 'Business Name'){
-			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-		}
-    } );
 	
 	
 } );

@@ -1,4 +1,10 @@
 $(document).ready(function() {
+	$('#gtable tfoot th').each( function () {
+        var title = $(this).text();
+		if(title == 'Account Number' || title == 'Business Name'){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
 	
 	var pTable = '';
     var table = $('#gtable').DataTable({
