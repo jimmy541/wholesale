@@ -15,7 +15,21 @@ $(document).ready(function() {
                 "searchable": false
             },
 			
-		]
+		],
+		initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
 		
 	});
     $('#gtable tbody').on( 'click', 'tr', function () {
