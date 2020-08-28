@@ -174,7 +174,7 @@ function validateDate($date, $format = 'Y-m-d')
 		$stmt->close();
 		
 		
-		//get the result from the temporary table sorted
+		//get the total of all payments made
 		$query = "SELECT SUM(`pay_amount`) FROM `payments` WHERE `clientid` = '$clientid' AND `customer_hashed_id` = ? AND `pay_date` < '$datefrom'";
 		
 		$stmt = $link->prepare($query);
@@ -193,8 +193,8 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		
 			
-			//get the result from the temporary table sorted
-			$query = "SELECT SUM(`retail`) + SUM(`tax`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` < '$datefrom'";
+			//get the total of all invoices to date
+			$query = "SELECT SUM(`retail`) + SUM(`tax`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` < '$datefrom' AND `order_type` = 'invoice'";
 			
 			$stmt = $link->prepare($query);
 			$stmt->bind_param('s', $hashed_customer_number);

@@ -285,7 +285,41 @@ function FancyTable($link, $clientid, $hashed_customer_number, $pageNumber)
 		$stmt->bind_param('ss', $hashed_customer_number, $hashed_customer_number);
 		$stmt->execute();
 		$stmt->close();
-	
+	$running_balance = 0;
+	//get the total of all payments made
+		$query = "SELECT SUM(`pay_amount`) FROM `payments` WHERE `clientid` = '$clientid' AND `customer_hashed_id` = ? AND `pay_date` < '$datefrom'";
+		
+		$stmt = $link->prepare($query);
+		$stmt->bind_param('s', $hashed_customer_number);
+		$stmt->execute();
+		$stmt->bind_result($pmnts);
+		$payments_to_date = '';
+		
+		while($stmt->fetch()){
+			$payments_to_date = $pmnts;
+		}
+		$stmt->close();
+		
+		$balancealltime = '0';
+		
+		
+		
+			
+			//get the total of all invoices to date
+			$query = "SELECT SUM(`retail`) + SUM(`tax`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` < '$datefrom' AND `order_type` = 'invoice'";
+			
+			$stmt = $link->prepare($query);
+			$stmt->bind_param('s', $hashed_customer_number);
+			$stmt->execute();
+			$stmt->bind_result($blnall);
+			
+			
+			while($stmt->fetch()){
+				$balancealltime = $blnall;
+			}
+			$stmt->close();
+			$running_balance = $balancealltime - $payments_to_date;
+		
 	$limit_clause = 'LIMIT '.(($pageNumber - 1) * 20).',20';
 	
 	$query = "SELECT `date`, `description`, `amount`, `type` FROM `temp_account_history` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date` >= '$datefrom' AND `date` <= '$dateto' ORDER BY `date` ASC $limit_clause";
