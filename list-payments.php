@@ -101,7 +101,7 @@ function validateDate($date, $format = 'Y-m-d')
       </div>
 	 </div>
 	 <div class="form-row">
-	 <div class="col-md-5 mb-3">
+	 <div class="col-md-4 mb-3">
         <label for="method_select">Method</label>
         <select class="customer_select form-control" id="method_select" name="method" style="height: 38px !important">
 			<option></option>
@@ -113,12 +113,12 @@ function validateDate($date, $format = 'Y-m-d')
 			<option <?php if($method == 'Online Payment'){ echo 'selected'; } ?>>Online Payment</option>
 		</select>
       </div>
-	   <div class="col-md-5 mb-3">
+	   <div class="col-md-4 mb-3">
         <label for="refno">Reference Number</label>
 		
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
       </div>
-	   <div class="col-md-5 mb-3">
+	   <div class="col-md-4 mb-3">
         <label for="invno">Invoice Number</label>
 		
         <input class="form-control" name="invno" id="invno" type="text" value="<?php echo htmlspecialchars($_GET['invno']); ?>">
