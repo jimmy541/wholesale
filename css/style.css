@@ -15,7 +15,7 @@ a{
 	padding:15px;
 	margin-top:15px;
 }
-#form-filter caption{
+#form-filter h1{
 	font-size: 1.5em;
     margin: .5em 0 .75em;
     caption-side: top !important;
