@@ -25,7 +25,6 @@ if(isset($_GET['rs'])){
 }
  ?>
 <?php echo $products_links; ?>
-<form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
 <p>
   <a class="btn btn-primary" href="new-product.php" role="button">
     New Product
