@@ -17,6 +17,7 @@ $dateto = date('Y-m-d');
 $method_query = '';
 $method = '';
 $refno = '%%';
+$invno = '%%';
 if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	$customer_hashid = $_GET['customer'];
 	//make sure provided customer exists in database and get sanitized result
@@ -41,6 +42,12 @@ if(isset($_GET['method'])){
 if(isset($_GET['refno'])){
 	
 		$refno = "%".$_GET['refno']."%";
+	
+}
+
+if(isset($_GET['invno'])){
+	
+		$invno = $_GET['invno'];
 	
 }
 
@@ -111,6 +118,11 @@ function validateDate($date, $format = 'Y-m-d')
 		
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
       </div>
+	   <div class="col-md-5 mb-3">
+        <label for="invno">Invoice Number</label>
+		
+        <input class="form-control" name="invno" id="invno" type="text" value="<?php echo htmlspecialchars($_GET['invno']); ?>">
+      </div>
 	 </div>
 	   <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
       
@@ -153,10 +165,10 @@ function validateDate($date, $format = 'Y-m-d')
 	</tfoot>
 	<tbody>
 		<?php
-		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` LIKE ? $customer_detail_query $method_query ORDER BY a.`pay_date` DESC";
+		$query = "SELECT a.`payment_id`, a.`invoice_hash`, a.`pay_date`, a.`pay_amount`, a.`payment_method`, a.`reference_no`, b.`invoice_number`, c.`business_name`, a.`customer_hashed_id` FROM `payments` a LEFT JOIN `orders` b ON a.`invoice_hash` = b.`invoice_number_hash` AND b.`clientid` = '$clientid' LEFT JOIN `customers` c on a.`customer_hashed_id` = c.`hashed_id` AND c.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`pay_date` >= '$datefrom' AND a.`pay_date` <= '$dateto' AND a.`reference_no` LIKE ? AND b.`invoice_number` LIKE ? $customer_detail_query $method_query ORDER BY a.`pay_date` DESC";
 		
 		$stmt = $link->prepare($query);
-		$stmt->bind_param('s', $refno);
+		$stmt->bind_param('ss', $refno, $invno);
 		$stmt->execute();
 		$stmt->bind_result($pid, $inha, $pda, $pam, $pme, $rno, $inu, $bna, $chi);
 		
