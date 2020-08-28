@@ -113,7 +113,6 @@ function validateDate($date, $format = 'Y-m-d')
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
       </div>
 	  <div class="col-md-2 mb-3">
-        <label for="" style="visibility:hidden !important;">Search</label>
         <input type="submit" class="btn btn-primary mb-2" value="Search" />
       </div>
     </div>
