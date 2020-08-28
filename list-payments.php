@@ -68,8 +68,7 @@ function validateDate($date, $format = 'Y-m-d')
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="datefrom">From</label>
-		
-        <input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
+		<input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
       </div>
       <div class="col-md-3 mb-3">
         <label for="dateto">To</label>
@@ -113,7 +112,8 @@ function validateDate($date, $format = 'Y-m-d')
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
       </div>
 	  <div class="col-md-2 mb-3">
-        <input type="submit" class="btn btn-primary mb-2" value="Search" />
+	   <label for="sbbtn">Reference Number</label>
+        <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
       </div>
     </div>
   </form>
