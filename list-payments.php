@@ -39,13 +39,13 @@ if(isset($_GET['method'])){
 	}	
 }
 
-if(isset($_GET['refno'])){
+if(isset($_GET['refno']) ){
 	
 		$refno = "%".$_GET['refno']."%";
 	
 }
 
-if(isset($_GET['invno'])){
+if(isset($_GET['invno']) && !empty($_GET['invno'])){
 	
 		$invno = $_GET['invno'];
 	
