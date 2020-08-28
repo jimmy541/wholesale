@@ -88,6 +88,18 @@ if(isset($_GET['rs'])){
 			
 		</tr>
 	</thead>
+	<tfoot>
+		<tr>
+			<th style="display:none;">Invoice ID</th>
+			<th style="display:none;">CutomerID</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<?php if($order_type == 'invoice'){?><th></th><th></th><?php } ?>
+			
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$query = "SELECT a.`invoice_number_hash`, a.`customer_hash`, a.`date_started`, a.`invoice_number`, (a.`retail` + a.`tax`) tx, a.`retail` + a.`tax` - a.`paid_total` bln, a.`status`, b.`business_name` FROM `orders` a LEFT JOIN `customers` b ON a.`customer_hash` = b.`hashed_id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`order_type` = '$order_type' $customer_detail_query ORDER BY a.`date_started` DESC";
