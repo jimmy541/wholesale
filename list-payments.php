@@ -111,11 +111,9 @@ function validateDate($date, $format = 'Y-m-d')
 		
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
       </div>
-	  <div class="col-md-2 mb-3">
-	   <label for="sbbtn">Reference Number</label>
-        <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
-      </div>
-    </div>
+	 </div>
+	   <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
+      
   </form>
 
 <input type="hidden" id="invoicehash" value="" />
