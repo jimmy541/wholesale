@@ -12,6 +12,17 @@ a{
 #form-filter{
 	border: 1px solid #c9c9c9;
     border-radius: 3px;
+	padding:15px;
+	margin-top:15px;
+}
+#form-filter h2{
+	font-size: 1.5em;
+    margin: .5em 0 .75em;
+    caption-side: top !important;
+	padding-top: .75rem;
+    padding-bottom: .75rem;
+    color: #6c757d;
+    text-align: left;
 }
 tfoot {
         display: table-header-group;

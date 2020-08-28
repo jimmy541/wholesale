@@ -27,6 +27,7 @@ if(isset($_GET['rs'])){
 <?php echo $products_links; ?>
 <form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
 <div class="container-fluid" id="form-filter">
+<h2>Filter<h2>
   <form method="get">
     <div class="form-row">
       <div class="col-md-3 mb-3">
