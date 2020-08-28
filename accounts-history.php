@@ -190,8 +190,15 @@ function validateDate($date, $format = 'Y-m-d')
 				<td data-label="hashid" style="display:none;">'.htmlspecialchars($id).'</td>
 				<td data-label="custhash" style="display:none;">'.htmlspecialchars($hashed_customer_number).'</td>
 				<td data-label="Date">'.$dt.'</td>
-				<td data-label="Invoice Number"><a href="invoice.php?invoice='.htmlspecialchars($id).'">'.htmlspecialchars($desc).'</a></td>
-				<td data-label="Amount">'.number_format($amnt, 2).'</td>';
+				<td data-label="Invoice Number">';
+				
+					if(strpos($desc, 'Invoice') !== false){
+						echo '<a href="invoice.php?invoice='.htmlspecialchars($id).'">'.htmlspecialchars($desc).'</a>';
+					}else{
+						echo htmlspecialchars($desc);
+					}
+						
+				echo '</td><td data-label="Amount">'.number_format($amnt, 2).'</td>';
 				if($type == 'plus'){
 					$running_balance += $amnt;
 				}elseif ($type == 'minus'){
