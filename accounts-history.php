@@ -143,6 +143,18 @@ function validateDate($date, $format = 'Y-m-d')
 					
 		</tr>
 	</thead>
+	<tfoot>
+		<tr>
+		<th style="dispay:none;">Invoice Hash</th>
+			<th style="display:none;">Account Hashed ID</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			
+					
+		</tr>
+	</tfoot>
 	<tbody>
 		<?php
 		$running_balance = 0;
