@@ -189,6 +189,8 @@ function validateDate($date, $format = 'Y-m-d')
 		$stmt->close();
 		
 		$balancealltime = '0';
+		
+		echo $date_started.' - '.$datefrom;
 		if($date_started < $datefrom){
 			
 			//get the result from the temporary table sorted
