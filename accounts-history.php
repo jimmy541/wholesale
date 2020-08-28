@@ -175,26 +175,26 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		
 		//get the result from the temporary table sorted
-		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND (`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
+		$query = "SELECT SUM(`pay_amount`) FROM `payments` WHERE `clientid` = '$clientid' AND `customer_hashed_id` = ? AND `pay_date` < '$datefrom'";
 		
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $hashed_customer_number);
 		$stmt->execute();
-		$stmt->bind_result($dt);
-		$date_started = '';
+		$stmt->bind_result($pmnts);
+		$payments_to_date = '';
 		
 		while($stmt->fetch()){
-			$date_started = $dt;
+			$payments_to_date = $pmnts;
 		}
 		$stmt->close();
 		
 		$balancealltime = '0';
 		
 		
-		if($date_started < $datefrom){
+		
 			
 			//get the result from the temporary table sorted
-			$query = "SELECT SUM(`retail`) + SUM(`tax`) - SUM(`paid_total`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` >= '$date_started' AND `date_started` < '$datefrom'";
+			$query = "SELECT SUM(`retail`) + SUM(`tax`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? `date_started` < '$datefrom'";
 			
 			$stmt = $link->prepare($query);
 			$stmt->bind_param('s', $hashed_customer_number);
@@ -206,8 +206,8 @@ function validateDate($date, $format = 'Y-m-d')
 				$balancealltime = $blnall;
 			}
 			$stmt->close();
-			$running_balance = $balancealltime;
-		}
+			$running_balance = $balancealltime - $payments_to_date;
+		
 		
 		
 		//get the result from the temporary table sorted
