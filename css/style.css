@@ -17,13 +17,9 @@ a{
 }
 #form-filter h1{
 	font-size: 1.5em;
-    margin: .5em 0 .75em;
-    caption-side: top !important;
-	padding-top: .75rem;
-    padding-bottom: .75rem;
+	padding-bottom: .75rem;
     color: #6c757d;
-    text-align: left;
-}
+   }
 tfoot {
         display: table-header-group;
     }
