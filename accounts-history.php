@@ -175,7 +175,38 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		
 		//get the result from the temporary table sorted
+		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? WHERE SUM(`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
 		
+		$stmt = $link->prepare($query);
+		$stmt->execute();
+		$stmt->bind_result($dt);
+		$date_started = '';
+		
+		while($stmt->fetch()){
+			$date_started = $dt;
+		}
+		$stmt->close();
+		
+		$balancealltime = '0';
+		if($date_started < $datefrom){
+			
+			//get the result from the temporary table sorted
+			$query = "SELECT SUM(`retail`) + SUM(`tax`) - SUM(`paid_total`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? WHERE `date_started` >= '$date_started' AND `date_started` < '$datefrom'";
+			
+			$stmt = $link->prepare($query);
+			$stmt->execute();
+			$stmt->bind_result($blnall);
+			
+			
+			while($stmt->fetch()){
+				$balancealltime = $blnall;
+			}
+			$stmt->close();
+			$running_balance = $balancealltime;
+		}
+		
+		
+		//get the result from the temporary table sorted
 		$query = "SELECT `in_pay_id`, `date`, `description`, `amount`, `type` FROM `temp_account_history` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date` >= '$datefrom' AND `date` <= '$dateto' ORDER BY 2 ASC;";
 		
 		$stmt = $link->prepare($query);
