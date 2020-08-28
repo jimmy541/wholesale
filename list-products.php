@@ -26,7 +26,64 @@ if(isset($_GET['rs'])){
  ?>
 <?php echo $products_links; ?>
 <form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
-
+<div class="container-fluid" id="form-filter">
+  <form method="get">
+    <div class="form-row">
+      <div class="col-md-3 mb-3">
+        <label for="datefrom">From</label>
+		<input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="dateto">To</label>
+        <input class="form-control" name="dateto" id="dateto" type="date" value="<?php echo $dateto; ?>">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="customer_select">Customer</label>
+        <select class="customer_select form-control" id="customer_select" name="customer" style="height: 38px !important">
+			<option></option>
+			<?php
+				$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
+				$stmt = $link->prepare($query);
+				$stmt->execute();
+				$stmt->bind_result($hashedid, $busname);
+				while($stmt->fetch()){
+					$selected = '';
+					if($hashedid == $customer_hashid){$selected = 'selected';}
+					echo '<option value="'.htmlspecialchars($hashedid).'" '.$selected.'>'.htmlspecialchars($busname).'</option>';
+				}
+				$stmt->close();
+			?>
+		</select>
+      </div>
+	 </div>
+	 <div class="form-row">
+	 <div class="col-md-4 mb-3">
+        <label for="method_select">Method</label>
+        <select class="customer_select form-control" id="method_select" name="method" style="height: 38px !important">
+			<option></option>
+			<option <?php if($method == 'Cash'){ echo 'selected'; } ?>>Cash</option>
+			<option <?php if($method == 'Check'){ echo 'selected'; } ?>>Check</option>
+			<option <?php if($method == 'Money Order'){ echo 'selected'; } ?>>Money Order</option>
+			<option <?php if($method == 'EFT'){ echo 'selected'; } ?>>EFT</option>
+			<option <?php if($method == 'Wire Payment'){ echo 'selected'; } ?>>Wire Payment</option>
+			<option <?php if($method == 'Online Payment'){ echo 'selected'; } ?>>Online Payment</option>
+		</select>
+      </div>
+	   <div class="col-md-4 mb-3">
+        <label for="refno">Reference Number</label>
+		
+        <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
+      </div>
+	   <div class="col-md-4 mb-3">
+        <label for="invno">Invoice Number</label>
+		
+        <input class="form-control" name="invno" id="invno" type="text" value="<?php echo htmlspecialchars($_GET['invno']); ?>">
+      </div>
+	 </div>
+	   <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
+      
+  </form>
+</div>
 
 <table class="row-border" id="gtable">
 <caption>Products</caption>
