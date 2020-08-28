@@ -175,7 +175,7 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		
 		//get the result from the temporary table sorted
-		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND SUM(`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
+		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND (`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
 		
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $hashed_customer_number);
