@@ -193,7 +193,7 @@ function validateDate($date, $format = 'Y-m-d')
 			
 			//get the result from the temporary table sorted
 			$query = "SELECT SUM(`retail`) + SUM(`tax`) - SUM(`paid_total`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` >= '$date_started' AND `date_started` < '$datefrom'";
-			
+			echo $query;
 			$stmt = $link->prepare($query);
 			$stmt->bind_param('s', $hashed_customer_number);
 			$stmt->execute();
