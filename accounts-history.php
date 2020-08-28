@@ -175,7 +175,7 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		
 		//get the result from the temporary table sorted
-		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? WHERE SUM(`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
+		$query = "SELECT `date_started` FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND SUM(`retail` + `tax`) <> `paid_total` ORDER BY `date_started` ASC LIMIT 1";
 		
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $hashed_customer_number);
@@ -192,7 +192,7 @@ function validateDate($date, $format = 'Y-m-d')
 		if($date_started < $datefrom){
 			
 			//get the result from the temporary table sorted
-			$query = "SELECT SUM(`retail`) + SUM(`tax`) - SUM(`paid_total`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? WHERE `date_started` >= '$date_started' AND `date_started` < '$datefrom'";
+			$query = "SELECT SUM(`retail`) + SUM(`tax`) - SUM(`paid_total`) blnall FROM `orders` WHERE `clientid` = '$clientid' AND `customer_hash` = ? AND `date_started` >= '$date_started' AND `date_started` < '$datefrom'";
 			
 			$stmt = $link->prepare($query);
 			$stmt->bind_param('s', $hashed_customer_number);
