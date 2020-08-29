@@ -74,7 +74,22 @@ if(isset($_GET['rs'])){
 				</select>
 			</div>
 			<div class="col-md-4 mb-3">
-			
+				<label for="category">Category</label>
+				<select class="form-control" id="category" name="category" style="height: 38px !important">
+					<option></option>
+					<?php
+						$query = "SELECT `id`, `description` FROM `bcategory` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+						$stmt = $link->prepare($query);
+						$stmt->execute();
+						$stmt->bind_result($id, $description);
+						while($stmt->fetch()){
+							$selected = '';
+							if($id == $category){$selected = 'selected';}
+							echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
+						}
+						$stmt->close();
+					?>
+				</select>
 			</div>
 		</div>
 		<div class="form-row">
