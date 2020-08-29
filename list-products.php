@@ -156,6 +156,7 @@ $(document).ready(function() {
 });
 */
 $(document).ready(function() {
+	$('.customer_select').select2();
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
@@ -182,7 +183,7 @@ $(document).ready(function() {
             } );
         }
     });
-	$('.customer_select').select2();
+	
 } );
 
 </script>
