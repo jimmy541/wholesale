@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="list-products.php">
                                 <i class="fa fa-th-large"></i>
                                 <span class="menu-text">Products</span>
                                <!-- <span class="badge badge-pill badge-danger">3</span> -->
@@ -94,7 +94,7 @@
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="list-suppliers.php">
                                 <i class="fa fa-boxes"></i>
                                 <span class="menu-text">Suppliers</span>
                             </a>
@@ -106,7 +106,7 @@
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="#">
+                            <a href="list-customers.php">
                                 <i class="fa fa-user-friends"></i>
                                 <span class="menu-text">Customers</span>
                             </a>
@@ -140,7 +140,7 @@
                         <li>
                             <a href="list-orders.php">
                                 <i class="fa fa-list-alt"></i>
-                                <span class="menu-text">Invoices</span>
+                                <span class="menu-text">Orders</span>
                                 
                             </a>
                         </li>
