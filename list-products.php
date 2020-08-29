@@ -34,10 +34,12 @@ if(isset($_GET['rs'])){
   </button>
 </p>
 <div class="container-fluid collapse" id="form-filter">
-<h1>Filter</h1>
-
-
-
+	<h1>Filter</h1>
+	<form method="get">
+	
+		 <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
+    
+	</form>
 </div>
 
 <table class="row-border" id="gtable">
