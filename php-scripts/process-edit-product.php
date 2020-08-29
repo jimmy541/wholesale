@@ -24,9 +24,9 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	$memo = '';
 	$supplier = '';
 	$supplier_code = '';
-	$a_category = '';
-	$b_category = '';
-	$c_category = '';
+	$department = '';
+	$sub_department = '';
+	$category = '';
 	$brand = '';
 	$active = 'no';
 	$tax_id = '';
@@ -48,9 +48,9 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	if (isset($_POST['memo']) && !empty($_POST['memo'])){$memo = $_POST['memo'];}
 	if (isset($_POST['supplier']) && !empty($_POST['supplier'])){$supplier = $_POST['supplier'];}
 	if (isset($_POST['supplier_code']) && !empty($_POST['supplier_code'])){$supplier_code = $_POST['supplier_code'];}
-	if (isset($_POST['a_category']) && !empty($_POST['a_category'])){$a_category = $_POST['a_category'];}
-	if (isset($_POST['b_category']) && !empty($_POST['b_category'])){$b_category = $_POST['b_category'];}
-	if (isset($_POST['c_category']) && !empty($_POST['c_category'])){$c_category = $_POST['c_category'];}
+	if (isset($_POST['department']) && !empty($_POST['department'])){$department = $_POST['department'];}
+	if (isset($_POST['sub_department']) && !empty($_POST['sub_department'])){$sub_department = $_POST['sub_department'];}
+	if (isset($_POST['category']) && !empty($_POST['category'])){$category = $_POST['category'];}
 	if (isset($_POST['brand']) && !empty($_POST['brand'])){$brand = $_POST['brand'];}
 	if (isset($_POST['active'])){$active = 'yes';}
 	if (isset($_POST['tax_id']) && !empty($_POST['tax_id'])){$tax_id = $_POST['tax_id'];}
@@ -67,8 +67,8 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	}
 	
 	
-	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`a_category`= ?,`b_category`= ?,`c_category`= ?,`brand`= ?,`active`= ?, `tax_id` = ? WHERE `clientid`= ? AND `uniqueid` = ?');
-	$stmt->bind_param('ssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$a_category,$b_category,$c_category,$brand,$active, $tax_id, $clientid, $uniqueid);
+	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`department`= ?,`sub_department`= ?,`category`= ?,`brand`= ?,`active`= ?, `tax_id` = ? WHERE `clientid`= ? AND `uniqueid` = ?');
+	$stmt->bind_param('ssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand,$active, $tax_id, $clientid, $uniqueid);
 	$stmt->execute();
 	$stmt->close();
 	

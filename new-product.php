@@ -53,9 +53,9 @@ $size_unit = '';
 	$weight_unit = ''; 
 	$memo = ''; 
 	$supplier = ''; 
-	$a_category = ''; 
-	$b_category = ''; 
-	$c_category = ''; 
+	$department = ''; 
+	$sub_department = ''; 
+	$category = ''; 
 	$brand = '';
 	$tax_id = '';
 if(isset($_GET['clone']) && !empty($_GET['clone'])){
@@ -63,14 +63,14 @@ if(isset($_GET['clone']) && !empty($_GET['clone'])){
 	
 	
 
-	$query="SELECT `size_unit`, `description`, `Pack`, `size_amount`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `a_category`, `b_category`, `c_category`, `brand`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	$query="SELECT `size_unit`, `description`, `Pack`, `size_amount`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `department`, `sub_department`, `category`, `brand`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
 	
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $uniqueid, $clientid);
 	
 	$stmt->execute();
-	$stmt->bind_result($size_unitV, $descriptionV, $PackV, $size_amountV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $a_categoryV, $b_categoryV, $c_categoryV, $brandV, $tax_idV);
+	$stmt->bind_result($size_unitV, $descriptionV, $PackV, $size_amountV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $departmentV, $sub_departmentV, $categoryV, $brandV, $tax_idV);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -87,9 +87,9 @@ if(isset($_GET['clone']) && !empty($_GET['clone'])){
 		$weight_unit = $weight_unitV; 
 		$memo = $memoV; 
 		$supplier = $supplierV; 
-		$a_category = $a_categoryV; 
-		$b_category = $b_categoryV; 
-		$c_category = $c_categoryV; 
+		$department = $departmentV; 
+		$sub_department = $sub_departmentV; 
+		$category = $categoryV; 
 		$brand = $brandV; 
 		$tax_id = $tax_idV;
 		
@@ -182,16 +182,16 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				<h4 class="mb-3">Section</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
-						<label for="a_category">Department:</label>
-						<select class="form-control" id="a_category" name="a_category"><?php if($found=='true'){echo getValue($link, $clientid, 'acategory', $a_category);} ?></select>
+						<label for="department">Department:</label>
+						<select class="form-control" id="department" name="department"><?php if($found=='true'){echo getValue($link, $clientid, 'department', $department);} ?></select>
 					</div>
 					<div class="col-md-4 mb-3">
-						<label for="b_category">Sub Department:</label>
-						<select class="form-control"  id="b_category" name="b_category"><?php if($found=='true'){echo getValue($link, $clientid, 'bcategory', $b_category);} ?></select>
+						<label for="sub_department">Sub Department:</label>
+						<select class="form-control"  id="sub_department" name="sub_department"><?php if($found=='true'){echo getValue($link, $clientid, 'sub_department', $sub_department);} ?></select>
 					</div>
 					<div class="col-md-4 mb-3">
-						<label for="c_category">Category:</label>
-						<select class="form-control"  id="c_category" name="c_category"><?php if($found=='true'){echo getValue($link, $clientid, 'ccategory', $c_category);} ?></select>
+						<label for="category">Category:</label>
+						<select class="form-control"  id="category" name="category"><?php if($found=='true'){echo getValue($link, $clientid, 'category', $category);} ?></select>
 					</div>
 				</div>
 				

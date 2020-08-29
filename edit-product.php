@@ -34,22 +34,22 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$memo = ''; 
 	$supplier = ''; 
 	$supplier_code = ''; 
-	$a_category = ''; 
-	$b_category = ''; 
-	$c_category = ''; 
+	$department = ''; 
+	$sub_department = ''; 
+	$category = ''; 
 	$brand = ''; 
 	$active = '';
 	$checked = 'no';
 	$tax_id = '';
 
-	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `a_category`, `b_category`, `c_category`, `brand`, `active`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
 	
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $uniqueid, $clientid);
 	
 	$stmt->execute();
-	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $a_categoryV, $b_categoryV, $c_categoryV, $brandV, $activeV, $tax_idV);
+	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -71,9 +71,9 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 		$memo = $memoV; 
 		$supplier = $supplierV; 
 		$supplier_code = $supplier_codeV; 
-		$a_category = $a_categoryV; 
-		$b_category = $b_categoryV; 
-		$c_category = $c_categoryV; 
+		$department = $departmentV; 
+		$sub_department = $sub_departmentV; 
+		$category = $categoryV; 
 		$brand = $brandV; 
 		$active = $activeV;
 		$tax_id = $tax_idV;
@@ -201,15 +201,15 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			<div class="row">
 				<div class="col-md-4 mb-3">
 					<label for="">Department:</label>
-					<select class="form-control"  id="a_category" name="a_category" ><?php echo getValue($link, $clientid, 'acategory', $a_category); ?></select>
+					<select class="form-control"  id="department" name="department" ><?php echo getValue($link, $clientid, 'department', $department); ?></select>
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="">Sub Department:</label>
-					<select class="form-control"   id="b_category" name="b_category"><?php echo getValue($link, $clientid, 'bcategory', $b_category); ?></select>
+					<select class="form-control"   id="sub_department" name="sub_department"><?php echo getValue($link, $clientid, 'sub_department', $sub_department); ?></select>
 				</div>
 				<div class="col-md-4 mb-3">
 					<label for="">Category:</label>
-					<select class="form-control"   id="c_category" name="c_category"><?php echo getValue($link, $clientid, 'ccategory', $c_category); ?></select>
+					<select class="form-control"   id="category" name="category"><?php echo getValue($link, $clientid, 'category', $category); ?></select>
 				</div>
 			</div>
 			

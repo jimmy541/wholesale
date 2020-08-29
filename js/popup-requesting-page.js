@@ -7,21 +7,21 @@ $(document).ready(function(){
 		$('#poprequester').val("f146aa9099b551a29e4d4ae56e170c7");
 			
 	});
-	$('#a_category').click(function(){
+	$('#department').click(function(){
 		$(this).blur();
 		$( "#popBrand" ).show();
 		$('#gray-background').show();
 		$( "#popBrand" ).load( "popup-options.php?reid=adae3bad1bca266a568ecbc72e698c9" );
 		$('#poprequester').val("adae3bad1bca266a568ecbc72e698c9");
 	});
-	$('#b_category').click(function(){
+	$('#sub_department').click(function(){
 		$(this).blur();
 		$( "#popBrand" ).show();
 		$('#gray-background').show();
 		$( "#popBrand" ).load( "popup-options.php?reid=adae3bad1bca266a568ecbc82e698c5" );
 		$('#poprequester').val("adae3bad1bca266a568ecbc82e698c5");
 	});
-	$('#c_category').click(function(){
+	$('#category').click(function(){
 		$(this).blur();
 		$( "#popBrand" ).show();
 		$('#gray-background').show();

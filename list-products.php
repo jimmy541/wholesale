@@ -34,20 +34,20 @@ $category_query= '';
 if(isset($_GET['department']) && !empty($_GET['department'])){
 	if(is_numeric($_GET['department'])){
 		$department = $_GET['department'];
-		$department_query = " AND a.`a_category` = '$department'";
+		$department_query = " AND a.`department` = '$department'";
 	}
 	
 }
 if(isset($_GET['subdepartment']) && !empty($_GET['subdepartment'])){
 	if(is_numeric($_GET['subdepartment'])){
 		$subdepartment = $_GET['subdepartment'];
-		$subdepartment_query = " AND a.`b_category` = '$subdepartment'";
+		$subdepartment_query = " AND a.`sub_department` = '$subdepartment'";
 	}
 }
 if(isset($_GET['category']) && !empty($_GET['category'])){
 	if(is_numeric($_GET['category'])){
 		$category = $_GET['category'];
-		$category_query = " AND a.`c_category` = '$category'";
+		$category_query = " AND a.`category` = '$category'";
 	}
 }
  ?>
@@ -87,7 +87,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 				<select class="form-control" id="subdepartment" name="subdepartment" style="height: 38px !important">
 					<option></option>
 					<?php
-						$query = "SELECT `id`, `description` FROM `acategory` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+						$query = "SELECT `id`, `description` FROM `department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 						$stmt = $link->prepare($query);
 						$stmt->execute();
 						$stmt->bind_result($id, $description);
@@ -105,7 +105,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 				<select class="form-control" id="category" name="category" style="height: 38px !important">
 					<option></option>
 					<?php
-						$query = "SELECT `id`, `description` FROM `bcategory` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+						$query = "SELECT `id`, `description` FROM `sub_department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 						$stmt = $link->prepare($query);
 						$stmt->execute();
 						$stmt->bind_result($id, $description);

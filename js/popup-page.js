@@ -23,7 +23,7 @@ $(document).ready(function(){
 		}
 
 		if(requestinghash == 'adae3bad1bca266a568ecbc72e698c9'){
-			$('#a_category').find('option').remove().end()
+			$('#department').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
@@ -33,7 +33,7 @@ $(document).ready(function(){
 		}
 		
 		if(requestinghash == 'adae3bad1bca266a568ecbc82e698c5'){
-			$('#b_category').find('option').remove().end()
+			$('#sub_department').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
@@ -42,7 +42,7 @@ $(document).ready(function(){
 						$("#popBrand").empty();
 		}
 		if(requestinghash == 'trae3bad1bca266a568ecbc82e698c8'){
-			$('#c_category').find('option').remove().end()
+			$('#category').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
@@ -77,7 +77,7 @@ $(document).ready(function(){
 		}
 
 		if(requestinghash == 'adae3bad1bca266a568ecbc72e698c9'){
-			$('#a_category').find('option').remove().end()
+			$('#department').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
@@ -87,7 +87,7 @@ $(document).ready(function(){
 		}
 		
 		if(requestinghash == 'adae3bad1bca266a568ecbc82e698c5'){
-			$('#b_category').find('option').remove().end()
+			$('#sub_department').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
@@ -96,7 +96,7 @@ $(document).ready(function(){
 						$("#popBrand").empty();
 		}
 		if(requestinghash == 'trae3bad1bca266a568ecbc82e698c8'){
-			$('#c_category').find('option').remove().end()
+			$('#category').find('option').remove().end()
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 

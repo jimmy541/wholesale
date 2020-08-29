@@ -65,12 +65,12 @@ Departments
 					$style = 'MainCatLinksSelected';
 				}
 		}
-		$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `a_category` = '0' LIMIT 1");
+		$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' LIMIT 1");
 		while($row=mysqli_fetch_array($result)){
 			echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
 		}
 		
-		$query = "SELECT b.`description` description, a.`a_category` id FROM `grocery_products` a left join `acategory` b on a.`a_category` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`a_category` <> '0' GROUP BY a.`a_category` ORDER BY b.`description`";
+		$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' GROUP BY a.`department` ORDER BY b.`description`";
 		$result = mysqli_query($link, $query);
 		while ($row = mysqli_fetch_array($result)){
 			$style = 'MainCatLinks';
@@ -107,7 +107,7 @@ if (isset($_GET['acat'])){
 	if ($_GET['acat'] == 'uncat'){
 		echo '<div class="p-3 mb-2 bg-light text-dark">Uncategorized</div>';
 	}else{
-		echo '<div class="p-3 mb-2 bg-light text-dark">'.getDescription($link, 'acategory', $clientid, $_GET['acat']).'</div>';
+		echo '<div class="p-3 mb-2 bg-light text-dark">'.getDescription($link, 'department', $clientid, $_GET['acat']).'</div>';
 	}
 	
 		function checkIfOrderPlaced($link, $cert_code, $clientid, $customer, $order){
@@ -130,7 +130,7 @@ if (isset($_GET['acat'])){
 			return $result;
 		}
 	$getid = '';
-	$stmt = $link->prepare("SELECT `id` FROM `acategory` WHERE `id` = ? AND `clientid` = '$clientid'");
+	$stmt = $link->prepare("SELECT `id` FROM `department` WHERE `id` = ? AND `clientid` = '$clientid'");
 	$stmt->bind_param('s', $_GET['acat']);
 			$stmt->execute();
 			$stmt->bind_result($dd);
@@ -139,12 +139,12 @@ if (isset($_GET['acat'])){
 			}
 			$stmt->close();
 
-	$query = "SELECT DISTINCT `b_category` FROM `grocery_products` WHERE `a_category` = '".$getid."'";
+	$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."'";
 	$result = mysqli_query($link, $query);
 	while ($row = mysqli_fetch_array($result)){
 		//List B Categories
 		
-		echo '<h1>'.getDescription($link, 'bcategory', $clientid, $row['b_category']).'</h1>';
+		echo '<h1>'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h1>';
 		
 				echo '<div class="cCatDiv">';
 				//Listing C Categories
@@ -152,7 +152,7 @@ if (isset($_GET['acat'])){
 					//get quantity inside requested_items table
 					
 					echo '<div class="itemsMainBox">';
-						$query2 = "SELECT a.*, b.`description` brnd, c.`description` wu, d.`qty` FROM `grocery_products` a LEFT JOIN `brands` b ON a.`brand` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `weight_units` c ON a.`size_unit` = c.`id` AND c.`clientid` = '$clientid' LEFT JOIN `requested_items` d ON a.`cert_code` = d.`cert_code` AND d.`invoice_number_hash` = '$escaped_order' AND d.`clientid` = '$clientid' WHERE a.`a_category` = '".$getid."' AND a.`b_category` = '".$row['b_category']."' AND a.`clientid` = '$clientid'";
+						$query2 = "SELECT a.*, b.`description` brnd, c.`description` wu, d.`qty` FROM `grocery_products` a LEFT JOIN `brands` b ON a.`brand` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `weight_units` c ON a.`size_unit` = c.`id` AND c.`clientid` = '$clientid' LEFT JOIN `requested_items` d ON a.`cert_code` = d.`cert_code` AND d.`invoice_number_hash` = '$escaped_order' AND d.`clientid` = '$clientid' WHERE a.`department` = '".$getid."' AND a.`sub_department` = '".$row['sub_department']."' AND a.`clientid` = '$clientid'";
 						
 						$result2 = mysqli_query($link, $query2);
 								$cnt = 0;
