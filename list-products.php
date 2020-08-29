@@ -182,7 +182,7 @@ $(document).ready(function() {
             } );
         }
     });
- 
+	$('.customer_select').select2();
 } );
 
 </script>
