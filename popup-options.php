@@ -9,15 +9,15 @@ if(isset($_GET['reid']) && $_GET['reid']=='f146aa9099b551a29e4d4ae56e170c7'){
 	$title = "Brands";
 }
 if(isset($_GET['reid']) && $_GET['reid']=='adae3bad1bca266a568ecbc72e698c9'){
-	$table = 'acategory';
+	$table = 'department';
 	$title = "Departments";
 }
 if(isset($_GET['reid']) && $_GET['reid']=='adae3bad1bca266a568ecbc82e698c5'){
-	$table = 'bcategory';
+	$table = 'sub_department';
 	$title = "Sub Departments";
 }
 if(isset($_GET['reid']) && $_GET['reid']=='trae3bad1bca266a568ecbc82e698c8'){
-	$table = 'ccategory';
+	$table = 'category';
 	$title = "Categories";
 }
 if(isset($_GET['reid']) && $_GET['reid']=='trae3bad2dca266a568ecbc82e698c8'){
