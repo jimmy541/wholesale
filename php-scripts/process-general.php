@@ -8,15 +8,15 @@ $errorCode = '';
 if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 	$tb = $_POST['subject'];
 	//check if table name is valid
-	if($tb=='cata' || $tb=='catb' || $tb=='bnds' || $tb=='pkg' || $tb=='catc' || $tb=='wn' || $tb=='dp' || $tb=='tt'){ //condition 2
+	if($tb=='cata' || $tb=='catb' || $tb=='bnds' || $tb=='pkg' || $tb=='catc' || $tb=='wn' || $tb=='tt'){ //condition 2
 		
 		switch ($tb) {
 		case 'cata':
-			$table = 'acategory';
+			$table = 'department';
 			$goTo = 'list-products-departments.php';
 			break;
 		case 'catb':
-			$table = 'bcategory';
+			$table = 'sub_department';
 			$goTo = 'list-products-sub-departments.php';
 			break;
 		case 'bnds':
@@ -28,16 +28,12 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 			$goTo = 'list-products-packages.php';
 			break;
 		case 'catc':
-			$table = 'ccategory';
+			$table = 'category';
 			$goTo = 'list-products-categories.php';
 			break;
 		case 'wn':
 			$table = 'weight_units';
 			$goTo = 'list-products-weight-units.php';
-			break;
-		case 'dp':
-			$table = 'department';
-			$goTo = 'departments.php';
 			break;
 		case 'tt':
 			$table = 'product_tax_types';
