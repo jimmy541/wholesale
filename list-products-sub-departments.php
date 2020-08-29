@@ -5,7 +5,7 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 <link rel="stylesheet" href="css/populateContainers.css">
 <script type="text/javascript" src="js/popgeneral.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
-$table = 'bcategory';
+$table = 'sub_department';
 ?>
 <?php echo $products_links; ?>
 <?php
