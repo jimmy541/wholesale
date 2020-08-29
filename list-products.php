@@ -23,6 +23,19 @@ if(isset($_GET['rs'])){
 		echo '<span class="gMessage">Successfully Removed</span>';
 	}
 }
+$department = '';
+$subdepartment = '';
+$category = '';
+
+if(isset($_GET['department']) && !empty($_GET['department'])){
+	$department = $_GET['department'];
+}
+if(isset($_GET['subdepartment']) && !empty($_GET['subdepartment'])){
+	$subdepartment = $_GET['subdepartment'];
+}
+if(isset($_GET['category']) && !empty($_GET['category'])){
+	$category = $_GET['category'];
+}
  ?>
 <?php echo $products_links; ?>
 <p>
