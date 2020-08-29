@@ -60,7 +60,7 @@ if(isset($_GET['rs'])){
 				<select class="form-control" id="subdepartment" name="subdepartment" style="height: 38px !important">
 					<option></option>
 					<?php
-						$query = "SELECT `id`, `description` FROM `a_category` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+						$query = "SELECT `id`, `description` FROM `acategory` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 						$stmt = $link->prepare($query);
 						$stmt->execute();
 						$stmt->bind_result($id, $description);
