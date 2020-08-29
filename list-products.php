@@ -57,7 +57,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
     New Product
   </a>
  </p>
-<div class="container-fluid collapse" id="form-filter">
+<div class="container-fluid" id="form-filter">
 	<h1>Filter</h1>
 	<form method="get">
 		<div class="form-row">
