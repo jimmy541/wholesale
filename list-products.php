@@ -66,7 +66,7 @@ if(isset($_GET['rs'])){
 				$stmt->bind_result($id, $description);
 				while($stmt->fetch()){
 					$selected = '';
-					if($id == $department){$selected = 'selected';}
+					if($id == $subdepartment){$selected = 'selected';}
 					echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
 				}
 				$stmt->close();
@@ -84,7 +84,7 @@ if(isset($_GET['rs'])){
 				$stmt->bind_result($id, $description);
 				while($stmt->fetch()){
 					$selected = '';
-					if($id == $department){$selected = 'selected';}
+					if($id == $bcategory){$selected = 'selected';}
 					echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
 				}
 				$stmt->close();
@@ -92,7 +92,7 @@ if(isset($_GET['rs'])){
 		</select>
       </div>
 	 </div>
-	 <div class="form-row">
+	<div class="form-row">
 	 <div class="col-md-4 mb-3">
         <label for="method_select">Method</label>
         <select class="form-control" id="method_select" name="method" style="height: 38px !important">
@@ -105,7 +105,7 @@ if(isset($_GET['rs'])){
 			<option <?php if($method == 'Online Payment'){ echo 'selected'; } ?>>Online Payment</option>
 		</select>
       </div>
-	   <div class="col-md-4 mb-3">
+	 <div class="col-md-4 mb-3">
         <label for="refno">Reference Number</label>
 		
         <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
