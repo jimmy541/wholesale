@@ -168,7 +168,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 	<tbody>
 		<?php
 		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid' $department_query $subdepartment_query $category_query";
-		echo $query;
+		
 		$result = mysqli_query($link, $query); 
 		while($row = mysqli_fetch_array($result)) { 
 			echo '<tr><td data-label="item">'.htmlspecialchars($row["cert_code"]).'</td>
