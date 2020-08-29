@@ -27,6 +27,7 @@ $(document).ready(function(){
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
+						alert(vlu);
 						$("#popBrand").hide();
 						$('#gray-background').hide();
 						$("#popBrand").empty();
