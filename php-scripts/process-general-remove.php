@@ -8,14 +8,14 @@ $errorCode = '';
 if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 	$tb = $_POST['subject'];
 	//check if table name is valid
-	if($tb=='cata' || $tb=='catb' || $tb=='bnds' || $tb=='pkg' || $tb=='catc' || $tb=='wn' || $tb=='dp' || $tb=='tt'){ //condition 2
+	if($tb=='cata' || $tb=='catb' || $tb=='bnds' || $tb=='pkg' || $tb=='catc' || $tb=='wn' || $tb=='tt'){ //condition 2
 		
 		switch ($tb) {
 		case 'cata':
-			$table = 'acategory';
+			$table = 'department';
 			break;
 		case 'catb':
-			$table = 'bcategory';
+			$table = 'sub_department';
 			break;
 		case 'bnds':
 			$table = 'brands';
@@ -24,13 +24,10 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 			$table = 'packages';
 			break;
 		case 'catc':
-			$table = 'ccategory';
+			$table = 'category';
 			break;
 		case 'wn':
 			$table = 'weight_units';
-			break;
-		case 'dp':
-			$table = 'department';
 			break;
 		case 'tt':
 			$table = 'product_tax_types';
