@@ -36,7 +36,28 @@ if(isset($_GET['rs'])){
 <div class="container-fluid collapse" id="form-filter">
 	<h1>Filter</h1>
 	<form method="get">
-	
+		<div class="form-row">
+			<div class="col-md-4 mb-3">
+			
+			</div>
+			<div class="col-md-4 mb-3">
+			
+			</div>
+			<div class="col-md-4 mb-3">
+			
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="col-md-4 mb-3">
+			
+			</div>
+			<div class="col-md-4 mb-3">
+			
+			</div>
+			<div class="col-md-4 mb-3">
+			
+			</div>
+		</div>
 		 <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
     
 	</form>
