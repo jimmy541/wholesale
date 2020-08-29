@@ -145,7 +145,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 					<label for="">Item Code: *</label><input class="form-control"  type="text" id="cert_code" name="cert_code" value="<?php echo htmlspecialchars($cert_code); ?>" autocomplete="off" required/>
 				</div>
 				<div class="col-md-6 mb-3">
-					<label for="">UPC:</label><input class="form-control"  type="text" id="upc" name="upc" value="<?php echo htmlspecialchars($upc); ?>" autocomplete="off" required/>
+					<label for="">UPC:</label><input class="form-control"  type="text" id="upc" name="upc" value="<?php echo htmlspecialchars($upc); ?>" autocomplete="off"/>
 				</div>
 			</div>
 			<div class="row">
