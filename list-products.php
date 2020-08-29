@@ -37,27 +37,19 @@ if(isset($_GET['rs'])){
 <h1>Filter</h1>
   <form method="get">
     <div class="form-row">
-      <div class="col-md-3 mb-3">
-        <label for="datefrom">From</label>
-		<input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
-      </div>
-      <div class="col-md-3 mb-3">
-        <label for="dateto">To</label>
-        <input class="form-control" name="dateto" id="dateto" type="date" value="<?php echo $dateto; ?>">
-      </div>
-      <div class="col-md-6 mb-3">
-        <label for="customer_select">Customer</label>
-        <select class="customer_select form-control" id="customer_select" name="customer" style="height: 38px !important">
+      <div class="col-md-12 mb-3">
+        <label for="department">Department</label>
+        <select class="customer_select form-control" id="department" name="department" style="height: 38px !important">
 			<option></option>
 			<?php
-				$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
+				$query = "SELECT `id`, `description` FROM `department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 				$stmt = $link->prepare($query);
 				$stmt->execute();
-				$stmt->bind_result($hashedid, $busname);
+				$stmt->bind_result($id, $description);
 				while($stmt->fetch()){
 					$selected = '';
-					if($hashedid == $customer_hashid){$selected = 'selected';}
-					echo '<option value="'.htmlspecialchars($hashedid).'" '.$selected.'>'.htmlspecialchars($busname).'</option>';
+					if($id == $department){$selected = 'selected';}
+					echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
 				}
 				$stmt->close();
 			?>
