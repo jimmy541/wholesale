@@ -10,7 +10,7 @@ $(document).ready(function(){
 		var id = $(this).attr('id').replace('descPopValue', '');
 		
 		var vlu = $(this).text();
-		
+		alert(vlu);
 		var requestinghash = $('#poprequester').val();
 		if(requestinghash == 'f146aa9099b551a29e4d4ae56e170c7'){
 			$('#brand').find('option').remove().end()
@@ -27,7 +27,7 @@ $(document).ready(function(){
 			.append($("<option></option>")
 						.attr("value",id)
 						.text(vlu)); 
-						alert(vlu);
+						
 						$("#popBrand").hide();
 						$('#gray-background').hide();
 						$("#popBrand").empty();
