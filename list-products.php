@@ -33,7 +33,12 @@ if(isset($_GET['rs'])){
     Filter
   </button>
 </p>
+<div class="container-fluid collapse" id="form-filter">
+<h1>Filter</h1>
 
+
+
+</div>
 
 <table class="row-border" id="gtable">
 <caption>Products</caption>
