@@ -56,10 +56,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
   <a class="btn btn-primary" href="new-product.php" role="button">
     New Product
   </a>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#form-filter" aria-expanded="false" aria-controls="form-filter">
-    Filter
-  </button>
-</p>
+ </p>
 <div class="container-fluid collapse" id="form-filter">
 	<h1>Filter</h1>
 	<form method="get">
