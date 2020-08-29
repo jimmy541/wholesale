@@ -37,12 +37,48 @@ if(isset($_GET['rs'])){
 <h1>Filter</h1>
   <form method="get">
     <div class="form-row">
-      <div class="col-md-12 mb-3">
+      <div class="col-md-4 mb-3">
         <label for="department">Department</label>
-        <select class="customer_select form-control" id="department" name="department" style="height: 38px !important">
+        <select class="form-control" id="department" name="department" style="height: 38px !important">
 			<option></option>
 			<?php
 				$query = "SELECT `id`, `description` FROM `department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+				$stmt = $link->prepare($query);
+				$stmt->execute();
+				$stmt->bind_result($id, $description);
+				while($stmt->fetch()){
+					$selected = '';
+					if($id == $department){$selected = 'selected';}
+					echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
+				}
+				$stmt->close();
+			?>
+		</select>
+      </div>
+	  <div class="col-md-4 mb-3">
+        <label for="subdepartment">Sub Department</label>
+        <select class="form-control" id="subdepartment" name="subdepartment" style="height: 38px !important">
+			<option></option>
+			<?php
+				$query = "SELECT `id`, `description` FROM `a_category` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+				$stmt = $link->prepare($query);
+				$stmt->execute();
+				$stmt->bind_result($id, $description);
+				while($stmt->fetch()){
+					$selected = '';
+					if($id == $department){$selected = 'selected';}
+					echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
+				}
+				$stmt->close();
+			?>
+		</select>
+      </div>
+	   <div class="col-md-4 mb-3">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" style="height: 38px !important">
+			<option></option>
+			<?php
+				$query = "SELECT `id`, `description` FROM `b_category` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 				$stmt = $link->prepare($query);
 				$stmt->execute();
 				$stmt->bind_result($id, $description);
@@ -59,7 +95,7 @@ if(isset($_GET['rs'])){
 	 <div class="form-row">
 	 <div class="col-md-4 mb-3">
         <label for="method_select">Method</label>
-        <select class="customer_select form-control" id="method_select" name="method" style="height: 38px !important">
+        <select class="form-control" id="method_select" name="method" style="height: 38px !important">
 			<option></option>
 			<option <?php if($method == 'Cash'){ echo 'selected'; } ?>>Cash</option>
 			<option <?php if($method == 'Check'){ echo 'selected'; } ?>>Check</option>
@@ -156,7 +192,7 @@ $(document).ready(function() {
 });
 */
 $(document).ready(function() {
-	$('.customer_select').select2();
+	
     // Setup - add a text input to each footer cell
     $('#gtable tfoot th').each( function () {
         var title = $(this).text();
