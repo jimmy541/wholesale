@@ -27,14 +27,28 @@ $department = '';
 $subdepartment = '';
 $category = '';
 
+$department_query = '';
+$subdepartment_query = '';
+$category_query= '';
+
 if(isset($_GET['department']) && !empty($_GET['department'])){
-	$department = $_GET['department'];
+	if(is_numeric($_GET['department'])){
+		$department = $_GET['department'];
+		$department_query = " AND a.`a_category` = '$department'";
+	}
+	
 }
 if(isset($_GET['subdepartment']) && !empty($_GET['subdepartment'])){
-	$subdepartment = $_GET['subdepartment'];
+	if(is_numeric($_GET['subdepartment'])){
+		$subdepartment = $_GET['subdepartment'];
+		$subdepartment_query = " AND a.`b_category` = '$subdepartment'";
+	}
 }
 if(isset($_GET['category']) && !empty($_GET['category'])){
-	$category = $_GET['category'];
+	if(is_numeric($_GET['category'])){
+		$category = $_GET['category'];
+		$category_query = " AND a.`c_category` = '$category'";
+	}
 }
  ?>
 <?php echo $products_links; ?>
@@ -153,7 +167,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 	</tfoot>
 	<tbody>
 		<?php
-		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'";
+		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid' $department_query $subdepartment_query $category_query";
 		
 		$result = mysqli_query($link, $query); 
 		while($row = mysqli_fetch_array($result)) { 
