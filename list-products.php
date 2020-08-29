@@ -38,7 +38,22 @@ if(isset($_GET['rs'])){
 	<form method="get">
 		<div class="form-row">
 			<div class="col-md-4 mb-3">
-			
+				 <label for="department">Department</label>
+				<select class="form-control" id="department" name="department" style="height: 38px !important">
+					<option></option>
+					<?php
+						$query = "SELECT `id`, `description` FROM `department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+						$stmt = $link->prepare($query);
+						$stmt->execute();
+						$stmt->bind_result($id, $description);
+						while($stmt->fetch()){
+							$selected = '';
+							if($id == $department){$selected = 'selected';}
+							echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
+						}
+						$stmt->close();
+					?>
+				</select>
 			</div>
 			<div class="col-md-4 mb-3">
 			
