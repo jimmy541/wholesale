@@ -21,11 +21,11 @@ if (isset($_POST['reid']) && !empty($_POST['reid']) && isset($_POST['revl']) && 
 		
 		switch ($reid) {
 		case 'adae3bad1bca266a568ecbc72e698c9':
-			$table = 'acategory';
+			$table = 'department';
 			
 			break;
 		case 'adae3bad1bca266a568ecbc82e698c5':
-			$table = 'bcategory';
+			$table = 'sub_department';
 		
 			break;
 		case 'f146aa9099b551a29e4d4ae56e170c7':
@@ -33,7 +33,7 @@ if (isset($_POST['reid']) && !empty($_POST['reid']) && isset($_POST['revl']) && 
 			
 			break;
 		case 'trae3bad1bca266a568ecbc82e698c8':
-			$table = 'ccategory';
+			$table = 'category';
 		
 			break;
 		case 'trae3bad2dca266a568ecbc82e698c8':
