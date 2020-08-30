@@ -11,7 +11,7 @@ $(document).ready(function(){
 				
 			}
 		
-		if(!$.isNumeric(qtu)) {
+		if(!$.isNumeric(qty)) {
 				
 			}
 			else{
