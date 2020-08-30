@@ -50,6 +50,12 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 		$category_query = " AND a.`category` = '$category'";
 	}
 }
+if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
+	if(is_numeric($_GET['supplier'])){
+		$supplier = $_GET['supplier'];
+		$supplier_query = " AND a.`supplier` = '$supplier'";
+	}
+}
  ?>
 <?php echo $products_links; ?>
 <p>
@@ -61,7 +67,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 	<h1>Filter</h1>
 	<form method="get">
 		<div class="form-row">
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				 <label for="department">Department</label>
 				<select class="form-control" id="department" name="department" style="height: 38px !important">
 					<option></option>
@@ -79,7 +85,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 					?>
 				</select>
 			</div>
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				<label for="subdepartment">Sub Department</label>
 				<select class="form-control" id="subdepartment" name="subdepartment" style="height: 38px !important">
 					<option></option>
@@ -97,7 +103,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 					?>
 				</select>
 			</div>
-			<div class="col-md-4 mb-3">
+			<div class="col-md-3 mb-3">
 				<label for="category">Category</label>
 				<select class="form-control" id="category" name="category" style="height: 38px !important">
 					<option></option>
@@ -110,6 +116,24 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 							$selected = '';
 							if($id == $category){$selected = 'selected';}
 							echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($description).'</option>';
+						}
+						$stmt->close();
+					?>
+				</select>
+			</div>
+			<div class="col-md-3 mb-3">
+				<label for="supplier">Supplier</label>
+				<select class="form-control" id="supplier" name="supplier" style="height: 38px !important">
+					<option></option>
+					<?php
+						$query = "SELECT `id`, `name` FROM `supplier` WHERE `clientid` = '$clientid' ORDER BY `name` ASC";
+						$stmt = $link->prepare($query);
+						$stmt->execute();
+						$stmt->bind_result($id, $name);
+						while($stmt->fetch()){
+							$selected = '';
+							if($id == $supplier){$selected = 'selected';}
+							echo '<option value="'.htmlspecialchars($id).'" '.$selected.'>'.htmlspecialchars($name).'</option>';
 						}
 						$stmt->close();
 					?>
@@ -164,7 +188,7 @@ if(isset($_GET['category']) && !empty($_GET['category'])){
 	</tfoot>
 	<tbody>
 		<?php
-		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid' $department_query $subdepartment_query $category_query";
+		$query = "SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid' $department_query $subdepartment_query $category_query $supplier_query";
 		
 		$result = mysqli_query($link, $query); 
 		while($row = mysqli_fetch_array($result)) { 
