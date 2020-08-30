@@ -142,6 +142,9 @@ table{
 	padding-right:5px;
 	font-weight:500;
 }
+.invoice-items-table td input[type="text"]{
+	border: none;
+}
 .invoice-items-table td:nth-child(1), .invoice-items-table th:nth-child(1){
 	border-left:0px !important;
 }
