@@ -11,13 +11,13 @@ $(document).ready(function(){
 				alert(qty);
 			}
 		
-		if(!$.isNumeric(qyu)) {
+		if(!$.isNumeric(qtu)) {
 				
 			}
 			else{
 				//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
 				
-				});
+				//});
 			}
 	});
 	
