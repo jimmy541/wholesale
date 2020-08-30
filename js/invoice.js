@@ -4,8 +4,8 @@ $(document).ready(function(){
 	$('input[type="number"]').focusout(function() {
 	    $('input[type="number"]').removeClass('blur');
 	    $(this).addClass('blur');
-	    
-	    if (str.indexOf("qty") >= 0){
+	    var currentId = $(this).attr('id');
+	    if (currentId.indexOf("qty") >= 0){
 				id = $(this).attr('id').replace('qty', '');
 				qty = $(this).val();
 				alert(qty);
