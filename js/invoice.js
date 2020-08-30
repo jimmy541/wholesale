@@ -32,7 +32,7 @@ $(document).ready(function(){
 				else{
 					
 					retail = $("#retail"+id).val();
-					$("#total"+id).val(retail * qty);
+					$("#total"+id).text(retail * qty);
 					
 					
 					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
@@ -49,7 +49,7 @@ $(document).ready(function(){
 				}
 				else{
 					qty = $("#qty"+id).val();
-					$("#total"+id).val(retail * qty);
+					$("#total"+id).text(retail * qty);
 					
 					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
 				
