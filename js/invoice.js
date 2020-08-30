@@ -8,7 +8,7 @@ $(document).ready(function(){
 	    if (currentId.indexOf("qty") >= 0){
 				id = $(this).attr('id').replace('qty', '');
 				qty = $(this).val();
-				alert(qty);
+				
 			}
 		
 		if(!$.isNumeric(qtu)) {
