@@ -30,6 +30,11 @@ $(document).ready(function(){
 					$(this).val(qty_old);
 				}
 				else{
+					
+					retail = $("#retail"+id).val();
+					$("#total"+id).val(retail * qty);
+					
+					
 					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
 				
 					//});
@@ -43,6 +48,9 @@ $(document).ready(function(){
 					$(this).val(retail_old);
 				}
 				else{
+					qty = $("#qty"+id).val();
+					$("#total"+id).val(retail * qty);
+					
 					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
 				
 					//});
