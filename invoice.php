@@ -210,9 +210,9 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 						$x++;
 						echo '<tr>';
 						echo '<td>'.htmlspecialchars($ce_co).'</td>';
-						echo '<td>'.htmlspecialchars($des).' '.$pk.'x'.$sz.'</td>';
-						echo '<td>'.htmlspecialchars($qy).'</td>';
-						echo '<td align="right">'.htmlspecialchars($ret).'</td>';
+						echo '<td><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.$sz.'" id="desc" /></td>';
+						echo '<td><input type="text" value="'.htmlspecialchars($qy).'" id="qty" /></td>';
+						echo '<td align="right"><input type="text" value="'.htmlspecialchars($ret).'" id="retail" /></td>';
 						echo '<td align="right">'.htmlspecialchars($to_pr).'</td>';
 						echo '</tr>';
 					}
