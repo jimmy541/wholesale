@@ -142,7 +142,7 @@ table{
 	padding-right:5px;
 	font-weight:500;
 }
-.invoice-items-table td input[type="text"]{
+.invoice-items-table td input[type="text"], .invoice-items-table td input[type="number"]{
 	border: none;
 	font-weight:500;
 	margin-top: 1px;
