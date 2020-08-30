@@ -191,6 +191,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 	</div>
 	<div class="invoice-items">
 		<table class="invoice-items-table">
+		<thead>
 			<tr>
 				<th>Item No.</th>
 				<th>Description</th>
@@ -198,6 +199,8 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 				<th>Price</th>
 				<th>Total</th>
 			</tr>
+		</thead>
+		<tbody>
 			<tr>
 				<?php 
 					$query = "SELECT `cert_code`, `qty`, `description`, `retail`, `total_price`, `Pack`, `size` FROM `requested_items` WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
@@ -229,6 +232,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 					}
 				?>
 			</tr>
+		</tbody>
 		</table>
 	</div>
 	<div class="total-box">
