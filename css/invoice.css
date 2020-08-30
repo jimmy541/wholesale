@@ -146,6 +146,9 @@ table{
 	border: none;
 	font-weight:500;
 }
+.invoice-items-table th:nth-child(1) {  
+  margin-bottom:5px;
+}
 .invoice-items-table td:nth-child(1), .invoice-items-table th:nth-child(1){
 	border-left:0px !important;
 }
