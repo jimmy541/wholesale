@@ -145,13 +145,9 @@ table{
 .invoice-items-table td input[type="text"]{
 	border: none;
 	font-weight:500;
+	margin-top: 1px;
 }
-.invoice-items-table tbody:before {
-    content:"@";
-    display:block;
-    line-height:10px;
-    text-indent:-99999px;
-}
+
 .invoice-items-table td:nth-child(1), .invoice-items-table th:nth-child(1){
 	border-left:0px !important;
 }
