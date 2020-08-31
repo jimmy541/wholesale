@@ -223,7 +223,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 								if($allow_limited_override == '1'){
 									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 								}else{
-									$retail_column = '<span id="retail'.$id.'">'.htmlspecialchars($ret).'</span>';
+									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'" readonly/>';
 								}
 							}
 						echo '<td><input type="number" step=".01" value="'.htmlspecialchars($qy).'" style="width:50px;" id="qty'.$id.'"/></td>';
