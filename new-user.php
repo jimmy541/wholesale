@@ -63,12 +63,22 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</select>
 			</div>
 		</div>
-		
+		<hr class="mb-4">
+		<h4 class="mb-3">Settings</h4>
 	<div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="allow_limited_override">
       <label class="form-check-label" for="allow_limited_override">
-        Allow limited price override
+        Allow Limited Price Override
+      </label>
+     
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="allow_free_override">
+      <label class="form-check-label" for="allow_free_override">
+        Allow Free Price Override
       </label>
      
     </div>
