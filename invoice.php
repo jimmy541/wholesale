@@ -249,10 +249,10 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 	</div>
 	<div class="total-box">
 		<table class="total-box-table">
-			<tr><td>Subtotal</td><td><span id="invoice_sub_total"><?php echo "$".number_format($sub_total, 2); ?></span></td></tr>
+			<tr><td>Subtotal</td><td>$<span id="invoice_sub_total"><?php echo number_format($sub_total, 2); ?></span></td></tr>
 			<tr><td>Tax</td><td>$<span id="invoice_tax"><?php echo number_format($tax, 2); ?></span></td></tr>
 			<tr><td>Shipping</td><td>$0.00</td></tr>
-			<tr><td>Total</td><td><span id="invoice_grand_total"><?php echo "$".number_format($sub_total + $tax, 2); ?></span></td></tr>
+			<tr><td>Total</td><td>$<span id="invoice_grand_total"><?php echo number_format($sub_total + $tax, 2); ?></span></td></tr>
 		</table>
 
 	</div>
