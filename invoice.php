@@ -23,6 +23,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 		$sub_total = '$0.00';
 		$order_type = '';
 		$tax = 0;
+		$note = '';
 		
 		$business_name = '';
 		$business_street_address_line1 = '';
@@ -44,11 +45,11 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 		$shipto_phone = '';
 		$shipto_fax = '';
 		
-		$query = "SELECT `invoice_number`, `customer_hash`, `date_started`, `entered_by`, `retail`, `terms`, `order_type`, `tax` FROM `orders` WHERE `invoice_number_hash` = ? AND `clientid` = '$clientid'";
+		$query = "SELECT `invoice_number`, `customer_hash`, `date_started`, `entered_by`, `retail`, `terms`, `order_type`, `tax`, `note` FROM `orders` WHERE `invoice_number_hash` = ? AND `clientid` = '$clientid'";
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $hashed_invoice_number);
 		$stmt->execute();
-		$stmt->bind_result($inn, $ch, $ds, $eb, $re, $te, $ot, $tx);
+		$stmt->bind_result($inn, $ch, $ds, $eb, $re, $te, $ot, $tx, $nt);
 		while($stmt->fetch()){
 			$invoice_number = htmlspecialchars($inn);
 			$customer_hash = $ch;
@@ -58,6 +59,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 			$terms = $te;
 			$order_type = $ot;
 			$tax = $tx;
+			$note = $nt;
 		}
 		if($terms == '0'){
 			$terms = 'COD';
@@ -261,7 +263,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 <div class="invoice-note-preview">
    <div class="form-group">
     <label for="invoice_note">Note</label>
-    <textarea class="form-control" id="invoice_note" maxlength="500" name="invoice_note" rows="3"></textarea>
+    <textarea class="form-control" id="invoice_note" maxlength="500" name="invoice_note" rows="3"><?php echo htmlspecialchars($note); ?></textarea>
 	<span class="pull-right label label-default" id="count_label"></span>
      <br>
   </div>
