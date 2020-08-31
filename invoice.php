@@ -220,16 +220,20 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 						echo '<td><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.str_replace(".00","",$sz).'" style="width:310px; id="desc'.$id.'"/></td>';
 						$retail_column = '';
 							if($allow_free_override == '1'){
+								//user is eligible to change the price freely.
 								$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 							}else{
 								if($allow_limited_override == '1'){
 										if(get_price_limit($link, $clientid, $ce_co) == 'true'){
+											//user has limited_override and current item is eligible for override
 											$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 										}else{
+											//user has the right to limited_override but this item is not eligible for price override
 											$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'" readonly/>';
 										}
 									
 								}else{
+									//user is not allowed to change price free_overide set to 0, limited_override set to 0
 									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'" readonly/>';
 								}
 							}
