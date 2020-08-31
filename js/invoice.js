@@ -7,7 +7,7 @@ $(document).ready(function(){
 	var retail_old = "";
 	
 	var total = "";
-	
+	var invoice_hash = $('#invoicehash').val();
 	//store the number in current input incase user enter invalid number
 	$('input').focus(function(){
 		var currentId = $(this).attr('id');
@@ -38,9 +38,23 @@ $(document).ready(function(){
 					$("#total"+id).text(total);
 					
 					
-					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
+					var data = {invoice: invoice_hash, id: id, qty: qty, total:total};					
+					jQuery.ajax({
+					type: 'POST',
+					url: 'php-scripts/process-update-invoice-adjustments.php',
+					data: data,
+					dataType: 'json',
+					success: function(response) {
+											
+						$('#invoice_sub_total').text(response[1]);
+						$('#invoice_tax').text(response[2]);
+						$('#invoice_grand_total').text(response[3]);
+						
+						
 				
-					//});
+					}
+					});
+					
 				}
 				
 			}
