@@ -38,7 +38,7 @@ $(document).ready(function(){
 					$("#total"+id).text(total);
 					
 					
-					var data = {invoice: invoice_hash, id: id, qty: qty, total:total, update:qty};					
+					var data = {invoice: invoice_hash, id: id, qty: qty, total:total, update:'qty'};					
 					jQuery.ajax({
 					type: 'POST',
 					url: 'php-scripts/process-update-invoice-adjustments.php',
@@ -68,7 +68,7 @@ $(document).ready(function(){
 					total = (retail * qty).toFixed(2);
 					$("#total"+id).text(total);
 					
-					var data = {invoice: invoice_hash, id: id, retail: retail, total:total, update:retail};					
+					var data = {invoice: invoice_hash, id: id, retail: retail, total:total, update:'retail'};					
 					jQuery.ajax({
 					type: 'POST',
 					url: 'php-scripts/process-update-invoice-adjustments.php',
