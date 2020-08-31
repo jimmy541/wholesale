@@ -30,7 +30,7 @@ if(isset($_GET['user']) && !empty($_GET['user'])){
 		$display_code = $dc;
 		$user_role = $ro;
 		$allow_limited_override = $apo;
-		$allow_price_override = $afo;
+		$allow_free_override = $afo;
 		
 		
 	}
