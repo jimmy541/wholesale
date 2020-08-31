@@ -67,7 +67,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 		<h4 class="mb-3">Settings</h4>
 	<div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="allow_limited_override">
+      <input class="form-check-input" type="checkbox" value="" id="allow_limited_override" disabled>
       <label class="form-check-label" for="allow_limited_override">
         Allow Limited Price Override
       </label>
@@ -76,7 +76,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
   </div>
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="allow_free_override">
+      <input class="form-check-input" type="checkbox" value="" id="allow_free_override" disabled>
       <label class="form-check-label" for="allow_free_override">
         Allow Free Price Override
       </label>
