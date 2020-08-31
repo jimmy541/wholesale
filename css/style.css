@@ -37,7 +37,7 @@ tfoot input{
     border-radius: 3px;
 }
 textarea {
-    resize: none;
+    resize: none !important;
 }
 
 #count_label {
@@ -62,6 +62,7 @@ input[type=number] {
     display: block;
     margin-left: auto;
     margin-right: auto;
+	margin-top:10px;
     width: 768px;
 }
 
