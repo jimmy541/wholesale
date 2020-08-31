@@ -57,9 +57,9 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			<div class="col-md-6 mb-3">
 				<label for="">Role:*</label>
 				<select class="form-control"   id="user_role" name="user_role">
-					<option selected>Administrator</option>
-					<option>Backend Operator</option>
-					<option>Sales Representative</option>
+					<option value="Administrator">Administrator</option>
+					<option value="Backend Operator">Backend Operator</option>
+					<option value="Sales Representative">Sales Representative</option>
 				</select>
 			</div>
 		</div>
