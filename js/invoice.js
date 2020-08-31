@@ -98,6 +98,14 @@ $(document).ready(function(){
 	});
 	
 	
-	
+	var text_max = 500;
+$('#count_label').html('0 / ' + text_max );
+
+$('#invoice_note').keyup(function() {
+  var text_length = $('#invoice_note').val().length;
+  var text_remaining = text_max - text_length;
+  
+  $('#count_label').html(text_length + ' / ' + text_max);
+});
 	
 });
