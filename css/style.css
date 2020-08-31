@@ -36,6 +36,15 @@ tfoot input{
     border: 1px solid #c9c9c9;
     border-radius: 3px;
 }
+textarea {
+    resize: none;
+}
+
+#count_label {
+  background-color: smoke;
+  margin-top: -20px;
+  margin-right: 5px;
+}
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

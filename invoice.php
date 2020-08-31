@@ -261,7 +261,9 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 
    <div class="form-group">
     <label for="invoice_note">Note</label>
-    <textarea class="form-control" id="invoice_note" name="invoice_note" rows="3"></textarea>
+    <textarea class="form-control" id="invoice_note" maxlength="500" name="invoice_note" rows="3"></textarea>
+	<span class="pull-right label label-default" id="count_label"></span>
+     <br>
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
 
