@@ -297,7 +297,7 @@ function get_price_limit($link, $clientid, $item_number) {
 		$case_price = $cp;
 	}
 	$stmt->close();
-  if($high > $case_price && $low < $case_price && $low != '0.00'){
+  if($high >= $case_price && $low < $case_price && $low != '0.00'){
 	  echo 'true';
 	  
   }else{
