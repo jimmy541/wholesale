@@ -1,9 +1,9 @@
 <?php header("Content-type: application/json"); ?>
 <?php
-
+require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');
 //quantity changed
 if (isset($_POST['id']) && isset($_POST['invoice']) && isset($_POST['qty']) && isset($_POST['total']) && !empty($_POST['id']) && !empty($_POST['invoice']) && !empty($_POST['qty']) && !empty($_POST['total']) && $_POST['update'] == 'qty'){
-require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');  
+  
 	if(is_numeric($_POST['id'])){
 		$id = $_POST['id'];
 	}else{
@@ -72,7 +72,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');
 
 if($allow_free_override == '1' || $allow_limited_override == '1'){							
 	if (isset($_POST['id']) && isset($_POST['invoice']) && isset($_POST['retail']) && isset($_POST['total']) && !empty($_POST['id']) && !empty($_POST['invoice']) && !empty($_POST['retail']) && !empty($_POST['total']) && $_POST['update'] == 'retail'){
-	require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');  
+	
 		if(is_numeric($_POST['id'])){
 			$id = $_POST['id'];
 		}else{
