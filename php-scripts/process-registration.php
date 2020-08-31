@@ -51,13 +51,14 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 			
 			
 			if ($found == 'false'){
-				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`, `allow_price_override`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`, `allow_price_override`, `	allow_free_override`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				$activeV = '1';
 				$fatmps = '0';
 				$email_verified = '0';
 				$allow_price_override = '1';
+				$allow_free_override = '1';
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("sssssssssssss", $password,$salt,$firstName,$lastName,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $email_verified, $allow_price_override);
+					$stmt->bind_param("ssssssssssssss", $password,$salt,$firstName,$lastName,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $email_verified, $allow_price_override, allow_free_override);
 					
 
 					$stmt->execute();
