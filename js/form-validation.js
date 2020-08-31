@@ -351,15 +351,17 @@ $(document).ready(function(){
 			$('#applymrgunit').click();
 		}
 	});
+	$('#user_role').on('change', function() {
+		var selected_user_role = $('#user_role option:selected');
+		if(selected_user_role == 'Administrator'){
+			$('#allow_limited_override').attr('disabled', true);
+			$('#allow_free_override').attr('disabled', true);
+		}else{
+			$('#allow_limited_override').attr('disabled', false);
+			$('#allow_free_override').attr('disabled', false);
+		}
+	});
 	
-	var selected_user_role = $('#user_role option:selected');
-	if(selected_user_role == 'Administrator'){
-		$('#allow_limited_override').attr('disabled', true);
-		$('#allow_free_override').attr('disabled', true);
-	}else{
-		$('#allow_limited_override').attr('disabled', false);
-		$('#allow_free_override').attr('disabled', false);
-	}
 	
 	//display error message
 	function displayerrormsg(inputid, msg) {
