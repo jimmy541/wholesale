@@ -223,7 +223,12 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 								$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 							}else{
 								if($allow_limited_override == '1'){
-									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
+										if(get_price_limit($link, $clientid, $ce_co) == 'true'){
+											$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
+										}else{
+											$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'" readonly/>';
+										}
+									
 								}else{
 									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'" readonly/>';
 								}
@@ -244,6 +249,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 							echo '</tr>';
 						}
 					}
+					
 				?>
 			</tr>
 		</tbody>
@@ -270,7 +276,32 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
   <button type="submit" class="btn btn-primary" id="save_note">Save</button>
 </div>
 
-<?php require('include/invoice-popups.php'); ?>
+<?php 
+require('include/invoice-popups.php'); 
+function get_price_limit($link, $clientid, $item_number) {
+  $query = "SELECT `highest_allowed`, `lowest_allowed`, `case_price` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `cert_code` = ?";
+	$stmt = $link->prepare($query);
+	$stmt->bind_param('s', $item_number);
+	$stmt->execute();
+	$stmt->bind_result($hi, $lo, $cp);
+	$high = 0;
+	$low = 0;
+	$case_price = 0;
+	while($stmt->fetch()){
+		$high = $hi;
+		$low = $lo;
+		$case_price = $cp;
+	}
+	$stmt->close();
+  if($high > $case_price && $low < $case_price && $low != '0.00'){
+	  echo 'true';
+	  
+  }else{
+	  echo 'false';
+  }
+  
+}
+?>
 <script type="text/javascript">
 $(document).ready(function() {
     Date.prototype.toDateInputValue = (function() {

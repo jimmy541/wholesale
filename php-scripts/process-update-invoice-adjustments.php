@@ -92,18 +92,24 @@ if($allow_free_override == '1' || $allow_limited_override == '1'){
 		}
 		
 		$invoice = $_POST['invoice'];
+		$item_code = '';
 		
 		
 		
-		$query = "SELECT `tax` / `total_price` tax FROM `requested_items` WHERE `clientid` = '$clientid' AND `id` = '$id' AND `invoice_number_hash` = ?";
+		$query = "SELECT `tax` / `total_price` tax, `cert_code` FROM `requested_items` WHERE `clientid` = '$clientid' AND `id` = '$id' AND `invoice_number_hash` = ?";
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $invoice);
 		$stmt->execute();
-		$stmt->bind_result($tax);
+		$stmt->bind_result($tax, $ic);
 		while($stmt->fetch()){
 			$tax_rate = $tax;
+			$item_code = $ic;
 		}
 		$stmt->close();
+		
+		
+		
+		
 		
 		$total_tax = $tax_rate * $total;
 			
