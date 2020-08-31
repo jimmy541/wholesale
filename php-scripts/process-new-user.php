@@ -14,6 +14,16 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				$display_code = $firstName;
 			}
 			$role = $_POST['user_role'];
+			$allow_price_override = '0';
+			$allow_free_override = '0';
+			
+			if(isset($_POST["allow_limited_override"])){
+				$allow_price_override = '1';
+			}
+			
+			if(isset($_POST["allow_free_override"])){
+				$allow_free_override = '1';
+			}
 			
 			
 			$seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()');
@@ -40,12 +50,15 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				$stmt->close();
 			}
 			if ($found == 'false'){
-				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `display_code`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?, '1')";
+				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `display_code`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`, `allow_price_override`, `allow_free_override`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,'1',?,?)";
 				$activeV = '1';
-			
+				if($role == 'Administrator'){
+					$allow_price_override = '1';
+					$allow_free_override = '1';
+				}
 				$fatmps = '0';
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("ssssssssssss", $password,$salt,$firstName,$lastName,$display_code,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid);
+					$stmt->bind_param("ssssssssssssss", $password,$salt,$firstName,$lastName,$display_code,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $allow_price_override, $allow_free_override);
 					
 
 					$stmt->execute();
