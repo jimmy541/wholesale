@@ -38,7 +38,7 @@ $(document).ready(function(){
 					$("#total"+id).text(total);
 					
 					
-					var data = {invoice: invoice_hash, id: id, qty: qty, total:total};					
+					var data = {invoice: invoice_hash, id: id, qty: qty, total:total, update:qty};					
 					jQuery.ajax({
 					type: 'POST',
 					url: 'php-scripts/process-update-invoice-adjustments.php',
@@ -50,9 +50,7 @@ $(document).ready(function(){
 						$('#invoice_tax').text(response[2]);
 						$('#invoice_grand_total').text(response[3]);
 						
-						
-				
-					}
+						}
 					});
 					
 				}
@@ -70,9 +68,20 @@ $(document).ready(function(){
 					total = (retail * qty).toFixed(2);
 					$("#total"+id).text(total);
 					
-					//$.post('../update-cellphone-goal.php', {dt: dt, store: store, amount: amount}, function(data){
-				
-					//});
+					var data = {invoice: invoice_hash, id: id, retail: retail, total:total, update:retail};					
+					jQuery.ajax({
+					type: 'POST',
+					url: 'php-scripts/process-update-invoice-adjustments.php',
+					data: data,
+					dataType: 'json',
+					success: function(response) {
+											
+						$('#invoice_sub_total').text(response[1]);
+						$('#invoice_tax').text(response[2]);
+						$('#invoice_grand_total').text(response[3]);
+						
+						}
+					});
 				}
 				
 		}
