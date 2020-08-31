@@ -47,7 +47,7 @@ if (isset($_POST['usercode']) && !empty($_POST['usercode']) && isset($_POST['fir
 	
 	
 		
-			$stmt = $link->prepare("UPDATE `users` SET `first_name`=?,`last_name`=?, $password_query `display_code`=?,`role`=? WHERE `uid`=? AND `clientid`= ?");
+			$stmt = $link->prepare("UPDATE `users` SET `first_name`=?,`last_name`=?, $password_query `display_code`=?,`role`=?, `allow_price_override` = '$allow_price_override', `allow_free_override` = '$allow_free_override' WHERE `uid`=? AND `clientid`= ?");
 			$stmt->bind_param('ssssss',$first_name,$last_name,$display_code,$user_role,$user_code,$clientid);
 			$stmt->execute();
 			$stmt->close();
