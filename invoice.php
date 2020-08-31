@@ -207,11 +207,11 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 			<tr>
 				<?php 
 					
-					$query = "SELECT `id`, `cert_code`, `qty`, `description`, `retail`, `total_price`, `Pack`, `size` FROM `requested_items` WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
+					$query = "SELECT a.`id`, a.`cert_code`, a.`qty`, a.`description`, a.`retail`, a.`total_price`, a.`Pack`, a.`size`,b.`case_price`, b.`highest_allowed`, b.`lowest_allowed` FROM `requested_items` a left join `grocery_products` b  on a.`cert_code` = b.`cert_code` WHERE a.`clientid` = '$clientid' AND a.`invoice_number_hash` = ? AND b.`clientid` = '$clientid'";
 					$stmt = $link->prepare($query);
 					$stmt->bind_param('s', $hashed_invoice_number);
 					$stmt->execute();
-					$stmt->bind_result($id, $ce_co, $qy, $des, $ret, $to_pr, $pk, $sz);
+					$stmt->bind_result($id, $ce_co, $qy, $des, $ret, $to_pr, $pk, $sz, $csp, $hi, $lo);
 					$x = 0;
 					while($stmt->fetch()){
 						$x++;
@@ -224,7 +224,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 								$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 							}else{
 								if($allow_limited_override == '1'){
-										if(get_price_limit($link, $clientid, $ce_co) == 'true'){
+										if($hi >= $csp && $lo < $csp && $lo != '0.00'){
 											//user has limited_override and current item is eligible for override
 											$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
 										}else{
@@ -282,29 +282,6 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 
 <?php 
 require('include/invoice-popups.php'); 
-function get_price_limit($link, $clientid, $item_number) {
-  $query = "SELECT `highest_allowed`, `lowest_allowed`, `case_price` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `cert_code` = ?";
-	$stmt = $link->prepare($query);
-	$stmt->bind_param('s', $item_number);
-	$stmt->execute();
-	$stmt->bind_result($hi, $lo, $cp);
-	$high = 0;
-	$low = 0;
-	$case_price = 0;
-	while($stmt->fetch()){
-		$high = $hi;
-		$low = $lo;
-		$case_price = $cp;
-	}
-	$stmt->close();
-  if($high >= $case_price && $low < $case_price && $low != '0.00'){
-	  echo 'true';
-	  
-  }else{
-	  echo 'false';
-  }
-  
-}
 ?>
 <script type="text/javascript">
 $(document).ready(function() {
