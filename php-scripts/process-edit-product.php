@@ -30,6 +30,9 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	$brand = '';
 	$active = 'no';
 	$tax_id = '';
+	$lowest_allowed = '';
+	$highest_allowed = '';
+	
 	if (isset($_POST['upc']) && !empty($_POST['upc'])){$upc = $_POST['upc'];}
 	if (isset($_POST['case-barcode']) && !empty($_POST['case-barcode'])){$case_barcode = $_POST['case-barcode'];}
 	if (isset($_POST['cert_code']) && !empty($_POST['cert_code'])){$cert_code = $_POST['cert_code'];}
@@ -54,7 +57,8 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	if (isset($_POST['brand']) && !empty($_POST['brand'])){$brand = $_POST['brand'];}
 	if (isset($_POST['active'])){$active = 'yes';}
 	if (isset($_POST['tax_id']) && !empty($_POST['tax_id'])){$tax_id = $_POST['tax_id'];}
-
+	if (isset($_POST['lowest_allowed']) && !empty($_POST['lowest_allowed'])){$lowest_allowed = $_POST['lowest_allowed'];}
+	if (isset($_POST['highest_allowed']) && !empty($_POST['highest_allowed'])){$highest_allowed = $_POST['highest_allowed'];}
 		
 	//get qty on hand in database
 	$qtyinsystem = '';
@@ -67,8 +71,8 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	}
 	
 	
-	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`department`= ?,`sub_department`= ?,`category`= ?,`brand`= ?,`active`= ?, `tax_id` = ? WHERE `clientid`= ? AND `uniqueid` = ?');
-	$stmt->bind_param('ssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand,$active, $tax_id, $clientid, $uniqueid);
+	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`department`= ?,`sub_department`= ?,`category`= ?,`brand`= ?,`active`= ?, `tax_id` = ?, `lowest_allowed` = ?, `highest_allowed` = ? WHERE `clientid`= ? AND `uniqueid` = ?');
+	$stmt->bind_param('ssssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand,$active, $tax_id, $lowest_allowed, $highest_allowed, $clientid, $uniqueid);
 	$stmt->execute();
 	$stmt->close();
 	

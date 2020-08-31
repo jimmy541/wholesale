@@ -41,15 +41,17 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$active = '';
 	$checked = 'no';
 	$tax_id = '';
+	$lowest_allowed = '';
+	$highest_allowed = '';
 
-	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
 	
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $uniqueid, $clientid);
 	
 	$stmt->execute();
-	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV);
+	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV, $lowest_allowedV, $highest_allowedV);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -77,6 +79,8 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 		$brand = $brandV; 
 		$active = $activeV;
 		$tax_id = $tax_idV;
+		$lowest_allowed = $lowest_allowedV;
+		$highest_allowed = $highest_allowedV;
 		
 	}
 	if($active == 'yes'){$checked = 'yes';}
@@ -231,6 +235,19 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				<label for="">Quantity on Hand:</label>
 				<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand" value="<?php echo htmlspecialchars($QtyOnHand); ?>"/>
 			</div>
+			
+			<hr class="mb-4">
+				<h4 class="mb-3">Price Allowance</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="lowest_allowed">Lowest Allowed</label>
+						<input class="form-control" type="number" step="0.01" min="0" id="lowest_allowed" name="lowest_allowed" value="<?php echo htmlspecialchars($lowest_allowed); ?>"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="highest_allowed">Highest Allowed</label>
+						<input class="form-control" type="number" step="0.01" min="0" id="highest_allowed" name="highest_allowed" value="<?php echo htmlspecialchars($highest_allowed); ?>"/>
+					</div>
+				</div>
 			
 			<hr class="mb-4">
 			<h4 class="mb-3">Other</h4>

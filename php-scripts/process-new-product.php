@@ -27,6 +27,8 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
  $brand = '';
  $active = '';
  $tax_id = '';
+ $lowest_allowed = '';
+ $highest_allowed = '';
  
  if (isset($_POST['upc']) && !empty($_POST['upc'])){$upc = $_POST['upc'];}
  if (isset($_POST['case-barcode']) && !empty($_POST['case-barcode'])){$case_barcode = $_POST['case-barcode'];}
@@ -50,14 +52,16 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
   if (isset($_POST['category']) && !empty($_POST['category'])){$category = $_POST['category'];}
   if (isset($_POST['brand']) && !empty($_POST['brand'])){$brand = $_POST['brand'];}
   if (isset($_POST['tax_id']) && !empty($_POST['tax_id'])){$tax_id = $_POST['tax_id'];}
+  if (isset($_POST['lowest_allowed']) && !empty($_POST['lowest_allowed'])){$lowest_allowed = $_POST['lowest_allowed'];}
+  if (isset($_POST['highest_allowed']) && !empty($_POST['highest_allowed'])){$highest_allowed = $_POST['highest_allowed'];}
   
   
   
 
 	
 	
-	$stmt = $link->prepare("INSERT INTO `grocery_products` (`uniqueid`, `upc`, `case_barcode`, `cert_code`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `clientid`,`created_by`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'yes',?,?,?)");
-	$stmt->bind_param('sssssssssssssssssssssssss',$upc,$case_barcode,$cert_code,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand, $tax_id, $clientid, $_SESSION['user']);
+	$stmt = $link->prepare("INSERT INTO `grocery_products` (`uniqueid`, `upc`, `case_barcode`, `cert_code`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed`, `clientid`,`created_by`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'yes',?,?,?,?,?)");
+	$stmt->bind_param('sssssssssssssssssssssssssss',$upc,$case_barcode,$cert_code,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand, $tax_id, $lowest_allowed, $highest_allowed, $clientid, $_SESSION['user']);
 	$stmt->execute();
 	
 	$stmt->close();

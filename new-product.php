@@ -216,6 +216,21 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</div>
 				
 				<hr class="mb-4">
+				<h4 class="mb-3">Price Allowance</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="lowest_allowed">Lowest Allowed</label>
+						<input class="form-control" type="number" step="0.01" min="0" id="lowest_allowed" name="lowest_allowed" />
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="highest_allowed">Highest Allowed</label>
+						<input class="form-control" type="number" step="0.01" min="0" id="highest_allowed" name="highest_allowed" />
+					</div>
+				</div>
+				
+							
+				
+				<hr class="mb-4">
 				<h4 class="mb-3">Other</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
