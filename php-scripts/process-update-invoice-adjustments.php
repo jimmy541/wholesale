@@ -54,7 +54,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php');
 	}
 	
 	
-	$query = "UPDATE `orders` SET `cost` = '$invcost', `retail` = '$invprice', `tax` = `rtax` WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
+	$query = "UPDATE `orders` SET `cost` = '$invcost', `retail` = '$invprice', `tax` = '$invtax' WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
 		$stmt = $link->prepare($query);
 		$stmt->bind_param('s', $invoice);
 		$stmt->execute();
