@@ -100,7 +100,7 @@ $(document).ready(function(){
 	$("#save_note").click(function(){
 		var note_text = $('#invoice_note').val();
 		invoice_hash = $('#invoicehash').val();
-		$.post( "process-update-invoice-adjustments.php", { invoice: invoice_hash, txt: note_text } );
+		$.post( "php-scripts/process-update-invoice-adjustments.php", { invoice: invoice_hash, txt: note_text } );
 	});
 	
 	var text_max = 500;
