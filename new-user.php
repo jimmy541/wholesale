@@ -20,18 +20,18 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <h1>Add new user</h1>
 <?php echo $responseMsg; ?>
 
-<form  id="newuserform" action="php-scripts/process-new-user.php" method="post" autocomplete="off">
-<input class="form-control" autocomplete="false" name="hidden" type="text" style="display:none;">
+<form  id="newuserform" action="php-scripts/process-new-user.php" method="post">
+
 	
 		<h4 class="mb-3">Login Info</h4>
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="">Email:*</label>
-				<input class="form-control"  type="email" id="email" name="email" autocomplete="off"/>
+				<input class="form-control"  type="email" id="email" name="email" readonly onfocus="if (this.hasAttribute('readonly')) { this.removeAttribute('readonly'); this.blur();  this.focus();  }" />
 			</div>
 			<div class="col-md-6 mb-3">
 				<label for="">Password:*</label>
-				<input class="form-control"  type="password" id="password" name="password" autocomplete="off"/>
+				<input class="form-control"  type="password" id="password" name="password" readonly onfocus="if (this.hasAttribute('readonly')) { this.removeAttribute('readonly'); this.blur();  this.focus();  }" />
 			</div>
 		</div>
 		
