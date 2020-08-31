@@ -352,7 +352,7 @@ $(document).ready(function(){
 		}
 	});
 	$('#user_role').on('change', function() {
-		var selected_user_role = $('#user_role option:selected');
+		var selected_user_role = $('#user_role option:selected').val();
 		if(selected_user_role == 'Administrator'){
 			$('#allow_limited_override').attr('disabled', true);
 			$('#allow_free_override').attr('disabled', true);
