@@ -258,7 +258,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 	</div>
 </div>
 
-
+<div class="invoice-note-preview">
    <div class="form-group">
     <label for="invoice_note">Note</label>
     <textarea class="form-control" id="invoice_note" maxlength="500" name="invoice_note" rows="3"></textarea>
@@ -266,7 +266,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
      <br>
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
-
+</div>
 
 <?php require('include/invoice-popups.php'); ?>
 <script type="text/javascript">
