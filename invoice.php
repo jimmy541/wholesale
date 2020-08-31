@@ -265,7 +265,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 	<span class="pull-right label label-default" id="count_label"></span>
      <br>
   </div>
-  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="submit" class="btn btn-primary" id="save_note">Save</button>
 </div>
 
 <?php require('include/invoice-popups.php'); ?>

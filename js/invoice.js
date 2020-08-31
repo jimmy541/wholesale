@@ -97,6 +97,11 @@ $(document).ready(function(){
 		}
 	});
 	
+	$("#save_note").click(function(){
+		var note_text = $('#invoice_note').val();
+		invoice_hash = $('#invoicehash').val();
+		$.post( "process-update-invoice-adjustments.php", { invoice: invoice_hash, txt: note_text } );
+	});
 	
 	var text_max = 500;
 $('#count_label').html('0 / ' + text_max );
@@ -107,5 +112,7 @@ $('#invoice_note').keyup(function() {
   
   $('#count_label').html(text_length + ' / ' + text_max);
 });
+
+
 	
 });

@@ -137,4 +137,12 @@ if($allow_free_override == '1' || $allow_limited_override == '1'){
 		
 	}
 }
+
+if(isset($_POST['invoice']) && isset($_POST['txt']) && !empty($_POST['invoice']) && !empty($_POST['txt'])){
+			$query = "UPDATE `orders` SET `note` = ? WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
+			$stmt = $link->prepare($query);
+			$stmt->bind_param('ss', $_POST['txt'], $_POST['invoice']);
+			$stmt->execute();
+			$stmt->close();
+}
 ?>
