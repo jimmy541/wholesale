@@ -204,6 +204,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 		<tbody>
 			<tr>
 				<?php 
+					
 					$query = "SELECT `id`, `cert_code`, `qty`, `description`, `retail`, `total_price`, `Pack`, `size` FROM `requested_items` WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
 					$stmt = $link->prepare($query);
 					$stmt->bind_param('s', $hashed_invoice_number);
@@ -215,8 +216,18 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 						echo '<tr>';
 						echo '<td>'.htmlspecialchars($ce_co).'</td>';
 						echo '<td><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.str_replace(".00","",$sz).'" style="width:310px; id="desc'.$id.'"/></td>';
+						$retail_column = '';
+							if($allow_free_override == '1'){
+								$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
+							}else{
+								if($allow_limited_override == '1'){
+									$retail_column = '<input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/>';
+								}else{
+									$retail_column = '<span id="retail'.$id.'">'.htmlspecialchars($ret).'</span>';
+								}
+							}
 						echo '<td><input type="number" step=".01" value="'.htmlspecialchars($qy).'" style="width:50px;" id="qty'.$id.'"/></td>';
-						echo '<td align="right"><input type="number" step=".01" value="'.htmlspecialchars($ret).'"  style="max-width:90px;" id="retail'.$id.'"/></td>';
+						echo '<td align="right">'.$retail_column.'</td>';
 						echo '<td align="right"><span id="total'.$id.'">'.htmlspecialchars($to_pr).'</span></td>';
 						echo '</tr>';
 					}
