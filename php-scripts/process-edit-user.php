@@ -7,7 +7,20 @@ if (isset($_POST['usercode']) && !empty($_POST['usercode']) && isset($_POST['fir
 	$first_name = $_POST['first_name'];
 	$last_name = $_POST['last_name'];
 	$display_code = $_POST['display_code'];
-	$role = $_POST['user_role'];	
+	$user_role = $_POST['user_role'];
+	
+	$allow_price_override = '0';
+	$allow_free_override = '0';
+			
+			if(isset($_POST["allow_limited_override"])){
+				$allow_price_override = '1';
+			}
+			
+			if(isset($_POST["allow_free_override"])){
+				$allow_free_override = '1';
+			}
+
+	
 	
 	$change_password = 'false';
 	$password_query = '';
@@ -35,7 +48,7 @@ if (isset($_POST['usercode']) && !empty($_POST['usercode']) && isset($_POST['fir
 	
 		
 			$stmt = $link->prepare("UPDATE `users` SET `first_name`=?,`last_name`=?, $password_query `display_code`=?,`role`=? WHERE `uid`=? AND `clientid`= ?");
-			$stmt->bind_param('ssssss',$first_name,$last_name,$display_code,$role,$user_code,$clientid);
+			$stmt->bind_param('ssssss',$first_name,$last_name,$display_code,$user_role,$user_code,$clientid);
 			$stmt->execute();
 			$stmt->close();
 			header("location: ../edit-user.php?success=1&user=$user_code");
