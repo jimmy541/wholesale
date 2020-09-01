@@ -239,7 +239,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 							}
 						echo '<td><input type="number" step=".01" value="'.htmlspecialchars($qy).'" style="width:50px;" id="qty'.$id.'"/></td>';
 						echo '<td align="right">'.$retail_column.'</td>';
-						echo '<td align="right"><span id="total'.$id.'">'.htmlspecialchars($to_pr).'</span></td>';
+						echo '<td align="right"><span id="total'.$id.'">'.htmlspecialchars($to_pr).'</span><i id="delete'.$id.'" class="fas fa-trash-alt"></i></td>';
 						echo '</tr>';
 					}
 					if($x < 20){
@@ -279,31 +279,8 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
   </div>
   <button type="submit" class="btn btn-primary" id="save_note">Save</button>
 </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <?php 
 require('include/invoice-popups.php'); 
 ?>
