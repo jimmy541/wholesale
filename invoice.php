@@ -217,7 +217,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 						$x++;
 						echo '<tr>';
 						echo '<td>'.htmlspecialchars($ce_co).'</td>';
-						echo '<td><i id="delete'.$id.'" class="fas fa-trash-alt" style="color:#b3b3b3; margin-right:5px;"></i><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.str_replace(".00","",$sz).'" style="width:310px; id="desc'.$id.'"/></td>';
+						echo '<td><i id="delete'.$id.'" class="fas fa-trash-alt" style="color:#b3b3b3; margin-right:5px;"></i><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.str_replace(".00","",$sz).'" style="width:290px; id="desc'.$id.'"/></td>';
 						$retail_column = '';
 							if($allow_free_override == '1'){
 								//user is eligible to change the price freely.
