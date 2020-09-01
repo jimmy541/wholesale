@@ -163,9 +163,9 @@ $(document).ready(function(){
 				
 		$(document).on('click','#yesBtn',function(){
 			var data = {subject: subject, id: id};
-			
+			alert(subject);
 			if(subject == 'invoice-single-item'){
-				alert(id);
+				
 				jQuery.ajax({
 				type: 'POST',
 				url: 'php-scripts/process-general-remove.php',
