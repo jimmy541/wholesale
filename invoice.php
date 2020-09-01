@@ -215,7 +215,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 					$x = 0;
 					while($stmt->fetch()){
 						$x++;
-						echo '<tr>';
+						echo '<tr id="row'.$id.'">';
 						echo '<td>'.htmlspecialchars($ce_co).'</td>';
 						echo '<td><i id="delete'.$id.'***'.$hashed_invoice_number.'" class="fas fa-trash-alt" style="color:#b3b3b3; margin-right:5px;"></i><input type="text" value="'.htmlspecialchars($des).' '.$pk.'x'.str_replace(".00","",$sz).'" style="width:290px; id="desc'.$id.'"/></td>';
 						$retail_column = '';
