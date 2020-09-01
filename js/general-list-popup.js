@@ -226,7 +226,7 @@ $(document).ready(function(){
 				success: function(response) {
 					$( "#populateDivGenCustDel" ).hide();
 					$('#gray-background').hide();
-					var rowid = $('#delete51***dbde233a730fcf6eb2ca65de779480e575d87e7e6d5c34fa6ae0343b2855a9e2').parent().parent().attr("id");
+					var rowid = $('#delete51***dbde233a730fcf6eb2ca65de779480e575d87e7e6d5c34fa6ae0343b2855a9e2').parent().parent().parent().attr("id");
 					
 					//$('#delete'+id).parent().parent().remove();
 					//$('#row76').remove();
