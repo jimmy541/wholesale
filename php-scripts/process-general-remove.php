@@ -1,4 +1,3 @@
-<?php header("Content-type: application/json"); ?>
 <?php require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
 $okToProceed = "no";
 $table = '';
