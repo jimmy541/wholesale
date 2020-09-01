@@ -175,6 +175,7 @@ $(document).ready(function(){
 					$( "#populateDivGenCustDel" ).hide();
 					$('#gray-background').hide();
 					$('#'+id).closest("tr").remove();
+					alert(id);
 					id = '';
 					$('#invoice_sub_total').text(response[1]);
 					$('#invoice_tax').text(response[2]);
