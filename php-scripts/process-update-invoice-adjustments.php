@@ -54,7 +54,7 @@ if (isset($_POST['id']) && isset($_POST['invoice']) && isset($_POST['qty']) && i
 		$invprice = $rprice;
 		$invtax = $rtax;
 	}
-	
+	$stmt->close();
 	
 	$query = "UPDATE `orders` SET `cost` = '$invcost', `retail` = '$invprice', `tax` = '$invtax' WHERE `clientid` = '$clientid' AND `invoice_number_hash` = ?";
 		$stmt = $link->prepare($query);
