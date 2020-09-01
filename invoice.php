@@ -239,7 +239,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 							}
 						echo '<td><input type="number" step=".01" value="'.htmlspecialchars($qy).'" style="width:50px;" id="qty'.$id.'"/></td>';
 						echo '<td align="right">'.$retail_column.'</td>';
-						echo '<td align="right"><span id="total'.$id.'">'.htmlspecialchars($to_pr).'</span><i id="delete'.$id.'" class="fas fa-trash-alt"></i></td>';
+						echo '<td align="right"><span id="total'.$id.'">'.htmlspecialchars($to_pr).'</span><i id="delete'.$id.'" class="fas fa-trash-alt" style="color:#b3b3b3; margin-left:3px;"></i></td>';
 						echo '</tr>';
 					}
 					if($x < 20){
