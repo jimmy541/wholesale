@@ -163,28 +163,9 @@ $(document).ready(function(){
 				
 		$(document).on('click','#yesBtn',function(){
 			var data = {subject: subject, id: id};
-			alert(subject);
-			if(subject == 'invoice-single-item'){
+			
 				
-				jQuery.ajax({
-				type: 'POST',
-				url: 'php-scripts/process-general-remove.php',
-				data: data,
-				dataType: 'json',
-				success: function(response) {
-					$( "#populateDivGenCustDel" ).hide();
-					$('#gray-background').hide();
-					$('#'+id).closest("tr").remove();
-					
-					id = '';
-					$('#invoice_sub_total').text(response[1]);
-					$('#invoice_tax').text(response[2]);
-					$('#invoice_grand_total').text(response[3]);
-					
-					}
-				});
-				
-			}else{
+			
 				jQuery.ajax({
 				type: 'POST',
 				url: 'php-scripts/process-general-remove.php',
@@ -202,7 +183,7 @@ $(document).ready(function(){
 					.draw();
 					}
 				});
-			}
+			
 		});
 		
 		$(document).on('click','#yesInactiveBtn',function(){
@@ -233,24 +214,47 @@ $(document).ready(function(){
 		
 		$(document).on('click','#delete-invoice-yesBtn',function(){
 			var data = {subject: subject, id: id};
-			jQuery.ajax({
-            type: 'POST',
-            url: 'php-scripts/process-general-remove.php',
-            data: data,
 			
-            success: function(response) {
-				$('#invoicehash').val('');
-				$( "#populateDivGenCustDel" ).hide();
-				$('#gray-background').hide();
-					id = '';
-				var t = $('#gtable').DataTable();
+			
+			if(subject == 'invoice-single-item'){
 				
-				t
-				.row( $('#'+clickedRow).parents('tr') )
-				.remove()
-				.draw();
-				}
-			});
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				dataType: 'json',
+				success: function(response) {
+					$( "#populateDivGenCustDel" ).hide();
+					$('#gray-background').hide();
+					$('#'+id).closest("tr").remove();
+					
+					id = '';
+					$('#invoice_sub_total').text(response[1]);
+					$('#invoice_tax').text(response[2]);
+					$('#invoice_grand_total').text(response[3]);
+					
+					}
+				});
+			}else{
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				
+				success: function(response) {
+					$('#invoicehash').val('');
+					$( "#populateDivGenCustDel" ).hide();
+					$('#gray-background').hide();
+						id = '';
+					var t = $('#gtable').DataTable();
+					
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+			}
 		});
 		
 		
