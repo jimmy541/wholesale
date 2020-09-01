@@ -204,7 +204,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			
 				<?php 
 					
 					$query = "SELECT a.`id`, a.`cert_code`, a.`qty`, a.`description`, a.`retail`, a.`total_price`, a.`Pack`, a.`size`,b.`case_price`, b.`highest_allowed`, b.`lowest_allowed` FROM `requested_items` a left join `grocery_products` b  on a.`cert_code` = b.`cert_code` WHERE a.`clientid` = '$clientid' AND a.`invoice_number_hash` = ? AND b.`clientid` = '$clientid'";
@@ -255,7 +255,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 					}
 					
 				?>
-			</tr>
+			
 		</tbody>
 		</table>
 	</div>
