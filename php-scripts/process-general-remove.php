@@ -171,7 +171,7 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 			$id = '';
 			$invoice_hash = '';
 			
-			$arr = explode('***',$_POST['id'],2);
+			$arr = explode('-',$_POST['id'],2);
 			$id = $arr[0];
 			$invoice = $arr[1];
 			
