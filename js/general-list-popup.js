@@ -226,6 +226,8 @@ $(document).ready(function(){
 				success: function(response) {
 					$( "#populateDivGenCustDel" ).hide();
 					$('#gray-background').hide();
+					var rowid = $('#delete'+id).closest('tr').attr("id");
+					alert(rowid);
 					$('#delete'+id).closest('tr').remove();
 					id = '';
 					$('#invoice_sub_total').text(response[1]);
