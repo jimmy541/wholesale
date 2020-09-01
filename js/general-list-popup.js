@@ -228,7 +228,8 @@ $(document).ready(function(){
 					$('#gray-background').hide();
 					var rowid = $('#delete'+id).parent().parent().attr("id");
 					
-					$('#delete'+id).parent().parent().remove();
+					//$('#delete'+id).parent().parent().remove();
+					$('#row76').remove();
 					id = '';
 					$('#invoice_sub_total').text(response[1]);
 					$('#invoice_tax').text(response[2]);
