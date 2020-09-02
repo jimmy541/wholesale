@@ -33,7 +33,7 @@ if($found == 'true'){
 <form action="new-customer-contact.php">
 	<input type="hidden" value="<?php echo $account;?>" name="account">
 	<input type="hidden" value="<?php echo $token;?>" name="token">
-	<button type="submit" class="btn btn-primary btn-lg">New Customer Contact</button>
+	<button type="submit" class="btn btn-primary shadow btn-lg">New Customer Contact</button>
 </form>
 <table class="row-border" id="gtable">
 <caption>Customers Contacts</caption>
@@ -75,10 +75,10 @@ if($found == 'true'){
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>

@@ -31,7 +31,7 @@ if (isset($_SESSION['user'])){
 	}
 	if ($email_verified == '0'){
 		
-	$message = '<br /><a href="resend-activation-link.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Resend Activation Link</a>';
+	$message = '<br /><a href="resend-activation-link.php" class="btn btn-primary shadow btn-lg active" role="button" aria-pressed="true">Resend Activation Link</a>';
 		if (isset($_GET['sent'])){
 		
 			if ($_GET['sent'] == '1'){
@@ -147,7 +147,7 @@ if (isset($_SESSION['user'])){
 					
 					<hr class="mb-4">
 					<div class="mb-3">
-						<button class="btn btn-primary btn-lg btn-block" type="submit">Save</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
 					</div>
 				</form>
 				

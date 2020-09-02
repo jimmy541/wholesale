@@ -48,7 +48,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 }
 ?>
 <br>
-<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="genbtns btn btn-primary btn-lg"">Preview</button></form>
+<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="genbtns btn btn-primary shadow btn-lg"">Preview</button></form>
 <input type="hidden" id="current_customer" value="<?php echo $customer; ?>"/>
 <input type="hidden" id="current_order" value="<?php echo $order; ?>"/>
 <input type="hidden" id="order_type" value="<?php echo $ordertype; ?>"/>

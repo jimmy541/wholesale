@@ -170,7 +170,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 						<div class="input-group">
 							<input class="form-control" type="number" min="0" step="0.01" id="case_price" name="case_price" value="<?php if($found=='true') {echo htmlspecialchars($case_price); }?>"/>
 							<div class="input-group-append">
-								<button type="button" class="btn btn-primary btn-sm" id="calccaseprice">Calculate</button>
+								<button type="button" class="btn btn-primary shadow btn-sm" id="calccaseprice">Calculate</button>
 							</div>
 						</div>
 					</div>
@@ -268,10 +268,10 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				<hr class="mb-4">
 				<div class="row">
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block" type="submit"> Save</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" type="submit"> Save</button>
 					</div>
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block"  name="sac" type="submit">Save and Copy</button>
+						<button class="btn btn-primary shadow btn-lg btn-block"  name="sac" type="submit">Save and Copy</button>
 					</div>
 				</div>
 		<input type="hidden" id="poprequester" value="" />
@@ -306,7 +306,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 						<div class="input-group">
 							<input class="form-control"  type="number" min="0.01" step="0.01" id="margindesired" />
 							<div class="input-group-append">
-								<button type="button" class="btn btn-primary btn-sm" id="applymrgcase">Apply</button>
+								<button type="button" class="btn btn-primary shadow btn-sm" id="applymrgcase">Apply</button>
 							</div>
 						</div>
 					</div>
@@ -320,10 +320,10 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				<hr class="mb-4">
 				<div class="row">
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block" id="cancelcalcprice" type="button">Cancel</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" id="cancelcalcprice" type="button">Cancel</button>
 					</div>
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block" id="donecalcprice" type="button">Done</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" id="donecalcprice" type="button">Done</button>
 					</div>
 				</div>
 				

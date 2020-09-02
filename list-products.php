@@ -59,7 +59,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
  ?>
 <?php echo $products_links; ?>
 <p>
-  <a class="btn btn-primary" href="new-product.php" role="button">
+  <a class="btn btn-primary shadow" href="new-product.php" role="button">
     New Product
   </a>
  </p>
@@ -151,7 +151,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 			
 			</div>
 		</div>
-		 <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
+		 <input type="submit" class="btn btn-primary shadow mb-2" id="sbbtn" value="Search" />
     
 	</form>
 </div>
@@ -266,10 +266,10 @@ $(document).ready(function() {
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>

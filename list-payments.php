@@ -124,7 +124,7 @@ function validateDate($date, $format = 'Y-m-d')
         <input class="form-control" name="invno" id="invno" type="text" value="<?php echo htmlspecialchars($_GET['invno']); ?>">
       </div>
 	 </div>
-	   <input type="submit" class="btn btn-primary mb-2" id="sbbtn" value="Search" />
+	   <input type="submit" class="btn btn-primary shadow mb-2" id="sbbtn" value="Search" />
       
   </form>
 

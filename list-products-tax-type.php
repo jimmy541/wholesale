@@ -34,7 +34,7 @@ if(isset($_GET['rs'])){
 	<label for="newValue" class="sr-only">Value:</label> <input class="form-control" type="text" id="newValue" name="newValue" placeholder="Value" />
 	
 </div>
-<button class="btn btn-primary mb-2" type="submit">Add</button>
+<button class="btn btn-primary shadow mb-2" type="submit">Add</button>
 <input type="hidden" id="subject" name="subject" value="tt" />
 
 </form>
@@ -70,10 +70,10 @@ if(isset($_GET['rs'])){
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>
@@ -88,10 +88,10 @@ if(isset($_GET['rs'])){
 		</div>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="saveBtn">Save</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="saveBtn">Save</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="cancelBtn">Cancel</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="cancelBtn">Cancel</button>
 			</div>
 		</div>
 	</div>

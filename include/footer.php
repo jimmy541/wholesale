@@ -33,10 +33,10 @@ while($stmt->fetch()){
 				</div>
 				<div class="row">
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block" id="start-order">Start</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" id="start-order">Start</button>
 					</div>
 					<div class="col-md-6 mb-3">
-						<button class="btn btn-primary btn-lg btn-block" id="cancel-order">Cancel</button>
+						<button class="btn btn-primary shadow btn-lg btn-block" id="cancel-order">Cancel</button>
 					</div>
 				</div>
 			</div>

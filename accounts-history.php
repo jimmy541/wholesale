@@ -79,7 +79,7 @@ function validateDate($date, $format = 'Y-m-d')
       </div>
 	  <div class="col-1">
         <label for="" style="visibility:hidden !important;">Search</label>
-        <input type="submit" class="btn btn-primary mb-2" value="Search" />
+        <input type="submit" class="btn btn-primary shadow mb-2" value="Search" />
       </div>
     </div>
   </form>
@@ -284,7 +284,7 @@ function validateDate($date, $format = 'Y-m-d')
 				</div>
 				
 				<div class="mb-3">
-					<button class="btn btn-primary btn-lg btn-block" id="send-email-button">Send</button>
+					<button class="btn btn-primary shadow btn-lg btn-block" id="send-email-button">Send</button>
 				</div>
 			<!-- close col -->
 			</div>

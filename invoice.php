@@ -277,7 +277,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 	<span class="pull-right label label-default" id="count_label"></span>
      <br>
   </div>
-  <button type="submit" class="btn btn-primary" id="save_note">Save</button>
+  <button type="submit" class="btn btn-primary shadow" id="save_note">Save</button>
 </div>
 
 

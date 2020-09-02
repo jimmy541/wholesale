@@ -143,7 +143,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 				</div>
 				
 				<div class="mb-3">
-					<button class="btn btn-primary btn-lg btn-block" id="send-email-button">Send</button>
+					<button class="btn btn-primary shadow btn-lg btn-block" id="send-email-button">Send</button>
 				</div>
 			<!-- close col -->
 			</div>

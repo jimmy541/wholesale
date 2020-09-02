@@ -4,10 +4,10 @@
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="delete-invoice-yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="delete-invoice-yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>
@@ -17,10 +17,10 @@
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="delete-payment-yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="delete-payment-yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noDelPayBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noDelPayBtn">No</button>
 			</div>
 		</div>
 	</div>
@@ -91,7 +91,7 @@
 					<input class="form-control" type="text" id="ref_no"/>
 				</div>
 				<div class="mb-3">
-					<button class="btn btn-primary btn-lg btn-block" id="save-pay-button">Save</button>
+					<button class="btn btn-primary shadow btn-lg btn-block" id="save-pay-button">Save</button>
 				</div>
 			<!-- close col -->
 			</div>
@@ -131,7 +131,7 @@
 				</div>
 				
 				<div class="mb-3">
-					<button class="btn btn-primary btn-lg btn-block" id="send-email-button">Send</button>
+					<button class="btn btn-primary shadow btn-lg btn-block" id="send-email-button">Send</button>
 				</div>
 			<!-- close col -->
 			</div>

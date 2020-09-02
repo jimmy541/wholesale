@@ -39,7 +39,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 	<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
 	<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
 </ul>
-<form action="new-customer.php"><button type="submit" class="btn btn-primary btn-lg">New Customer</button></form>
+<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-lg">New Customer</button></form>
 <input type="hidden" id="customerhash" value="" />
 <input type="hidden" id="customerid" value="" />
 <input type="hidden" id="todaydate" value="<?php echo date('Y-m-d'); ?>" />
@@ -99,10 +99,10 @@ $(document).ready(function() {
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="yesBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>
@@ -112,10 +112,10 @@ $(document).ready(function() {
 		<p class="mb-3">This customer is linked to existing invoices. Would you like to make it inactive?</p>
 		<div class="row">
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="yesInactiveBtn">Yes</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="yesInactiveBtn">Yes</button>
 			</div>
 			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary btn-lg btn-block" id="noBtn">No</button>
+				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
 			</div>
 		</div>
 	</div>

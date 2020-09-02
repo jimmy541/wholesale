@@ -62,7 +62,7 @@ if(isset($_GET['rs'])){
 		<input type="text" class="form-control" placeholder="Phone Number" id="newphnu" name="newphnu" />
 	</div>
 	<?php } ?>	
-	<button type="button" class="btn btn-primary mb-2" id="submitbtngen">Add</button>
+	<button type="button" class="btn btn-primary shadow mb-2" id="submitbtngen">Add</button>
 	<button type="button" class="btn btn-danger mb-2" id="removecurrent">Remove</button>
 </form>
 <hr/>
