@@ -11,6 +11,9 @@
 		-webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 		box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 }
+h2{
+	line-height:80px;
+}
 .fixed-top {
     left: 250px !important;
 	height:65px;
