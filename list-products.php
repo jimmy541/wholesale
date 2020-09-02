@@ -154,7 +154,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		 <input type="submit" class="btn btn-primary shadow mb-2" id="sbbtn" value="Search" />
     
 	</form>
-</div>
+
 
 <table class="row-border" id="gtable">
 <caption>Products</caption>
@@ -211,6 +211,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		?>
 </tbody>
 </table>
+</div>
 <script type="text/javascript">
 /*
 $(document).ready(function() {
