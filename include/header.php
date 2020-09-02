@@ -78,7 +78,7 @@ if(isset($_SESSION['user'])){
  
  ?>
 <div class="main-content" <?php echo $pushLeftStyle; ?>>
- <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+ <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm p-3 mb-5 bg-white rounded">
 	<!-- BRAND 
 	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>-->
 	<!-- toggle button for small screens -->
