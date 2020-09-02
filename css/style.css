@@ -11,6 +11,9 @@
 		-webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 		box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 }
+.row{
+	margin-top:15px;
+}
 h2{
 	line-height:80px;
 }
