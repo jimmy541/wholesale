@@ -830,6 +830,6 @@ background:#f6f8f9;
 	width: calc(100% - 10px) !important;
 	}
 	.fixed-top{
-		left:0;
+		left:0px !important;
 	}
 }
