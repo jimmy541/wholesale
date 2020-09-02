@@ -117,7 +117,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	<button type="button" class="close" aria-label="Close" id="closeIcon">
 		<span aria-hidden="true">&times;</span>
 	</button>
-	<div class="container">
+	<div class="container-fluid">
 		<!-- open row -->
 		<div class="row">
 			<!-- open col -->

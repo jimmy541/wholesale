@@ -121,7 +121,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 ?>
 <div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div><hr>
 <br />
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->

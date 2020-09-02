@@ -39,7 +39,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 	<a class="nav-link" href="list-customers-contacts.php?account='.htmlspecialchars($account).'&token='.htmlspecialchars($token).'">Customer Contacts</a>
 	<a class="nav-link" href="edit-customer-settings.php?account='.htmlspecialchars($account).'&token='.htmlspecialchars($token).'">Customer Settings</a>
 </ul><hr>'; ?>
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->

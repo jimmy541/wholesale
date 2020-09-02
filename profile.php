@@ -97,7 +97,7 @@ if (isset($_SESSION['user'])){
 		
 		
 		<?php echo $uploadmessage; ?>
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 		<!-- open col -->

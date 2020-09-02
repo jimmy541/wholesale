@@ -41,7 +41,7 @@ if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="in
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
 ?>
 <br />
-<div class="container">
+<div class="container-fluid">
 	<!-- open row -->
 	<div class="row">
 		<!-- open col -->

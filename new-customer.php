@@ -87,7 +87,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <ul class="nav">
 	<a class="nav-link" href="list-customers.php">Customers</a>
 </ul><hr>
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->

@@ -116,7 +116,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <?php echo $products_links; ?>
 
 <form action="new-product.php"><button type="submit" class="btn btn-primary btn-lg"">New Product</button></form>
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
@@ -338,7 +338,7 @@ function getValue($link, $clientid, $table, $id){
 </div>
 <input class="form-control" type="hidden" value="<?php echo $roundformat; ?>" id="roundformat" />
 <div class="populateDivGen" id="calculateprice"">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<!-- open col -->
 			<div class="col">

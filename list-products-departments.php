@@ -73,7 +73,7 @@ if(isset($_GET['rs'])){
 	</div>
 </div>
 <div class="populateDivGenEdit" id="populateDivGenEdit">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="mb-3">
 			<input class="form-control" type="text" value="" id="updatedvalue" />
 		</div>

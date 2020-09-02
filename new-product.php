@@ -107,7 +107,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <?php echo $products_links; ?>
 
 <!-- open container -->
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
@@ -285,7 +285,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <div class="populateDiv" id="popBrand"></div>
 <input type="hidden" value="<?php echo $roundformat; ?>" id="roundformat" />
 <div class="populateDivGen" id="calculateprice">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<!-- open col -->
 			<div class="col">

@@ -67,7 +67,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 
 
 
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->

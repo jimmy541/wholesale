@@ -10,7 +10,7 @@ while($stmt->fetch()){
 }
 ?>
 <div class="populateDivOrderCustomer">
-	<div class="container">
+	<div class="container-fluid">
 		<!-- open row -->
 		<div class="row">
 			<!-- open col -->

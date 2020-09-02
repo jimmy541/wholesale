@@ -61,7 +61,7 @@
 	<button type="button" class="close" aria-label="Close" id="closeIcon">
 		<span aria-hidden="true">&times;</span>
 	</button>
-	<div class="container">
+	<div class="container-fluid">
 		<!-- open row -->
 		<div class="row">
 			<!-- open col -->
@@ -105,7 +105,7 @@
 	<button type="button" class="close" aria-label="Close" id="closeIcon">
 		<span aria-hidden="true">&times;</span>
 	</button>
-	<div class="container">
+	<div class="container-fluid">
 		<!-- open row -->
 		<div class="row">
 			<!-- open col -->
