@@ -6,7 +6,6 @@
 }
 .fixed-top {
     left: 250px !important;
-    z-index: 1030;
 }
 .dataTables_length{
 	display:none !important;
