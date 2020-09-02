@@ -110,7 +110,7 @@ $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Company name is required</span>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Updated.</span>';}
 ?>
-<div class="container">
+<div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
