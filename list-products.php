@@ -63,7 +63,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
     New Product
   </a>
  </p>
-<div class="container-fluid" id="form-filter">
+<div class="container-fluid">
 <div class="row">
 <div class="col">
 	<h1>Filter</h1>
