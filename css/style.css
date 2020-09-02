@@ -449,15 +449,15 @@ background:#f6f8f9;
     transform: scale(2);
     opacity: 0; } }
 
-.sidebar-wrapper {
-  
-  height: calc(100% - 56px);
-  max-height: 100%;
-  position: fixed;
-  top: 56px;
-  z-index: 999;
-  -webkit-transition: left .3s ease, width .3s ease;
-  transition: left .3s ease, width .3s ease; }
+	.sidebar-wrapper {
+		position: fixed;
+		top: 0;
+		bottom:0;
+	  
+		 z-index: 10;
+		-webkit-transition: left .3s ease, width .3s ease;
+		transition: left .3s ease, width .3s ease; }
+		padding-top:50px;
   .sidebar-wrapper ul {
     list-style-type: none;
     padding: 0;
@@ -474,6 +474,9 @@ background:#f6f8f9;
     height: calc(100% - 35px);
     overflow-y: auto;
     position: relative; }
+	width:250px;
+	
+	
     .sidebar-wrapper .sidebar-content.desktop {
       overflow-y: hidden; }
   .sidebar-wrapper .badge {
