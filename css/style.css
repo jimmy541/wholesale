@@ -456,9 +456,11 @@ background:#f6f8f9;
 	  
 		 z-index: 10;
 		-webkit-transition: left .3s ease, width .3s ease;
-		transition: left .3s ease, width .3s ease; }
+		transition: left .3s ease, width .3s ease; 
 		padding-top:50px;
 		width:250px;
+		}
+		
   .sidebar-wrapper ul {
     list-style-type: none;
     padding: 0;
