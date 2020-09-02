@@ -829,4 +829,7 @@ background:#f6f8f9;
 	margin-left:10px !important;
 	width: calc(100% - 10px) !important;
 	}
+	.fixed-top{
+		left:0;
+	}
 }
