@@ -2,7 +2,7 @@
 <nav class="sidebar-wrapper">
             <div class="sidebar-content">
                 <!-- sidebar-brand -->
-                <div class="sidebar-item sidebar-brand">
+                <div class="sidebar-item sidebar-brand text-center">
                     <a href="dashboard.php">Dalysoft</a>
                 </div>
                 <!-- sidebar-header  -->
