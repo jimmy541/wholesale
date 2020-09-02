@@ -64,6 +64,8 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
   </a>
  </p>
 <div class="container-fluid" id="form-filter">
+<div class="row">
+<div class="col">
 	<h1>Filter</h1>
 	<form method="get">
 		<div class="form-row">
@@ -154,7 +156,10 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		 <input type="submit" class="btn btn-primary shadow mb-2" id="sbbtn" value="Search" />
     
 	</form>
-
+</div>
+</div>
+<div class="row">
+<div class="col">
 
 <table class="row-border" id="gtable">
 <caption>Products</caption>
@@ -211,6 +216,8 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		?>
 </tbody>
 </table>
+</div>
+</div>
 </div>
 <script type="text/javascript">
 /*
