@@ -1,7 +1,7 @@
 <div class="default-theme sidebar-bg bg1">
 <nav class="sidebar-wrapper">
             <div class="sidebar-content">
-                <!-- sidebar-brand 
+                <!-- sidebar-brand -->
                 <div class="sidebar-item sidebar-brand">
                     <a href="dashboard.php">Dalysoft</a>
                 </div>
