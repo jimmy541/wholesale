@@ -64,9 +64,23 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
        
 
 
+
+<?php
+$pushLeftStyle = '';
+if(isset($_SESSION['user'])){
+	if(getcwd() != '/home/dalysoft/public_html/wholesale/backend'){
+	require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
+	}
+}else{
+	$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
+}
+ 
+ 
+ ?>
+<div class="main-content" <?php echo $pushLeftStyle; ?>>
  <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
-	<!-- BRAND -->
-	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>
+	<!-- BRAND 
+	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>-->
 	<!-- toggle button for small screens -->
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
 		<span class="navbar-toggler-icon"></span>
@@ -111,17 +125,3 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 		</ul>
 	</div>
 </nav>
-<?php
-$pushLeftStyle = '';
-if(isset($_SESSION['user'])){
-	if(getcwd() != '/home/dalysoft/public_html/wholesale/backend'){
-	require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
-	}
-}else{
-	$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
-}
- 
- 
- ?>
-<div class="main-content" <?php echo $pushLeftStyle; ?>>
-
