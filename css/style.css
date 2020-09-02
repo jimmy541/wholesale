@@ -5,6 +5,9 @@
     padding: 90px 12px 65px;
     min-height: 100vh;
 }
+.col{
+		background-color:white;
+}
 .fixed-top {
     left: 250px !important;
 	height:65px;
