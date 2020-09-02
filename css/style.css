@@ -1,7 +1,8 @@
 ﻿.main-content{
-	margin-top:60px;
-	margin-left:280px !important;
-	width: calc(100% - 300px);
+	margin-left: 250px;
+    overflow: hidden;
+    padding: 70px 12px 65px;
+    min-height: 100vh;
 }
 .dataTables_length{
 	display:none !important;
