@@ -80,9 +80,8 @@ if(isset($_SESSION['user'])){
  
  ?>
 <div class="main-content" <?php echo $pushLeftStyle; ?>>
- <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm bg-white">
-	<!-- BRAND 
-	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>-->
+ <nav class="navbar navbar-expand navbar-light bg-light fixed-top shadow-sm bg-white">
+	
 	<!-- toggle button for small screens -->
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
 		<span class="navbar-toggler-icon"></span>
