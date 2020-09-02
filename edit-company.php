@@ -107,8 +107,8 @@ while ($stmt->fetch()) {
 	<option value="WY" '.selectedState($state, "WY").'>Wyoming</option>';
 	
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Company name is required</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Updated.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Company name is required</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Updated.</div>';}
 ?>
 <div class="container-fluid">
 <!-- open row -->
