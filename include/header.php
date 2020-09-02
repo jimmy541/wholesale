@@ -10,7 +10,7 @@
 <link rel="shortcut icon" href="favicon.ico"/>
 <?php/* echo $page_meta; */?>
 <title><?php echo $page_title; ?></title>
-<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/style.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/css/uikit.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.25/js/uikit.min.js"></script>
@@ -20,8 +20,10 @@
 <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
 <link rel="stylesheet" href="https://dalysoft.com/wholesale/css/sidebar-themes.css">
 <script type="text/javascript" src="https://dalysoft.com/wholesale/js/dashboard-page.js"></script>
-<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/populateContainers.css">
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/populateContainers.css">
+<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <?php
@@ -78,7 +80,7 @@ if(isset($_SESSION['user'])){
  
  ?>
 <div class="main-content" <?php echo $pushLeftStyle; ?>>
- <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm p-3 mb-5 bg-white rounded">
+ <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top shadow-sm bg-white">
 	<!-- BRAND 
 	<a href="https://dalysoft.com/wholesale/dashboard.php" class="navbar-brand">DalySoft</a>-->
 	<!-- toggle button for small screens -->
