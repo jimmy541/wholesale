@@ -71,7 +71,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 <div class="container-fluid">
 <div class="row collapse" id="filter-box">
 <div class="col">
-	<h1>Filter</h1>
+	<h4>Filter</h4>
 	<form method="get">
 		<div class="form-row">
 			<div class="col-md-3 mb-3">
