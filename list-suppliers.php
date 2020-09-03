@@ -30,7 +30,7 @@ if(isset($_GET['rs'])){
 <div class="container-fluid">
 	<div class="row mb-2">
 		<div class="col">
-			<form action="new-supplier.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Supplier</button></form>
+			<form action="new-supplier.php"><button type="submit" class="btn btn-primary shadow float-right">New Supplier</button></form>
 		</div>
 	</div>
 	<div class="row">
