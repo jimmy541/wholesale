@@ -116,82 +116,86 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-	<form  id="editcompanyform" action="php-scripts/process-edit-company.php" method="post" autocomplete="off">
-	<input autocomplete="false" name="hidden" type="text" style="display:none;">
-	<?php echo $responseMsg; ?>
-						
-			<div class="mb-3">
-				<label for="">Client ID:</label>
-				<input class="form-control"  type="text" id="client" name="client" placeholder="<?php echo $clientid; ?>" readonly/>
-			</div>
-			<div class="mb-3">
-				<label for="">Company Name:*</label>
-				<input class="form-control"  type="text" id="company_name" name="company_name" value="<?php echo $company_name; ?>"/>
-			</div>
-			
-			
-			<hr class="mb-4">
-			<h4 class="mb-3">Address</h4>
-			
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Address 1</label>
-					<input class="form-control"  type="text" id="address1" name="address1" value="<?php echo $address1; ?>"/>
+	<div class="card">
+		<div class="card-body">
+			<form  id="editcompanyform" action="php-scripts/process-edit-company.php" method="post" autocomplete="off">
+		<input autocomplete="false" name="hidden" type="text" style="display:none;">
+		<?php echo $responseMsg; ?>
+							
+				<div class="mb-3">
+					<label for="">Client ID:</label>
+					<input class="form-control"  type="text" id="client" name="client" placeholder="<?php echo $clientid; ?>" readonly/>
 				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Address 2:</label>
-					<input class="form-control" type="text" id="address2" name="address2" value="<?php echo $address2; ?>"/>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="">City:</label>
-					<input class="form-control" type="text" id="city" name="city" value="<?php echo $city; ?>"/>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">State:</label>
-					<select class="form-control select_state" id="state" name="state" ><?php echo $statesChoices1; ?></select>
-				</div>
-				<div class="col-md-3 mb-3">
-					<label for="">Zip Code:</label>
-					<input class="form-control" type="text" id="zip_code" name="zip_code" value="<?php echo $zip_code; ?>"/>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Phone Number 1:</label>
-					<input class="form-control" type="text" id="phone_number1" name="phone_number1"  value="<?php echo $phone1; ?>"/>
+				<div class="mb-3">
+					<label for="">Company Name:*</label>
+					<input class="form-control"  type="text" id="company_name" name="company_name" value="<?php echo $company_name; ?>"/>
 				</div>
 				
-				<div class="col-md-6 mb-3">
-					<label for="">Phone Number 2:</label>
-					<input class="form-control" type="text" id="phone_number2" name="phone_number2"  value="<?php echo $phone2; ?>"/>
+				
+				<hr class="mb-4">
+				<h4 class="mb-3">Address</h4>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Address 1</label>
+						<input class="form-control"  type="text" id="address1" name="address1" value="<?php echo $address1; ?>"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Address 2:</label>
+						<input class="form-control" type="text" id="address2" name="address2" value="<?php echo $address2; ?>"/>
+					</div>
 				</div>
 				
-			</div>
-			
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Fax:</label>
-					<input class="form-control" type="text" id="fax" name="fax" value="<?php echo $fax; ?>"/>
+				<div class="row">
+					<div class="col-md-5 mb-3">
+						<label for="">City:</label>
+						<input class="form-control" type="text" id="city" name="city" value="<?php echo $city; ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">State:</label>
+						<select class="form-control select_state" id="state" name="state" ><?php echo $statesChoices1; ?></select>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="">Zip Code:</label>
+						<input class="form-control" type="text" id="zip_code" name="zip_code" value="<?php echo $zip_code; ?>"/>
+					</div>
 				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Email:</label>
-					<input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>"/>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Phone Number 1:</label>
+						<input class="form-control" type="text" id="phone_number1" name="phone_number1"  value="<?php echo $phone1; ?>"/>
+					</div>
+					
+					<div class="col-md-6 mb-3">
+						<label for="">Phone Number 2:</label>
+						<input class="form-control" type="text" id="phone_number2" name="phone_number2"  value="<?php echo $phone2; ?>"/>
+					</div>
+					
 				</div>
-			</div>
-			<div class="mb-3">
-				<label for="">Website:</label>
-				<input class="form-control" type="text" id="website" name="website" value="<?php echo $website; ?>"/>
-			</div>
-			
-			<hr class="mb-4">
-			<div class="mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
-			</div>
-	</form>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Fax:</label>
+						<input class="form-control" type="text" id="fax" name="fax" value="<?php echo $fax; ?>"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Email:</label>
+						<input class="form-control" type="text" id="email" name="email" value="<?php echo $email; ?>"/>
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="">Website:</label>
+					<input class="form-control" type="text" id="website" name="website" value="<?php echo $website; ?>"/>
+				</div>
+				
+				<hr class="mb-4">
+				<div class="mb-3">
+					<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
+				</div>
+		</form>
+		</div>
+	</div>
 	<!-- close col -->
 		</div>
 	<!-- close row -->
