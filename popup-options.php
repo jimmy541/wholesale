@@ -47,29 +47,36 @@ if(isset($_GET['rs'])){
   <span aria-hidden="true">&times;</span>
 </button>
 <div class="container-fluid">
-	<div class="row mb-2">
+	<div class="row mb-1">
 		<div class="col">
-			<form class="form-inline">
-				<div class="form-group mb-2">
-					<label for="newDesc" class="sr-only">Add New:</label>
-					<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
-				</div>
-				
-				<?php if($table=='supplier'){?>
-				<div class="form-group mb-2">
-					<label for="" class="sr-only">Account:</label>
-					<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
-				</div>
-				<div class="form-group mb-2">
-					<label for="" class="sr-only">Contact:</label>
-					<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
-				</div>
-				<?php } ?>	
-				<button type="button" class="btn btn-primary shadow mb-1 btn-sm" id="submitbtngen">Add</button>
-				<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
-			</form>
+			<label for="newDesc" class="sr-only">Add New:</label>
+			<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
 		</div>
 	</div>
+		
+	<?php if($table=='supplier'){?>
+	<div class="row mb-1">
+		<div class="col">
+			<label for="" class="sr-only">Account:</label>
+			<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
+		</div>
+	</div>
+	<div class="row mb-1">
+		<div class="col">
+			
+			<label for="" class="sr-only">Contact:</label>
+			<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
+		</div>
+	</div>
+	<?php } ?>					
+	<div class="row mb-2">
+		<div class="col">
+		<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" id="submitbtngen">Add</button>
+		<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
+			
+		</div>
+	</div>
+	
 	<div class="row">
 		<div class="col">
 			<table class="row-border compact " id="gtable">
