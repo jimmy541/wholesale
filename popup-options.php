@@ -49,7 +49,7 @@ if(isset($_GET['rs'])){
 <form class="form-inline">
 	<div class="form-group mb-2">
 		<label for="newDesc" class="sr-only">Add New:</label>
-		<input type="text" class="form-control" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
+		<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
 	</div>
 	
 	<?php if($table=='supplier'){?>
@@ -62,10 +62,9 @@ if(isset($_GET['rs'])){
 		<input type="text" class="form-control" placeholder="Phone Number" id="newphnu" name="newphnu" />
 	</div>
 	<?php } ?>	
-	<button type="button" class="btn btn-primary shadow mb-2" id="submitbtngen">Add</button>
-	<button type="button" class="btn btn-danger mb-2" id="removecurrent">Remove</button>
+	<button type="button" class="btn btn-primary shadow mb-1" id="submitbtngen">Add</button>
+	<button type="button" class="btn btn-danger mb-1" id="removecurrent">Remove</button>
 </form>
-<hr/>
 <table class="row-border compact " id="gtable">
 <!--<caption><?php echo $title; ?></caption>-->
 	<thead>
@@ -114,6 +113,7 @@ $(document).ready(function() {
     }
   ]
 	} );
+	$('#gtable').parent().addClass('table-responsive');
 } );
 
 </script>
