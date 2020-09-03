@@ -70,8 +70,8 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 	</div>
 	<div class="row mb-2">
 		<div class="col">
-		 <a class="btn btn-primary shadow float-right" href="new-product.php" role="button">New Product</a>  
-		<button type="button" class="btn btn-info shadow float-right" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
+		 <a class="btn btn-primary shadow float-right ml-1" href="new-product.php" role="button">New Product</a>  
+		<button type="button" class="btn btn-info shadow float-right ml-1" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
 		</div>
 		
 	</div>
