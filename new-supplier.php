@@ -69,7 +69,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 <div class="container-fluid">
 <div class="row mb-2">
 <div class="col">
-<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div><hr>
+<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div>
 </div>
 </div>
 <!-- open row -->
