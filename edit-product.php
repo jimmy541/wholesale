@@ -132,16 +132,18 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row mb-2">
 	<!-- open col -->
 	<div class="col col-md-4 order-md-2">
-	<h4>Image</h4>
+	
+		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
+		<h4>Image</h4>
 
 		<?php echo $uploaderror; ?>
-		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
+		<div class="card-body">
 			<?php
 			$row=mysqli_fetch_array(mysqli_query($link, "SELECT `image-id` FROM `grocery_products` WHERE `uniqueid` = '$uniqueid'"));
 			if ($row['image-id'] != ''){
 				echo '<img class="card-img-top" src="pics/'.$row['image-id'].'" />';
 			}?>
-			<div class="card-body">
+			
 				<p class="card-text text-center">Click to change</p>
 			</div>
 		</div>
