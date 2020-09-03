@@ -5,6 +5,12 @@
     padding: 90px 12px 65px;
     min-height: 100vh;
 }
+.page-header{
+	padding-top: .75rem;
+    padding-bottom: .75rem;
+    color: #6c757d;
+    text-align: left;
+}
 .col{
 		background-color:white;
 		border-radius: .25rem!important;

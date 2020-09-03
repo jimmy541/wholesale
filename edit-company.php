@@ -1,9 +1,10 @@
-<?php $page_title = 'Edit Company';
+<?php $page_title = 'Company Information';
 $more_script = '<script type="text/javascript" src="js/copy-address.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script><script type="text/javascript" src="js/form-validation.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 
 $company_name = '';
