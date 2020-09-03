@@ -47,14 +47,9 @@ if(isset($_GET['rs'])){
   <span aria-hidden="true">&times;</span>
 </button>
 <div class="container-fluid">
-	<div class="row mb-1">
-		<div class="col">
-			<button type="button" class="btn btn-info shadow mb-1 btn-sm mr-1" data-toggle="collapse" data-target="#new-general-form" aria-expanded="false" aria-controls="new-general-form"><i class="fas fa-plus"></i></button>
-		</div>
-	</div>
 	<div class="row">
 		<div class="col">
-			<div class="collapse" id="new-general-form">
+			
 				<div class="row mb-1">
 					<div class="col">
 						<label for="newDesc" class="sr-only">Add New:</label>
@@ -84,7 +79,7 @@ if(isset($_GET['rs'])){
 						
 					</div>
 				</div>
-			</div>
+			
 		</div>
 	</div>
 	<div class="row">
