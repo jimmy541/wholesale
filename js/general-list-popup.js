@@ -33,18 +33,18 @@ $(document).ready(function(){
 		$(document).on('click','i',function(){
 			clickedRow = $(this).attr('id');
 			var str = $(this).attr('id');
-			if(str.length == 0){
-				str = 'doesnotexist';
-			}
-			if (str.indexOf("delete") >= 0){
-				$( "#populateDivGenCustDel" ).show();
-				id = $(this).attr('id').replace('delete', '');
-				$('#gray-background').show();
-			}
-			if (str.indexOf("inactive") >= 0){
-				$("#populateDivGenCustInactive" ).show();
-				id = $(this).attr('id').replace('inactive', '');
-				$('#gray-background').show();
+			if(typeof str != 'undefined'){
+			
+				if (str.indexOf("delete") >= 0){
+					$( "#populateDivGenCustDel" ).show();
+					id = $(this).attr('id').replace('delete', '');
+					$('#gray-background').show();
+				}
+				if (str.indexOf("inactive") >= 0){
+					$("#populateDivGenCustInactive" ).show();
+					id = $(this).attr('id').replace('inactive', '');
+					$('#gray-background').show();
+				}
 			}
 			
 		});
@@ -53,9 +53,8 @@ $(document).ready(function(){
 		$(document).on('click','button',function(){
 			clickedRow = $(this).attr('id');
 			var str = $(this).attr('id');
-			if(str.length == 0){
-				str = 'doesnotexist';
-			}
+			if(typeof str != 'undefined'){
+			
 			
 			if (str.indexOf("changestatus") >= 0){
 				clickedRow = $('#invoicehash').val();
@@ -64,7 +63,7 @@ $(document).ready(function(){
 				id = $(this).attr('id').replace('changestatus', '');
 				$('#gray-background').show();
 			}
-			
+		}
 			
 		});
 		
