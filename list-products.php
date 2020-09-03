@@ -63,6 +63,10 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
   <a class="btn btn-primary shadow" href="new-product.php" role="button">
     New Product
   </a>
+  
+  <i class="fas fa-filter float-right"></i>
+
+
  </p>
 <div class="container-fluid">
 <div class="row">
