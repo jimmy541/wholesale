@@ -17,7 +17,7 @@
     box-sizing: border-box;
 }
 .populateDiv{
-	width:700px;
+	width:375px;
 	height:720px;
 }
 .populateDivGen{
@@ -30,17 +30,17 @@
 	height:457px;
 }
 .populateDivPayment{
-	width:448px;
+	width:375px;
 	height:454px;
 	z-index: 13;
 }
 .populateDivSend{
-	width:448px;
+	width:375px;
 	height:555px;
 	z-index: 13;
 }
 .populateDivPaymentHis{
-	width:625px;
+	width:375px;
 	height:454px;
 }
 .populateDivGenDelete{
