@@ -121,7 +121,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
-	<div class="col-md-4 order-md-2 mb-4">
+	<div class="col col-md-4 order-md-2 mb-4">
 	<h4 class="mb-3">Image</h4>
 		<span class="edit-profile-error-message"><?php echo $uploaderror; ?></span>
 		<div class="card" style="width:18rem;cursor:pointer;" id="change-profile-image" style="cursor:pointer">
@@ -135,7 +135,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			</div>
 		</div>
 	</div>
-	<div class="col-md-8 order-md-1">	
+	<div class=" col col-md-8 order-md-1">	
 	<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
 	<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo $uniqueid; ?>">
 	<?php echo $responseMsg; ?>
