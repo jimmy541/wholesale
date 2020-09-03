@@ -10,12 +10,15 @@
     text-align: left;
 	font-size: 1.5em;
 }
-/*.col{
+.card{
 		background-color:white;
 		border-radius: .25rem!important;
 		-webkit-box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
 		box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
-		margin-right:15px;
+		
+}
+/*.col{
+		
 }*/
 /*
 .row{
