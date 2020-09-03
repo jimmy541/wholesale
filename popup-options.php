@@ -47,7 +47,7 @@ if(isset($_GET['rs'])){
   <span aria-hidden="true">&times;</span>
 </button>
 <div class="container-fluid">
-	<div class="row">
+	<div class="row no-gutters">
 		<div class="col">
 			
 				<div class="row mb-1">
