@@ -55,11 +55,11 @@ if(isset($_GET['rs'])){
 	<?php if($table=='supplier'){?>
 	<div class="form-group mb-2">
 		<label for="" class="sr-only">Account:</label>
-		<input type="text" class="form-control" placeholder="Account Number" id="newaccnum" name="newaccnum" />
+		<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
 	</div>
 	<div class="form-group mb-2">
 		<label for="" class="sr-only">Contact:</label>
-		<input type="text" class="form-control" placeholder="Phone Number" id="newphnu" name="newphnu" />
+		<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
 	</div>
 	<?php } ?>	
 	<button type="button" class="btn btn-primary shadow mb-1" id="submitbtngen">Add</button>
