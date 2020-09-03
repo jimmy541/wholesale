@@ -10,6 +10,8 @@
     padding-bottom: .75rem;
     color: #6c757d;
     text-align: left;
+	font-size: 1.5em;
+    margin: .5em 0 .75em;
 }
 .col{
 		background-color:white;
