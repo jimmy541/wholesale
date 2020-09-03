@@ -42,30 +42,37 @@ if(isset($_GET['rs'])){
 	}
 }
  ?>
-<!--<i class="closebtn fas fa-window-close" id="closeBtn"></i>-->
+
 <button type="button" class="close" aria-label="Close" id="closeBtn">
   <span aria-hidden="true">&times;</span>
 </button>
-<form class="form-inline">
-	<div class="form-group mb-2">
-		<label for="newDesc" class="sr-only">Add New:</label>
-		<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
+<div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col">
+			<form class="form-inline">
+				<div class="form-group mb-2">
+					<label for="newDesc" class="sr-only">Add New:</label>
+					<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
+				</div>
+				
+				<?php if($table=='supplier'){?>
+				<div class="form-group mb-2">
+					<label for="" class="sr-only">Account:</label>
+					<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
+				</div>
+				<div class="form-group mb-2">
+					<label for="" class="sr-only">Contact:</label>
+					<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
+				</div>
+				<?php } ?>	
+				<button type="button" class="btn btn-primary shadow mb-1 btn-sm" id="submitbtngen">Add</button>
+				<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
+			</form>
+		</div>
 	</div>
-	
-	<?php if($table=='supplier'){?>
-	<div class="form-group mb-2">
-		<label for="" class="sr-only">Account:</label>
-		<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
-	</div>
-	<div class="form-group mb-2">
-		<label for="" class="sr-only">Contact:</label>
-		<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
-	</div>
-	<?php } ?>	
-	<button type="button" class="btn btn-primary shadow mb-1 btn-sm" id="submitbtngen">Add</button>
-	<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
-</form>
-<table class="row-border compact " id="gtable">
+	<div class="row">
+		<div class="col">
+			<table class="row-border compact " id="gtable">
 <!--<caption><?php echo $title; ?></caption>-->
 	<thead>
 		<tr>
@@ -97,7 +104,9 @@ if(isset($_GET['rs'])){
 		?>
 </tbody>
 </table>
-
+		</div>
+	</div>
+</div>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').dataTable( {
