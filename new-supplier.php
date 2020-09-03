@@ -1,8 +1,9 @@
-<?php $page_title = 'Add Supplier';?>
+<?php $page_title = 'Add New Supplier';?>
 <?php $more_script = '<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript" src="js/copy-address.js"></script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 $statesChoices = '
 	<option value=""></option>
@@ -62,88 +63,95 @@ $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
-<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div><hr>
-<br />
 
 
 
 <div class="container-fluid">
+<div class="row mb-2">
+<div class="col">
+<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div><hr>
+</div>
+</div>
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-	<?php echo $responseMsg; ?>
-	<h1>Add New Supplier</h1><br>
-	<form  action="php-scripts/process-new-supplier.php" method="post" autocomplete="off">
-	<input autocomplete="false" name="hidden" type="text" style="display:none;">
+		<div class="card">
+		<div class="card-body">
+		<?php echo $responseMsg; ?>
 		
-			<h4>About</h4>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Account Number:</label>
-					<input class="form-control"  type="text" id="account_number" name="account_number" autocomplete="off"/>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Name: *</label>
-					<input class="form-control"  type="text" id="name" name="name"/>
-				</div>
-			</div>
+		<form  action="php-scripts/process-new-supplier.php" method="post" autocomplete="off">
+		<input autocomplete="false" name="hidden" type="text" style="display:none;">
 			
-			<hr class="mb-4">
-			<h4>Contact Info</h4>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Address 1</label>
-					<input class="form-control"  type="text" id="address1" name="address1"/>
+				<h4>About</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Account Number:</label>
+						<input class="form-control"  type="text" id="account_number" name="account_number" autocomplete="off"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Name: *</label>
+						<input class="form-control"  type="text" id="name" name="name"/>
+					</div>
 				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Address 2:</label>
-					<input class="form-control" type="text" id="address2" name="address2"/>
+				
+				<hr class="mb-4">
+				<h4>Contact Info</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Address 1</label>
+						<input class="form-control"  type="text" id="address1" name="address1"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Address 2:</label>
+						<input class="form-control" type="text" id="address2" name="address2"/>
+					</div>
 				</div>
-			</div>
+				
+				<div class="row">
+					<div class="col-md-5 mb-3">
+						<label for="">City:</label>
+						<input class="form-control" type="text" id="city" name="city"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">State:</label>
+						<select class="form-control" class="select_state" id="state" name="state"><?php echo $statesChoices; ?></select>
+					</div>
+					<div class="col-md-3 mb-3">
+						<label for="">Zip Code:</label>
+						<input class="form-control" type="text" id="zipcode" name="zipcode"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5 mb-3">
+						<label for="">Phone Number:</label>
+						<input class="form-control" type="text" id="phone_number" name="phone_number" />
+					</div>
+					<div class="col-md-2 mb-3">
+						<label for="">Extension</label>
+						<input class="form-control" type="text" id="ext" name="ext" placeholder="Ext."/>
+					</div>
+					<div class="col-md-5 mb-3">
+						<label for="">Fax:</label>
+						<input class="form-control" type="text" id="fax" name="fax"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3"><label for="">Email:</label><input class="form-control" type="text" id="email" name="email"/></div>
+					<div class="col-md-6 mb-3"><label for="">Website: </label><input class="form-control"  type="text" id="website" name="website"/></div>
+				</div>
+				
+				<hr class="mb-4">
+				<div class="mb-3">
+					<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
+				</div>
 			
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="">City:</label>
-					<input class="form-control" type="text" id="city" name="city"/>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">State:</label>
-					<select class="form-control" class="select_state" id="state" name="state"><?php echo $statesChoices; ?></select>
-				</div>
-				<div class="col-md-3 mb-3">
-					<label for="">Zip Code:</label>
-					<input class="form-control" type="text" id="zipcode" name="zipcode"/>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-5 mb-3">
-					<label for="">Phone Number:</label>
-					<input class="form-control" type="text" id="phone_number" name="phone_number" />
-				</div>
-				<div class="col-md-2 mb-3">
-					<label for="">Extension</label>
-					<input class="form-control" type="text" id="ext" name="ext" placeholder="Ext."/>
-				</div>
-				<div class="col-md-5 mb-3">
-					<label for="">Fax:</label>
-					<input class="form-control" type="text" id="fax" name="fax"/>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 mb-3"><label for="">Email:</label><input class="form-control" type="text" id="email" name="email"/></div>
-				<div class="col-md-6 mb-3"><label for="">Website: </label><input class="form-control"  type="text" id="website" name="website"/></div>
-			</div>
 			
-			<hr class="mb-4">
-			<div class="mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
-			</div>
-		
-		
 
-	<span style="color:red; font-size:20px !important;"><?php /*echo $errorMessage;*/ ?></span>
-	</form>
+		<span style="color:red; font-size:20px !important;"><?php /*echo $errorMessage;*/ ?></span>
+		</form>
+		</div>
+		</div>
 	<!-- close col -->
 		</div>
 	<!-- close row -->
