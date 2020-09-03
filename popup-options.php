@@ -62,8 +62,8 @@ if(isset($_GET['rs'])){
 		<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
 	</div>
 	<?php } ?>	
-	<button type="button" class="btn btn-primary shadow mb-1" id="submitbtngen">Add</button>
-	<button type="button" class="btn btn-danger mb-1" id="removecurrent">Remove</button>
+	<button type="button" class="btn btn-primary shadow mb-1 btn-sm" id="submitbtngen">Add</button>
+	<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
 </form>
 <table class="row-border compact " id="gtable">
 <!--<caption><?php echo $title; ?></caption>-->
