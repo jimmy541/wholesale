@@ -118,9 +118,10 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-	
-		<?php echo $responseMsg; ?>
-		<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
+		<div class="card">
+			<div class="card-body">
+				<?php echo $responseMsg; ?>
+				<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
 		<input autocomplete="false" name="hidden" type="text" style="display:none;">
 			
 				<h4>About</h4>
@@ -281,6 +282,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 		<input type="hidden" id="poprequester" value="" />
 		</form>
+			</div>
+		</div>
 		<!-- close col -->
 		</div>
 	<!-- close row -->
