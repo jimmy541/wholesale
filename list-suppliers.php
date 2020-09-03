@@ -38,7 +38,6 @@ if(isset($_GET['rs'])){
 			<div class="card">
 				<div class="card-body">
 <table class="row-border" id="gtable">
-<caption>Suppliers</caption>
 	<thead>
 		<tr>
 			<th>Supplier Name</th>
