@@ -1,9 +1,10 @@
-<?php $page_title = 'Add Product';
+<?php $page_title = 'Add New Product';
 $more_script = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script><script type="text/javascript" src="js/popup-requesting-page.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 function getSelectItemsSimple($link, $tbl, $clientid){
 	$options = '<option></option>';
@@ -112,7 +113,6 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-		<h1>Add new product</h1>
 	
 		<?php echo $responseMsg; ?>
 		<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
