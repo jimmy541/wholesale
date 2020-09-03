@@ -25,12 +25,7 @@
 h2{
 	line-height:80px;
 }
-.filter-icon{
-	
-	color: #22b8cf;
-    text-shadow: 1px 1px 1px #ccc;
-    font-size: 1.5em;
-}
+
 .fixed-top {
     left: 250px !important;
 	height:65px;
