@@ -116,7 +116,6 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-	<h2>Company Information</h2><br />
 	<form  id="editcompanyform" action="php-scripts/process-edit-company.php" method="post" autocomplete="off">
 	<input autocomplete="false" name="hidden" type="text" style="display:none;">
 	<?php echo $responseMsg; ?>
