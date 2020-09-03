@@ -8,7 +8,6 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 $table = 'sub_department';
 ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>
-<?php echo $products_links; ?>
 <?php
 if(isset($_GET['as'])){
 	if($_GET['as'] == '1'){
