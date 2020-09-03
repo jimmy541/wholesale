@@ -30,8 +30,8 @@ while ($stmt->fetch()) {
 }
 
 if ($found == 'true'){
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
 <?php echo '<ul class="nav">
 	<a class="nav-link" href="list-customers.php">Customers</a>
@@ -50,7 +50,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 	<input type="hidden" name="account" value="<?php echo htmlspecialchars($account); ?>" />
 	<input type="hidden" name="token" value="<?php echo htmlspecialchars($token); ?>" />
 		
-			<h4 class="mb-3">General</h4>
+			<h4>General</h4>
 			
 			
 			<div class="custom-control custom-switch">

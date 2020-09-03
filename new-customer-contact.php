@@ -27,8 +27,8 @@ while ($stmt->fetch()) {
 }
 
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
 <?php echo '<ul class="nav">
 	<a class="nav-link" href="list-customers.php">Customers</a>
@@ -49,7 +49,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 	<input type="hidden" value="<?php echo htmlspecialchars($account); ?>" name="account_number"/>
 	<input type="hidden" value="<?php echo htmlspecialchars($token); ?>" name="token"/>
 		
-			<h4 class="mb-3">General Info</h4>
+			<h4>General Info</h4>
 			
 			<div class="row">
 				<div class="col-md-6 mb-3">
@@ -62,7 +62,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</div>
 			</div>	
 				<hr class="mb-4">
-				<h4 class="mb-3">Contact Info</h4>
+				<h4>Contact Info</h4>
 				
 			<div class="row">
 				<div class="col-md-5 mb-3">

@@ -52,8 +52,8 @@ while ($stmt->fetch()) {
 }	
 	
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Role and Full Name are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Saved.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Role and Full Name are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Saved.</div>';}
 ?>
 <?php echo '<ul class="nav">
 	<a class="nav-link" href="list-customers.php">Customers</a>
@@ -75,7 +75,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 	<input type="hidden" id="token" name="token" value="<?php echo htmlspecialchars($token); ?>"/>
 	<?php echo $responseMsg; ?>
 		
-			<h4 class="mb-3">General Info</h4>
+			<h4>General Info</h4>
 			
 			<div class="custom-control custom-switch">
 					<input class="custom-control-input" type="checkbox" id="active" name="active" <?php if($active=='yes'){echo 'checked';} ?>>
@@ -94,7 +94,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			</div>
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Contact Info</h4>
+				<h4>Contact Info</h4>
 				
 			<div class="row">	
 				<div class="col-md-5 mb-3">

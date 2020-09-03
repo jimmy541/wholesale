@@ -23,7 +23,7 @@ if (isset($_SESSION['user'])){
 		
 			if ($_GET['sent'] == '1'){
 			
-			$message = '<br /><span style="font-size:20px; padding:20px; color:green;">Check message; (spam or junk)</span>';
+			$message = '<br /><div class="alert alert-success" role="alert">Check message; (spam or junk)</div>';
 			
 			}
 		}

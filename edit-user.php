@@ -37,8 +37,8 @@ if(isset($_GET['user']) && !empty($_GET['user'])){
 }
 if ($found == 'true'){	
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
 <br />
 <div class="container-fluid">
@@ -52,7 +52,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			<input class="form-control" autocomplete="false" name="hidden" type="text" style="display:none;">
 			<input class="form-control" type="hidden" value="<?php echo htmlspecialchars($user_code) ?>" name="usercode" />
 				
-					<h4 class="mb-3">Login Info</h4>
+					<h4>Login Info</h4>
 					
 					<div class="row">
 						<div class="col-md-6 mb-3">
@@ -70,7 +70,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 						</div>
 					</div>
 					<hr class="mb-4">
-					<h4 class="mb-3">About</h4>
+					<h4>About</h4>
 					
 					<div class="row">
 						<div class="col-md-6 mb-3">
@@ -97,7 +97,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 						</div>
 					</div>
 					<hr class="mb-4">
-			<h4 class="mb-3">Settings</h4>
+			<h4>Settings</h4>
 			<div class="form-group">
 			<div class="form-check">
 			  <input class="form-check-input" type="checkbox" value="" id="allow_limited_override" name="allow_limited_override" <?php if($allow_limited_override == '1'){echo 'checked';} if($user_role == 'Administrator'){echo 'disabled';}  ?>>

@@ -22,8 +22,8 @@ function getToken($link, $clientid, $vlu){
 	$stmt->fetch();
 	return htmlspecialchars($vl);
 }
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Please fill out required items</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Saved.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Please fill out required items</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Saved.</div>';}
 ?>
 <br />
 <div>

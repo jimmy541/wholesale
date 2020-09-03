@@ -28,17 +28,17 @@ if(isset($_GET['reid']) && $_GET['reid']=='trae3bad2dca266a568ecbc82e698c8'){
 <?php
 if(isset($_GET['as'])){
 	if($_GET['as'] == '1'){
-		echo '<span class="info-message-green">Successfully Added</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Added</div>';
 	}
 }
 if(isset($_GET['es'])){
 	if($_GET['es'] == '1'){
-		echo '<span class="info-message-green">Successfully Updated</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Updated</div>';
 	}
 }
 if(isset($_GET['rs'])){
 	if($_GET['rs'] == '1'){
-		echo '<span class="info-message-green">Successfully Removed</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Removed</div>';
 	}
 }
  ?>

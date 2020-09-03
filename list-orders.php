@@ -38,17 +38,17 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 
 if(isset($_GET['as'])){
 	if($_GET['as'] == '1'){
-		echo '<span class="gMessage">Successfully Added</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Added</div>';
 	}
 }
 if(isset($_GET['es'])){
 	if($_GET['es'] == '1'){
-		echo '<span class="gMessage">Successfully Updated</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Updated</div>';
 	}
 }
 if(isset($_GET['rs'])){
 	if($_GET['rs'] == '1'){
-		echo '<span class="gMessage">Successfully Removed</span>';
+		echo '<div class="alert alert-success" role="alert">Successfully Removed</div>';
 	}
 }
  ?>

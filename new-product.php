@@ -102,8 +102,8 @@ if(isset($_GET['clone']) && !empty($_GET['clone'])){
 	
 	
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
 <?php echo $products_links; ?>
 
@@ -118,7 +118,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 		<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
 		<input autocomplete="false" name="hidden" type="text" style="display:none;">
 			
-				<h4 class="mb-3">About</h4>
+				<h4>About</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="cert_code">Item Code: *</label>
@@ -141,7 +141,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</div>
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Product Info</h4>
+				<h4>Product Info</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 						<label for="case-barcode">Case Code:</label>
@@ -179,7 +179,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Section</h4>
+				<h4>Section</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 						<label for="department">Department:</label>
@@ -196,7 +196,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</div>
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Supplier Info</h4>
+				<h4>Supplier Info</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="supplier_code">Supplier Item Code:</label>
@@ -209,14 +209,14 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 				</div>
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Inventory</h4>
+				<h4>Inventory</h4>
 				<div class="mb-3">
 					<label for="QtyOnHand">Quantity on Hand:<span class="ex55">(cases)</span></label>
 					<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand"/>
 				</div>
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Price Allowance</h4>
+				<h4>Price Allowance</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="lowest_allowed">Lowest Allowed</label>
@@ -231,7 +231,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 							
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Other</h4>
+				<h4>Other</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="package">Package:</label>
@@ -300,7 +300,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 					</div>
 				</div>
 				<hr class="mb-4">
-				<h4 class="mb-3">Case Retail</h4>
+				<h4>Case Retail</h4>
 				<div class="mb-3">
 						<label>Margin Desired:<span class="ex55">Ex.: Enter 35 for 35%</span></label>
 						<div class="input-group">

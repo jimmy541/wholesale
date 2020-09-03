@@ -8,8 +8,8 @@ $more_script = '<script type="text/javascript" src="js/form-validation.js"></scr
 
 	
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
 <br />
 <div class="container-fluid">
@@ -23,7 +23,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 <form  id="newuserform" action="php-scripts/process-new-user.php" method="post">
 
 	
-		<h4 class="mb-3">Login Info</h4>
+		<h4>Login Info</h4>
 		<div class="row">
 			<div class="col-md-6 mb-3">
 				<label for="">Email:*</label>
@@ -36,7 +36,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 		</div>
 		
 			<hr class="mb-4">
-			<h4 class="mb-3">About</h4>
+			<h4>About</h4>
 			
 		<div class="row">
 			<div class="col-md-6 mb-3">
@@ -64,7 +64,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class
 			</div>
 		</div>
 		<hr class="mb-4">
-		<h4 class="mb-3">Settings</h4>
+		<h4>Settings</h4>
 	<div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="allow_limited_override" name="allow_limited_override" disabled>

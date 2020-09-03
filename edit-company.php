@@ -121,7 +121,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 			<form  id="editcompanyform" action="php-scripts/process-edit-company.php" method="post" autocomplete="off">
 		<input autocomplete="false" name="hidden" type="text" style="display:none;">
 		<?php echo $responseMsg; ?>
-				<h4 class="mb-3">Client:</h4>			
+				<h4>Client:</h4>			
 				<div class="mb-3">
 					<label for="">Client ID:</label>
 					<input class="form-control"  type="text" id="client" name="client" placeholder="<?php echo $clientid; ?>" readonly/>
@@ -133,7 +133,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				
 				<hr class="mb-4">
-				<h4 class="mb-3">Address</h4>
+				<h4>Address</h4>
 				
 				<div class="row">
 					<div class="col-md-6 mb-3">
