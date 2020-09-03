@@ -119,17 +119,17 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 
 <div class="container-fluid">
 <!-- open row -->
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<?php echo $products_links; ?>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<form action="new-product.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Product</button></form>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row mb-2">
 	<!-- open col -->
 	<div class="col col-md-4 order-md-2 mb-4">
 	<h4 class="mb-3">Image</h4>
