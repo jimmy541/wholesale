@@ -7,6 +7,7 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 $table = 'packages';
 ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php echo $products_links; ?>
 <?php
 if(isset($_GET['as'])){
@@ -25,6 +26,14 @@ if(isset($_GET['rs'])){
 	}
 }
 ?>
+<div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col">
+			<?php echo $products_links; ?>
+		</div>
+	</div>
+<div class="row">
+	<div class="col">
 <form class="form-inline" action="php-scripts/process-general.php" method="POST" autocomplete="off">
 <div class="form-group mx-sm-3 mb-2">
 	<label for="newDesc" class="sr-only">Add New:</label> <input class="form-control" type="text" id="newDesc" name="newDesc" placeholder="Add New" />
@@ -33,9 +42,15 @@ if(isset($_GET['rs'])){
 <button class="btn btn-primary shadow mb-2" type="submit">Add</button>
 <input type="hidden" id="subject" name="subject" value="pkg" />
 </form>
+</div>
+</div>
+<div class="row">
+	<div class="col">
+		<div class="card">
+			<div class="card-body">
 
 <table class="row-border" id="gtable">
-<caption>Packages</caption>
+
 	<thead>
 		<tr>
 			<th>Description</th>
@@ -58,6 +73,10 @@ if(isset($_GET['rs'])){
 		?>
 </tbody>
 </table>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="populateDivGenDelete" id="populateDivGen">
 	<div class="container text-center">
 		<p class="mb-3">Are you sure you want to delete the selected record?</p>
