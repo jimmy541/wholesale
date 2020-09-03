@@ -49,7 +49,7 @@ if(isset($_GET['rs'])){
 <div class="container-fluid">
 	<div class="row mb-1">
 		<div class="col">
-			<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" data-toggle="collapse" data-target="#new-general-form" aria-expanded="false" aria-controls="new-general-form"><i class="fas fa-plus"></i></button>
+			<button type="button" class="btn btn-info shadow mb-1 btn-sm mr-1" data-toggle="collapse" data-target="#new-general-form" aria-expanded="false" aria-controls="new-general-form"><i class="fas fa-plus"></i></button>
 		</div>
 	</div>
 	<div class="row">
