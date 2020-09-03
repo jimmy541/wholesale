@@ -75,7 +75,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		</div>
 		
 	</div>
-	<div class="row collapse" id="filter-box">
+	<div class="row mb-4 collapse" id="filter-box">
 	<div class="col">
 		<div class="card">
 			<div class="card-body">
