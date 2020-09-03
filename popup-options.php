@@ -49,34 +49,44 @@ if(isset($_GET['rs'])){
 <div class="container-fluid">
 	<div class="row mb-1">
 		<div class="col">
-			<label for="newDesc" class="sr-only">Add New:</label>
-			<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
+			<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" data-toggle="collapse" data-target="#new-general-form" aria-expanded="false" aria-controls="new-general-form"><i class="fas fa-plus"></i></button>
 		</div>
 	</div>
-		
-	<?php if($table=='supplier'){?>
-	<div class="row mb-1">
+	<div class="row">
 		<div class="col">
-			<label for="" class="sr-only">Account:</label>
-			<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
+			<div class="collapse" id="new-general-form">
+				<div class="row mb-1">
+					<div class="col">
+						<label for="newDesc" class="sr-only">Add New:</label>
+						<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
+					</div>
+				</div>
+					
+				<?php if($table=='supplier'){?>
+				<div class="row mb-1">
+					<div class="col">
+						<label for="" class="sr-only">Account:</label>
+						<input type="text" class="form-control form-control-sm" placeholder="Account Number" id="newaccnum" name="newaccnum" />
+					</div>
+				</div>
+				<div class="row mb-1">
+					<div class="col">
+						
+						<label for="" class="sr-only">Contact:</label>
+						<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
+					</div>
+				</div>
+				<?php } ?>					
+				<div class="row mb-2">
+					<div class="col">
+					<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" id="submitbtngen">Add</button>
+					<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
+						
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	<div class="row mb-1">
-		<div class="col">
-			
-			<label for="" class="sr-only">Contact:</label>
-			<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
-		</div>
-	</div>
-	<?php } ?>					
-	<div class="row mb-2">
-		<div class="col">
-		<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" id="submitbtngen">Add</button>
-		<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
-			
-		</div>
-	</div>
-	
 	<div class="row">
 		<div class="col">
 			<table class="row-border compact " id="gtable">
