@@ -96,13 +96,13 @@ if ($found == 'true'){?>
 		$uploaderror = '';
 		
 			if ($_GET['uploaderror'] == '1'){
-			$uploaderror = 'Invalid image format'; //File is not an image
+			$uploaderror = '<div class="alert alert-danger" role="alert">Invalid image format</div>'; //File is not an image
 			}
 			if ($_GET['uploaderror'] == '2'){
-			$uploaderror = 'Image size cannot exceed: 1 MB '; //File is too large
+			$uploaderror = '<div class="alert alert-danger" role="alert">Image size cannot exceed: 1 MB </div>'; //File is too large
 			}
 			if ($_GET['uploaderror'] == '3'){
-			$uploaderror = 'Image upload failed.'; //error uploading the file
+			$uploaderror = '<div class="alert alert-danger" role="alert">Image upload failed.</div>'; //error uploading the file
 			}
 		
 		}
@@ -134,7 +134,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="col col-md-4 order-md-2">
 	<h4>Image</h4>
 
-		<div class="alert alert-danger" role="alert"><?php echo $uploaderror; ?></div>
+		<?php echo $uploaderror; ?>
 		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
 			<?php
 			$row=mysqli_fetch_array(mysqli_query($link, "SELECT `image-id` FROM `grocery_products` WHERE `uniqueid` = '$uniqueid'"));
