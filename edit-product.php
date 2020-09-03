@@ -133,8 +133,9 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<!-- open col -->
 	<div class="col col-md-4 order-md-2">
 	<h4>Image</h4>
-		<span class="edit-profile-error-message"><?php echo $uploaderror; ?></span>
-		<div class="card" style="width:18rem;cursor:pointer;" id="change-profile-image" style="cursor:pointer">
+
+		<div class="alert alert-danger" role="alert"><?php echo $uploaderror; ?></div>
+		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
 			<?php
 			$row=mysqli_fetch_array(mysqli_query($link, "SELECT `image-id` FROM `grocery_products` WHERE `uniqueid` = '$uniqueid'"));
 			if ($row['image-id'] != ''){
@@ -145,168 +146,172 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 			</div>
 		</div>
 	</div>
-	<div class="col col-md-8 order-md-1">	
-	<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
-	<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo $uniqueid; ?>">
-	<?php echo $responseMsg; ?>
-		
-			<h4>About</h4>
-			<div class="custom-control custom-switch">
-				<input class="custom-control-input" type="checkbox" id="active" name="active" <?php if($checked=='yes'){echo 'checked';} ?>>
-				<label class="custom-control-label" for="active">Active</label>
-			</div><br>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Item Code: *</label><input class="form-control"  type="text" id="cert_code" name="cert_code" value="<?php echo htmlspecialchars($cert_code); ?>" autocomplete="off" required/>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">UPC:</label><input class="form-control"  type="text" id="upc" name="upc" value="<?php echo htmlspecialchars($upc); ?>" autocomplete="off"/>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Brand:</label>
-					<select class="form-control"  id="brand" name="brand"><?php echo getValue($link, $clientid, 'brands', $brand); ?></select>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Description: *</label><input class="form-control"  type="text" id="description" name="description" value="<?php echo htmlspecialchars($description); ?>"/>
-				</div>
-			</div>
+	<div class="col col-md-8 order-md-1">
+		<div class="card">
+			<div class="card-body">
+				<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
+		<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo $uniqueid; ?>">
+		<?php echo $responseMsg; ?>
 			
-			<hr class="mb-4">
-			<h4>Product Info</h4>
-			<div class="row">
-				<div class="col-md-4 mb-3">
+				<h4>About</h4>
+				<div class="custom-control custom-switch">
+					<input class="custom-control-input" type="checkbox" id="active" name="active" <?php if($checked=='yes'){echo 'checked';} ?>>
+					<label class="custom-control-label" for="active">Active</label>
+				</div><br>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Item Code: *</label><input class="form-control"  type="text" id="cert_code" name="cert_code" value="<?php echo htmlspecialchars($cert_code); ?>" autocomplete="off" required/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">UPC:</label><input class="form-control"  type="text" id="upc" name="upc" value="<?php echo htmlspecialchars($upc); ?>" autocomplete="off"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Brand:</label>
+						<select class="form-control"  id="brand" name="brand"><?php echo getValue($link, $clientid, 'brands', $brand); ?></select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Description: *</label><input class="form-control"  type="text" id="description" name="description" value="<?php echo htmlspecialchars($description); ?>"/>
+					</div>
+				</div>
 				
-					<label for="">Case Code:</label>
-					<input class="form-control"  type="text" id="case-barcode" name="case-barcode" value="<?php echo htmlspecialchars($case_barcode); ?>"/>
+				<hr class="mb-4">
+				<h4>Product Info</h4>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+					
+						<label for="">Case Code:</label>
+						<input class="form-control"  type="text" id="case-barcode" name="case-barcode" value="<?php echo htmlspecialchars($case_barcode); ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">Size: <span class="ex55">Number Only</span></label>
+						<input class="form-control"  type="number" min="0" step="0.01" id="size_amount" name="size_amount" value="<?php echo htmlspecialchars($size_amount); ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="" >Size Unit:</label>
+						<select class="form-control" id="size_unit" name="size_unit" ><?php echo getValue($link, $clientid, 'weight_units', $size_unit); ?></select>
+					</div>
 				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">Size: <span class="ex55">Number Only</span></label>
-					<input class="form-control"  type="number" min="0" step="0.01" id="size_amount" name="size_amount" value="<?php echo htmlspecialchars($size_amount); ?>"/>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="" >Size Unit:</label>
-					<select class="form-control" id="size_unit" name="size_unit" ><?php echo getValue($link, $clientid, 'weight_units', $size_unit); ?></select>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4 mb-3">
-					<label for="">Pack:</label>
-					<input class="form-control" type="number" min="0" id="Pack" name="Pack" value="<?php echo htmlspecialchars($Pack); ?>"/>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="" >Cost:</label>
-					<input class="form-control" type="number" min="0" step="0.01" id="case_cost" name="case_cost" value="<?php echo htmlspecialchars($case_cost); ?>"/>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">Retail Price:</label>
-					<div class="input-group">
-						<input class="form-control" type="number" min="0" step="0.01" id="case_price" name="case_price" value="<?php echo htmlspecialchars($case_price); ?>"/>
-						<div class="input-group-append">
-							<button type="button" class="btn btn-primary shadow btn-sm" id="calccaseprice">Calculate</button>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<label for="">Pack:</label>
+						<input class="form-control" type="number" min="0" id="Pack" name="Pack" value="<?php echo htmlspecialchars($Pack); ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="" >Cost:</label>
+						<input class="form-control" type="number" min="0" step="0.01" id="case_cost" name="case_cost" value="<?php echo htmlspecialchars($case_cost); ?>"/>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">Retail Price:</label>
+						<div class="input-group">
+							<input class="form-control" type="number" min="0" step="0.01" id="case_price" name="case_price" value="<?php echo htmlspecialchars($case_price); ?>"/>
+							<div class="input-group-append">
+								<button type="button" class="btn btn-primary shadow btn-sm" id="calccaseprice">Calculate</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			
-			
-			<hr class="mb-4">		
-			<h4>Section</h4>
-			<div class="row">
-				<div class="col-md-4 mb-3">
-					<label for="">Department:</label>
-					<select class="form-control"  id="department" name="department" ><?php echo getValue($link, $clientid, 'department', $department); ?></select>
+				
+				
+				<hr class="mb-4">		
+				<h4>Section</h4>
+				<div class="row">
+					<div class="col-md-4 mb-3">
+						<label for="">Department:</label>
+						<select class="form-control"  id="department" name="department" ><?php echo getValue($link, $clientid, 'department', $department); ?></select>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">Sub Department:</label>
+						<select class="form-control"   id="sub_department" name="sub_department"><?php echo getValue($link, $clientid, 'sub_department', $sub_department); ?></select>
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="">Category:</label>
+						<select class="form-control"   id="category" name="category"><?php echo getValue($link, $clientid, 'category', $category); ?></select>
+					</div>
 				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">Sub Department:</label>
-					<select class="form-control"   id="sub_department" name="sub_department"><?php echo getValue($link, $clientid, 'sub_department', $sub_department); ?></select>
-				</div>
-				<div class="col-md-4 mb-3">
-					<label for="">Category:</label>
-					<select class="form-control"   id="category" name="category"><?php echo getValue($link, $clientid, 'category', $category); ?></select>
-				</div>
-			</div>
-			
-			<hr class="mb-4">
-			<h4>Supplier Info</h4>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Supplier Item Code:</label>
-					<input class="form-control"  type="text" id="supplier_code" name="supplier_code" value="<?php echo htmlspecialchars($supplier_code); ?>"/>
-				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Supplier Name:</label>
-					<select class="form-control" id="supplier" name="supplier"><?php echo getValue($link, $clientid, 'supplier', $supplier); ?></select>
-				</div>
-			</div>
-			<hr class="mb-4">
-			<h4>Inventory</h4>
-			<div class="mb-3">
-				<label for="">Quantity on Hand:</label>
-				<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand" value="<?php echo htmlspecialchars($QtyOnHand); ?>"/>
-			</div>
-			
-			<hr class="mb-4">
-				<="mb-3">Price Allowance</h4>
+				
+				<hr class="mb-4">
+				<h4>Supplier Info</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
-						<label for="lowest_allowed">Lowest Allowed</label>
-						<input class="form-control" type="number" step="0.01" min="0" id="lowest_allowed" name="lowest_allowed" value="<?php echo htmlspecialchars($lowest_allowed); ?>"/>
+						<label for="">Supplier Item Code:</label>
+						<input class="form-control"  type="text" id="supplier_code" name="supplier_code" value="<?php echo htmlspecialchars($supplier_code); ?>"/>
 					</div>
 					<div class="col-md-6 mb-3">
-						<label for="highest_allowed">Highest Allowed</label>
-						<input class="form-control" type="number" step="0.01" min="0" id="highest_allowed" name="highest_allowed" value="<?php echo htmlspecialchars($highest_allowed); ?>"/>
+						<label for="">Supplier Name:</label>
+						<select class="form-control" id="supplier" name="supplier"><?php echo getValue($link, $clientid, 'supplier', $supplier); ?></select>
 					</div>
 				</div>
-			
-			<hr class="mb-4">
-			<="mb-3">Other</h4>
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Package:</label>
-					<select class="form-control" id="package" name="package"><?php echo getValue($link, $clientid, 'packages', $package); ?>
-					</select>
+				<hr class="mb-4">
+				<h4>Inventory</h4>
+				<div class="mb-3">
+					<label for="">Quantity on Hand:</label>
+					<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand" value="<?php echo htmlspecialchars($QtyOnHand); ?>"/>
 				</div>
-				<div class="col-md-6 mb-3">
-					<label for="">Keywords:<span class="ex55">(seperate by space)</span></label>
-					<input class="form-control" type="text" id="memo" name="memo" value="<?php echo htmlspecialchars($memo); ?>"/>
-				</div>
-			</div>
 				
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="">Case Weight:</label>
-					<input class="form-control" type="number" min="0" step="0.01" id="weight_case" name="weight_case" value="<?php echo htmlspecialchars($weight_case); ?>"/>
+				<hr class="mb-4">
+					<="mb-3">Price Allowance</h4>
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="lowest_allowed">Lowest Allowed</label>
+							<input class="form-control" type="number" step="0.01" min="0" id="lowest_allowed" name="lowest_allowed" value="<?php echo htmlspecialchars($lowest_allowed); ?>"/>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="highest_allowed">Highest Allowed</label>
+							<input class="form-control" type="number" step="0.01" min="0" id="highest_allowed" name="highest_allowed" value="<?php echo htmlspecialchars($highest_allowed); ?>"/>
+						</div>
+					</div>
+				
+				<hr class="mb-4">
+				<="mb-3">Other</h4>
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Package:</label>
+						<select class="form-control" id="package" name="package"><?php echo getValue($link, $clientid, 'packages', $package); ?>
+						</select>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="">Keywords:<span class="ex55">(seperate by space)</span></label>
+						<input class="form-control" type="text" id="memo" name="memo" value="<?php echo htmlspecialchars($memo); ?>"/>
+					</div>
 				</div>
-				<div class="col-md-6 mb-3">
-					<label for="" >Weight Unit:</label>
-					<select class="form-control" id="weight_unit" name="weight_unit">
-						<option></option>
-						<option <?php if($weight_unit == 'LB'){echo 'selected';} ?>>LB</option>
-						<option <?php if($weight_unit == 'KG'){echo 'selected';} ?>>KG</option>
-					</select>
+					
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="">Case Weight:</label>
+						<input class="form-control" type="number" min="0" step="0.01" id="weight_case" name="weight_case" value="<?php echo htmlspecialchars($weight_case); ?>"/>
+					</div>
+					<div class="col-md-6 mb-3">
+						<label for="" >Weight Unit:</label>
+						<select class="form-control" id="weight_unit" name="weight_unit">
+							<option></option>
+							<option <?php if($weight_unit == 'LB'){echo 'selected';} ?>>LB</option>
+							<option <?php if($weight_unit == 'KG'){echo 'selected';} ?>>KG</option>
+						</select>
+					</div>
 				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-6 mb-3">
-					<label for="" >Tax:</label>
-					<select class="form-control" id="tax_id" name="tax_id"><?php echo getValue($link, $clientid, 'product_tax_types', $tax_id); ?>
-					</select>
+				
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="" >Tax:</label>
+						<select class="form-control" id="tax_id" name="tax_id"><?php echo getValue($link, $clientid, 'product_tax_types', $tax_id); ?>
+						</select>
+					</div>
 				</div>
+				
+				
+				<hr class="mb-4">
+				<div class="mb-3">
+					<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
+				</div>
+				
+		<input type="hidden" id="poprequester" value="" />
+		</form>
 			</div>
-			
-			
-			<hr class="mb-4">
-			<div class="mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
-			</div>
-			
-	<input type="hidden" id="poprequester" value="" />
-	</form>
-	<!-- close col -->
 		</div>
+	<!-- close col -->
+	</div>
 	<!-- close row -->
 	</div>
 <!-- close container -->
