@@ -105,10 +105,15 @@ $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
-<?php echo $products_links; ?>
+
 
 <!-- open container -->
 <div class="container-fluid">
+<div class="row mb-2">
+		<div class="col">
+			<?php echo $products_links; ?>
+		</div>
+	</div>
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
