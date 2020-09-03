@@ -3,6 +3,7 @@ $more_script = '<link rel="stylesheet" type="text/css" href="css/populateContain
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script><script type="text/javascript" src="js/popup-requesting-page.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
 include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php");
+echo '<h3 class="page-header">'.$page_title.'</h3>';
 
 $roundformat = '4';
 	$query = "SELECT `setting_value` FROM `settings` WHERE `clientid` = '$clientid' AND `setting_name` = 'round_number_format'";
