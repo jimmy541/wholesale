@@ -3,6 +3,7 @@ $more_script = '<script type="text/javascript" src="js/copy-address.js"></script
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 
 $found = 'false';
@@ -119,14 +120,19 @@ $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Supplier name is required</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
-<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div><hr>
-<br />
 <div class="container-fluid">
+<div class="row mb-2">
+<div class="col">
+<div class="ab-hed"><a href="list-suppliers.php">Suppliers</a></div>
+</div>
+</div>
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
 		<div class="col">
-			<h1>Edit Supplier</h1><br>
+		<div class="card">
+		<div class="card-body">
+			
 			<form  action="php-scripts/process-edit-supplier.php" method="post" autocomplete="off">
 			<input type="hidden" id="token" name="token" autocomplete="off" value="<?php echo $token; ?>"/>
 			<input autocomplete="false" name="hidden" type="text" style="display:none;">
@@ -182,6 +188,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				
 			</form>
+			</div>
+			</div>
 	<!-- close col -->
 		</div>
 	<!-- close row -->
