@@ -280,6 +280,7 @@ $(document).ready(function() {
             } );
         }
     });
+	$('#gtable').parent().addClass('table-responsive');
 	
 } );
 
