@@ -111,14 +111,24 @@ if ($found == 'true'){?>
 
 <?php
 $responseMsg = '';
-if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<span class="info-message-red">Item code and description fields are required.</span>';}
-if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<span class="info-message-green">Successfully Added.</span>';}
+if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
+if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
-<?php echo $products_links; ?>
 
-<form action="new-product.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Product</button></form>
+
+
 <div class="container-fluid">
 <!-- open row -->
+	<div class="row">
+		<div class="col">
+			<?php echo $products_links; ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<form action="new-product.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Product</button></form>
+		</div>
+	</div>
 	<div class="row">
 	<!-- open col -->
 	<div class="col col-md-4 order-md-2 mb-4">
