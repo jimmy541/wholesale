@@ -123,7 +123,9 @@ if(isset($_GET['rs'])){
 $(document).ready(function() {
     $('#gtable').dataTable( {
 		paging: false,
-		scrollY:        400,
+		scrollY:        '50vh',
+        scrollCollapse: true,
+        paging:         false
 		deferRender:    true,
 		scroller:       true,
 		 "pageLength": 50,
