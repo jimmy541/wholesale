@@ -64,7 +64,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
     New Product
   </a>
   
- <button type="button" class="btn btn-info shadow float-right" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter id="filter-icon"></i></button>
+ <button type="button" class="btn btn-info shadow float-right" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter></i></button>
 
 
  </p>
