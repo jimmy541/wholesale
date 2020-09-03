@@ -58,17 +58,23 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 	}
 }
  ?>
-<?php echo $products_links; ?>
-<p>
-  <a class="btn btn-primary shadow" href="new-product.php" role="button">
-    New Product
-  </a>
-  
- <button type="button" class="btn btn-info shadow float-right" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
 
 
- </p>
+ 
+
 <div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col">
+			<?php echo $products_links; ?>
+		</div>
+	</div>
+	<div class="row mb-2">
+		<div class="col">
+		 <a class="btn btn-primary shadow float-right" href="new-product.php" role="button">New Product</a>  
+		<button type="button" class="btn btn-info shadow float-right" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
+		</div>
+		
+	</div>
 	<div class="row collapse" id="filter-box">
 	<div class="col">
 		<div class="card">
