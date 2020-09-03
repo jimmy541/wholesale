@@ -5,6 +5,7 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">
 <script type="text/javascript" src="js/general-list-popup.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
+echo '<h3 class="page-header">'.$page_title.'</h3>';
 
 ?>
 <br/>
@@ -26,8 +27,16 @@ if(isset($_GET['rs'])){
 	}
 }
  ?>
-
-<form action="new-supplier.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Supplier</button></form>
+<div class="container-fluid">
+	<div class="row mb-2">
+		<div class="col">
+			<form action="new-supplier.php"><button type="submit" class="btn btn-primary shadow btn-lg"">New Supplier</button></form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
 <table class="row-border" id="gtable">
 <caption>Suppliers</caption>
 	<thead>
@@ -56,6 +65,11 @@ if(isset($_GET['rs'])){
 		?>
 	</tbody>
 </table>
+				</div>
+			</div>
+		</div>
+	</div>
+<div>
 <input type="hidden" id="subject" name="subject" value="supp" />
 <div class="populateDivGenDelete" id="populateDivGenCustDel">
 	<div class="container text-center">
@@ -98,6 +112,7 @@ $(document).ready(function() {
             } );
         }
     });
+	$('#gtable').parent().addClass('table-responsive');
  
 } );
 </script>
