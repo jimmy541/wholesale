@@ -9,7 +9,7 @@ $products_links = '
 	<a class="nav-link"  href="list-products-packages.php" title="Packages">Packages</a>
 	<a class="nav-link" href="list-products-weight-units.php" title="Weight Units">Weight Units</a>
 	<a class="nav-link" href="list-products-tax-type.php" title="Weight Units">Tax Types</a>
-</ul><hr>';
+</ul>';
 ?>
 
 
