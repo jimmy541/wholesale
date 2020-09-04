@@ -40,7 +40,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-sm float-right ml-5">New Customer</button></form>
+			<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-sm float-right ml-1">New Customer</button></form>
 			<?php echo $active_link; ?>
 		</div>
 	</div>
