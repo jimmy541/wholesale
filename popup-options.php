@@ -125,7 +125,7 @@ $(document).ready(function() {
 		paging: false,
 		scrollY:        '50vh',
         scrollCollapse: true,
-        paging:         false
+        paging:         false,
 		deferRender:    true,
 		scroller:       true,
 		 "pageLength": 50,
