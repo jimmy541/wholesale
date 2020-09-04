@@ -101,8 +101,7 @@ if(isset($_GET['rs'])){
 			
 		<?php }else{ ?>
 			<th>Supplier Name</th>
-			<th>Account Number</th>
-			<th>Phone Number</th>
+			
 		<?php } ?>
 		</tr>
 	</thead>
@@ -118,7 +117,7 @@ if(isset($_GET['rs'])){
 			$query = "SELECT * FROM `supplier` WHERE `clientid` = '$clientid'";
 			$result = mysqli_query($link, $query); 
 			while($row = mysqli_fetch_array($result)) { 
-				echo '<tr><td data-label="Supplier Name"><span class="descPopValue" id="descPopValue'.$row['id'].'">'.htmlspecialchars($row["name"]).'</span></td><td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td><td data-label="Phone Number">'.$row['phone_number'].'</td></tr>'; 
+				echo '<tr><td data-label="Supplier Name"><span class="descPopValue" id="descPopValue'.$row['id'].'">'.htmlspecialchars($row["name"]).'</span></td></tr>'; 
 			}
 		}
 		?>
