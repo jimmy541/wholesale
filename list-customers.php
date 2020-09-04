@@ -6,7 +6,7 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 <script type="text/javascript" src="js/general-list-popup.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
-
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 ?>
 
 <?php
@@ -46,7 +46,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 <input type="hidden" id="prior3months" value="<?php echo date('Y-m-d', strtotime("-3 months")); ?>" />
 <table class="row-border" id="gtable">
 
-<caption>Customers<?php echo $active_link; ?></caption> 
+<caption><?php echo $active_link; ?></caption> 
 	<thead>
 		<tr>
 			
@@ -91,6 +91,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').DataTable();
+	$('#gtable').parent().addClass('table-responsive');
 } );
 </script>
 <input type="hidden" id="subject" name="subject" value="cust" />
