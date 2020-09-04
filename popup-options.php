@@ -49,14 +49,14 @@ if(isset($_GET['rs'])){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add New</button>
+			<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#add-form" aria-expanded="false" aria-controls="add-form">Add New</button>
 			<button type="button" class="btn btn-link mb-1" id="removecurrent">Remove</button>
 			
 		</div>
 	</div>
 	<div class="row">
 		<div class="col">
-			<div class="add-form">
+			<div class="collapse" id="add-form">
 				<div class="row mb-1">
 					<div class="col">
 						<label for="newDesc" class="sr-only">Add New:</label>
