@@ -49,7 +49,14 @@ if(isset($_GET['rs'])){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
+			<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add New</button>
+			<button type="button" class="btn btn-link mb-1" id="removecurrent">Remove</button>
 			
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="add-form">
 				<div class="row mb-1">
 					<div class="col">
 						<label for="newDesc" class="sr-only">Add New:</label>
@@ -79,6 +86,7 @@ if(isset($_GET['rs'])){
 						
 					</div>
 				</div>
+			</div>
 			
 		</div>
 	</div>
@@ -119,12 +127,12 @@ if(isset($_GET['rs'])){
 		</div>
 	</div>
 </div>
-<button type="button" class="btn btn-danger mb-1 btn-sm float-left" id="removecurrent">Remove</button>
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').dataTable( {
 		paging: false,
-		scrollY:        '27vh',
+		scrollY:        '32vh',
 		"bInfo" : false,
         scrollCollapse: true,
         paging:         false,
