@@ -26,10 +26,10 @@ if(isset($_GET['rs'])){
 	}
 }
 $active_query = " AND `active` = 'yes'";
-$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php" method="get"><input type="hidden" name="active" value="1" /><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Inactive</button></form>';
+$active_link = '<form style="display:inline-block;" action="list-customers.php" method="get"><input type="hidden" name="active" value="1" /><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Inactive</button></form>';
 if(isset($_GET['active']) && !empty($_GET['active'])){
 	$active_query = " AND `active` = 'no'";
-	$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php"><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Active</button></form>';
+	$active_link = '<form style="display:inline-block;" action="list-customers.php"><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Active</button></form>';
 }
  ?>
 <input type="hidden" id="customerhash" value="" />
