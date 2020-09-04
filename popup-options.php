@@ -42,15 +42,12 @@ if(isset($_GET['rs'])){
 	}
 }
  ?>
-
+<button type="button" class="close" aria-label="Close" id="closeBtn">
+			<span aria-hidden="true">&times;</span>
+</button>
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-11">
-		<button type="button" class="close" aria-label="Close" id="closeBtn">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		</div>
 		<div class="col">
 			
 				<div class="row mb-1">
@@ -127,7 +124,8 @@ if(isset($_GET['rs'])){
 $(document).ready(function() {
     $('#gtable').dataTable( {
 		paging: false,
-		scrollY:        '30vh',
+		scrollY:        '27vh',
+		"bInfo" : false,
         scrollCollapse: true,
         paging:         false,
 		deferRender:    true,
