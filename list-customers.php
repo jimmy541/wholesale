@@ -26,68 +26,88 @@ if(isset($_GET['rs'])){
 	}
 }
 $active_query = " AND `active` = 'yes'";
-$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php" method="get"><input type="hidden" name="active" value="1" /><button type="submit" class="btn btn-secondary btn-sm">Show Inactive</button></form>';
+$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php" method="get"><input type="hidden" name="active" value="1" /><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Inactive</button></form>';
 if(isset($_GET['active']) && !empty($_GET['active'])){
 	$active_query = " AND `active` = 'no'";
-	$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php"><button type="submit" class="btn btn-secondary btn-sm">Show Active</button></form>';
+	$active_link = '<form style="display:inline-block; margin-left:5px;" action="list-customers.php"><button type="submit" class="btn btn-secondary btn-sm shadow float-right">Show Active</button></form>';
 }
  ?>
-<ul class="invoice-top-buttons">
-	<li id="edit-customer"><i class="fas fa-edit"></i>Edit</li>
-	<li id="view-customer-invoices"><i class="fas fa-file-invoice"></i>Invoices</li>
-	<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
-	<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
-	<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
-</ul>
-<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-lg">New Customer</button></form>
 <input type="hidden" id="customerhash" value="" />
 <input type="hidden" id="customerid" value="" />
 <input type="hidden" id="todaydate" value="<?php echo date('Y-m-d'); ?>" />
-<input type="hidden" id="prior3months" value="<?php echo date('Y-m-d', strtotime("-3 months")); ?>" />
-<table class="row-border" id="gtable">
+<input type="hidden" id="prior3months" value="<?php echo date('Y-m-d', strtotime("-3 months")); ?>" /> 
 
-<caption><?php echo $active_link; ?></caption> 
-	<thead>
-		<tr>
-			
-			<th style="display:none;">Account ID</th>
-			<th style="display:none;">Customer ID</th>
-			<th>Account Number</th>
-			<th>Business Name</th>
-			<th>State</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-			
-			<th style="display:none;">Account ID</th>
-			<th style="display:none;">Customer ID</th>
-			<th>Account Number</th>
-			<th>Business Name</th>
-			<th></th>
-			<th></th>
-		</tr>
-	</tfoot>
-	<tbody>
-		<?php
-		$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query";
-		$result = mysqli_query($link, $query); 
-		while($row = mysqli_fetch_array($result)) {
-			$del_id_type = 'delete';
-			if($row['has_orders'] == 'yes'){$del_id_type = 'inactive';}
-			echo '<tr>
-			<td style="display:none;">'.htmlspecialchars($row["account_number"]).'</td>
-			<td data-label="Customer ID" style="display:none;">'.htmlspecialchars($row["hashed_id"]).'</td>
-			<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
-			<td data-label="Business Name">'.htmlspecialchars($row["business_name"]).'</td>
-			<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>
-			<td><span class="action-icons"><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>
-			</tr>'; 
-		}
-		?>
-</tbody>
-</table>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-sm float-right">New Customer</button></form>
+			<?php echo $active_link; ?>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<ul class="invoice-top-buttons">
+				<li id="edit-customer"><i class="fas fa-edit"></i>Edit</li>
+				<li id="view-customer-invoices"><i class="fas fa-file-invoice"></i>Invoices</li>
+				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
+				<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
+				<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<table class="row-border" id="gtable">
+						<thead>
+							<tr>
+								
+								<th style="display:none;">Account ID</th>
+								<th style="display:none;">Customer ID</th>
+								<th>Account Number</th>
+								<th>Business Name</th>
+								<th>State</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+								
+								<th style="display:none;">Account ID</th>
+								<th style="display:none;">Customer ID</th>
+								<th>Account Number</th>
+								<th>Business Name</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</tfoot>
+						<tbody>
+							<?php
+							$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query";
+							$result = mysqli_query($link, $query); 
+							while($row = mysqli_fetch_array($result)) {
+								$del_id_type = 'delete';
+								if($row['has_orders'] == 'yes'){$del_id_type = 'inactive';}
+								echo '<tr>
+								<td style="display:none;">'.htmlspecialchars($row["account_number"]).'</td>
+								<td data-label="Customer ID" style="display:none;">'.htmlspecialchars($row["hashed_id"]).'</td>
+								<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
+								<td data-label="Business Name">'.htmlspecialchars($row["business_name"]).'</td>
+								<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>
+								<td><span class="action-icons"><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>
+								</tr>'; 
+							}
+							?>
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').DataTable();
