@@ -6,9 +6,9 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 <script type="text/javascript" src="js/general-list-popup.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
-<h3 class="page-header"><?php echo $page_title; ?></h3>
-?>
 
+?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 if(isset($_GET['as'])){
 	if($_GET['as'] == '1'){
