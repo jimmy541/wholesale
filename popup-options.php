@@ -46,7 +46,11 @@ if(isset($_GET['rs'])){
 
 <div class="container-fluid">
 	<div class="row">
-		
+		<div class="col-11">
+		<button type="button" class="close" aria-label="Close" id="closeBtn">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		</div>
 		<div class="col">
 			
 				<div class="row mb-1">
@@ -74,7 +78,7 @@ if(isset($_GET['rs'])){
 				<div class="row mb-2">
 					<div class="col">
 					<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" id="submitbtngen">Add</button>
-					<button type="button" class="btn btn-danger mb-1 btn-sm" id="removecurrent">Remove</button>
+					
 						
 					</div>
 				</div>
@@ -118,6 +122,7 @@ if(isset($_GET['rs'])){
 		</div>
 	</div>
 </div>
+<button type="button" class="btn btn-danger mb-1 btn-sm float-left" id="removecurrent">Remove</button>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').dataTable( {
