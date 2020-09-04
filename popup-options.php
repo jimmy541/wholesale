@@ -50,7 +50,7 @@ if(isset($_GET['rs'])){
 	<div class="row">
 		<div class="col">
 			<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#add-form" aria-expanded="false" aria-controls="add-form">Add New</button>
-			<button type="button" class="btn btn-link mb-1" id="removecurrent">Remove</button>
+			<button  class="btn btn-link mb-1" id="removecurrent">Remove</button>
 			
 		</div>
 	</div>
