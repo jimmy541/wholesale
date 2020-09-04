@@ -4,6 +4,7 @@ $more_script = '<script type="text/javascript" src="js/copy-address.js"></script
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script><script type="text/javascript" src="js/form-validation.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 
 $business_name = '';
@@ -149,17 +150,23 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 ?>
 <?php echo '<ul class="nav">
 	<a class="nav-link" href="list-customers.php">Customers</a>
-	<a class="nav-link" href="#">Edit Customer</a>
 	<a class="nav-link" href="list-customers-contacts.php?account='.htmlspecialchars($account_number).'&token='.htmlspecialchars($token).'">Customer Contacts</a>
 	<a class="nav-link" href="edit-customer-settings.php?account='.htmlspecialchars($account_number).'&token='.htmlspecialchars($token).'">Customer Settings</a>
 </ul><hr>'; ?>
 
 <div class="container-fluid">
-<!-- open row -->
+
 	<div class="row">
-	<!-- open col -->
+		<div class="col">
+			<h5>Business: <?php echo htmlspecialchars($account_number).', '.htmlspecialchars($business_name); ?></h5>
+		</div>
+	</div>
+
+	<div class="row">
+	
 	<div class="col">
-	<h2><?php echo htmlspecialchars($account_number).', '.htmlspecialchars($business_name); ?></h2><br />
+		<div class="card">
+			<div class="card-body">
 	<form  id="newcustomerform" action="php-scripts/process-edit-customer.php" method="post" autocomplete="off">
 	<input autocomplete="false" name="hidden" type="text" style="display:none;">
 	<input type="hidden" id="account_number" name="account_number" value="<?php echo htmlspecialchars($account_number); ?>"/>
@@ -315,11 +322,12 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 
 
 	</form>
-	<!-- close col -->
 		</div>
-	<!-- close row -->
+		</div>
+		</div>
+
 	</div>
-<!-- close container -->
+
 </div>
 <?php }else{
 	echo 'oops!!! this page does not exist.';
