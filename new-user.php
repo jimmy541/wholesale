@@ -3,6 +3,7 @@ $more_script = '<script type="text/javascript" src="js/form-validation.js"></scr
 //?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 	
 
@@ -11,13 +12,14 @@ $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Item code and description fields are required.</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
 ?>
-<br />
+
 <div class="container-fluid">
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
 	<div class="col">
-<h1>Add new user</h1>
+<div class="card">
+			<div class="card-body>
 <?php echo $responseMsg; ?>
 
 <form  id="newuserform" action="php-scripts/process-new-user.php" method="post">
@@ -93,6 +95,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 
 <span style="color:red; font-size:20px;"><?php /*echo $errorMessage;*/ ?></span>
 </form>
+</div>
+</div>
 <!-- close col -->
 		</div>
 <!-- close row -->

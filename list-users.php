@@ -74,6 +74,7 @@ if(isset($_GET['rs'])){
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').DataTable();
+	$('#gtable').parent().addClass('table-responsive');
 } );
 </script>
 <!-- The following div closes the main body div -->
