@@ -50,7 +50,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 					</div>
 				</div>
 			</div>
-		<div>
+		</div>
 	</div>
 
 
