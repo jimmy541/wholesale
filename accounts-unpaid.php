@@ -21,7 +21,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 	
 
 <div class="container-fluid">
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
