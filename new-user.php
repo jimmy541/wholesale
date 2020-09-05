@@ -19,7 +19,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<!-- open col -->
 	<div class="col">
 <div class="card">
-			<div class="card-body>
+			<div class="card-body">
 <?php echo $responseMsg; ?>
 
 <form  id="newuserform" action="php-scripts/process-new-user.php" method="post">

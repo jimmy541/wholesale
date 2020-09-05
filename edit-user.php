@@ -48,7 +48,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 		<!-- open col -->
 		<div class="col">
 			<div class="card">
-			<div class="card-body>
+			<div class="card-body">
 			<?php echo $responseMsg; ?>
 			<form  id="newuserform" action="php-scripts/process-edit-user.php" method="post" autocomplete="off">
 			<input class="form-control" autocomplete="false" name="hidden" type="text" style="display:none;">
