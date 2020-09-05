@@ -68,7 +68,6 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 			<div class="card">
 				<div class="card-body">
 					<table class="row-border" id="gtable">
-					<caption>Unpaid Accounts</caption>
 						<thead>
 							<tr>
 							<th style="dispay:none;"></th><!-- keep this line important -->
