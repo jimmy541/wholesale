@@ -189,6 +189,7 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
+	$('#gtable').parent().addClass('table-responsive');
 } );
 </script>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
