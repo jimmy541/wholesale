@@ -1,4 +1,4 @@
-<?php $page_title = 'Add User';
+<?php $page_title = 'Add New User';
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>';
 //?>
 
