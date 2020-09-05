@@ -16,33 +16,44 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
  
 	
 		<div class="container-fluid bg-light">
-		  <div class="row">
-		  <div class="col bg-danger" style="height:5px !important"> </div>
-			<div class="col" style="height:5px !important; background-color:#FFFF00!important;"> </div>
-			<div class="col bg-secondary" style="height:5px !important"> </div>
-			<div class="w-100"></div>
-			<div class="col">Past Due Total</div>
-			<div class="col">Curent Total</div>
-			<div class="col">Total Balance</div>
-			<div class="w-100"></div>
-			<?php
-				$query = "SELECT SUM(a.`retail` + a.`tax` - a.`paid_total`) bln, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` < DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as pastdue, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` >= DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as current  FROM `orders` a WHERE a.`clientid` = '$clientid' AND a.`order_type` = 'invoice' AND (a.`retail` + a.`tax` - a.`paid_total`) <> 0";
-				$stmt = $link->prepare($query);
-				$stmt->execute();
-				$stmt->bind_result($bln, $pastdue, $current);
-				while($stmt->fetch()){
-					echo '<div class="col font-weight-bold">'.number_format($pastdue, 2).'</div>
-					<div class="col font-weight-bold">'.number_format($current, 2).'</div>
-					<div class="col font-weight-bold">'.number_format($bln, 2).'</div>';
-				}
-				$stmt->close();
-			?>
-		   
-		  </div>
+		 
 		</div>
 	
 
 <div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					 <div class="row">
+						  <div class="col bg-danger" style="height:5px !important"> </div>
+							<div class="col" style="height:5px !important; background-color:#FFFF00!important;"> </div>
+							<div class="col bg-secondary" style="height:5px !important"> </div>
+							<div class="w-100"></div>
+							<div class="col">Past Due Total</div>
+							<div class="col">Curent Total</div>
+							<div class="col">Total Balance</div>
+							<div class="w-100"></div>
+							<?php
+								$query = "SELECT SUM(a.`retail` + a.`tax` - a.`paid_total`) bln, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` < DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as pastdue, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` >= DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as current  FROM `orders` a WHERE a.`clientid` = '$clientid' AND a.`order_type` = 'invoice' AND (a.`retail` + a.`tax` - a.`paid_total`) <> 0";
+								$stmt = $link->prepare($query);
+								$stmt->execute();
+								$stmt->bind_result($bln, $pastdue, $current);
+								while($stmt->fetch()){
+									echo '<div class="col font-weight-bold">'.number_format($pastdue, 2).'</div>
+									<div class="col font-weight-bold">'.number_format($current, 2).'</div>
+									<div class="col font-weight-bold">'.number_format($bln, 2).'</div>';
+								}
+								$stmt->close();
+							?>
+						   
+					</div>
+				</div>
+			</div>
+		<div>
+	</div>
+
+
 	<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons">
