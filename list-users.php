@@ -28,7 +28,7 @@ if(isset($_GET['rs'])){
  ?>
 
 <div class="container-fluid">
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<form action="new-user.php"><button type="submit" class="btn btn-primary shadow btn-sm float-right">New User</button></form>
 		</div>
