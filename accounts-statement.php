@@ -38,7 +38,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 <span class="info-message-green" style="display:none" id="email-sent-success">E-mail successfully sent.</span>
 
 <div class="container-fluid">
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
