@@ -8,13 +8,9 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 
 ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 
 
-<ul class="invoice-top-buttons">
-	<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
-	<li style="float:right;" id="download-list"><i class="fas fa-download"></i>Download</li>
-	<li style="float:right;" id="print-list"><i class="fas fa-print"></i>Print</li>
-</ul>
 <input type="hidden" id="customerhash" value=""/>
 
 <?php 
@@ -47,54 +43,73 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 		</div>';
 	
 ?>
-
-
-<table class="row-border" id="gtable">
-<caption>Unpaid Accounts</caption>
-	<thead>
-		<tr>
-		<th style="dispay:none;"></th><!-- keep this line important -->
-			<th style="display:none;">Account Hashed ID</th>
-			<th>Account Number</th>
-			<th>Business Name</th>
-			<th>Past Due</th>
-			<th>Current</th>
-			<th>Total</th>
-					
-		</tr>
-	</thead>
-	<tfoot>
-		<tr>
-		<th style="dispay:none;"></th><!-- keep this line important -->
-			<th style="display:none;">Account Hashed ID</th>
-			<th>Account Number</th>
-			<th>Business Name</th>
-			<th></th>
-			<th></th>
-			<th></th>
-					
-		</tr>
-	</tfoot>
-	<tbody>
-		<?php
-		$query = "SELECT b.`account_number`, b.`business_name`, b.`hashed_id`, SUM(a.`retail` + a.`tax` - a.`paid_total`) bln, a.`terms`, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` < DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as pastdue, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` >= DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as current  FROM `orders` a LEFT JOIN `customers` b on a.`customer_hash` = b.`hashed_id` WHERE a.`clientid` = '$clientid' AND a.`order_type` = 'invoice' AND (a.`retail` + a.`tax` - a.`paid_total`) <> 0 GROUP BY a.`customer_hash`";
-		$result = mysqli_query($link, $query); 
-		while($row = mysqli_fetch_array($result)) { 
-			echo '<tr><td></td>
-				<td data-label="hashid" style="display:none;">'.htmlspecialchars($row['hashed_id']).'</td>
-				<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
-				<td data-label="Customer">'.htmlspecialchars($row['business_name']).'</td>
-				<td data-label="Past Due">'.htmlspecialchars($row['pastdue']).'</td>
-				<td data-label="Current">'.htmlspecialchars($row['current']).'</td>
-				<td data-label="Total">'.number_format($row['bln'], 2).'</td>';
-			echo '</tr>'; 
-		}
-		
-		
-		?>
-		
-</tbody>
-</table>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<ul class="invoice-top-buttons">
+				<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
+				<li style="float:right;" id="download-list"><i class="fas fa-download"></i>Download</li>
+				<li style="float:right;" id="print-list"><i class="fas fa-print"></i>Print</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<table class="row-border" id="gtable">
+					<caption>Unpaid Accounts</caption>
+						<thead>
+							<tr>
+							<th style="dispay:none;"></th><!-- keep this line important -->
+								<th style="display:none;">Account Hashed ID</th>
+								<th>Account Number</th>
+								<th>Business Name</th>
+								<th>Past Due</th>
+								<th>Current</th>
+								<th>Total</th>
+										
+							</tr>
+						</thead>
+						<tfoot>
+							<tr>
+							<th style="dispay:none;"></th><!-- keep this line important -->
+								<th style="display:none;">Account Hashed ID</th>
+								<th>Account Number</th>
+								<th>Business Name</th>
+								<th></th>
+								<th></th>
+								<th></th>
+										
+							</tr>
+						</tfoot>
+						<tbody>
+							<?php
+							$query = "SELECT b.`account_number`, b.`business_name`, b.`hashed_id`, SUM(a.`retail` + a.`tax` - a.`paid_total`) bln, a.`terms`, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` < DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as pastdue, SUM(case when a.`retail` + a.`tax` - a.`paid_total` <> 0 and a.`date_started` >= DATE(DATE_ADD(NOW(), INTERVAL -`terms` DAY)) then a.`retail` + a.`tax` - a.`paid_total` else 0 end) as current  FROM `orders` a LEFT JOIN `customers` b on a.`customer_hash` = b.`hashed_id` WHERE a.`clientid` = '$clientid' AND a.`order_type` = 'invoice' AND (a.`retail` + a.`tax` - a.`paid_total`) <> 0 GROUP BY a.`customer_hash`";
+							$result = mysqli_query($link, $query); 
+							while($row = mysqli_fetch_array($result)) { 
+								echo '<tr><td></td>
+									<td data-label="hashid" style="display:none;">'.htmlspecialchars($row['hashed_id']).'</td>
+									<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
+									<td data-label="Customer">'.htmlspecialchars($row['business_name']).'</td>
+									<td data-label="Past Due">'.htmlspecialchars($row['pastdue']).'</td>
+									<td data-label="Current">'.htmlspecialchars($row['current']).'</td>
+									<td data-label="Total">'.number_format($row['bln'], 2).'</td>';
+								echo '</tr>'; 
+							}
+							
+							
+							?>
+							
+					</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+				
+				
 
 
 
@@ -110,6 +125,7 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
+	$('#gtable').parent().addClass('table-responsive');
 	
 	
 	
