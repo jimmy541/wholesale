@@ -141,7 +141,7 @@ function validateDate($date, $format = 'Y-m-d')
 				<div class="card-body">
 				<div class="row">
 		<div class="col">
-			<ul class="invoice-top-buttons">
+			<ul class="invoice-top-buttons-disabled">
 				<li id="printacchistory"><i class="fas fa-file-invoice"></i>Print</li>
 				<li id="downloadacchistory"><i class="fas fa-download"></i>Download</li>
 				<li id="sendhistory"><i class="fas fa-share-square"></i>Send</li>

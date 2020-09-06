@@ -61,7 +61,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 				<div class="card-body">
 				<div class="row">
 		<div class="col">
-			<ul class="invoice-top-buttons">
+			<ul class="invoice-top-buttons-disabled">
 				<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
 				<li id="print-list"><i class="fas fa-print"></i>Print</li>
 				<li id="download-list"><i class="fas fa-download"></i>Download</li>

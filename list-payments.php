@@ -145,7 +145,7 @@ function validateDate($date, $format = 'Y-m-d')
 				<div class="card-body">
 				<div class="row">
 		<div class="col">
-		<ul class="invoice-top-buttons">
+		<ul class="invoice-top-buttons-disabled">
 			<li id="edit-payment"><i class="fas fa-file-invoice"></i>Edit</li>
 			<li id="print-payment-history"><i class="fas fa-print"></i>Print</li>
 			<li id="download-payment-history"><i class="fas fa-download"></i>Download</li>
@@ -237,6 +237,7 @@ $(document).ready(function() {
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
 	$('#gtable').parent().addClass('table-responsive');
+	$('#paymentsTable').parent().addClass('table-responsive');
 } );
 </script>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

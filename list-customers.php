@@ -46,7 +46,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 	</div>
 	<div class="row">
 		<div class="col">
-			<ul class="invoice-top-buttons">
+			<ul class="invoice-top-buttons-disabled">
 				<li id="edit-customer"><i class="fas fa-edit"></i>Edit</li>
 				<li id="view-customer-invoices"><i class="fas fa-file-invoice"></i>Invoices</li>
 				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>

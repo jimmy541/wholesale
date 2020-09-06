@@ -5,7 +5,7 @@
 			$result = '<button type="button" class="close" aria-label="Close" id="closeIcon">
 						<span aria-hidden="true">&times;</span>
 						</button>';
-			$result .= '<ul class="invoice-top-buttons" style="width:95%">
+			$result .= '<ul class="invoice-top-buttons-disabled" style="width:95%">
 							<li id="edit-payment"><i class="fas fa-edit"></i>Edit</li>
 							<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
 						</ul>';

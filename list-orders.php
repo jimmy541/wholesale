@@ -66,7 +66,7 @@ if(isset($_GET['rs'])){
 			
 			<div class="row">
 		<div class="col">
-			<ul class="invoice-top-buttons">
+			<ul class="invoice-top-buttons-disabled">
 				<li id="view-order"><i class="fas fa-file-invoice"></i>View</li>
 				<li id="print-order"><i class="fas fa-print"></i>Print</li>
 				<li id="download-order"><i class="fas fa-download"></i>Download</li>
@@ -172,6 +172,7 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#gtable').parent().addClass('table-responsive');
+	$('#paymentsTable').parent().addClass('table-responsive');
 	$('#payment_date').val(new Date().toDateInputValue());
 } );
 </script>

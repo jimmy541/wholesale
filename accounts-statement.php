@@ -84,7 +84,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 				<div class="card-body">
 				<div class="row">
 		<div class="col">
-			<ul class="invoice-top-buttons">
+			<ul class="invoice-top-buttons-disabled">
 			<li id="printstatement"><i class="fas fa-file-invoice"></i>Print</li>
 			<li id="downloadstatement"><i class="fas fa-download"></i>Download</li>
 			<li id="sendstatement"><i class="fas fa-share-square"></i>Send</li>

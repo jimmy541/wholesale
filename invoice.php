@@ -130,7 +130,7 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 <input type="hidden" id="invoice-number" value="<?php echo $invoice_number; ?>" />
 <input type="hidden" id="doc-type" value="invoice" />
 <input type="hidden" id="paymentid" value="" />
-<ul class="invoice-top-buttons">
+<ul class="invoice-top-buttons-disabled">
 	<a href="order.php?acat=<?php echo $cat; ?>&customer=<?php echo $customer_hash; ?>&order=<?php echo $hashed_invoice_number; ?>"><li id="edit-order"><i class="fas fa-edit" style="text-decoration:none !important;" ></i>Edit</li></a>
 	<!--<li id="view-order"><i class="fas fa-file-invoice"></i>View</li>-->
 	<li id="print-order"><i class="fas fa-print"></i>Print</li>
