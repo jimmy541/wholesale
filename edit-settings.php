@@ -38,7 +38,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					<input autocomplete="false" name="hidden" type="text" style="display:none;">
 
 						
-						<fieldset>
+						
 						
 							<input type="hidden" name="anf1token" value="<?php echo htmlspecialchars(getToken($link, $clientid, 'round_number_format')); ?>" />
 							<input type="radio" name="anf1" value="5" id="anf5" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '5'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">Round up to nearest whole number</label><br>
@@ -49,7 +49,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 							
 							<div class="group-fields"><button class="btn btn-primary" type="submit">Save</button></div>
 							<div class="group-fields"><?php if (isset($_GET['partID']) && $_GET['partID'] == '1'){ echo $responseMsg;} ?></div>
-							</fieldset>
+							
 						
 
 					</form>
