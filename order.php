@@ -70,7 +70,7 @@ Departments
 			echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
 		}
 		
-		$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' GROUP BY a.`department` ORDER BY b.`description`";
+		$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' AND a.`active` = 'yes' GROUP BY a.`department` ORDER BY b.`description`";
 		$result = mysqli_query($link, $query);
 		while ($row = mysqli_fetch_array($result)){
 			$style = 'MainCatLinks';
@@ -139,7 +139,7 @@ if (isset($_GET['acat'])){
 			}
 			$stmt->close();
 
-	$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."'";
+	$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."' AND `active` = 'yes'";
 	$result = mysqli_query($link, $query);
 	while ($row = mysqli_fetch_array($result)){
 		//List B Categories
@@ -152,7 +152,7 @@ if (isset($_GET['acat'])){
 					//get quantity inside requested_items table
 					
 					echo '<div class="itemsMainBox">';
-						$query2 = "SELECT a.*, b.`description` brnd, c.`description` wu, d.`qty` FROM `grocery_products` a LEFT JOIN `brands` b ON a.`brand` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `weight_units` c ON a.`size_unit` = c.`id` AND c.`clientid` = '$clientid' LEFT JOIN `requested_items` d ON a.`cert_code` = d.`cert_code` AND d.`invoice_number_hash` = '$escaped_order' AND d.`clientid` = '$clientid' WHERE a.`department` = '".$getid."' AND a.`sub_department` = '".$row['sub_department']."' AND a.`clientid` = '$clientid'";
+						$query2 = "SELECT a.*, b.`description` brnd, c.`description` wu, d.`qty` FROM `grocery_products` a LEFT JOIN `brands` b ON a.`brand` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `weight_units` c ON a.`size_unit` = c.`id` AND c.`clientid` = '$clientid' LEFT JOIN `requested_items` d ON a.`cert_code` = d.`cert_code` AND d.`invoice_number_hash` = '$escaped_order' AND d.`clientid` = '$clientid' WHERE a.`department` = '".$getid."' AND a.`sub_department` = '".$row['sub_department']."' AND a.`clientid` = '$clientid' AND a.`active` = 'yes'";
 						
 						$result2 = mysqli_query($link, $query2);
 								$cnt = 0;
