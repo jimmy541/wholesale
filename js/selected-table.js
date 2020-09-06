@@ -41,7 +41,7 @@ $(document).ready(function() {
 	});
 	
 	
-    $('#gtable tbody').on( 'click', 'tr', function () {
+    $('#gtable tbody').on( 'click', 'tr', function (e, dt, type, indexes) {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
 			$('#invoicehash').val('');

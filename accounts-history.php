@@ -245,7 +245,7 @@ function validateDate($date, $format = 'Y-m-d')
 		
 		while($stmt->fetch()){
 		
-			echo  '<tr>
+			echo  '<tr class="disable-select">
 				<td data-label="hashid" style="display:none;">'.htmlspecialchars($id).'</td>
 				<td data-label="custhash" style="display:none;">'.htmlspecialchars($hashed_customer_number).'</td>
 				<td data-label="Date">'.$dt.'</td>
