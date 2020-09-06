@@ -7,7 +7,8 @@
 <script type="text/javascript" src="js/thickbox.js"></script>'; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
-<div>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
+
 <?php
 $customer = '';
 $customer_name = '';
@@ -205,8 +206,7 @@ if (isset($_GET['acat'])){
 }
 
 ?>
-</div>
-</div>
+
 
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
