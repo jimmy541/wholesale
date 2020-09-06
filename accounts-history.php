@@ -40,6 +40,13 @@ function validateDate($date, $format = 'Y-m-d')
 ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>
 <div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<li class="btn btn-light mb-2 mr-1 float-right" id="printacchistory"><i class="fas fa-file-invoice mr-1"></i>Print</li>
+				<li class="btn btn-light mb-2 mr-1 float-right" id="downloadacchistory"><i class="fas fa-download mr-1"></i>Download</li>
+				<li class="btn btn-light mb-2 mr-1 float-right" id="sendhistory"><i class="fas fa-share-square mr-1"></i>Send</li>
+		</div>
+	</div>
 	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
@@ -139,16 +146,7 @@ function validateDate($date, $format = 'Y-m-d')
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
-				<div class="row">
-		<div class="col">
-			<ul class="invoice-top-buttons">
-				<li id="printacchistory"><i class="fas fa-file-invoice"></i>Print</li>
-				<li id="downloadacchistory"><i class="fas fa-download"></i>Download</li>
-				<li id="sendhistory"><i class="fas fa-share-square"></i>Send</li>
 				
-			</ul>
-		</div>
-	</div>
 
 <div class="row">
 <div class="col">
