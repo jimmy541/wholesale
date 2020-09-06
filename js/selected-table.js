@@ -39,6 +39,8 @@ $(document).ready(function() {
 		
 		
 	});
+	
+	
     $('#gtable tbody').on( 'click', 'tr', function () {
         if ( $(this).hasClass('selected') ) {
             $(this).removeClass('selected');
@@ -47,6 +49,8 @@ $(document).ready(function() {
 			$('#customerhash').val('');
 			$('#paymentid').val('');
 			$('#invoice-number').val('');
+			$( ".invoice-top-buttons" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
+			
         }
         else {
             table.$('tr.selected').removeClass('selected');
@@ -57,6 +61,8 @@ $(document).ready(function() {
 				$('#customerhash').val(item[1]);
 				$('#paymentid').val(item[2]);
 				$('#invoice-number').val(item[3]);
+				$(this).toggleClass('bg hover');
+				$( ".invoice-top-buttons" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
 			});
         }
     });
