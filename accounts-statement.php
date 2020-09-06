@@ -116,7 +116,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 							$stmt->execute();
 							$stmt->bind_result($inhash, $ds, $invn, $ret, $bln);
 							while($stmt->fetch()) { 
-								echo '<tr disable-select>
+								echo '<tr class="disable-select">
 									<td data-label="hashid" style="display:none;">'.htmlspecialchars($inhash).'</td>
 									<td data-label="custhash" style="display:none;">'.htmlspecialchars($hashed_customer_number).'</td>
 									<td data-label="Date">'.$ds.'</td>
