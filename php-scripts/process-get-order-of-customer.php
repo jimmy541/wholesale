@@ -8,7 +8,7 @@ if (isset($_POST['customer']) && !empty($_POST['customer'])){
 		}
 	}
 	$orders_arr = array();
-	$stmt = $link->prepare("SELECT `invoice_number_hash`, `date_started` FROM `orders` WHERE `status` = 'open' AND `clientid` = '$clientid' AND `customer_hash` = ? AND `order_type` = '$otype'");
+	$stmt = $link->prepare("SELECT `invoice_number_hash`, `date_started` FROM `orders` WHERE `status` = 'Processing' AND `clientid` = '$clientid' AND `customer_hash` = ? AND `order_type` = '$otype'");
 	$stmt->bind_param('s', $_POST['customer']);
 	$stmt->execute();
 	$stmt->bind_result($inn, $ds);
