@@ -443,14 +443,14 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endCo
 }
 
 
-.invoice-top-buttons-disabled li i{
+.invoice-top-buttons-disabled li i, .invoice-top-buttons li i{
 	display:block;
 	font-size:140%;
 }
-.invoice-top-buttons-disabled a:link{
+.invoice-top-buttons-disabled a:link, .invoice-top-buttons a:link{
 	color:inherit;
 }
-.invoice-top-buttons-disabled a:visited{
+.invoice-top-buttons-disabled a:visited, .invoice-top-buttons a:visited{
 	color:inherit;
 }
 
