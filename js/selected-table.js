@@ -79,12 +79,16 @@ $(document).ready(function() {
         if ( tb.hasClass('selected') ) {
             tb.removeClass('selected');
 			$('#paymentid').val('');
+			$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
+			$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
 			
         }
         else {
 			
             pTable.$('tr.selected').removeClass('selected');
             tb.addClass('selected');
+			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
+			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
 			var ids = $.map(pTable.rows('.selected').data(), function (item) {
 				$('#paymentid').val(item[0]);
 				
