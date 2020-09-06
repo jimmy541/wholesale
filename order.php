@@ -48,16 +48,18 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	die("No customer is selected.");
 }
 ?>
+<br>
+<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="genbtns btn btn-primary shadow btn-lg"">Preview</button></form>
 <input type="hidden" id="current_customer" value="<?php echo $customer; ?>"/>
 <input type="hidden" id="current_order" value="<?php echo $order; ?>"/>
 <input type="hidden" id="order_type" value="<?php echo $ordertype; ?>"/>
-<div class="container-fluid">
-<div class="row mb-1">
-	<div class="col">
-		<h3>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h3>
-	</div>
+<h3>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h3>
 
+<div class="MainCategory">
+<div class="p-3 mb-2 bg-light text-dark">
+Departments
 </div>
+
 <div class="row mb-1">
 	<div class="col">
 		<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>" /><button type="submit" class="genbtns btn btn-primary shadow btn-sm float-right">Preview</button></form>
@@ -111,14 +113,56 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	
 	
 
+<?php	
+		$style = 'MainCatLinks';
+		if (isset($_GET['acat'])){
+				if ($_GET['acat'] == 'uncat'){
+					$style = 'MainCatLinksSelected';
+				}
+		}
+		$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' AND `active` = 'yes' LIMIT 1");
+		while($row=mysqli_fetch_array($result)){
+			echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
+		}
+		
+		$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' AND a.`active` = 'yes' GROUP BY a.`department` ORDER BY b.`description`";
+		$result = mysqli_query($link, $query);
+		while ($row = mysqli_fetch_array($result)){
+			$style = 'MainCatLinks';
+			if (isset($_GET['acat'])){
+				if ($_GET['acat'] == $row['id']){
+					$style = 'MainCatLinksSelected';
+				}
+			}
+			
+			
+
+
+			echo '<a class="'.$style.'" href="?acat='.$row['id'].'&customer='.$customer.'&order='.$order.'"/>'.htmlspecialchars($row['description']).'</a>';
+		}
+?>
+</div>
+
 
 	
 		<div class="card">
 			<div class="card-body">
 			
 			<div class="Content">
-<?php
 
+<?php
+function getDescription($link, $table, $clientid, $id){
+			$rslt = '';
+			$stmt = $link->prepare("SELECT `description` FROM `$table` WHERE `clientid` = '$clientid' AND `id` = ?");
+			$stmt->bind_param('s', $id);
+			$stmt->execute();
+			$stmt->bind_result($ds);
+			while($stmt->fetch()){
+				$rslt=htmlspecialchars($ds);
+			}
+			$stmt->close();
+			return $rslt;
+		}
 if (isset($_GET['acat'])){
 	 
 	
@@ -128,7 +172,25 @@ if (isset($_GET['acat'])){
 		echo '<div class="p-3 mb-2 bg-light text-dark">'.getDescription($link, 'department', $clientid, $_GET['acat']).'</div>';
 	}
 	
-		
+		function checkIfOrderPlaced($link, $cert_code, $clientid, $customer, $order){
+			$qty = '0';
+			$stmt = $link->prepare("SELECT `qty` FROM `requested_items` WHERE `cert_code` = ? AND `clientid` = '$clientid' AND `customer_account_number` = ? AND `invoice_number_hash` = ?");
+			$stmt->bind_param('sss', $cert_code, $customer, $order);
+			$stmt->execute();
+			$stmt->bind_result($qt);
+			while($stmt->fetch()){
+				$qty = $qt;
+			}
+			return $qty;
+		}
+		function checkForGreenCircle($link, $cert_code, $clientid, $customer, $order){
+			$result = '';
+			if (checkIfOrderPlaced($link, $cert_code, $clientid, $customer, $order) > 0){
+			
+			$result = 'style="display:block;"';
+			}
+			return $result;
+		}
 	$getid = '';
 	$stmt = $link->prepare("SELECT `id` FROM `department` WHERE `id` = ? AND `clientid` = '$clientid'");
 	$stmt->bind_param('s', $_GET['acat']);
@@ -205,6 +267,7 @@ if (isset($_GET['acat'])){
 }
 
 ?>
+
 <!--close content-div -->
 </div>
 
@@ -252,4 +315,5 @@ function checkForGreenCircle($link, $cert_code, $clientid, $customer, $order){
 }
 
 ?>
+
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
