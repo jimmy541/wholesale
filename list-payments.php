@@ -71,6 +71,13 @@ function validateDate($date, $format = 'Y-m-d')
 <input type="hidden" id="customerfilter" value="<?php echo $customer_hashid; ?>" />
 
 <div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<li class="btn btn-light mb-2 mr-1 float-right" id="print-payment-history"><i class="fas fa-print mr-1"></i>Print</li>
+			<li class="btn btn-light mb-2 mr-1 float-right" id="download-payment-history"><i class="fas fa-download mr-1"></i>Download</li>
+			<li class="btn btn-light mb-2 mr-1 float-right"><i  class="fas fa-share-square mr-1"></i>Send</li>
+		</div>
+	</div>
 	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
@@ -147,9 +154,7 @@ function validateDate($date, $format = 'Y-m-d')
 		<div class="col">
 		<ul class="invoice-top-buttons-disabled">
 			<li id="edit-payment"><i class="fas fa-file-invoice"></i>Edit</li>
-			<li id="print-payment-history"><i class="fas fa-print"></i>Print</li>
-			<li id="download-payment-history"><i class="fas fa-download"></i>Download</li>
-			<li><i class="fas fa-share-square"></i>Send</li>
+			
 			<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
 		</ul>
 		</div>
