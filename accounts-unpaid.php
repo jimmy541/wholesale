@@ -23,6 +23,14 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 <div class="container-fluid">
 	<div class="row mb-2">
 		<div class="col">
+			<li class="btn btn-light mb-2 mr-1 float-right" id="print-list"><i class="fas fa-print"></i>Print</li>
+			<li class="btn btn-light mb-2 mr-1 float-right" id="download-list"><i class="fas fa-download"></i>Download</li>
+		</div>
+	
+	</div>
+	
+	<div class="row mb-2">
+		<div class="col">
 			<div class="card">
 				<div class="card-body">
 					 <div class="row">
@@ -63,8 +71,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 		<div class="col">
 			<ul class="invoice-top-buttons-disabled">
 				<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
-				<li id="print-list"><i class="fas fa-print"></i>Print</li>
-				<li id="download-list"><i class="fas fa-download"></i>Download</li>
+				
 				
 			</ul>
 		</div>
