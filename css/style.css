@@ -388,11 +388,11 @@ fieldset
 .invoice-top-buttons{
 	display:block;
 	
-	background: rgb(23,162,184);
-	background: -moz-linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	background: -webkit-linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	background: linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#17a2b8",endColorstr="#3ab0c3",GradientType=1);
+	background: rgb(248,249,250);
+background: -moz-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+background: -webkit-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+background: linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endColorstr="#f9fafb",GradientType=1);
 	
 	width:100%;
 }
@@ -406,11 +406,11 @@ fieldset
 	padding-bottom:5px;
 	text-align:center;
 	cursor:pointer;
-	background: rgb(23,162,184);
-	background: -moz-linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	background: -webkit-linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	background: linear-gradient(180deg, rgba(23,162,184,1) 35%, rgba(58,176,195,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#17a2b8",endColorstr="#3ab0c3",GradientType=1);
+	background: rgb(248,249,250);
+background: -moz-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+background: -webkit-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+background: linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endColorstr="#f9fafb",GradientType=1);
 }
 .invoice-top-buttons li:hover{
 background:#f6f8f9;
