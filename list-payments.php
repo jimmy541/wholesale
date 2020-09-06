@@ -208,7 +208,7 @@ function validateDate($date, $format = 'Y-m-d')
 			
 			<td data-label="invoicehashid" style="display:none;">'.htmlspecialchars($inha).'</td>
 			<td data-label="customerid" style="display:none;" >'.htmlspecialchars($chi).'</td>
-			<td data-label="paymentid" style="display:none;" >'.htmlspecialchars($pid).'</td>
+			<td data-label="paymentid" id="'.htmlspecialchars($pid).'" style="display:none;" >'.htmlspecialchars($pid).'</td>
 			<td data-label="Date">'.date('m/d/Y', strtotime($pda)).'</a></td>
 			<td data-label="Business">'.htmlspecialchars($bna).'</a></td>
 			<td data-label="Amount">'.$pam.'</td>
