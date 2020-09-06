@@ -2,6 +2,7 @@
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>';
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 if (isset($_SESSION['user'])){
 	$result = mysqli_query($link, "SELECT * FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'");
@@ -73,6 +74,8 @@ if (isset($_SESSION['user'])){
 	<div class="row">
 		<!-- open col -->
 		<div class="col">
+		<div class="card">
+		<div class="card-body">
 			<div class="mb-3">
 				<label for="email">Email</label>
 				<input class="form-control" type="text" id="user_email" name="user_email" placeholder="<?php echo $user; ?>" readonly />
@@ -101,6 +104,8 @@ if (isset($_SESSION['user'])){
 						<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
 					</div>
 				</form>
+				</div>
+				</div>
 				
 		</div>
 	</div>
