@@ -42,42 +42,38 @@ $(document).ready(function() {
 	
 	
     $('#gtable tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-			$('#invoicehash').val('');
-			$('#customerid').val('');
-			$('#customerhash').val('');
-			$('#paymentid').val('');
-			$('#invoice-number').val('');
-			$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
-			$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+		if ( $(this).hasClass('disable-select') ) {
 			
+		}else{
 			
-        }
-        else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-			var ids = $.map(table.rows('.selected').data(), function (item) {
-				$('#invoicehash').val(item[0]);
-				$('#customerid').val(item[0]);
-				$('#customerhash').val(item[1]);
-				$('#paymentid').val(item[2]);
-				$('#invoice-number').val(item[3]);
-				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
-				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
-			});
-        }
-		
-    });
-	table.on('select', function(e, dt, type, indexes) {
-		if (type === 'row') {
-			var rows = table.rows(indexes).nodes().to$();
-		
-			$.each(rows, function() {
-			if ($(this).hasClass('disable-select')) table.row($(this)).deselect();
-			})
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				$('#invoicehash').val('');
+				$('#customerid').val('');
+				$('#customerhash').val('');
+				$('#paymentid').val('');
+				$('#invoice-number').val('');
+				$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
+				$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+				
+				
+			}
+			else {
+				table.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				var ids = $.map(table.rows('.selected').data(), function (item) {
+					$('#invoicehash').val(item[0]);
+					$('#customerid').val(item[0]);
+					$('#customerhash').val(item[1]);
+					$('#paymentid').val(item[2]);
+					$('#invoice-number').val(item[3]);
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+				});
+			}
 		}
-	});
+    });
+	
 	$(document).on( 'click', '#paymentsTable tbody tr', function () {
 		var tb = $(this);
         if ( tb.hasClass('selected') ) {
