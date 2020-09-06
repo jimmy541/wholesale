@@ -47,7 +47,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 							<input type="radio" name="anf1" value="3" id="anf3" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '3'){ echo 'checked';}?>><label class="form-radio-label" for="anf3">Nearest x.99</label><br>
 							<input type="radio" name="anf1" value="4" id="anf4" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '4'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">None</label><br>
 							
-							<div class="group-fields"><button type="submit">Save</button></div>
+							<div class="group-fields"><button class="btn btn-primary" type="submit">Save</button></div>
 							<div class="group-fields"><?php if (isset($_GET['partID']) && $_GET['partID'] == '1'){ echo $responseMsg;} ?></div>
 							</fieldset>
 						
