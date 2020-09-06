@@ -30,14 +30,14 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<div class="card">
+			<div class="card w-50">
 				<div class="card-body">
 				<h5 class="card-title">Price Rounding</h5>
 				
 					<form class="dataentry" action="php-scripts/process-edit-settings.php" method="post" autocomplete="off">
 					<input autocomplete="false" name="hidden" type="text" style="display:none;">
 
-						<div class="dataentry-group-left">
+						
 						<fieldset>
 						
 							<input type="hidden" name="anf1token" value="<?php echo htmlspecialchars(getToken($link, $clientid, 'round_number_format')); ?>" />
@@ -50,7 +50,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 							<div class="group-fields"><button type="submit">Save</button></div>
 							<div class="group-fields"><?php if (isset($_GET['partID']) && $_GET['partID'] == '1'){ echo $responseMsg;} ?></div>
 							</fieldset>
-						</div>
+						
 
 					</form>
 				</div>
