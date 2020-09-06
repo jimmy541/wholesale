@@ -60,6 +60,11 @@ if(isset($_GET['rs'])){
 <input type="hidden" id="doc-type" value="invoice" />
 <div class="container-fluid">
 <div class="row">
+<div class="col">
+<li class="btn btn-light mb-2 mr-1 float-right"  id="show-quotes"><i class="fas fa-file-alt mr-1"></i><?php echo $order_type_btn; ?></li>
+</div>
+</div>
+<div class="row">
 	<div class="col">
 		<div class="card">
 			<div class="card-body">
@@ -78,7 +83,7 @@ if(isset($_GET['rs'])){
 					<li id="payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
 					
 				<?php } ?>
-				<li style="float:right;" id="show-quotes"><i class="fas fa-file-alt"></i><?php echo $order_type_btn; ?></li>
+				
 				
 			</ul>
 		</div>
