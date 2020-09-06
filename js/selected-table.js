@@ -63,7 +63,6 @@ $(document).ready(function() {
 				$('#customerhash').val(item[1]);
 				$('#paymentid').val(item[2]);
 				$('#invoice-number').val(item[3]);
-				$(this).toggleClass('bg hover');
 				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
 			});
