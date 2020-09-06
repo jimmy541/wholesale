@@ -64,9 +64,10 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	</div>
 
 </div>
+<!--close container-fluid -->
+</div>
 
-<div class="row">
-	<div class="col-2">
+
 		<div class="card">
 			<div class="card-body">
 				<div class="MainCategory">
@@ -108,10 +109,10 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	
 	
 	
-	</div>
+	
 
 
-	<div class="col-10">
+	
 		<div class="card">
 			<div class="card-body">
 			
@@ -212,13 +213,11 @@ if (isset($_GET['acat'])){
 		
 		</div>
 	
-	</div>
-</div>
 
 
 
-<!--close container-fluid -->
-</div>
+
+
 <?php 
 function getDescription($link, $table, $clientid, $id){
 			$rslt = '';
