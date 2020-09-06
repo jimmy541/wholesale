@@ -49,7 +49,7 @@ $(document).ready(function() {
 			$('#customerhash').val('');
 			$('#paymentid').val('');
 			$('#invoice-number').val('');
-			$( ".invoice-top-buttons" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
+			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
 			
         }
         else {
@@ -62,7 +62,7 @@ $(document).ready(function() {
 				$('#paymentid').val(item[2]);
 				$('#invoice-number').val(item[3]);
 				$(this).toggleClass('bg hover');
-				$( ".invoice-top-buttons" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
+				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).toggleClass('invoice-top-buttons-disabled');
 			});
         }
     });
