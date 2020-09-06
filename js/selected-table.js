@@ -341,6 +341,7 @@ $(document).ready(function() {
 				var mop = response[2];
 				var ref = response[3];
 				$( "#populateDivPayment" ).show();
+				$('#gray-background').show();
 				$('#ref_no').val('');
 				$('#payment_amount').val('');
 				document.getElementById("payment_date").value = dtValue;
