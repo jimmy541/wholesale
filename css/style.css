@@ -414,6 +414,7 @@ fieldset
 }
 .invoice-top-buttons li:hover{
 background:#f6f8f9;
+color:#17a2b8;
 }
 .invoice-top-buttons li i{
 	display:block;
