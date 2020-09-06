@@ -276,19 +276,30 @@ $(document).ready(function(){
 				$( "#populateDivGenPaymentDel" ).hide();
 				$('#gray-background').hide();
 				
-				var t = $('#gtable').DataTable();
-				var cell = t.cell('#invbalance'+id);
-				var newValue = response[0];
-				cell.data(newValue).draw();
+				var requestingpage = $('#page-requesting').val();
 				
+				if (requestingpage == 'payments-page'){
+					
+					t = $('#paymentsTable').DataTable();
+					t
+					.row( $('#'+clickedPayment).parents('tr') )
+					.remove()
+					.draw();
+				}else{
 				
-				
-				t = $('#paymentsTable').DataTable();
-				t
-				.row( $('#'+clickedPayment).parents('tr') )
-				.remove()
-				.draw();
+					var t = $('#gtable').DataTable();
+					var cell = t.cell('#invbalance'+id);
+					var newValue = response[0];
+					cell.data(newValue).draw();
+					
+					
+					t = $('#paymentsTable').DataTable();
+					t
+					.row( $('#'+clickedPayment).parents('tr') )
+					.remove()
+					.draw();
 				}
+			}
 			});
 		});
 		

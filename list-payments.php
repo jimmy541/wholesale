@@ -69,6 +69,7 @@ function validateDate($date, $format = 'Y-m-d')
 <input type="hidden" id="pdatefrom" value="<?php echo $datefrom; ?>" />
 <input type="hidden" id="pdateto" value="<?php echo $dateto; ?>" />
 <input type="hidden" id="customerfilter" value="<?php echo $customer_hashid; ?>" />
+<input type="hidden" id="page-requesting" value="payments-page" />
 
 <div class="container-fluid">
 	<div class="row">
