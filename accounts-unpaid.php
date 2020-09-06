@@ -63,8 +63,8 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 		<div class="col">
 			<ul class="invoice-top-buttons">
 				<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
-				<li style="float:right;" id="download-list"><i class="fas fa-download"></i>Download</li>
-				<li style="float:right;" id="print-list"><i class="fas fa-print"></i>Print</li>
+				<li id="download-list"><i class="fas fa-download"></i>Download</li>
+				<li id="print-list"><i class="fas fa-print"></i>Print</li>
 			</ul>
 		</div>
 	</div>
