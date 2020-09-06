@@ -38,51 +38,56 @@ function validateDate($date, $format = 'Y-m-d')
     return $d && $d->format($format) === $date;
 }
 ?>
-
-
-<ul class="invoice-top-buttons">
-	<li id="printacchistory"><i class="fas fa-file-invoice"></i>Print</li>
-	<li id="downloadacchistory"><i class="fas fa-download"></i>Download</li>
-	<li id="sendhistory"><i class="fas fa-share-square"></i>Send</li>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+					<form method="get">
+						<div class="form-group row">
+						  <div class="col-3">
+							<label for="datefrom">From</label>
+							
+							<input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
+						  </div>
+						  <div class="col-3">
+							<label for="dateto">To</label>
+							<input class="form-control" name="dateto" id="dateto" type="date" value="<?php echo $dateto; ?>">
+						  </div>
+						  <div class="col-5">
+							<label for="customer_select">Customer</label>
+							<select class="customer_select form-control" id="customer_select" name="customer_select" style="height: 38px !important">
+								<option></option>
+								<?php
+									$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
+									$stmt = $link->prepare($query);
+									$stmt->execute();
+									$stmt->bind_result($hashedid, $busname);
+									while($stmt->fetch()){
+										$selected = '';
+										if($hashedid == $hashed_customer_number){$selected = 'selected';}
+										echo '<option value="'.htmlspecialchars($hashedid).'" '.$selected.'>'.htmlspecialchars($busname).'</option>';
+									}
+									$stmt->close();
+								?>
+							</select>
+						  </div>
+						  <div class="col-1">
+							<label for="" style="visibility:hidden !important;">Search</label>
+							<input type="submit" class="btn btn-primary shadow mb-2" value="Search" />
+						  </div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	
-</ul>
-
-<hr>
-<form method="get">
-    <div class="form-group row">
-      <div class="col-3">
-        <label for="datefrom">From</label>
-		
-        <input class="form-control" name="datefrom" id="datefrom" type="date" value="<?php echo $datefrom; ?>">
-      </div>
-      <div class="col-3">
-        <label for="dateto">To</label>
-        <input class="form-control" name="dateto" id="dateto" type="date" value="<?php echo $dateto; ?>">
-      </div>
-      <div class="col-5">
-        <label for="customer_select">Customer</label>
-        <select class="customer_select form-control" id="customer_select" name="customer_select" style="height: 38px !important">
-			<option></option>
-			<?php
-				$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
-				$stmt = $link->prepare($query);
-				$stmt->execute();
-				$stmt->bind_result($hashedid, $busname);
-				while($stmt->fetch()){
-					$selected = '';
-					if($hashedid == $hashed_customer_number){$selected = 'selected';}
-					echo '<option value="'.htmlspecialchars($hashedid).'" '.$selected.'>'.htmlspecialchars($busname).'</option>';
-				}
-				$stmt->close();
-			?>
-		</select>
-      </div>
-	  <div class="col-1">
-        <label for="" style="visibility:hidden !important;">Search</label>
-        <input type="submit" class="btn btn-primary shadow mb-2" value="Search" />
-      </div>
-    </div>
-  </form>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
 <?php 
 	if(!empty($customer_name)){
 		echo '<h3>Customer: '.$customer_name.'</h3><br>';
@@ -120,9 +125,24 @@ function validateDate($date, $format = 'Y-m-d')
 		</div>';
 	} 
 ?>
-
-
-
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<ul class="invoice-top-buttons">
+				<li id="printacchistory"><i class="fas fa-file-invoice"></i>Print</li>
+				<li id="downloadacchistory"><i class="fas fa-download"></i>Download</li>
+				<li id="sendhistory"><i class="fas fa-share-square"></i>Send</li>
+				
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
 <input type="hidden" id="customerhash" value="<?php echo $hashed_customer_number; ?>"/>
 <input type="hidden" id="datefrom" value="<?php echo $datefrom; ?>"/>
 <input type="hidden" id="dateto" value="<?php echo $dateto; ?>"/>
@@ -253,7 +273,11 @@ function validateDate($date, $format = 'Y-m-d')
 		
 </tbody>
 </table>
-
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="populateDivSend" id="populateDivSend">
 	<button type="button" class="close" aria-label="Close" id="closeIcon">
 		<span aria-hidden="true">&times;</span>
@@ -308,6 +332,7 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
+	$('#gtable').parent().addClass('table-responsive');
 } );
 </script>
 
