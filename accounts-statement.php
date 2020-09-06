@@ -38,6 +38,15 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 <span class="info-message-green" style="display:none" id="email-sent-success">E-mail successfully sent.</span>
 
 <div class="container-fluid">
+		<div class="row mb-2">
+			<div class="col">
+				
+					<li class="btn btn-light mb-2 mr-1 float-right" id="printstatement"><i class="fas fa-file-invoice mr-1"></i>Print</li>
+					<li class="btn btn-light mb-2 mr-1 float-right" id="downloadstatement"><i class="fas fa-download mr-1"></i>Download</li>
+					<li class="btn btn-light mb-2 mr-1 float-right" id="sendstatement"><i class="fas fa-share-square mr-1"></i>Send</li>
+			
+			</div>
+		</div>
 	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
@@ -82,15 +91,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
-				<div class="row">
-		<div class="col">
-			<ul class="invoice-top-buttons-disabled">
-			<li id="printstatement"><i class="fas fa-file-invoice"></i>Print</li>
-			<li id="downloadstatement"><i class="fas fa-download"></i>Download</li>
-			<li id="sendstatement"><i class="fas fa-share-square"></i>Send</li>
-			</ul>
-		</div>
-	</div>
+				
 	<div class="row">
 	<div class="col">
 					<table class="row-border" id="gtable">
@@ -115,7 +116,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 							$stmt->execute();
 							$stmt->bind_result($inhash, $ds, $invn, $ret, $bln);
 							while($stmt->fetch()) { 
-								echo '<tr>
+								echo '<tr disable-select>
 									<td data-label="hashid" style="display:none;">'.htmlspecialchars($inhash).'</td>
 									<td data-label="custhash" style="display:none;">'.htmlspecialchars($hashed_customer_number).'</td>
 									<td data-label="Date">'.$ds.'</td>
