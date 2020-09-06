@@ -68,7 +68,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-2">
+		<div class="col-12 col-md-2">
 			<div class="MainCategory">
 					<div class="p-3 mb-2 bg-light text-dark">Departments</div>
 					<?php	
@@ -97,7 +97,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 						?>
 			</div>
 		</div>
-		<div class="col-10">
+		<div class="col-12 col-md-10">
 			<div class="Content">
 	<?php
 	if (isset($_GET['acat'])){
