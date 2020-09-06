@@ -59,26 +59,6 @@ if(isset($_GET['rs'])){
 <input type="hidden" id="paymentid" value="" />
 <input type="hidden" id="doc-type" value="invoice" />
 <div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<ul class="invoice-top-buttons">
-				<li id="view-order"><i class="fas fa-file-invoice"></i>View</li>
-				<li id="print-order"><i class="fas fa-print"></i>Print</li>
-				<li id="download-order"><i class="fas fa-download"></i>Download</li>
-				<li id="send-order"><i class="fas fa-share-square"></i>Send</li>
-				<li id="pull-sheet"><i class="fas fa-list"></i>Pull Sheet</li>
-				<li id="delete-order"><i class="fas fa-trash-alt"></i>Delete</li>
-				<?php if($order_type == 'invoice'){ ?>
-					<li id="pay-invoice"><i class="fas fa-file-invoice-dollar"></i>Pay</li>
-					<li id="payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
-					
-				<?php } ?>
-				<li style="float:right;" id="show-quotes"><i class="fas fa-file-alt"></i><?php echo $order_type_btn; ?></li>
-				
-			</ul>
-		</div>
-	</div>
-	
 <div class="row">
 	<div class="col">
 		<div class="card">
