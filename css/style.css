@@ -413,8 +413,8 @@ background: linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1)
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endColorstr="#f9fafb",GradientType=1);
 }
 .invoice-top-buttons li:hover{
-background:#f6f8f9;
-color:#17a2b8;
+background:#fff;
+color:#454b50;
 }
 .invoice-top-buttons li i{
 	display:block;
