@@ -1,6 +1,7 @@
 <?php $page_title = 'Edit Settings';?>
 <?php $more_script = '';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 
 $responseMsg = '';
@@ -83,11 +84,4 @@ function plV($link, $clientid, $account_number, $vlu){
 }
 
 ?>
-
-<!-- The following div closes the main body div -->
-</div>
-
-
-
-
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
