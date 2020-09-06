@@ -280,7 +280,7 @@ $(document).ready(function(){
 				
 				if (requestingpage == 'payments-page'){
 					
-					t = $('#paymentsTable').DataTable();
+					t = $('#gtable').DataTable();
 					t
 					.row( $('#'+clickedPayment).parents('tr') )
 					.remove()
