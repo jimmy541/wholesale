@@ -274,6 +274,7 @@ $(document).ready(function(){
             success: function(response) {
 				$('#paymentid').val('');
 				$( "#populateDivGenPaymentDel" ).hide();
+				$( "#populateDivPaymentHis" ).hide();
 				$('#gray-background').hide();
 				
 				var requestingpage = $('#page-requesting').val();
