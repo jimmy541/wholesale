@@ -54,7 +54,12 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 	</div>
 
 
+	
 	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons">
 				<li id="uncusstatement"><i class="fas fa-file-invoice"></i>Statement</li>
@@ -64,9 +69,7 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 		</div>
 	</div>
 	<div class="row">
-		<div class="col">
-			<div class="card">
-				<div class="card-body">
+	<div class="col">
 					<table class="row-border" id="gtable">
 						<thead>
 							<tr>
@@ -112,6 +115,8 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 							
 					</tbody>
 					</table>
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

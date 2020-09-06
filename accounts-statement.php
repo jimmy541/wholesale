@@ -77,7 +77,12 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		</div>
 	</div>
 	
+	
 	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons">
 			<li id="printstatement"><i class="fas fa-file-invoice"></i>Print</li>
@@ -87,9 +92,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		</div>
 	</div>
 	<div class="row">
-		<div class="col">
-			<div class="card">
-				<div class="card-body">
+	<div class="col">
 					<table class="row-border" id="gtable">
 					<caption>Account Statement</caption>
 						<thead>
@@ -128,7 +131,8 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 							
 					</tbody>
 					</table>
-
+					</div>
+					</div>
 				</div>
 			</div>
 		</div>

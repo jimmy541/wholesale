@@ -125,11 +125,21 @@ function validateDate($date, $format = 'Y-m-d')
 		</div>';
 	} 
 ?>
+<input type="hidden" id="customerhash" value="<?php echo $hashed_customer_number; ?>"/>
+<input type="hidden" id="datefrom" value="<?php echo $datefrom; ?>"/>
+<input type="hidden" id="dateto" value="<?php echo $dateto; ?>"/>
+<input type="hidden" id="invoicehash" value=""/>
+<input type="hidden" id="doc-type" value="ahistory" />
 				</div>
 			</div>
 		</div>
 	</div>
+	
 	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons">
 				<li id="printacchistory"><i class="fas fa-file-invoice"></i>Print</li>
@@ -139,15 +149,10 @@ function validateDate($date, $format = 'Y-m-d')
 			</ul>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col">
-			<div class="card">
-				<div class="card-body">
-<input type="hidden" id="customerhash" value="<?php echo $hashed_customer_number; ?>"/>
-<input type="hidden" id="datefrom" value="<?php echo $datefrom; ?>"/>
-<input type="hidden" id="dateto" value="<?php echo $dateto; ?>"/>
-<input type="hidden" id="invoicehash" value=""/>
-<input type="hidden" id="doc-type" value="ahistory" />
+
+<div class="row">
+<div class="col">
+
 <span class="info-message-green" style="display:none" id="email-sent-success">E-mail successfully sent.</span>
 <table class="row-border" id="gtable">
 	<thead>
@@ -272,6 +277,8 @@ function validateDate($date, $format = 'Y-m-d')
 		
 </tbody>
 </table>
+</div>
+</div>
 				</div>
 			</div>
 		</div>
