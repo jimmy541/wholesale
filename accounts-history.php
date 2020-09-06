@@ -40,7 +40,7 @@ function validateDate($date, $format = 'Y-m-d')
 ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>
 <div class="container-fluid">
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
@@ -84,7 +84,7 @@ function validateDate($date, $format = 'Y-m-d')
 		</div>
 	</div>
 	
-	<div class="row">
+	<div class="row mb-2">
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
@@ -150,7 +150,6 @@ function validateDate($date, $format = 'Y-m-d')
 <input type="hidden" id="doc-type" value="ahistory" />
 <span class="info-message-green" style="display:none" id="email-sent-success">E-mail successfully sent.</span>
 <table class="row-border" id="gtable">
-<caption>Account History</caption>
 	<thead>
 		<tr>
 		<th style="dispay:none;">Invoice Hash</th>
