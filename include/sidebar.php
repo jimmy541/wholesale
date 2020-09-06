@@ -140,7 +140,7 @@
                         <li>
                             <a href="list-orders.php">
                                 <i class="fa fa-list-alt"></i>
-                                <span class="menu-text">Invoices</span>
+                                <span class="menu-text">Orders</span>
                                 
                             </a>
                         </li>

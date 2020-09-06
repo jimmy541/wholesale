@@ -35,7 +35,7 @@
   <div class="card text-center">
    <a href="list-orders.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-list-alt"></i></h1>
-      <h5 class="card-title">Invoices</h5>
+      <h5 class="card-title">Orders</h5>
       
     </div></a>
   </div>

@@ -16,7 +16,7 @@ $order_type = 'invoice';
 $order_type_btn = 'Quotes';
 if(isset($_GET['show']) && $_GET['show'] == 'quotes'){
 	$order_type = 'quote';
-	$order_type_btn = 'Invoices';
+	$order_type_btn = 'Orders';
 }
 $customer_detail = '';
 $customer_detail_query = '';
