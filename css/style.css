@@ -398,7 +398,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endCo
 }
 .invoice-top-buttons li{
 	display:inline-block;
-	color:white;
+	color:#6c757d;
 	width:80px;
 	height:70px;
 	line-height:50px;
