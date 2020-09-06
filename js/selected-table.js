@@ -67,6 +67,12 @@ $(document).ready(function() {
 				$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
 			});
         }
+		if (type === 'row') {
+		var rows = table.rows(indexes).nodes().to$();
+		$.each(rows, function() {
+			if ($(this).hasClass('disable-select')) table.row($(this)).deselect();
+		})
+		}
     });
 	
 	$(document).on( 'click', '#paymentsTable tbody tr', function () {
