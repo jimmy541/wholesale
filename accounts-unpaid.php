@@ -23,8 +23,8 @@ require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 <div class="container-fluid">
 	<div class="row mb-2">
 		<div class="col">
-			<li class="btn btn-light mb-2 mr-1 float-right" id="print-list"><i class="fas fa-print"></i>Print</li>
-			<li class="btn btn-light mb-2 mr-1 float-right" id="download-list"><i class="fas fa-download"></i>Download</li>
+			<li class="btn btn-light mb-2 mr-1 float-right" id="print-list"><i class="fas fa-print mr-1"></i>Print</li>
+			<li class="btn btn-light mb-2 mr-1 float-right" id="download-list"><i class="fas fa-download mr-1"></i>Download</li>
 		</div>
 	
 	</div>
