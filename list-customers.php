@@ -44,7 +44,13 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 			<?php echo $active_link; ?>
 		</div>
 	</div>
+	
+
 	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons-disabled">
 				<li id="edit-customer"><i class="fas fa-edit"></i>Edit</li>
@@ -55,11 +61,8 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 			</ul>
 		</div>
 	</div>
-
 	<div class="row">
-		<div class="col">
-			<div class="card">
-				<div class="card-body">
+	<div class="col">
 					<table class="row-border" id="gtable">
 						<thead>
 							<tr>
@@ -102,6 +105,8 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 							?>
 					</tbody>
 					</table>
+				</div>
+				</div>
 				</div>
 			</div>
 		</div>
