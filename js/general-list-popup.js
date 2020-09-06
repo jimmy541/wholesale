@@ -274,11 +274,13 @@ $(document).ready(function(){
             success: function(response) {
 				$('#paymentid').val('');
 				$( "#populateDivGenPaymentDel" ).hide();
+				$('#gray-background').hide();
 				
 				var t = $('#gtable').DataTable();
 				var cell = t.cell('#invbalance'+id);
 				var newValue = response[0];
 				cell.data(newValue).draw();
+				
 				
 				
 				t = $('#paymentsTable').DataTable();
