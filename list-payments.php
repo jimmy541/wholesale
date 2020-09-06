@@ -8,6 +8,7 @@ $more_script = '<style>#gtable_filter{display:none;}</style><script type="text/j
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 
 ?>
+<h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
 $order_type = 'invoice';
 $customer_detail_query = '';
@@ -62,16 +63,19 @@ function validateDate($date, $format = 'Y-m-d')
     return $d && $d->format($format) === $date;
 }
  ?>
+<input type="hidden" id="invoicehash" value="" />
+<input type="hidden" id="customerhash" value="" />
+<input type="hidden" id="paymentid" value="" />
+<input type="hidden" id="pdatefrom" value="<?php echo $datefrom; ?>" />
+<input type="hidden" id="pdateto" value="<?php echo $dateto; ?>" />
+<input type="hidden" id="customerfilter" value="<?php echo $customer_hashid; ?>" />
 
-<ul class="invoice-top-buttons">
-	<li id="edit-payment"><i class="fas fa-file-invoice"></i>Edit</li>
-	<li id="print-payment-history"><i class="fas fa-print"></i>Print</li>
-	<li id="download-payment-history"><i class="fas fa-download"></i>Download</li>
-	<li><i class="fas fa-share-square"></i>Send</li>
-	<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
-</ul>
-
-<form method="get">
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<form method="get">
     <div class="form-row">
       <div class="col-md-3 mb-3">
         <label for="datefrom">From</label>
@@ -128,15 +132,33 @@ function validateDate($date, $format = 'Y-m-d')
       
   </form>
 
-<input type="hidden" id="invoicehash" value="" />
-<input type="hidden" id="customerhash" value="" />
-<input type="hidden" id="paymentid" value="" />
-<input type="hidden" id="pdatefrom" value="<?php echo $datefrom; ?>" />
-<input type="hidden" id="pdateto" value="<?php echo $dateto; ?>" />
-<input type="hidden" id="customerfilter" value="<?php echo $customer_hashid; ?>" />
-
+				
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col">
+		<ul class="invoice-top-buttons">
+			<li id="edit-payment"><i class="fas fa-file-invoice"></i>Edit</li>
+			<li id="print-payment-history"><i class="fas fa-print"></i>Print</li>
+			<li id="download-payment-history"><i class="fas fa-download"></i>Download</li>
+			<li><i class="fas fa-share-square"></i>Send</li>
+			<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
+		</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				
+				
+				
 <table class="row-border" id="gtable">
-<caption>Payments</caption>
+
+
 	<thead>
 		<tr>
 			<th style="display:none;">Invoice ID</th>
@@ -190,6 +212,13 @@ function validateDate($date, $format = 'Y-m-d')
 		?>
 </tbody>
 </table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <?php require('include/invoice-popups.php'); ?>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -200,6 +229,7 @@ $(document).ready(function() {
     return local.toJSON().slice(0,10);
 	});
 	$('#payment_date').val(new Date().toDateInputValue());
+	$('#gtable').parent().addClass('table-responsive');
 } );
 </script>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
