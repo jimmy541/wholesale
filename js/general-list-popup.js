@@ -51,7 +51,7 @@ $(document).ready(function(){
 		
 		
 		$(document).on('click','button',function(){
-			clickedRow = $(this).attr('id');
+			//clickedRow = $(this).attr('id');
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 			
