@@ -65,7 +65,7 @@ Departments
 					$style = 'MainCatLinksSelected';
 				}
 		}
-		$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' LIMIT 1");
+		$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' AND `active` = 'yes' LIMIT 1");
 		while($row=mysqli_fetch_array($result)){
 			echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
 		}
