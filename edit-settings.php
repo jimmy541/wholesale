@@ -26,27 +26,37 @@ function getToken($link, $clientid, $vlu){
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Please fill out required items</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Saved.</div>';}
 ?>
-<br />
-<div>
-<form class="dataentry" action="php-scripts/process-edit-settings.php" method="post" autocomplete="off">
-<input autocomplete="false" name="hidden" type="text" style="display:none;">
 
-	<div class="dataentry-group-left">
-	<fieldset>
-    <legend>Price Rounding</legend>
-		<input type="hidden" name="anf1token" value="<?php echo htmlspecialchars(getToken($link, $clientid, 'round_number_format')); ?>" />
-		<input type="radio" name="anf1" value="5" id="anf5" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '5'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">Round up to nearest whole number</label><br>
-		<input type="radio" name="anf1" value="1" id="anf1" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '1'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">Nearest whole number</label><br>
-		<input type="radio" name="anf1" value="2" id="anf2" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '2'){ echo 'checked';}?>><label class="form-radio-label" for="anf2">Nearest x.x9</label><br>
-		<input type="radio" name="anf1" value="3" id="anf3" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '3'){ echo 'checked';}?>><label class="form-radio-label" for="anf3">Nearest x.99</label><br>
-		<input type="radio" name="anf1" value="4" id="anf4" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '4'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">None</label><br>
-		
-		<div class="group-fields"><button type="submit">Save</button></div>
-		<div class="group-fields"><?php if (isset($_GET['partID']) && $_GET['partID'] == '1'){ echo $responseMsg;} ?></div>
-		</fieldset>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<div class="card-body">
+				<h5 class="card-title">Price Rounding</h5>
+				
+					<form class="dataentry" action="php-scripts/process-edit-settings.php" method="post" autocomplete="off">
+					<input autocomplete="false" name="hidden" type="text" style="display:none;">
+
+						<div class="dataentry-group-left">
+						<fieldset>
+						
+							<input type="hidden" name="anf1token" value="<?php echo htmlspecialchars(getToken($link, $clientid, 'round_number_format')); ?>" />
+							<input type="radio" name="anf1" value="5" id="anf5" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '5'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">Round up to nearest whole number</label><br>
+							<input type="radio" name="anf1" value="1" id="anf1" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '1'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">Nearest whole number</label><br>
+							<input type="radio" name="anf1" value="2" id="anf2" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '2'){ echo 'checked';}?>><label class="form-radio-label" for="anf2">Nearest x.x9</label><br>
+							<input type="radio" name="anf1" value="3" id="anf3" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '3'){ echo 'checked';}?>><label class="form-radio-label" for="anf3">Nearest x.99</label><br>
+							<input type="radio" name="anf1" value="4" id="anf4" class="form-radio" <?php if(getValue($link, $clientid, 'round_number_format') == '4'){ echo 'checked';} ?>><label class="form-radio-label" for="anf1">None</label><br>
+							
+							<div class="group-fields"><button type="submit">Save</button></div>
+							<div class="group-fields"><?php if (isset($_GET['partID']) && $_GET['partID'] == '1'){ echo $responseMsg;} ?></div>
+							</fieldset>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-
-</form>
 </div>
 <?php 
 function ifchecked($link, $clientid, $account_number, $vlu){
