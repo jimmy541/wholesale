@@ -143,6 +143,7 @@ $(document).ready(function(){
 		
 		$(document).on('click','#noDelPayBtn',function(){
 			$( "#populateDivGenPaymentDel" ).hide();
+			$('#gray-background').hide();
 			
 		});
 		
