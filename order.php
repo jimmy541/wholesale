@@ -111,7 +111,7 @@ $main_content = '';
 									$cert_code = '';
 
 								while($row2 = mysqli_fetch_array($result2)){
-									$cnt += 1;
+									//$cnt += 1;
 									$main_content.= '<div class="SingleItemBox" id="SingleItemBox'.htmlspecialchars($row2['cert_code']).'">'.htmlspecialchars($row2['brnd']).' '.htmlspecialchars($row2['description']).'
 										<br/>'.htmlspecialchars($row2['cert_code']).' <b>'.htmlspecialchars($row2['upc']).'</b><br/>
 										Retail: <span style="color:green;">'.number_format($row2['case_price'], 2, '.', ',').'</span>
@@ -137,12 +137,12 @@ $main_content = '';
 										$newCat = 'false';
 										$cert_code = $row2['cert_code'];
 
-									if ($cnt == 4){
+									/*if ($cnt == 4){
 									
 										$cnt = 0;
 										$main_content.= '<br/>';
 										
-									}
+									}*/
 									$currentSize = number_format($row2['size_amount'] * 1, 0);
 									
 								}
