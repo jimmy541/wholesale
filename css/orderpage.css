@@ -82,13 +82,13 @@
 }
 .MainCatLinks{
 	display:block;
-	height:22px;
+	height:24px;
 	color:#6c757d;
 	text-decoration:none;
 }
 .MainCatLinksSelected{
 	display:block;
-	height:15px;
+	height:24px;
 	color:white;
 	text-decoration:none;
 	background-color:#007dc6;
