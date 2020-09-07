@@ -128,8 +128,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 	<div class="row mb-2">
 		<div class="col">
-			<form action="new-product.php"><button type="submit" class="btn btn-primary shadow float-right">New Product</button></form>
-			<form action="new-product.php?clone=<?php echo $uid; ?>"><button type="submit" class="btn btn-primary shadow float-right">Copy</button></form>
+			<form action="new-product.php"><button type="submit" class="btn btn-primary shadow float-right ml-2">New Product</button></form>
+			<form action="new-product.php?clone=<?php echo $uid; ?>"><button type="submit" class="btn btn-primary shadow float-right ml-2">Copy</button></form>
 			
 		</div>
 	</div>
