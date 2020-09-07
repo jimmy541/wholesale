@@ -294,6 +294,10 @@ table caption a:hover, .button-right-float:hover{
 	overflow-y: auto;
   max-height: 300px;
 }
+.scrollable-card{
+  height: 370px;
+  margin: 30px auto;
+}
 
 .fielderrormsg{
 	color:red;
