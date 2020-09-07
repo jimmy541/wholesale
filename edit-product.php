@@ -44,6 +44,7 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$tax_id = '';
 	$lowest_allowed = '';
 	$highest_allowed = '';
+	$cloneunique = '';
 
 	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
@@ -82,6 +83,7 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 		$tax_id = $tax_idV;
 		$lowest_allowed = $lowest_allowedV;
 		$highest_allowed = $highest_allowedV;
+		$cloneunique = $uniqueid;
 		
 	}
 	if($active == 'yes'){$checked = 'yes';}
@@ -127,6 +129,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row mb-2">
 		<div class="col">
 			<form action="new-product.php"><button type="submit" class="btn btn-primary shadow float-right">New Product</button></form>
+			<form action="new-product.php?clone=<?php echo $uid; ?>"><button type="submit" class="btn btn-primary shadow float-right">Copy</button></form>
+			
 		</div>
 	</div>
 	<div class="row mb-2">
