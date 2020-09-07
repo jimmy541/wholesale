@@ -101,7 +101,7 @@ $depts_links = '';
 						<div class="card-body">
 							<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
 							<nav class="nav flex-column">
-								<?php echo depts_links; ?>
+								<?php echo $depts_links; ?>
 							</nav>
 						</div>
 					</div>
@@ -114,7 +114,7 @@ $depts_links = '';
 						<div class="card-body">
 							<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
 							<nav class="nav flex-column">
-								<?php echo depts_links; ?>
+								<?php echo $depts_links; ?>
 							</nav>
 						</div>
 					</div>
