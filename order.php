@@ -102,7 +102,8 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 			</div>
 	
 		<div class="col-12 col-md-10">
-			<div class="Content">
+		<div class="card">
+				<div class="card-body">
 	<?php
 	if (isset($_GET['acat'])){
 		 
@@ -189,7 +190,8 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 
 	?>
 
-	<!--close content-div -->
+	
+	</div>
 	</div>
 		
 
