@@ -47,6 +47,31 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 }else{
 	die("No customer is selected.");
 }
+
+$depts_links = '';
+	$style = 'MainCatLinks';
+	if (isset($_GET['acat'])){
+		if ($_GET['acat'] == 'uncat'){
+			$style = 'MainCatLinksSelected';
+		}
+	}
+	$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' AND `active` = 'yes' LIMIT 1");
+	while($row=mysqli_fetch_array($result)){
+		$depts_links .= '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
+	}
+	$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' AND a.`active` = 'yes' GROUP BY a.`department` ORDER BY b.`description`";
+	$result = mysqli_query($link, $query);
+	while ($row = mysqli_fetch_array($result)){
+		$style = 'MainCatLinks';
+		if (isset($_GET['acat'])){
+			if ($_GET['acat'] == $row['id']){
+				$style = 'MainCatLinksSelected';
+			}
+		}
+		$depts_links.= '<a class="'.$style.'" href="?acat='.$row['id'].'&customer='.$customer.'&order='.$order.'"/>'.htmlspecialchars($row['description']).'</a>';
+	}
+						
+
 ?>
 
 
@@ -69,37 +94,34 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	</div>
 	<div class="row">
 		<div class="col-12 col-md-3">
-			<div class="card">
-				<div class="card-body">
-				<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
-				<nav class="nav flex-column">
-					<?php	
-							$style = 'MainCatLinks';
-							if (isset($_GET['acat'])){
-									if ($_GET['acat'] == 'uncat'){
-										$style = 'MainCatLinksSelected';
-									}
-							}
-							$result = mysqli_query($link, "SELECT `uniqueid` FROM `grocery_products` WHERE `clientid` = '$clientid' AND `department` = '0' AND `active` = 'yes' LIMIT 1");
-							while($row=mysqli_fetch_array($result)){
-								echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
-							}
-							$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' AND a.`active` = 'yes' GROUP BY a.`department` ORDER BY b.`description`";
-							$result = mysqli_query($link, $query);
-							while ($row = mysqli_fetch_array($result)){
-								$style = 'MainCatLinks';
-								if (isset($_GET['acat'])){
-									if ($_GET['acat'] == $row['id']){
-										$style = 'MainCatLinksSelected';
-									}
-								}
-								echo '<a class="'.$style.'" href="?acat='.$row['id'].'&customer='.$customer.'&order='.$order.'"/>'.htmlspecialchars($row['description']).'</a>';
-							}
-						?>
-				</nav>
+		
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
+							<nav class="nav flex-column">
+								<?php echo depts_links; ?>
+							</nav>
+						</div>
+					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col">
+					<div class="card">
+						<div class="card-body">
+							<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
+							<nav class="nav flex-column">
+								<?php echo depts_links; ?>
+							</nav>
+						</div>
+					</div>
+				</div>
 			</div>
+			
+		</div>
 	
 		<div class="col-12 col-md-9">
 		<div class="card">
