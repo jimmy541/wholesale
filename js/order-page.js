@@ -10,7 +10,7 @@ $(document).on('click', 'span', function () {
 	
 });
 
-
+/*
 $(document).on('mouseover', 'div', function () {
 	var $id2 = (this.id);
     $id2 = $id2.replace("SingleItemBox", "");
@@ -24,7 +24,7 @@ $(document).on('mouseout', 'div', function () {
 	$("#OrderDiv"+$id3).hide();
 	
 });
-
+*/
 $(document).on('click', 'input:button', function () {
 	var $id = (this.id);
     $id = $id.replace("minus", "");
