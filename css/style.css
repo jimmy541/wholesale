@@ -1,4 +1,7 @@
-﻿.main-content{
+﻿body, html{
+	height:100vh !important;
+}
+.main-content{
 	background-color:#f2f2f3;
 	margin-left: 250px;
     overflow: hidden;
