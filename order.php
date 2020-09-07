@@ -201,7 +201,7 @@ $sub_depts = '';
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
-							<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
+							<div class="p-3 bg-light text-dark font-weight-bold">Sub Departments</div>
 							<nav class="nav flex-column">
 								<?php echo $sub_depts; ?>
 							</nav>
