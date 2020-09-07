@@ -266,7 +266,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					</div>
 				
 				<hr class="mb-4">
-				<h4>mb-3">Other</h4>
+				<h4>Other</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="">Package:</label>
