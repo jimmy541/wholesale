@@ -125,11 +125,12 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 
 		$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."' AND `active` = 'yes'";
 		$result = mysqli_query($link, $query);
+		
 		while ($row = mysqli_fetch_array($result)){
 			//List B Categories
 			
 			echo '<h1>'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h1>';
-			
+			$depts[ $row['sub_department']] = getDescription($link, 'sub_department', $clientid, $row['sub_department']);
 					echo '<div class="cCatDiv">';
 					//Listing C Categories
 
@@ -203,6 +204,15 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	<!-- close container-fluid -->
 </div>
 
+
+<?php 
+foreach($depts as $key => $value) {
+  echo $key.' - '.$value.'<br>';
+}
+
+
+
+?>
 
 
 
