@@ -96,7 +96,7 @@ $main_content = '';
 		while ($row = mysqli_fetch_array($result)){
 			//List B Categories
 			
-			$main_content.= '<h1>'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h1>';
+			$main_content.= '<h1 id="'.$row['sub_department'].'">'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h1>';
 			$depts[ $row['sub_department']] = getDescription($link, 'sub_department', $clientid, $row['sub_department']);
 					$main_content.= '<div class="cCatDiv">';
 					//Listing C Categories
@@ -158,8 +158,8 @@ $main_content = '';
 $sub_depts = '';
 	$style = 'MainCatLinks';
 	foreach($depts as $key => $value) {
-		$sub_depts.= '<a class="'.$style.'" href=""/>'.htmlspecialchars($value).'</a>';
-		//echo $key.' - '.$value.'<br>';
+		$sub_depts.= '<a class="'.$style.'" href="#'.$key.'"/>'.htmlspecialchars($value).'</a>';
+		
 	}
 ?>
 
