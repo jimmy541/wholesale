@@ -90,7 +90,7 @@ $main_content = '';
 				}
 				$stmt->close();
 
-		$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."' AND `active` = 'yes'";
+		$query = "SELECT DISTINCT `sub_department` FROM `grocery_products` WHERE `department` = '".$getid."' AND `active` = 'yes' ORDER BY `sub_department`";
 		$result = mysqli_query($link, $query);
 		
 		while ($row = mysqli_fetch_array($result)){
