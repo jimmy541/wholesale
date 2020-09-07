@@ -72,6 +72,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 			<div class="card">
 				<div class="card-body">
 				<div class="p-3 mb-2 bg-light text-dark">Departments</div>
+				<nav class="nav flex-column">
 					<?php	
 							$style = 'MainCatLinks';
 							if (isset($_GET['acat'])){
@@ -83,7 +84,6 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 							while($row=mysqli_fetch_array($result)){
 								echo '<a class="'.$style.'" href="?acat=uncat&customer='.$customer.'&order='.$order.'"/>Uncategorized</a>';
 							}
-							
 							$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' AND a.`active` = 'yes' GROUP BY a.`department` ORDER BY b.`description`";
 							$result = mysqli_query($link, $query);
 							while ($row = mysqli_fetch_array($result)){
@@ -94,12 +94,13 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 									}
 								}
 								echo '<a class="'.$style.'" href="?acat='.$row['id'].'&customer='.$customer.'&order='.$order.'"/>'.htmlspecialchars($row['description']).'</a>';
-								}
+							}
 						?>
+				</nav>
 				</div>
 			</div>
 			</div>
-		</div>
+	
 		<div class="col-12 col-md-10">
 			<div class="Content">
 	<?php
