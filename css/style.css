@@ -295,10 +295,10 @@ table caption a:hover, .button-right-float:hover{
 
 .right-scroll{
 	overflow-y: auto;
-  max-height: 100vh;
+  max-height: 76vh;
 }
 .scrollable-card{
-  height: 100vh;
+  height: 82vh;
 }
 
 .fielderrormsg{
