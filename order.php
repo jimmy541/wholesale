@@ -96,7 +96,7 @@ $main_content = '';
 		while ($row = mysqli_fetch_array($result)){
 			//List B Categories
 			
-			$main_content.= '<h1 id="'.$row['sub_department'].'">'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h1>';
+			$main_content.= '<h4 id="'.$row['sub_department'].'">'.getDescription($link, 'sub_department', $clientid, $row['sub_department']).'</h4>';
 			$depts[ $row['sub_department']] = getDescription($link, 'sub_department', $clientid, $row['sub_department']);
 					$main_content.= '<div class="cCatDiv">';
 					//Listing C Categories
