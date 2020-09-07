@@ -295,10 +295,10 @@ table caption a:hover, .button-right-float:hover{
 
 .right-scroll{
 	overflow-y: auto;
-  max-height: 300px;
+  max-height: 100vh;
 }
 .scrollable-card{
-  height: 370px;
+  height: 100vh;
   margin: 30px auto;
 }
 
