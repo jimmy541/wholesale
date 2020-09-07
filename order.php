@@ -59,7 +59,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-			<h3>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h3>
+			<h5>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h5>
 		</div>
 	</div>
 	<div class="row">
@@ -68,7 +68,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12 col-md-2">
+		<div class="col-12 col-md-3">
 			<div class="card">
 				<div class="card-body">
 				<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
@@ -101,7 +101,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 			</div>
 			</div>
 	
-		<div class="col-12 col-md-10">
+		<div class="col-12 col-md-9">
 		<div class="card">
 				<div class="card-body">
 	<?php
