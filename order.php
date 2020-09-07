@@ -71,7 +71,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		<div class="col-12 col-md-2">
 			<div class="card">
 				<div class="card-body">
-				<div class="p-3 mb-2 bg-light text-dark">Departments</div>
+				<div class="p-2 bg-light text-dark">Departments</div>
 				<nav class="nav flex-column">
 					<?php	
 							$style = 'MainCatLinks';
