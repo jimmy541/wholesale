@@ -170,12 +170,12 @@ $sub_depts = '';
 
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-11">
+		<div class="col-10">
 			<h5>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h5>
 		</div>
 	
-		<div class="col-1">
-			<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="genbtns btn btn-primary shadow btn-sm float-right">Preview</button></form>
+		<div class="col-2">
+			<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="btn btn-primary shadow btn-sm float-right">Preview</button></form>
 		</div>
 	</div>
 	<div class="row">
