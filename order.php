@@ -181,10 +181,10 @@ $sub_depts = '';
 			<form action="invoice.php"><input type="hidden" name="invoice" value="<?php echo $order; ?>"><button type="submit" class="genbtns btn btn-primary shadow btn-sm float-right">Preview</button></form>
 		</div>
 	</div>
-	<div class="row mb-2">
+	<div class="row">
 		<div class="col-12 col-md-3">
 		
-			<div class="row">
+			<div class="row mb-2">
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
@@ -197,7 +197,7 @@ $sub_depts = '';
 				</div>
 			</div>
 			
-			<div class="row">
+			<div class="row mb-2">
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
