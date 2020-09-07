@@ -71,7 +71,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		<div class="col-12 col-md-2">
 			<div class="card">
 				<div class="card-body">
-				<div class="p-2 bg-light text-dark">Departments</div>
+				<div class="p-3 bg-light text-dark font-weight-bold">Departments</div>
 				<nav class="nav flex-column">
 					<?php	
 							$style = 'MainCatLinks';
@@ -109,9 +109,9 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 		 
 		
 		if ($_GET['acat'] == 'uncat'){
-			echo '<div class="p-3 mb-2 bg-light text-dark">Uncategorized</div>';
+			echo '<div class="p-3 mb-2 bg-light text-dark font-weight-bold">Uncategorized</div>';
 		}else{
-			echo '<div class="p-3 mb-2 bg-light text-dark">'.getDescription($link, 'department', $clientid, $_GET['acat']).'</div>';
+			echo '<div class="p-3 mb-2 bg-light text-dark font-weight-bold">'.getDescription($link, 'department', $clientid, $_GET['acat']).'</div>';
 		}
 		$getid = '';
 		$stmt = $link->prepare("SELECT `id` FROM `department` WHERE `id` = ? AND `clientid` = '$clientid'");
