@@ -58,6 +58,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
 				<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
 				<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
+				<li id="assign-salesperson-customer"><i class="fas fa-hand-pointer"></i>Assign</li>
 			</ul>
 		</div>
 	</div>
