@@ -184,7 +184,7 @@ $sub_depts = '';
 	<div class="row">
 		<div class="col-12 col-md-3">
 		
-			<div class="row mb-2">
+			<div class="row mb-3">
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
@@ -197,7 +197,7 @@ $sub_depts = '';
 				</div>
 			</div>
 			
-			<div class="row mb-2">
+			<div class="row mb-3">
 				<div class="col">
 					<div class="card">
 						<div class="card-body">
