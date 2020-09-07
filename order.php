@@ -196,7 +196,7 @@ $sub_depts = '';
 			
 			<div class="row mb-3">
 				<div class="col">
-					<div class="card sticky-top">
+					<div>
 						<div class="card-body">
 							<div class="p-3 bg-light text-dark font-weight-bold">Sub Departments</div>
 							<nav class="nav flex-column">
@@ -212,7 +212,10 @@ $sub_depts = '';
 		<div class="col-12 col-md-9">
 			<div class="card">
 					<div class="card-body">
-						<?php echo $main_content; ?>
+						<div class="right-scroll">
+							<?php echo $main_content; ?>
+						</div>
+						
 					</div>
 			</div>
 		</div>

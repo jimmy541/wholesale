@@ -290,6 +290,11 @@ table caption a:hover, .button-right-float:hover{
 	 text-align:left !important
 }
 
+.right-scroll{
+	overflow-y: auto;
+  max-height: 300px;
+}
+
 .fielderrormsg{
 	color:red;
 	font-size:12px;
