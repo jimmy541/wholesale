@@ -169,7 +169,7 @@ $sub_depts = '';
 
 
 <div class="container-fluid">
-	<div class="row">
+	<div class="row mb-1">
 		<div class="col-10">
 			<h5>Customer: <?php echo $account_number.', '.$customer_name; ?><span style="float:right; display:block;">Order #<?php echo $invoicenumber; ?></span></h5>
 		</div>
