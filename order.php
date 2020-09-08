@@ -211,8 +211,8 @@ $sub_depts = '';
 	
 		<div class="col-12 col-md-9">
 			<div class="card scrollable-card">
-					<div class="card-body">
-						<div class="right-scroll"  ss-container>
+					<div class="card-body"   ss-container>
+						<div class="right-scroll">
 							<?php echo $main_content; ?>
 						</div>
 						
