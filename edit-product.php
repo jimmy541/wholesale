@@ -356,8 +356,6 @@ function getValue($link, $clientid, $table, $id){
 
 ?>
 
-<!-- The following div closes the main body div -->
-</div>
 <input class="form-control" type="hidden" value="<?php echo $roundformat; ?>" id="roundformat" />
 <div class="populateDivGen" id="calculateprice"">
 	<div class="container-fluid">
