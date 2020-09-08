@@ -86,10 +86,10 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	}
 	
 	
-	header("location: ../edit-product.php?success=1&product=$uniqueid");
+	header("location: ../edit-product.php?success=1");
 }else{ // if condition 3 false
 	$errorCode = '1';
-header('location: ../edit-product.php?error='.$errorCode);
+header("location: ../edit-product.php?product=$uniqueid&error=$errorCode");
 }
 
 ?>
