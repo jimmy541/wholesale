@@ -1,7 +1,7 @@
 <?php require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/connect.php'); 
 
 $errorCode = '';
-
+$uniqueid = $_POST['productid'];
 if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['description']) && !empty($_POST['description'])){ //condition 1
 	$uniqueid = $_POST['productid'];
 	$cert_code = $_POST['cert_code'];

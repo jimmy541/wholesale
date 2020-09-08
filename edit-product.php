@@ -45,6 +45,7 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$lowest_allowed = '';
 	$highest_allowed = '';
 	$cloneunique = '';
+	$clean_uniqueid = '';
 
 	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
@@ -84,6 +85,7 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 		$lowest_allowed = $lowest_allowedV;
 		$highest_allowed = $highest_allowedV;
 		$cloneunique = $uniqueid;
+		$clean_uniqueid = $uniqueid;
 		
 	}
 	if($active == 'yes'){$checked = 'yes';}
@@ -143,7 +145,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 
 		<?php echo $uploaderror; ?>
 			<?php
-			$row=mysqli_fetch_array(mysqli_query($link, "SELECT `image-id` FROM `grocery_products` WHERE `uniqueid` = '$uniqueid'"));
+			$row=mysqli_fetch_array(mysqli_query($link, "SELECT `image-id` FROM `grocery_products` WHERE `uniqueid` = '$clean_uniqueid'"));
 			if ($row['image-id'] != ''){
 				echo '<img class="card-img-top" src="pics/'.$row['image-id'].'" />';
 			}?>
@@ -156,7 +158,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 		<div class="card">
 			<div class="card-body">
 				<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
-		<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo $uniqueid; ?>">
+		<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo htmlspecialchars($clean_uniqueid); ?>">
 		<?php echo $responseMsg; ?>
 			
 				<h4>About</h4>
@@ -325,7 +327,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 <form name= "uploadform" action="upload-product-image.php" id="uploadform" method="post" enctype="multipart/form-data">
 			   
 			    <input class="form-control" type="file" name="fileToUpload" id="fileToUpload" style="display:none;" onchange="javascript:this.form.submit();">
-				<input class="form-control" type="hidden" name="image-id" value="<?php echo $uniqueid; ?>" />
+				<input class="form-control" type="hidden" name="image-id" value="<?php echo htmlspecialchars($clean_uniqueid); ?>" />
 			    <input class="form-control" type="submit" value="Upload Image" name="submitbtn" style="display:none;">
 				</form>
 
