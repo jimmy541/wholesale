@@ -2,7 +2,6 @@
 <?php $more_script = '<link rel="stylesheet" type="text/css" href="css/orderpage.css">
 <script type="text/javascript" src="js/order-page.js"></script>
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">
-<script type="text/javascript" src="js/general-list-popup.js"></script>
 <link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="js/thickbox.js"></script>'; ?>
 
