@@ -18,12 +18,12 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!--<link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">-->
-<link rel="stylesheet" href="https://dalysoft.com/wholesale/css/sidebar-themes.css">
-<script type="text/javascript" src="https://dalysoft.com/wholesale/js/dashboard-page.js"></script>
+<link rel="stylesheet" href="<?php echo $site_address; ?>css/sidebar-themes.css">
+<script type="text/javascript" src="<?php echo $site_address; ?>js/dashboard-page.js"></script>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/populateContainers.css">
-<link rel="stylesheet" type="text/css" href="https://dalysoft.com/wholesale/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $site_address; ?>css/populateContainers.css">
+<link rel="stylesheet" type="text/css" href="<?php echo $site_address; ?>css/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <?php
@@ -90,7 +90,7 @@ if(isset($_SESSION['user'])){
 	<!-- Other Links on Navbar -->
 	<div class="collapse navbar-collapse" id="navbarmenu">
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a href="https://dalysoft.com/wholesale/contact.php" class="nav-link">Contact</a></li>
+			<li class="nav-item"><a href="<?php echo $site_address; ?>contact.php" class="nav-link">Contact</a></li>
 			<?php 
 			if (isset($_SESSION['user'])){
 				$result = mysqli_query($link, "SELECT `first_name` FROM `users` WHERE `email_address` = '$user'");
@@ -104,8 +104,8 @@ if(isset($_SESSION['user'])){
 					<li class="nav-item dropdown">
 						<a href="#" class="nav-link dropdown-toggle" navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $userFullName;?></a>
 						 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-							  <a class="dropdown-item" href="https://dalysoft.com/wholesale/profile.php">Profile</a>
-							  <a class="dropdown-item" href="https://dalysoft.com/wholesale/php-scripts/process-logout.php">Logout</a>
+							  <a class="dropdown-item" href="<?php echo $site_address; ?>profile.php">Profile</a>
+							  <a class="dropdown-item" href="<?php echo $site_address; ?>php-scripts/process-logout.php">Logout</a>
 							  
 						</div>
 					</li>
@@ -118,8 +118,8 @@ if(isset($_SESSION['user'])){
 			else
 			{
 				//if logged out
-				echo '<li class="nav-item"><a href="https://dalysoft.com/wholesale/login.php" class="nav-link">Login</a></li>';
-				echo '<li class="nav-item"><a href="https://dalysoft.com/wholesale/register.php" class="nav-link">Register</a></li>'; 
+				echo '<li class="nav-item"><a href="'.$site_address.'login.php" class="nav-link">Login</a></li>';
+				echo '<li class="nav-item"><a href="'.$site_address.'register.php" class="nav-link">Register</a></li>'; 
 			} ?>
 			
 			

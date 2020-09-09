@@ -31,6 +31,7 @@ $category = '';
 $department_query = '';
 $subdepartment_query = '';
 $category_query= '';
+$supplier_query = '';
 
 if(isset($_GET['department']) && !empty($_GET['department'])){
 	if(is_numeric($_GET['department'])){

@@ -38,7 +38,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])){
 				mysqli_query($link, "UPDATE `password_resets` SET `reseted` = '1' WHERE `email` = '$email'");
 				mysqli_query($link, "INSERT INTO `password_resets`(`email`, `token`, `token2`, `date_requested`, `reseted`) VALUES ('$email','$token', '$token2', '$date','0')");
 				
-				$messagelink = '<a href="https://dalysoft.com/wholesale/replace-lost-password.php?email='.$email.'&id='.$token2.'&token='.$token.'">Click Here</a>';
+				$messagelink = '<a href="'.$site-address.'replace-lost-password.php?email='.$email.'&id='.$token2.'&token='.$token.'">Click Here</a>';
 				/* Create a new PHPMailer object. Passing TRUE to the constructor enables exceptions. */
 				$mail = new PHPMailer(TRUE);
 
@@ -58,7 +58,7 @@ if (isset($_POST['email']) && !empty($_POST['email'])){
 
 				   /* Set the mail message body. */
 				   $mail->Body = '<p>Dear Client,</p><p>Welcome to Wholesale.</p><p>To reset your password please  '.$messagelink.'.</p>
-				   <p>If you are unable to reset your password by clicking on the link above, please copy and paste the entire URL below into your web browser:<br>"https://dalysoft.com/wholesale/replace-lost-password.php?email='.$email.'&id='.$token2.'&token='.$token.'</p>';
+				   <p>If you are unable to reset your password by clicking on the link above, please copy and paste the entire URL below into your web browser:<br>"'.$site-address.'replace-lost-password.php?email='.$email.'&id='.$token2.'&token='.$token.'</p>';
 					
 					// Attachments
 					

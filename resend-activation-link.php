@@ -34,9 +34,9 @@ if (isset($_SESSION['user'])){
 				   $mail->isHTML(true);
 
 				   /* Set the mail message body. */
-				   $mail->Body = '<p>Dear '.$firstName.',</p><p>Welcome to Wholesale.</p><p>To activate the account please <a href="https://dalysoft.com/wholesale/activate-account.php?token='.$activationCode.'">click here</a>.</p>
+				   $mail->Body = '<p>Dear '.$firstName.',</p><p>Welcome to Wholesale.</p><p>To activate the account please <a href="'.$site_address.'activate-account.php?token='.$activationCode.'">click here</a>.</p>
 				   <p>Thanks for joining Wholesale. We know you will enjoy the power and simplicity of Wholesale. </p><p>Sincerely,<br>Wholesale Customer Service</p>
-				   <p>If you are unable to activate your account by clicking on the link above, please copy and paste the entire URL below into your web browser:<br> https://dalysoft.com/wholesale/activate-account.php?token='.$activationCode.'</p>';
+				   <p>If you are unable to activate your account by clicking on the link above, please copy and paste the entire URL below into your web browser:<br> '.$site_address.'activate-account.php?token='.$activationCode.'</p>';
 					
 					// Attachments
 					
