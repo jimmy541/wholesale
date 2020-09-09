@@ -69,6 +69,7 @@ $(document).ready(function() {
 					$('#invoice-number').val(item[3]);
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+					
 				});
 			}
 		}

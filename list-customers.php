@@ -58,7 +58,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
 				<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
 				<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
-				<li id="assign-salesperson-customer" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-hand-pointer"></i>Assign</li>
+				<li id="assign-salesperson-customer" data-toggle="modal" data-target=""><i class="fas fa-hand-pointer"></i>Assign</li>
 			</ul>
 		</div>
 	</div>
@@ -147,17 +147,22 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="assing_salesperson" tabindex="-1" aria-labelledby="assing_salespersonLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Assign Salesperson</h5>
+        <h5 class="modal-title" id="assing_salespersonLabel">Assign Salesperson</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form></form>
+        <div class="form-group">
+			<label for="exampleInputEmail1">Salesperson</label>
+			<select class="form-control salesperson" id="salesperson">
+				<?php echo get_salesperson_list($link, $clientid); ?>
+			</select>
+		</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -167,8 +172,47 @@ $(document).ready(function() {
   </div>
 </div>
 
+<?php 
 
+function get_salesperson_list($link, $clientid){
+	$options = '';
+	$query = "SELECT `uid`, `first_name`, `last_name` FROM `users` WHERE `clientid` = '$clientid'";
+	$result = mysqli_query($link, $query);
+	
+	while($row=mysqli_fetch_array($result)){
+		$options.= '<option value="'.$row['uid'].'">';
+		$options.= htmlspecialchars($row['first_name']).' '.htmlspecialchars($row['last_name']);
+		$option.= '</option>';
+	}
+	return $options;
+	
+}
 
+?>
+<script>
+$(document).ready(function() {
+	$('.salesperson').css('width', '100%');
+	$('.salesperson').select2({
+		dropdownParent: $("#assing_salesperson")
+	});
+	 $('#gtable tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('disable-select') ) {
+			
+		}else{
+			$('#assign-salesperson-customer').attr('data-target', '');
+			if ( $(this).hasClass('selected') ) {
+				
+				$('#assign-salesperson-customer').attr('data-target', '#assing_salesperson');
+				
+			}
+			else {
+				
+				
+			}
+		}
+    });
+});
+</script>
 
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
