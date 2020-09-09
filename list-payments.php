@@ -128,12 +128,12 @@ function validateDate($date, $format = 'Y-m-d')
 	   <div class="col-md-4 mb-3">
         <label for="refno">Reference Number</label>
 		
-        <input class="form-control" name="refno" id="refno" type="text" value="<?php echo htmlspecialchars($_GET['refno']); ?>">
+        <input class="form-control" name="refno" id="refno" type="text" value="<?php if(isset($_GET['refno']) && !empty($_GET['refno'])){echo htmlspecialchars($_GET['refno']);} ?>">
       </div>
 	   <div class="col-md-4 mb-3">
         <label for="invno">Invoice Number</label>
 		
-        <input class="form-control" name="invno" id="invno" type="text" value="<?php echo htmlspecialchars($_GET['invno']); ?>">
+        <input class="form-control" name="invno" id="invno" type="text" value="<?php if(isset($_GET['invno']) && !empty($_GET['invno'])){echo htmlspecialchars($_GET['invno']);} ?>">
       </div>
 	 </div>
 	   <input type="submit" class="btn btn-primary shadow mb-2" id="sbbtn" value="Search" />

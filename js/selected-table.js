@@ -1,12 +1,14 @@
 $(document).ready(function() {
+	var pTable = '';
+	
+	
+	
 	$('#gtable tfoot th').each( function () {
         var title = $(this).text();
 		if(title == 'Account Number' || title == 'Business Name'){
 			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
 		}
     } );
-	
-	var pTable = '';
     var table = $('#gtable').DataTable({
 		initComplete: function () {
             // Apply the search
@@ -39,8 +41,6 @@ $(document).ready(function() {
 		
 		
 	});
-	
-	
     $('#gtable tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('disable-select') ) {
 			
@@ -74,7 +74,6 @@ $(document).ready(function() {
 			}
 		}
     });
-	
 	$(document).on( 'click', '#paymentsTable tbody tr', function () {
 		var tb = $(this);
         if ( tb.hasClass('selected') ) {
@@ -96,7 +95,6 @@ $(document).ready(function() {
 			});
         }
     });
-	
 	$('#uncusstatement').click(function(){
 		var currentSel = $('#customerhash').val();
 		if(currentSel){
@@ -145,21 +143,18 @@ $(document).ready(function() {
 			window.location.href = "list-orders.php";
 		}	
 	});
-	
 	$('#view-order').click(function(){
 		var currentSel = $('#invoicehash').val();
 		if(currentSel){
 			window.location.href = "invoice.php?invoice="+currentSel;
 		}
 	});
-	
 	$('#print-order').click(function(){
 		var currentSel = $('#invoicehash').val();
 		if(currentSel){
 			window.location.href = "pdf-invoice.php?invoice="+currentSel;
 		}
 	});
-	
 	$('#download-order').click(function(){
 		var currentSel = $('#invoicehash').val();
 		if(currentSel){
@@ -273,7 +268,6 @@ $(document).ready(function() {
 			window.location.href = "pdf-pull-sheet.php?invoice="+currentSel;
 		}
 	});
-	
 	$('#pay-invoice').click(function(){
 		var currentSel = $('#invoicehash').val();
 		$('#closeIcon2').hide();
@@ -287,7 +281,6 @@ $(document).ready(function() {
 				$('#ref_no').val('');
 		}
 	});
-	
 	$('#edit-customer').click(function(){
 		var currentSel = $('#customerhash').val();
 		var currentSel2 = $('#customerid').val();
@@ -329,7 +322,6 @@ $(document).ready(function() {
 			window.location.href = "pdf-payments.php?dfrom="+pdfrom+"&dto="+pdto+"&customer="+pcustomer;
 		
 	});
-	
 	$('#download-payment-history').click(function(){
 		var pdfrom = $('#pdatefrom').val();
 		var pdto = $('#pdateto').val();
@@ -373,7 +365,6 @@ $(document).ready(function() {
 				
 			}
 	});
-	
 	$('#payment-history').click(function(){
 		var currentSel = $('#invoicehash').val();
 		if (currentSel){
