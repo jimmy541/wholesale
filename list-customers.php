@@ -157,7 +157,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-body">
         <div class="form-group">
-			<label for="exampleInputEmail1">Salesperson</label>
+			<label for="salesperson">Salesperson</label>
 			<select class="form-control salesperson" id="salesperson">
 				<?php echo get_salesperson_list($link, $clientid); ?>
 			</select>
@@ -165,7 +165,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="save-assign-salesperson">Save</button>
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@ function get_salesperson_list($link, $clientid){
 	$options = '';
 	$query = "SELECT `uid`, `first_name`, `last_name` FROM `users` WHERE `clientid` = '$clientid'";
 	$result = mysqli_query($link, $query);
-	
+	$options.= '<option></option>';
 	while($row=mysqli_fetch_array($result)){
 		$options.= '<option value="'.$row['uid'].'">';
 		$options.= htmlspecialchars($row['first_name']).' '.htmlspecialchars($row['last_name']);

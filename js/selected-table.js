@@ -713,7 +713,23 @@ $(document).ready(function() {
 			}
 			});
 		});
-	
+		$(document).on('click', '#save-assign-salesperson', function(){
+			
+			var customerid = $('#customerhash').val();
+			var saleseperson_id = $('#salesperson option:selected').val();
+			var data = {customerid:customerid, saleseperson_id:saleseperson_id};
+			
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/update-customer-salesperson.php',
+            data: data,
+            success: function(response) {
+				$('#assing_salesperson').modal('toggle');
+				
+			}
+			});
+			
+		});
 	
 	
 	
