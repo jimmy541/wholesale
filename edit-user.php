@@ -14,14 +14,15 @@ $email = '';
 $user_role = '';
 $allow_limited_override = '';
 $allow_free_override = '';
+$show_assigned_customers_only = '';
 if(isset($_GET['user']) && !empty($_GET['user'])){
 	$user_code = $_GET['user'];
 	
-	$query="SELECT `email_address`, `first_name`, `last_name`, `display_code`, `role`, `allow_price_override`, `allow_free_override` FROM `users` WHERE `uid` = ? AND `clientid` = ?";
+	$query="SELECT `email_address`, `first_name`, `last_name`, `display_code`, `role`, `allow_price_override`, `allow_free_override`, `show_assigned_customers_only` FROM `users` WHERE `uid` = ? AND `clientid` = ?";
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $user_code, $clientid);
 	$stmt->execute();
-	$stmt->bind_result($em, $fn, $ln, $dc, $ro, $apo, $afo);
+	$stmt->bind_result($em, $fn, $ln, $dc, $ro, $apo, $afo, $saco);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -32,6 +33,7 @@ if(isset($_GET['user']) && !empty($_GET['user'])){
 		$user_role = $ro;
 		$allow_limited_override = $apo;
 		$allow_free_override = $afo;
+		$show_assigned_customers_only = $saco;
 		
 		
 	}
@@ -58,7 +60,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="">Email:*</label>
+							<label for="">Email:</label>
 							<input class="form-control"  type="email" id="useremail" name="useremail" value="<?php echo htmlspecialchars($email); ?>" autocomplete="off" disabled/>
 						</div>
 						<div class="col-md-6 mb-3">
@@ -118,6 +120,15 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 			 
 			</div>
 		  </div>
+		   <div class="form-group">
+				<div class="form-check">
+				<input class="form-check-input" type="checkbox" value="" id="show_assigned_customers" name="show_assigned_customers" <?php if($show_assigned_customers_only == '1'){echo 'checked';} if($user_role == 'Administrator'){echo 'disabled';} ?>>
+				<label class="form-check-label" for="show_assigned_customers">
+				Show Assigned Accounts Only
+				</label>
+     
+				</div>
+			</div>
 					
 					<hr class="mb-4">
 					<div class="mb-3">

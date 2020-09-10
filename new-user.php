@@ -85,6 +85,15 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
      
     </div>
   </div>
+   <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="show_assigned_customers" name="show_assigned_customers" disabled>
+      <label class="form-check-label" for="show_assigned_customers">
+        Show Assigned Accounts Only
+      </label>
+     
+    </div>
+  </div>
 		
 		<hr class="mb-4">
 		<div class="mb-3">

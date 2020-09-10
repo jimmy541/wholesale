@@ -356,9 +356,12 @@ $(document).ready(function(){
 		if(selected_user_role == 'Administrator'){
 			$('#allow_limited_override').attr('disabled', true);
 			$('#allow_free_override').attr('disabled', true);
+			$('#show_assigned_customers').attr('disabled', true);
+			
 		}else{
 			$('#allow_limited_override').attr('disabled', false);
 			$('#allow_free_override').attr('disabled', false);
+			$('#show_assigned_customers').attr('disabled', false);
 		}
 	});
 	
