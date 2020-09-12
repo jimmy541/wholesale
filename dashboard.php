@@ -8,14 +8,15 @@
       
     </div></a>
   </div>
+  <?php if($role == 'Administrator'){ ?>
   <div class="card text-center">
-    
+      
     <a href="list-suppliers.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-boxes"></i></h1>
       <h5 class="card-title">Suppliers</h5>
       
     </div></a>
-  </div>
+  </div><?php } ?>
   <div class="card text-center">
     <a href="list-customers.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-user-friends"></i></h1>
@@ -23,14 +24,16 @@
       
     </div></a>
   </div>
+  <?php if($role == 'Administrator'){ ?>
   <div class="card text-center">
     <a href="list-users.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fas fa-user"></i></h1>
       <h5 class="card-title">Users</h5>
       
     </div></a>
-  </div>
-</div><br>
+  </div><?php } ?>
+</div>
+<br>
 <div class="card-deck">
   <div class="card text-center">
    <a href="list-orders.php"><div class="card-body">
@@ -47,13 +50,14 @@
       
     </div></a>
   </div>
+  <?php if($role == 'Administrator'){ ?>
   <div class="card text-center">
     <a href="edit-settings.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-user-friends"></i></h1>
       <h5 class="card-title">Settings</h5>
       
     </div></a>
-  </div>
+  </div><?php } ?>
   
 </div>
 

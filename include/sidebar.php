@@ -71,6 +71,7 @@
                                 
                             </a>
                         </li>
+						 <?php if($role == 'Administrator'){ ?>
 						<li>
                             <a href="edit-company.php">
                                 <i class="fa fa-building"></i>
@@ -78,6 +79,7 @@
                                 
                             </a>
                         </li>
+						 <?php } ?>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-th-large"></i>
@@ -93,6 +95,7 @@
                                 </ul>
                             </div>
                         </li>
+						 <?php if($role == 'Administrator'){ ?>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-boxes"></i>
@@ -105,6 +108,7 @@
                                 <ul>
                             </div>
                         </li>
+						 <?php } ?>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-user-friends"></i>
@@ -147,6 +151,7 @@
                         <li class="header-menu">
                             <span>Extra</span>
                         </li>
+						<?php if($role == 'Administrator'){ ?>
 						<li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-user-friends"></i>
@@ -159,6 +164,7 @@
                                 </ul>
                             </div>
                         </li>
+						<?php } ?>
                         <li>
                             <a href="#">
                                 <i class="fa fa-book"></i>
