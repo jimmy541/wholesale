@@ -65,12 +65,12 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 <div class="container-fluid">
 	<div class="row mb-2">
 		<div class="col">
-			<?php echo $products_links; ?>
+			<?php if($role =! 'Sales Representative') {echo $products_links; }?>
 		</div>
 	</div>
 	<div class="row mb-2">
 		<div class="col">
-		 <a class="btn btn-primary shadow float-right ml-1" href="new-product.php" role="button">New Product</a>  
+		 <?php if($role =! 'Sales Representative') { ?> <a class="btn btn-primary shadow float-right ml-1" href="new-product.php" role="button">New Product</a>  <?php } ?>
 		<button type="button" class="btn btn-info shadow float-right ml-1" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
 		</div>
 		
@@ -123,7 +123,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 					<select class="form-control" id="category" name="category" style="height: 38px !important">
 						<option></option>
 						<?php
-							$query = "SELECT `id`, `description` FROM `sub_department` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
+							$query = "SELECT `id`, `description` FROM `category` WHERE `clientid` = '$clientid' ORDER BY `description` ASC";
 							$stmt = $link->prepare($query);
 							$stmt->execute();
 							$stmt->bind_result($id, $description);
@@ -136,6 +136,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						?>
 					</select>
 				</div>
+				 <?php if($role =! 'Sales Representative') { ?>
 				<div class="col-md-3 mb-3">
 					<label for="supplier">Supplier</label>
 					<select class="form-control" id="supplier" name="supplier" style="height: 38px !important">
@@ -154,6 +155,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						?>
 					</select>
 				</div>
+				 <?php } ?>
 			</div>
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
