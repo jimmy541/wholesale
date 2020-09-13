@@ -88,7 +88,13 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 						</tfoot>
 						<tbody>
 							<?php
-							$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query";
+							$only_assigned_query = '';
+							if($role == 'Sales Representative' || $role == 'Backend Operator'){
+								if($show_assigned_customers_only == '1'){
+									$only_assigned_query = " AND `salesperson_id` = '$user_id'";
+								}
+							}
+							$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query $only_assigned_query";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) {
 								$del_id_type = 'delete';

@@ -118,7 +118,13 @@ if(isset($_GET['rs'])){
 						</tfoot>
 						<tbody>
 							<?php
-							$query = "SELECT a.`invoice_number_hash`, a.`customer_hash`, a.`date_started`, a.`invoice_number`, (a.`retail` + a.`tax`) tx, a.`retail` + a.`tax` - a.`paid_total` bln, a.`status`, b.`business_name` FROM `orders` a LEFT JOIN `customers` b ON a.`customer_hash` = b.`hashed_id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`order_type` = '$order_type' $customer_detail_query ORDER BY a.`date_started` DESC";
+							$only_assigned_query = '';
+							if($role == 'Sales Representative' || $role == 'Backend Operator'){
+								if($show_assigned_customers_only == '1'){
+									$only_assigned_query = " AND b.`salesperson_id` = '$user_id'";
+								}
+							}
+							$query = "SELECT a.`invoice_number_hash`, a.`customer_hash`, a.`date_started`, a.`invoice_number`, (a.`retail` + a.`tax`) tx, a.`retail` + a.`tax` - a.`paid_total` bln, a.`status`, b.`business_name` FROM `orders` a LEFT JOIN `customers` b ON a.`customer_hash` = b.`hashed_id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`order_type` = '$order_type' $customer_detail_query $only_assigned_query ORDER BY a.`date_started` DESC";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) { 
 								echo '<tr>

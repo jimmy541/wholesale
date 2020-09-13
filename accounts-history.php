@@ -66,7 +66,13 @@ function validateDate($date, $format = 'Y-m-d')
 							<select class="customer_select form-control" id="customer_select" name="customer_select" style="height: 38px !important">
 								<option></option>
 								<?php
-									$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' ORDER BY `business_name` ASC";
+								$only_assigned_query = '';
+								if($role == 'Sales Representative' || $role == 'Backend Operator'){
+									if($show_assigned_customers_only == '1'){
+										$only_assigned_query = " AND `salesperson_id` = '$user_id'";
+									}
+								}
+									$query = "SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' $only_assigned_query ORDER BY `business_name` ASC";
 									$stmt = $link->prepare($query);
 									$stmt->execute();
 									$stmt->bind_result($hashedid, $busname);

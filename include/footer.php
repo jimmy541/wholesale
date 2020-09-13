@@ -1,8 +1,15 @@
 	
 <div id="gray-background"></div>
 <?php
+if(!empty($clientid)){
+	$only_assigned_query = '';
+							if($role == 'Sales Representative' || $role == 'Backend Operator'){
+								if($show_assigned_customers_only == '1'){
+									$only_assigned_query = " AND `salesperson_id` = '$user_id'";
+								}
+							}
 $customer_options = '<option></option>';
-$stmt = $link->prepare("SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' AND `active` = 'yes' ORDER BY `business_name` ASC");
+$stmt = $link->prepare("SELECT `hashed_id`, `business_name` FROM `customers` WHERE `clientid` = '$clientid' AND `active` = 'yes' $only_assigned_query ORDER BY `business_name` ASC");
 $stmt->execute();
 $stmt->bind_result($hid, $bn);
 while($stmt->fetch()){
@@ -43,6 +50,7 @@ while($stmt->fetch()){
 		</div>
 	</div>
 </div>
+<?php } ?>
 <script>
 $(document).ready(function() {
 	$('.select-customer').css('width', '100%');

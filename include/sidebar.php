@@ -71,7 +71,7 @@
                                 
                             </a>
                         </li>
-						 <?php if($role == 'Administrator'){ ?>
+						 <?php if($role == 'Administrator' || $role == 'Owner'){ ?>
 						<li>
                             <a href="edit-company.php">
                                 <i class="fa fa-building"></i>
@@ -88,14 +88,14 @@
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
-									<li><a href="new-product.php">New Product</a></li>
+									<?php if($role != 'Sales Representative') { ?> <li><a href="new-product.php">New Product</a></li> <?php } ?>
                                     <li><a href="list-products.php">Products List</a></li>
-                                    <li><a href="list-products-departments.php">Departments</a></li>
+									<?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-departments.php">Departments</a></li><?php } ?>
                                   
                                 </ul>
                             </div>
                         </li>
-						 <?php if($role == 'Administrator'){ ?>
+						 <?php if($role != 'Sales Representative'){ ?>
                         <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-boxes"></i>
@@ -116,7 +116,7 @@
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
-                                    <li><a href="new-customer.php">New Customer</a></li>
+                                   <?php if($role != 'Sales Representative'){ ?> <li><a href="new-customer.php">New Customer</a></li> <?php } ?>
                                     <li><a href="list-customers.php">Customers List</a></li>
                                 </ul>
                             </div>
@@ -130,7 +130,8 @@
                                 <ul>
                                     <li><a href="accounts-unpaid.php">Unpaid Accounts</a></li>
                                     <li><a href="accounts-history.php">Accounts History</a></li>
-									<li><a href="list-payments.php">Payments</a></li>
+									
+									 <?php if($role != 'Sales Representative'){ ?><li><a href="list-payments.php">Payments</a></li> <?php } ?>
                                 </ul>
                             </div>
                         </li>
@@ -151,7 +152,7 @@
                         <li class="header-menu">
                             <span>Extra</span>
                         </li>
-						<?php if($role == 'Administrator'){ ?>
+						<?php if($role == 'Administrator' || $role == 'Owner'){ ?>
 						<li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fa fa-user-friends"></i>
