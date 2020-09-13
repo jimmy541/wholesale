@@ -1,4 +1,4 @@
-<?php $page_title = 'Profile';?>
+<?php $page_title = 'Dashboard';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <div class="card-deck">
   <div class="card text-center">
@@ -47,6 +47,14 @@
     <a href="#" id="place-order-template1-2"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-pen-square"></i></h1>
       <h5 class="card-title">Place Order</h5>
+      
+    </div></a>
+  </div>
+  <div class="card text-center">
+    
+    <a href="show-products.php?acat=<?php echo $cat; ?>" ><div class="card-body">
+	<h1 class="card-title"><i class="fa fa-pen-square"></i></h1>
+      <h5 class="card-title">Cataloge</h5>
       
     </div></a>
   </div>

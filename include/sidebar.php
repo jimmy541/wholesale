@@ -1,3 +1,13 @@
+<?php
+$query = "SELECT b.`description` description, a.`department` id FROM `grocery_products` a left join `department` b on a.`department` = b.`id` AND b.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`department` <> '0' GROUP BY a.`department` ORDER BY b.`description` LIMIT 1";
+		$result = mysqli_query($link, $query);
+		$cat = "uncat";
+		while ($row = mysqli_fetch_array($result)){
+			$cat = $row['id'];
+			
+		}
+
+?>
 <div class="default-theme sidebar-bg bg1">
 <nav class="sidebar-wrapper">
             <div class="sidebar-content">
@@ -146,6 +156,13 @@
                             <a href="list-orders.php">
                                 <i class="fa fa-list-alt"></i>
                                 <span class="menu-text">Orders</span>
+                                
+                            </a>
+                        </li>
+						<li>
+                            <a href="show-products.php?acat=<?php echo $cat; ?>">
+                                <i class="fa fa-list-alt"></i>
+                                <span class="menu-text">Cataloge</span>
                                 
                             </a>
                         </li>

@@ -69,8 +69,9 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 
 <?php
 $pushLeftStyle = '';
+$curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 if(isset($_SESSION['user'])){
-	if(getcwd() != '/home/dalysoft/public_html/wholesale/backend'){
+	if(getcwd() != '/home/dalysoft/public_html/wholesale/backend' || $curPageName != 'show-products.php'){
 	require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
 	}
 }else{
