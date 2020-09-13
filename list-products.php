@@ -65,12 +65,12 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 <div class="container-fluid">
 	<div class="row mb-2">
 		<div class="col">
-			<?php if($role =! 'Sales Representative') {echo $products_links; }?>
+			<?php if($role != 'Sales Representative') {echo $products_links; }?>
 		</div>
 	</div>
 	<div class="row mb-2">
 		<div class="col">
-		 <?php if($role =! 'Sales Representative') { ?> <a class="btn btn-primary shadow float-right ml-1" href="new-product.php" role="button">New Product</a>  <?php } ?>
+		 <?php if($role != 'Sales Representative') { ?> <a class="btn btn-primary shadow float-right ml-1" href="new-product.php" role="button">New Product</a>  <?php } ?>
 		<button type="button" class="btn btn-info shadow float-right ml-1" data-toggle="collapse" data-target="#filter-box"><i class="fas fa-filter"></i></button>
 		</div>
 		
@@ -136,7 +136,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						?>
 					</select>
 				</div>
-				 <?php if($role =! 'Sales Representative') { ?>
+				 <?php if($role != 'Sales Representative') { ?>
 				<div class="col-md-3 mb-3">
 					<label for="supplier">Supplier</label>
 					<select class="form-control" id="supplier" name="supplier" style="height: 38px !important">
@@ -191,7 +191,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						<th>Retail</th>
 						<th>Margin</th>
 						<th>Qty</th>
-						<th>Action</th>
+						<?php if($role != 'Sales Representative') { ?><th>Action</th> <?php } ?>
 					</tr>
 				</thead>
 				<tfoot>
@@ -205,7 +205,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						<th></th>
 						<th></th>
 						<th></th>
-						<th></th>
+						<?php if($role != 'Sales Representative') { ?><th></th> <?php } ?>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -227,8 +227,10 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 							}
 						}
 						echo '<td data-label="Case Retail">'.$mrgn.'</td>
-						<td data-label="Qty">'.htmlspecialchars($row['QtyOnHand']).'</td>
-						<td><span class="action-icons"><a href="edit-product.php?product='.htmlspecialchars($row['uniqueid']).'"><i class="fas fa-edit"></i></a><i id="delete'.htmlspecialchars($row['uniqueid']).'" class="fas fa-trash-alt"></i></span></td></tr>'; 
+						<td data-label="Qty">'.htmlspecialchars($row['QtyOnHand']).'</td>';
+						
+						if($role != 'Sales Representative') { echo '<td><span class="action-icons"><a href="edit-product.php?product='.htmlspecialchars($row['uniqueid']).'"><i class="fas fa-edit"></i></a><i id="delete'.htmlspecialchars($row['uniqueid']).'" class="fas fa-trash-alt"></i></span></td>'; }
+						echo '</tr>'; 
 					}
 					?>
 			</tbody>

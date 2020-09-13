@@ -75,11 +75,11 @@ if(isset($_GET['rs'])){
 				<li id="print-order"><i class="fas fa-print"></i>Print</li>
 				<li id="download-order"><i class="fas fa-download"></i>Download</li>
 				<li id="send-order"><i class="fas fa-share-square"></i>Send</li>
-				<li id="pull-sheet"><i class="fas fa-list"></i>Pull Sheet</li>
-				<li id="delete-order"><i class="fas fa-trash-alt"></i>Delete</li>
+				<?php if($role != 'Sales Representative') { ?><li id="pull-sheet"><i class="fas fa-list"></i>Pull Sheet</li><?php } ?>
+				<?php if($role != 'Sales Representative') { ?><li id="delete-order"><i class="fas fa-trash-alt"></i>Delete</li> <?php } ?>
 				<?php if($order_type == 'invoice'){ ?>
-					<li id="pay-invoice"><i class="fas fa-file-invoice-dollar"></i>Pay</li>
-					<li id="payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
+					<?php if($role != 'Sales Representative') { ?><li id="pay-invoice"><i class="fas fa-file-invoice-dollar"></i>Pay</li><?php } ?>
+					<?php if($role != 'Sales Representative') { ?><li id="payment-history"><i class="fas fa-money-check-alt"></i>Payments</li><?php } ?>
 					
 				<?php } ?>
 				
@@ -152,8 +152,15 @@ if(isset($_GET['rs'])){
 										$order_status = 'Delivered';
 										$btn_style = 'btn-success';
 									}
+									$disabled_button = '';
+									if($role == 'Sales Representative') {
+										$disabled_button = ' disabled';
+										echo '<td data-label="Status"><button type="button" class="btn '.$btn_style.'" '.$disabled_button.'>'.$order_status.'</button></td>';
+									}else{
+										echo '<td data-label="Status"><button type="button" id="changestatus'.htmlspecialchars($row['invoice_number_hash']).'" class="btn '.$btn_style.'" '.$disabled_button.'>'.$order_status.'</button></td>';
+									}
 									
-									echo '<td data-label="Status"><button type="button" id="changestatus'.htmlspecialchars($row['invoice_number_hash']).'" class="btn '.$btn_style.'">'.$order_status.'</button></td>';
+									
 								}
 								echo '</tr>'; 
 							}

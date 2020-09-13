@@ -37,12 +37,13 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 <input type="hidden" id="prior3months" value="<?php echo date('Y-m-d', strtotime("-3 months")); ?>" /> 
 
 <div class="container-fluid">
-	<div class="row">
+	 <?php if($role != 'Sales Representative') { ?><div class="row">
 		<div class="col">
 			<form action="new-customer.php"><button type="submit" class="btn btn-primary shadow btn-sm float-right ml-1">New Customer</button></form>
 			<?php echo $active_link; ?>
 		</div>
 	</div>
+	 <?php } ?>
 	
 
 	<div class="row">
@@ -52,12 +53,12 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons-disabled">
-				<li id="edit-customer"><i class="fas fa-edit"></i>Edit</li>
+				<?php if($role != 'Sales Representative') { ?><li id="edit-customer"><i class="fas fa-edit"></i>Edit</li><?php } ?>
 				<li id="view-customer-invoices"><i class="fas fa-file-invoice"></i>Invoices</li>
 				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
 				<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
-				<li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li>
-				<li id="assign-salesperson-customer" data-toggle="modal" data-target=""><i class="fas fa-hand-pointer"></i>Assign</li>
+				<?php if($role != 'Sales Representative') { ?><li id="customer-payment-history"><i class="fas fa-money-check-alt"></i>Payments</li><?php } ?>
+				<?php if($role != 'Sales Representative') { ?><li id="assign-salesperson-customer" data-toggle="modal" data-target=""><i class="fas fa-hand-pointer"></i>Assign</li><?php } ?>
 			</ul>
 		</div>
 	</div>
