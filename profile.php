@@ -90,9 +90,11 @@ if (isset($_SESSION['user'])){
 			
 		
 		}
-		if ($_GET['accountactivated'] == 'success'){
-			//email activated
-			$uploadmessage = '<div class="alert alert-success" role="alert">Email address has been verified.</div>';
+		if(isset($_GET['accountactivated'])){
+			if ($_GET['accountactivated'] == 'success'){
+				//email activated
+				$uploadmessage = '<div class="alert alert-success" role="alert">Email address has been verified.</div>';
+			}
 		}
 		?>
 		
