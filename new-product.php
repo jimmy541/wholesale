@@ -124,11 +124,11 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					<nav class="nav nav-pills flex-column">
 						<a class="navbar-brand" href="#">Jumb to</a>
 						<a class="nav-link" href="#item-1">About</a>
-						<a class="nav-link" href="#item-2">Product Info</a>
+						<a class="nav-link" href="#item-2">Info</a>
 						<a class="nav-link" href="#item-3">Section</a>
-						<a class="nav-link" href="#item-4">Supplier Info</a>
+						<a class="nav-link" href="#item-4">Supplier</a>
 						<a class="nav-link" href="#item-5">Inventory</a>
-						<a class="nav-link" href="#item-6">Price Allowance</a>
+						<a class="nav-link" href="#item-6">Allowance</a>
 						<a class="nav-link" href="#item-7">Other</a>
 					</nav>
 				</nav>

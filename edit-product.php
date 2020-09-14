@@ -156,8 +156,32 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	<div class="row mb-2">
 	<!-- open col -->
 	<div class="col col-md-2">
-	
-		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
+		<div class="row">
+			<div class="col">
+			
+				<div class="card">
+					<div class="card-body">
+						<nav id="products-nav" class="navbar navbar-light bg-light">
+							<nav class="nav nav-pills flex-column">
+								<a class="navbar-brand" href="#">Jumb to</a>
+								<a class="nav-link" href="#item-1">About</a>
+								<a class="nav-link" href="#item-2">Info</a>
+								<a class="nav-link" href="#item-3">Section</a>
+								<a class="nav-link" href="#item-4">Supplier</a>
+								<a class="nav-link" href="#item-5">Inventory</a>
+								<a class="nav-link" href="#item-6">Allowance</a>
+								<a class="nav-link" href="#item-7">Other</a>
+							</nav>
+						</nav>
+					</div>	
+				</div>
+			
+			</div>
+		
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
 		<div class="card-body">
 		<h4>Image</h4>
 
@@ -171,6 +195,9 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				<p class="card-text text-center">Click to change</p>
 			</div>
 		</div>
+			</div>
+		</div>
+	
 	</div>
 	<div class="col col-md-10">
 		<div class="card">
