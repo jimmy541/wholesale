@@ -265,9 +265,13 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				<div class="row">
 				<div class="col-md-6 mb-3">
-					<label for="" >Tax:</label>
+					<label for="tax_id" >Tax:</label>
 					<select class="form-control" id="tax_id" name="tax_id"><?php echo getValue($link, $clientid, 'product_tax_types', $tax_id); ?>
 					</select>
+				</div>
+				<div class="col-md-6 mb-3">
+					<label for="cases_on_pallet" >Cases on Pallet:</label>
+					<input type="number" class="form-control" id="cases_on_pallet" name="cases_on_pallet" />
 				</div>
 			</div>
 				
