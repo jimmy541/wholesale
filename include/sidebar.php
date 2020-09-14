@@ -98,9 +98,16 @@ $query = "SELECT b.`description` description, a.`department` id FROM `grocery_pr
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
+									<li><a href="list-products.php">Products List</a></li>
 									<?php if($role != 'Sales Representative') { ?> <li><a href="new-product.php">New Product</a></li> <?php } ?>
-                                    <li><a href="list-products.php">Products List</a></li>
-									<?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-departments.php">Departments</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-departments.php">Departments</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-sub-departments.php">Sub Departments</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-categories.php">Categories</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-brands.php">Brands</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-packages.php">Packages</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-weight-units.php">Weight Units</a></li><?php } ?>
+                                    <?php if($role != 'Sales Representative') { ?>  <li><a href="list-products-tax-type.php">Tax Types</a></li><?php } ?>
+									
                                   
                                 </ul>
                             </div>
@@ -113,8 +120,9 @@ $query = "SELECT b.`description` description, a.`department` id FROM `grocery_pr
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
+									<li><a href="list-suppliers.php">Suppliers List</a></li>
                                     <li><a href="new-supplier.php">New Supplier</a></li>
-                                    <li><a href="list-suppliers.php">Suppliers List</a></li>
+                                   
                                 <ul>
                             </div>
                         </li>
@@ -126,8 +134,9 @@ $query = "SELECT b.`description` description, a.`department` id FROM `grocery_pr
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
+									<li><a href="list-customers.php">Customers List</a></li>
                                    <?php if($role != 'Sales Representative'){ ?> <li><a href="new-customer.php">New Customer</a></li> <?php } ?>
-                                    <li><a href="list-customers.php">Customers List</a></li>
+                                   
                                 </ul>
                             </div>
                         </li>
@@ -177,8 +186,9 @@ $query = "SELECT b.`description` description, a.`department` id FROM `grocery_pr
                             </a>
                             <div class="sidebar-submenu">
                                 <ul>
+									<li><a href="list-users.php">Users List</a></li>
                                     <li><a href="new-user.php">New User</a></li>
-                                    <li><a href="list-users.php">Users List</a></li>
+                                    
                                 </ul>
                             </div>
                         </li>
