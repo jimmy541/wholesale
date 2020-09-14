@@ -53,7 +53,7 @@
   <div class="card text-center">
     
     <a href="show-products.php?acat=<?php echo $cat; ?>" ><div class="card-body">
-	<h1 class="card-title"><i class="fa fa-pen-square"></i></h1>
+	<h1 class="card-title"><i class="fas fa-book-open"></i></h1>
       <h5 class="card-title">Cataloge</h5>
       
     </div></a>

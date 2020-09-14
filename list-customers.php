@@ -73,7 +73,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<th>Account Number</th>
 								<th>Business Name</th>
 								<th>State</th>
-								<th>Action</th>
+								<?php if($role != 'Sales Representative') { ?><th>Action</th><?php } ?>
 							</tr>
 						</thead>
 						<tfoot>
@@ -84,7 +84,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<th>Account Number</th>
 								<th>Business Name</th>
 								<th></th>
-								<th></th>
+								<?php if($role != 'Sales Representative') { ?><th></th><?php } ?>
 							</tr>
 						</tfoot>
 						<tbody>
@@ -105,9 +105,9 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<td data-label="Customer ID" style="display:none;">'.htmlspecialchars($row["hashed_id"]).'</td>
 								<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
 								<td data-label="Business Name">'.htmlspecialchars($row["business_name"]).'</td>
-								<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>
-								<td><span class="action-icons"><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>
-								</tr>'; 
+								<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>';
+								if($role != 'Sales Representative') { echo '<td><span class="action-icons"><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>'; }
+								echo '</tr>'; 
 							}
 							?>
 					</tbody>

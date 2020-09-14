@@ -161,7 +161,7 @@ $query = "SELECT b.`description` description, a.`department` id FROM `grocery_pr
                         </li>
 						<li>
                             <a href="show-products.php?acat=<?php echo $cat; ?>">
-                                <i class="fa fa-list-alt"></i>
+                                <i class="fas fa-book-open"></i>
                                 <span class="menu-text">Cataloge</span>
                                 
                             </a>

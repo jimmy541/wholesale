@@ -187,7 +187,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						<th>Brand</th>
 						<th>Description</th>
 						<th>Size</th>
-						<th>Cost</th>
+						<?php if($role != 'Sales Representative') { ?><th>Cost</th><?php } ?>
 						<th>Retail</th>
 						<th>Margin</th>
 						<th>Qty</th>
@@ -201,7 +201,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						<th>Brand</th>
 						<th>Description</th>
 						<th>Size</th>
-						<th></th>
+						<?php if($role != 'Sales Representative') { ?><th></th><?php } ?>
 						<th></th>
 						<th></th>
 						<th></th>
@@ -217,9 +217,9 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						echo '<tr><td data-label="item">'.htmlspecialchars($row["cert_code"]).'</td>
 						<td data-label="Brand">'.htmlspecialchars($row["brnd"]).'</td>
 						<td data-label="Description">'.htmlspecialchars($row["description"]).'</td>
-						<td data-label="Size">'.htmlspecialchars(@number_format($row['size_amount'], 1)).' '.htmlspecialchars($row['wd']).'</td>
-						<td data-label="Cost">'.htmlspecialchars($row['case_cost']).'</td>
-						<td data-label="Retail">'.htmlspecialchars($row['case_price']).'</td>';
+						<td data-label="Size">'.htmlspecialchars(@number_format($row['size_amount'], 1)).' '.htmlspecialchars($row['wd']).'</td>';
+					if($role != 'Sales Representative') {echo '<td data-label="Cost">'.htmlspecialchars($row['case_cost']).'</td>'; }
+						echo '<td data-label="Retail">'.htmlspecialchars($row['case_price']).'</td>';
 						$mrgn = 'NA';
 						if(!empty($row['case_price']) && !empty($row['case_cost'])){
 							if($row['case_price'] > 0){
