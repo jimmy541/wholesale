@@ -155,7 +155,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 	<div class="row mb-2">
 	<!-- open col -->
-	<div class="col col-md-4 order-md-2">
+	<div class="col col-md-2">
 	
 		<div class="card" style="cursor:pointer;" id="change-profile-image" style="cursor:pointer">
 		<div class="card-body">
@@ -172,7 +172,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 			</div>
 		</div>
 	</div>
-	<div class="col col-md-8 order-md-1">
+	<div class="col col-md-10">
 		<div class="card">
 			<div class="card-body">
 				<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
