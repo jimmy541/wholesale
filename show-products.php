@@ -87,7 +87,7 @@ $main_content = '';
 										}
 										$main_content.= '<div class="Qty" style="'.$colorStyle.'">'.($row2['QtyOnHand']).'</div>';
 										//<div class="MonAvg"></div>
-										$main_content.= '<div class="editIcon"><a href="edit-product.php?product='.$row2['uniqueid'].'" target="blank"><img src="images/edit.png"/></a></div>';
+										if($role != 'Sales Representative') { $main_content.= '<div class="editIcon"><a href="edit-product.php?product='.$row2['uniqueid'].'" target="blank"><img src="images/edit.png"/></a></div>'; }
 										if (file_exists('pics/'.htmlspecialchars($row2['image-id']))) {
 											$main_content.= '<a href="pics/'.htmlspecialchars($row2['image-id']).'" title="" class="thickbox"><img class="tableImg" src="pics/'.htmlspecialchars($row2['image-id']).'"></a>';
 											}
