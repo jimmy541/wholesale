@@ -128,7 +128,11 @@ $sub_depts = '';
 
 
 <div class="container-fluid">
-	
+	<div class="row">
+		<div class="col">
+		<a href="dashboard.php">Dashboard</a>
+		</div>
+	</div>
 	<div class="row">
 		<div class="col-12 col-md-3">
 		
