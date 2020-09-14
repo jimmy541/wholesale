@@ -75,6 +75,8 @@ if(isset($_SESSION['user'])){
 	if((getcwd() != '/home/dalysoft/public_html/wholesale/backend')){
 		if($curPageName != 'show-products.php')	{
 			require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
+		}else{
+			$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
 		}
 	}
 }else{
