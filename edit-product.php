@@ -200,13 +200,14 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	
 	</div>
 	<div class="col col-md-10">
-		<div class="card">
+		<div class="card" scrollable-card" style="max-height: 69vh !important;">
 			<div class="card-body">
+			<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 65vh !important;">
 				<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
 		<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo htmlspecialchars($clean_uniqueid); ?>">
 		<?php echo $responseMsg; ?>
 			
-				<h4>About</h4>
+				<h4 id="item-1">About</h4>
 				<div class="custom-control custom-switch">
 					<input class="custom-control-input" type="checkbox" id="active" name="active" <?php if($checked=='yes'){echo 'checked';} ?>>
 					<label class="custom-control-label" for="active">Active</label>
@@ -230,7 +231,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Product Info</h4>
+				<h4 id="item-2">Product Info</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 					
@@ -268,7 +269,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				
 				<hr class="mb-4">		
-				<h4>Section</h4>
+				<h4 id="item-3">Section</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 						<label for="">Department:</label>
@@ -285,7 +286,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Supplier Info</h4>
+				<h4 id="item-4">Supplier Info</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="">Supplier Item Code:</label>
@@ -297,14 +298,14 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					</div>
 				</div>
 				<hr class="mb-4">
-				<h4>Inventory</h4>
+				<h4 id="item-5">Inventory</h4>
 				<div class="mb-3">
 					<label for="">Quantity on Hand:</label>
 					<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand" value="<?php echo htmlspecialchars($QtyOnHand); ?>"/>
 				</div>
 				
 				<hr class="mb-4">
-					<h4>Price Allowance</h4>
+					<h4 id="item-6">Price Allowance</h4>
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="lowest_allowed">Lowest Allowed</label>
@@ -317,7 +318,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					</div>
 				
 				<hr class="mb-4">
-				<h4>Other</h4>
+				<h4 id="item-7">Other</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="">Package:</label>
@@ -359,12 +360,13 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				
 				<hr class="mb-4">
-				<div class="mb-3">
+				<div class="mb-4 pb-5">
 					<button class="btn btn-primary shadow btn-lg btn-block" type="submit">Save</button>
 				</div>
 				
 		<input type="hidden" id="poprequester" value="" />
 		</form>
+			</div>
 			</div>
 		</div>
 	<!-- close col -->
