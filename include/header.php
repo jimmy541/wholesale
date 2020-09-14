@@ -85,7 +85,7 @@ if(isset($_SESSION['user'])){
 
  
  ?>
-<div class="main-content" <?php echo $pushLeftStyle; ?>>
+<div class="main-content two" <?php echo $pushLeftStyle; ?>>
  <nav class="navbar navbar-expand navbar-light bg-light fixed-top shadow-sm bg-white">
 	
 	<!-- toggle button for small screens -->
