@@ -296,6 +296,7 @@ table caption a:hover, .button-right-float:hover{
 .right-scroll{
 	overflow-y: auto;
   max-height: 76vh;
+  overflow-x: hidden;
 }
 .scrollable-card{
   height: 80vh; 

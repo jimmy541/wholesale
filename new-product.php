@@ -117,14 +117,35 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->
-	<div class="col">
+	<div class="col-12 col-md-2">
 		<div class="card">
 			<div class="card-body">
+				<nav id="products-nav" class="navbar navbar-light bg-light">
+					<nav class="nav nav-pills flex-column">
+						<a class="navbar-brand" href="#">Jumb to</a>
+						<a class="nav-link" href="#item-1">About</a>
+						<a class="nav-link" href="#item-2">Product Info</a>
+						<a class="nav-link" href="#item-3">Section</a>
+						<a class="nav-link" href="#item-4">Supplier Info</a>
+						<a class="nav-link" href="#item-5">Inventory</a>
+						<a class="nav-link" href="#item-6">Price Allowance</a>
+						<a class="nav-link" href="#item-7">Other</a>
+					</nav>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-10">
+	
+		<div class="card scrollable-card" style="max-height: 69vh !important;">
+		
+			<div class="card-body">
+				<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 65vh !important;">
 				<?php echo $responseMsg; ?>
 				<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
-		<input autocomplete="false" name="hidden" type="text" style="display:none;">
+					<input autocomplete="false" name="hidden" type="text" style="display:none;">
 			
-				<h4>About</h4>
+				<h4 id="item-1">About</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="cert_code">Item Code: *</label>
@@ -147,7 +168,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Product Info</h4>
+				<h4 id="item-2">Product Info</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 						<label for="case-barcode">Case Code:</label>
@@ -185,7 +206,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				
 				
 				<hr class="mb-4">
-				<h4>Section</h4>
+				<h4 id="item-3">Section</h4>
 				<div class="row">
 					<div class="col-md-4 mb-3">
 						<label for="department">Department:</label>
@@ -202,7 +223,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Supplier Info</h4>
+				<h4 id="item-4">Supplier Info</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="supplier_code">Supplier Item Code:</label>
@@ -215,14 +236,14 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Inventory</h4>
+				<h4 id="item-5">Inventory</h4>
 				<div class="mb-3">
 					<label for="QtyOnHand">Quantity on Hand:<span class="ex55">(cases)</span></label>
 					<input class="form-control" type="number" min="0" id="QtyOnHand" name="QtyOnHand"/>
 				</div>
 				
 				<hr class="mb-4">
-				<h4>Price Allowance</h4>
+				<h4 id="item-6">Price Allowance</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="lowest_allowed">Lowest Allowed</label>
@@ -237,7 +258,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 							
 				
 				<hr class="mb-4">
-				<h4>Other</h4>
+				<h4 id="item-7">Other</h4>
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="package">Package:</label>
@@ -287,6 +308,10 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 		<input type="hidden" id="poprequester" value="" />
 		</form>
 			</div>
+			
+			<!-- card body ends here -->
+			</div>
+		</div>
 		</div>
 		<!-- close col -->
 		</div>
@@ -347,6 +372,11 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 <!-- close Popup div -->
 </div>
+<script>
+
+
+
+</script>
 <?php 
 function getValue($link, $clientid, $table, $id){
 	$vl = '';
