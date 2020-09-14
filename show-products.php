@@ -165,9 +165,9 @@ $sub_depts = '';
 		</div>
 	
 		<div class="col-12 col-md-9">
-			<div class="card scrollable-card">
+			<div class="card scrollable-card" style="height:94vh !important;">
 					<div class="card-body">
-						<div class="right-scroll">
+						<div class="right-scroll" style="max-height: 90vh !important;">
 							<?php echo $main_content; ?>
 						</div>
 						
