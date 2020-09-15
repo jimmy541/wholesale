@@ -491,7 +491,7 @@ function getValue($link, $clientid, $table, $id){
 				<="mb-3">Case Retail</h4>
 				
 				<div class="mb-3">
-					<label for="">Margin Desired:<span class="ex55">Ex.: Enter 35 for 35%</span></label>
+					<label for="margindesired">Margin Desired:<span class="ex55">Ex.: Enter 35 for 35%</span></label>
 					<div class="input-group">
 						<input class="form-control"  type="number" min="0.01" step="0.01" id="margindesired" />
 						<div class="input-group-append">
