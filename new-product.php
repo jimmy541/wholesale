@@ -138,10 +138,10 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 	<div class="col-12 col-md-10">
 	
-		<div class="card scrollable-card" style="max-height: 69vh !important;">
+		<div class="card scrollable-card" style="max-height: 81vh !important;">
 		
 			<div class="card-body">
-				<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 65vh !important;">
+				<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 76vh !important;">
 				<?php echo $responseMsg; ?>
 				<form  id="productform" action="php-scripts/process-new-product.php" method="post" autocomplete="off">
 					<input autocomplete="false" name="hidden" type="text" style="display:none;">

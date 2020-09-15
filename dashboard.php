@@ -1,6 +1,6 @@
 <?php $page_title = 'Dashboard';?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
-<div class="card-deck">
+<div class="card-deck mt-4">
   <div class="card text-center">
    <a href="list-products.php"><div class="card-body">
 	<h1 class="card-title"><i class="fa fa-th-large"></i></h1>

@@ -1,11 +1,32 @@
 ﻿body, html{
 	height:100vh !important;
 }
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1.6rem;
+  }
+}
 .main-content{
 	background-color:#f2f2f3;
 	margin-left: 250px;
     overflow: hidden;
-    padding: 90px 12px 65px;
+    padding: 67px 12px 20px;
     min-height: 100vh;
 }
 .page-header, h4{
@@ -13,7 +34,7 @@
     text-align: left;
 	font-size: 1.2em;
 	margin:0;
-	line-height: 75px;
+	line-height: 44px;
     overflow: hidden;
 }
 .card{
