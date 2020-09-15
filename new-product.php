@@ -292,8 +292,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				</div>
 				<div class="row" id="row_push_reason" style="display:none">
 					<div class="col-md-6 mb-3">
-						<label for="push_reason ">Push Reason</label>
-						<input class="form-control" type="text"  id="push_reason " name="push_reason "/>
+						<label for="push_reason">Push Reason</label>
+						<input class="form-control" type="text"  id="push_reason" name="push_reason"/>
 						</div>
 				</div>
 				<div class="row">
