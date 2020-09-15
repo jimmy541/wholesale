@@ -45,25 +45,26 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$lowest_allowed = '';
 	$highest_allowed = '';
 	$cases_on_pallet = '';
-$on_special = '';
-$special_start = '';
-$special_end = '';
-$special_price = '';
-$special_batch = '';
-$push_item = '';
-$push_reason = '';
-$push_batch = '';
+	$on_special = '0';
+	$special_start = '';
+	$special_end = '';
+	$special_price = '';
+	$special_batch = '';
+	$push_item = '0';
+	$push_reason = '';
+	$push_batch = '';
+	$special_ongoing = '0';
 	$cloneunique = '';
 	$clean_uniqueid = '';
 
-	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed`,`cases_on_pallet`,`on_special`,`special_start`,`special_end`,`special_price`,`special_batch`,`push_item`,`push_reason`,`push_batch` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed`,`cases_on_pallet`,`on_special`, `special_ongoing`, `special_start`,`special_end`,`special_price`,`special_batch`,`push_item`,`push_reason`,`push_batch` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
 	
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $uniqueid, $clientid);
 	
 	$stmt->execute();
-	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV, $lowest_allowedV, $highest_allowedV,$cases_on_palletV, $on_specialV, $special_startV, $special_endV, $special_priceV, $special_batchV, $push_itemV, $push_reasonV, $push_batchV);
+	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV, $lowest_allowedV, $highest_allowedV,$cases_on_palletV, $on_specialV, $special_ongoingV, $special_startV, $special_endV, $special_priceV, $special_batchV, $push_itemV, $push_reasonV, $push_batchV);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -94,16 +95,17 @@ $push_batch = '';
 		$lowest_allowed = $lowest_allowedV;
 		$highest_allowed = $highest_allowedV;
 		$cases_on_pallet = $cases_on_palletV;
-	$on_special = $on_specialV;
-	$special_start = $special_startV;
-	$special_end = $special_endV;
-	$special_price = $special_priceV; 
-	$special_batch = $special_batchV; 
-	$push_item = $push_itemV; 
-	$push_reason = $push_reasonV; 
-	$push_batch = $push_batchV;
+		$on_special = $on_specialV;
+		$special_start = $special_startV;
+		$special_end = $special_endV;
+		$special_price = $special_priceV; 
+		$special_batch = $special_batchV; 
+		$push_item = $push_itemV; 
+		$push_reason = $push_reasonV; 
+		$push_batch = $push_batchV;
 		$cloneunique = $uniqueid;
 		$clean_uniqueid = $uniqueid;
+		$special_ongoing = $special_ongoingV;
 		
 	}
 	if($active == 'yes'){$checked = 'yes';}
@@ -201,9 +203,9 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	
 	</div>
 	<div class="col col-md-10">
-		<div class="card" scrollable-card" style="max-height: 69vh !important;">
+		<div class="card" scrollable-card" style="max-height: 86vh !important;">
 			<div class="card-body">
-			<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 65vh !important;">
+			<div class="right-scroll" data-spy="scroll" data-target="#products-nav" data-offset="100" style="max-height: 83vh !important;">
 				<form  id="newproduct" action="php-scripts/process-edit-product.php" method="post" autocomplete="off">
 		<input class="form-control" autocomplete="false" type="hidden" name="productid" value="<?php echo htmlspecialchars($clean_uniqueid); ?>">
 		<?php echo $responseMsg; ?>
@@ -309,39 +311,45 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				<div class="row">
 					<div class="col-md-6 mb-3 pl-4">
 						<div class="custom-control custom-switch">
-							<input class="custom-control-input" type="checkbox" id="on_special" name="on_special">
+							<input class="custom-control-input" type="checkbox" id="on_special" name="on_special" <?php if($on_special == '1'){echo 'checked';} ?>>
 							<label class="custom-control-label" for="on_special">On Special</label>
 						</div>
 					</div>
 				</div>
-				<div class="row" id="on_special_row" style="display:none">
+				<div class="row" id="on_special_row" style="<?php if($on_special == '1'){}else{echo 'display:none'; } ?>">
 					<div class="col-md-2 mb-3">
 						<div class="form-check">
-						  <input class="form-check-input" type="radio" name="special_option" id="on_going_special" value="option1" checked>
-						  <label class="form-check-label" for="on_going_special">Ongoing </label>
+						  <input class="form-check-input" type="radio" name="special_option" id="on_going_special" value="option1" <?php if($special_ongoing == '1'){echo ' checked';} ?>>
+						  <label class="form-check-label" for="on_going_special">Ongoing</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="radio" name="special_option" id="dated_special" value="option2">
+							<input class="form-check-input" type="radio" name="special_option" id="dated_special" value="option2" <?php if($special_ongoing == '0'){echo ' checked';} ?>>
 							<label class="form-check-label" for="dated_special">Custom Date</label>
 						</div>
 					</div>
 					<div class="col-md-5 mb-3">
-						<div class="mb-3" id="special_start_div" style="display:none">
+						<div class="mb-3" id="special_start_div" style="<?php if($special_ongoing == '1'){echo 'display:none';} ?>">
 							<label for="special_start">Start Date</label>
-							<input class="form-control" type="date" id="special_start" name="special_start" value="<?php echo date('Y-m-d') ?>"/>
+							<input class="form-control" type="date" id="special_start" name="special_start" value="<?php echo date('Y-m-d', strtotime($special_start)); ?>"/>
 						</div>
 					</div>
 					<div class="col-md-5 mb-3">
-						<div class="mb-3" id="special_end_div" style="display:none">
+						<div class="mb-3" id="special_end_div" style="<?php if($special_ongoing == '1'){echo 'display:none';} ?>">
 							<label for="special_end">Start End</label>
-							<input class="form-control" type="date" id="special_end" name="special_end" value="<?php echo date('Y-m-d') ?>"/>
+							<input class="form-control" type="date" id="special_end" name="special_end" value="<?php echo date('Y-m-d', strtotime($special_end)); ?>"/>
 						</div>
 					</div>
 				</div>
+				<div class="row" id="row_special_price" style="<?php if($on_special == '1'){}else{echo 'display:none'; } ?>">
+					<div class="col-md-6 mb-3">
+						<label for="special_price">Special Price:</label>
+						<input class="form-control" type="number" min="0" step="0.01" id="special_price" name="special_price" value="<?php echo $special_price; ?>"/>
+						</div>
+				</div>	
 				<div class="row">
 					<div class="col-md-6 mb-3 pl-4">
 						<div class="custom-control custom-switch">
-							<input class="custom-control-input" type="checkbox" id="push_item" name="push_item">
+							<input class="custom-control-input" type="checkbox" id="push_item" name="push_item" value="<?php if($push_item == '1'){echo ' checked';} ?>">
 							<label class="custom-control-label" for="push_item">Push Product</label>
 						</div>
 					</div>
@@ -349,7 +357,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 				<div class="row" id="row_push_reason" style="display:none">
 					<div class="col-md-6 mb-3">
 						<label for="push_reason">Push Reason</label>
-						<input class="form-control" type="text"  id="push_reason" name="push_reason"/>
+						<input class="form-control" type="text"  id="push_reason" name="push_reason" value="<?php echo htmlspecialchars($push_reason); ?>"/>
 					</div>
 				</div>	
 				
@@ -529,13 +537,15 @@ $("#change-profile-image").click(function () {
 </script>
 <script>
 $( document ).ready(function() {
-    var switchStatus = false;
+
 $("#on_special").on('change', function() {
     if ($(this).is(':checked')) {
         $('#on_special_row').show();
+		$('#row_special_price').show();
     }
     else {
        $('#on_special_row').hide();
+	   $('#row_special_price').hide();
     }
 });
 $("#push_item").on('change', function() {
