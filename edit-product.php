@@ -362,7 +362,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 						<label for="push_batch">Push Batch</label>
 						<select class="form-control select2"  id="push_batch" name="push_batch"><?php if($found=='true'){echo getValue($link, $clientid, 'push_batch', $push_batch);} ?></select>
 					</div>
-					
+				</div>	
 					
 				<hr class="mb-4">
 					<h4 id="item-6">Price Allowance</h4>
