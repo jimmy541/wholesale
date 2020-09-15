@@ -33,14 +33,15 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	$lowest_allowed = '';
 	$highest_allowed = '';
 	$cases_on_pallet = '';
-	$on_special = '';
+	$on_special = '0';
 	$special_start = '';
 	$special_end = '';
 	$special_price = '';
 	$special_batch = '';
-	$push_item = '';
+	$push_item = '0';
 	$push_reason = '';
 	$push_batch = '';
+	$special_ongoing = '0';
 	
 	if (isset($_POST['upc']) && !empty($_POST['upc'])){$upc = $_POST['upc'];}
 	if (isset($_POST['case-barcode']) && !empty($_POST['case-barcode'])){$case_barcode = $_POST['case-barcode'];}
@@ -69,12 +70,13 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	if (isset($_POST['lowest_allowed']) && !empty($_POST['lowest_allowed'])){$lowest_allowed = $_POST['lowest_allowed'];}
 	if (isset($_POST['highest_allowed']) && !empty($_POST['highest_allowed'])){$highest_allowed = $_POST['highest_allowed'];}
 	if (isset($_POST['cases_on_pallet']) && !empty($_POST['cases_on_pallet'])){$cases_on_pallet= $_POST['cases_on_pallet'];}
-	if (isset($_POST['on_special']) && !empty($_POST['on_special'])){$on_special= $_POST['on_special'];}
+	if (isset($_POST['on_special'])){$on_special= '1';}
+	if(isset($_POST['special_ongoing']) && $_POST['special_ongoing'] == 'option1'){$special_ongoing = '1';}
 	if (isset($_POST['special_start']) && !empty($_POST['special_start'])){$special_start= $_POST['special_start'];}
 	if (isset($_POST['special_end']) && !empty($_POST['special_end'])){$special_end= $_POST['special_end'];}
 	if (isset($_POST['special_price']) && !empty($_POST['special_price'])){$special_price= $_POST['special_price'];}
 	if (isset($_POST['special_batch']) && !empty($_POST['special_batch'])){$special_batch= $_POST['special_batch'];}
-	if (isset($_POST['push_item']) && !empty($_POST['push_item'])){$push_item= $_POST['push_item'];}
+	if (isset($_POST['push_item'])){$push_item= '1';}
 	if (isset($_POST['push_reason']) && !empty($_POST['push_reason'])){$push_reason= $_POST['push_reason'];}
 	if (isset($_POST['push_batch']) && !empty($_POST['push_batch'])){$push_batch= $_POST['push_batch'];}
 		
