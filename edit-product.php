@@ -488,7 +488,7 @@ function getValue($link, $clientid, $table, $id){
 				</div>
 				
 				<hr class="mb-4">
-				<="mb-3">Case Retail</h4>
+				<h4 id="mb-3">Case Retail</h4>
 				
 				<div class="mb-3">
 					<label for="margindesired">Margin Desired:<span class="ex55">Ex.: Enter 35 for 35%</span></label>
