@@ -77,7 +77,7 @@ if(isset($_SESSION['user'])){
 		if($curPageName != 'show-products.php')	{
 			require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/sidebar.php');
 		}else{
-			$pushLeftStyle = 'style="margin-left:0px !important; width: calc(100% - 1px) !important; padding:0px !important"';
+			$pushLeftStyle = 'style="margin-left:0px !important;  padding:0px !important"';
 			$navbar_hidden = 'style="display:none !important;"';
 		}
 	}
