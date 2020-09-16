@@ -83,7 +83,7 @@ if(isset($_SESSION['user'])){
 	}
 }else{
 	$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
-	$navpushLeftStyle = 'style="margin-left:0px !important;"';
+	$navpushLeftStyle = 'style="margin-left:0px !important;left:0px !important"';
 }
 
  
