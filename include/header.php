@@ -69,6 +69,7 @@ $result = mysqli_query($link, "SELECT `first_name`, `last_name`, `role`, `profil
 
 <?php
 $pushLeftStyle = '';
+$navpushLeftStyle= '';
 $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
 $navbar_hidden = '';
 if(isset($_SESSION['user'])){
@@ -82,12 +83,13 @@ if(isset($_SESSION['user'])){
 	}
 }else{
 	$pushLeftStyle = 'style="margin-left:10px !important; width: calc(100% - 10px) !important;"';
+	$navpushLeftStyle = 'style="margin-left:0px !important;"';
 }
 
  
  ?>
 <div class="main-content" <?php echo $pushLeftStyle; ?>>
- <nav class="navbar navbar-expand navbar-light bg-light fixed-top shadow-sm bg-white" <?php echo $navbar_hidden; ?>>
+ <nav class="navbar navbar-expand navbar-light bg-light fixed-top shadow-sm bg-white" <?php echo $navbar_hidden.' '.$navpushLeftStyle; ?> >
 	
 	<!-- toggle button for small screens -->
 	<button class="navbar-toggler" data-toggle="collapse" data-target="#navbarmenu">
