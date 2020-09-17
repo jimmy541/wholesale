@@ -63,7 +63,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				}
 				$fatmps = '0';
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("sssssssssssssss", $password,$salt,$firstName,$lastName,$display_code,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $allow_price_override, $allow_free_override, $$show_assigned_customers);
+					$stmt->bind_param("sssssssssssssss", $password,$salt,$firstName,$lastName,$display_code,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $allow_price_override, $allow_free_override, $show_assigned_customers);
 					
 
 					$stmt->execute();

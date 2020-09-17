@@ -180,6 +180,26 @@ $(document).ready(function(){
 		}
 	});
 	
+	$( "#new-special-batch" ).submit(function( event ) {
+		var oktoproceed = 'true';
+		var currentinput = '';
+		$( ".errordiv" ).remove();
+		$( ".mb-3 input" ).css("background-color", "white");
+		$( ".mb-3 select" ).css("background-color", "white");
+		
+		currentinput = '#description';
+		if (checklength(currentinput, 1) == 'false'){
+			oktoproceed = 'false';
+			$(currentinput).css("background-color", "#FEDCDC");
+			displayerrormsg(currentinput, 'Description is required');
+		}
+		
+			
+		if(oktoproceed == 'false'){
+			event.preventDefault();
+		}
+	});
+	
 	$( "#security-profile" ).submit(function( event ) {
 		var oktoproceed = 'true';
 		var currentinput = '';
