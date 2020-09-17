@@ -78,6 +78,10 @@ $(document).ready(function() {
 			}
 		}
     });
+
+
+	
+	
 	$(document).on( 'click', '#paymentsTable tbody tr', function () {
 		var tb = $(this);
         if ( tb.hasClass('selected') ) {
@@ -731,7 +735,67 @@ $(document).ready(function() {
 			
 		});
 	
-	
+//Special batch and push batch start	
+$("#products_modal_gtable").width("100%");
+var products_modal_gtable = $('#products_modal_gtable').DataTable({
+	"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "searchable": false
+            }
+        ]
+});	
+$('#products_modal_gtable tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+			$("#add_product_button").attr("disabled", true);
+			$('#product_id_form_1').val('');
+			}
+        else {
+            products_modal_gtable.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+			$("#add_product_button").removeAttr("disabled");
+			var ids = $.map(products_modal_gtable.rows('.selected').data(), function (item) {
+				$('#product_id_form_1').val(item[0]);
+			});
+        }
+    } );
+$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("remove_item_from_batch") >= 0){
+					$( "#modal_remove_product" ).modal("toggle");
+					id = $(this).attr('id').replace('remove_item_from_batch', '');
+					
+				}
+			}
+		});
+		$(document).on('click','#delete_product_special_batch',function(){
+			var batchid = $('#batch_id').val();
+			var data = {subject: "special_batch_product", batchid: batchid, recordid:id};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-remove.php',
+            data: data,
+            success: function(response) {
+				
+				
+				
+					var t = $('#gtable').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					
+					clickedRow = '';
+					id = '';
+					$( "#modal_remove_product" ).modal("toggle");
+				
+			}
+			});
+		});
+//Special batch and push batch end 
 	
 	
 	

@@ -1,28 +1,22 @@
 <?php $page_title = 'New Specials Batch';
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">';
+<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+<script type="text/javascript" src="js/selected-table.js"></script>';
 ?>
-
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
-	
-
-	
 $responseMsg = '';
 if(isset($_GET['error']) && $_GET['error'] == 1){$responseMsg = '<div class="alert alert-danger" role="alert">Description fields are required.</div>';}
 if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class="alert alert-success" role="alert">Successfully Added.</div>';}
-
 $description = '';
 $start_date = '';
 $end_date = '';
 $active = '';
 $cleanid = '';
-
 if(isset($_GET['id']) && !empty($_GET['id'])){
 	$id = $_GET['id'];
-	
 }
 $query="SELECT `id`, `description`, `start_date`, `end_date`, `is_active` FROM `special_batch` WHERE `id` = ? AND `clientid` = ?";
 $stmt = $link->prepare($query);
@@ -36,12 +30,8 @@ while ($stmt->fetch()) {
 	$end_date = $ed;
 	$active = $ac;
 	$cleanid = $cid;
-	
-	
 }
-
 ?>
-
 <div class="container-fluid">
 <!-- open row -->
 	<div class="row mb-3">
@@ -50,7 +40,8 @@ while ($stmt->fetch()) {
 			<div class="card">
 				<div class="card-body">
 					<?php echo $responseMsg; ?>
-					<form  id="new-special-batch" action="php-scripts/process-edit-special-batch.php" method="post">
+					<form  id="new-special-batch" action="php-scripts/process-edit-special-batch.php" method="post">	
+							<input type="hidden" name="batch_id" id="batch_id" value="<?php echo $cleanid; ?>" />
 							<div class="row">
 								<div class="col-md-6 mb-3">
 							<div class="custom-control custom-switch">
@@ -86,14 +77,22 @@ while ($stmt->fetch()) {
 		</div>
 <!-- close row -->
 	</div>
-	
 	<div class="row">
 		<div class="col">
 			<div class="card">
 				<div class="card-body">
+				<div class="row">
+				<div class="col">
+					<button class="btn btn-primary shadow btn-sm" type="button" data-toggle="modal" data-target="#search_products"><i class="fas fa-plus mr-2" ></i>New</button>
+				</div>
+				</div>
+				<div class="row">
+				<div class="col">
 					<table class="row-border" id="gtable">
 						<thead>
 							<tr>
+								<th></th>
+								<th></th>
 								<th>Item Code</th>
 								<th>Description</th>
 								<th>Size</th>
@@ -105,40 +104,160 @@ while ($stmt->fetch()) {
 						</thead>
 						<tbody>
 							<?php
-							$query = "SELECT * FROM `special_batch_products` WHERE `clientid` = '$clientid' AND `id` = '$cleanid' ";
+							$query = "SELECT * FROM `special_batch_products` WHERE `clientid` = '$clientid' AND `id` = '$cleanid' ORDER BY `uid` DESC";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) { 
 								echo '<tr>
+								<td></td>
+								<td></td>
 								<td data-label="Item Code">'.htmlspecialchars($row["item_code"]).'</a></td>
 								<td data-label="Description">'.htmlspecialchars($row["description"]).'</td>
 								<td data-label="Size">'.$row['size'].'</td>
 								<td data-label="Case Price">'.$row['single_case_price'].'</td>
 								<td data-label="Group Qty">'.$row['group_qty'].'</td>
 								<td data-label="Group Price">'.$row['group_case_price'].'</td>
-								<td><span class="action-icons"><i class="fas fa-edit"></i><i class="fas fa-trash-alt"></i></span></td>
+								<td><span class="action-icons"><i class="fas fa-edit"></i><i class="fas fa-trash-alt" id="remove_item_from_batch'.$row['uid'].'"></i></span></td>
 								</tr>'; 
 							}
 							?>
-					</tbody>
+						</tbody>
 					</table>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
 	</div>
 <!-- close container -->
-
 </div>
 
-
-<!-- The following div closes the main body div -->
+<!-- Modal -->
+<div class="modal fade" id="search_products" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_title">Search Products</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+		<table class="row-border" id="products_modal_gtable">
+			<thead>
+				<tr>
+					<th style="display:none;">uniqueid</th>
+					<th>Item</th>
+					<th>Brand</th>
+					<th>Description</th>
+					<th>Size</th>
+					<th>Retail</th>
+					<th>Qty</th>
+					
+				</tr>
+			</thead>
+			
+			<tbody>
+				<?php 
+				$query="SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'" ;
+				$result = mysqli_query($link, $query);
+				while($row = mysqli_fetch_array($result)) {
+					echo '<tr>';
+						echo '<td data-label="uniqueid" style="display:none;">'.$row['uniqueid'].'</td>';
+						echo '<td data-label="item">' .htmlspecialchars($row["cert_code" ]).'</td>';
+						echo '<td data-label="Brand">' .htmlspecialchars($row["brnd" ]).'</td>';
+						echo '<td data-label="Description">' .htmlspecialchars($row["description" ]).'</td>';
+						echo '<td data-label="Size">' .htmlspecialchars(@number_format($row['size_amount' ], 1)).' ' .htmlspecialchars($row['wd' ]).'</td>' ;
+						echo '<td data-label="Retail">' .htmlspecialchars($row['case_price' ]).'</td>';
+						echo '<td data-label="Qty">'.htmlspecialchars($row['QtyOnHand']).'</td>';
+					echo '</tr>';
+				}
+				?>
+			</tbody>
+		</table>
+	  
+	  </div>
+    </div>
+  </div>
 </div>
+ <div class="modal-footer">
+       
+        <button type="button" class="btn btn-primary" id="add_product_button" data-toggle="modal" data-target="#add_products_push_specials" disabled>Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal_remove_product" tabindex="-1" role="dialog" aria-labelledby="remove_product_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="remove_product_title">Remove Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>Are you sure you want to remove the selected product?</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="delete_product_special_batch">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add_products_push_specials" tabindex="-1" role="dialog" aria-labelledby="modal_add_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content shadow-lg bg-light">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_add_title">Special Price</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="form_1" method="post" action="php-scripts/process-add-product-to-special-batch.php">
+		<input type="hidden" name="batch_id" value="<?php echo $cleanid; ?>" />
+		<input type="hidden" value="" id="product_id_form_1" name="product_id"/>
+			<div class="form-row">
+				<div class="form-group col">
+					<label for="single_case_price">Case Price</label>
+					<input type="number" class="form-control" name="single_case_price" id="single_case_price" placeholder="Case Price" min="0" step="0.01">
+				</div>
+			</div>
+		</form>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="submit" form="form_1" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script type="text/javascript">
 $(document).ready(function() {
     $('#gtable').DataTable();
 	$('#gtable').parent().addClass('table-responsive');
+	$('#products_modal_gtable').DataTable();
+	$('#products_modal_gtable').parent().addClass('table-responsive');
 } );
 </script>
-
-
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
