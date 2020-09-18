@@ -737,10 +737,22 @@ $(document).ready(function() {
 	
 //Special batch and push batch start	
 $("#products_modal_gtable").width("100%");
+
+$('#add_products_push_specials').on('shown.bs.modal', function() {
+    $('#single_case_price').trigger('focus');
+  });
 var products_modal_gtable = $('#products_modal_gtable').DataTable({
 	"columnDefs": [
             {
                 "targets": [ 0 ],
+                "searchable": false
+            },
+			{
+                "targets": [ 7 ],
+                "searchable": false
+            },
+			{
+                "targets": [ 8 ],
                 "searchable": false
             }
         ]
@@ -757,6 +769,11 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
 			$("#add_product_button").removeAttr("disabled");
 			var ids = $.map(products_modal_gtable.rows('.selected').data(), function (item) {
 				$('#product_id_form_1').val(item[0]);
+				$('#product_description').val(item[2] + ' ' + item[3]);
+				$('#regular_price').val(item[5]);
+				$('#cost').val(item[7]);
+				$('#cases_in_pallet').val(item[8]);
+				
 			});
         }
     } );

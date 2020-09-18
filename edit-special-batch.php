@@ -45,7 +45,7 @@ while ($stmt->fetch()) {
 							<div class="row">
 								<div class="col-md-6 mb-3">
 							<div class="custom-control custom-switch">
-										<input class="custom-control-input" type="checkbox" id="is_active" name="is_active" <?php if($active=='1'){echo 'checked';} ?>>
+										<input class="custom-control-input" type="checkbox" id="is_active" name="is_active" <?php if($active=='1'){echo ' checked';} ?>>
 										<label class="custom-control-label" for="active">Active</label>
 									</div>
 							</div>
@@ -97,8 +97,8 @@ while ($stmt->fetch()) {
 								<th>Description</th>
 								<th>Size</th>
 								<th>Case Price</th>
-								<th>Group Quantity</th>
-								<th>Group Price</th>
+								<th>Min Qty</th>
+								<th>Free Case/s</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -114,8 +114,8 @@ while ($stmt->fetch()) {
 								<td data-label="Description">'.htmlspecialchars($row["description"]).'</td>
 								<td data-label="Size">'.$row['size'].'</td>
 								<td data-label="Case Price">'.$row['single_case_price'].'</td>
-								<td data-label="Group Qty">'.$row['group_qty'].'</td>
-								<td data-label="Group Price">'.$row['group_case_price'].'</td>
+								<td data-label="Min Qty">'.$row['minimum_qty'].'</td>
+								<td data-label="Free Case">'.$row['free_cases'].'</td>
 								<td><span class="action-icons"><i class="fas fa-edit"></i><i class="fas fa-trash-alt" id="remove_item_from_batch'.$row['uid'].'"></i></span></td>
 								</tr>'; 
 							}
@@ -155,13 +155,15 @@ while ($stmt->fetch()) {
 					<th>Size</th>
 					<th>Retail</th>
 					<th>Qty</th>
+					<th style="display:none;">Cost</th>
+					<th style="display:none;">Cases in Pallet</th>
 					
 				</tr>
 			</thead>
 			
 			<tbody>
 				<?php 
-				$query="SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'" ;
+				$query="SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand`, a.`cost`, a.`cases_on_pallet` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'" ;
 				$result = mysqli_query($link, $query);
 				while($row = mysqli_fetch_array($result)) {
 					echo '<tr>';
@@ -172,6 +174,8 @@ while ($stmt->fetch()) {
 						echo '<td data-label="Size">' .htmlspecialchars(@number_format($row['size_amount' ], 1)).' ' .htmlspecialchars($row['wd' ]).'</td>' ;
 						echo '<td data-label="Retail">' .htmlspecialchars($row['case_price' ]).'</td>';
 						echo '<td data-label="Qty">'.htmlspecialchars($row['QtyOnHand']).'</td>';
+						echo '<td data-label="cost" style="display:none;">'.htmlspecialchars($row['cost']).'</td>';
+						echo '<td data-label="cases on pallet" style="display:none;">'.htmlspecialchars($row['cases_on_pallet']).'</td>';
 					echo '</tr>';
 				}
 				?>
@@ -184,7 +188,7 @@ while ($stmt->fetch()) {
 </div>
  <div class="modal-footer">
        
-        <button type="button" class="btn btn-primary" id="add_product_button" data-toggle="modal" data-target="#add_products_push_specials" disabled>Add</button>
+        <button type="button" class="btn btn-primary" id="add_product_button" data-toggle="modal" data-target="#add_products_push_specials" disabled>Add Special Price</button>
       </div>
     </div>
   </div>
@@ -236,10 +240,47 @@ while ($stmt->fetch()) {
 		<input type="hidden" name="batch_id" value="<?php echo $cleanid; ?>" />
 		<input type="hidden" value="" id="product_id_form_1" name="product_id"/>
 			<div class="form-row">
-				<div class="form-group col">
-					<label for="single_case_price">Case Price</label>
-					<input type="number" class="form-control" name="single_case_price" id="single_case_price" placeholder="Case Price" min="0" step="0.01">
+				<div class="form-group col-8">
+					<label for="product_description">Description</label>
+					<input type="text" class="form-control form-control-sm" name="product_description" id="product_description" readonly>
 				</div>
+				<div class="form-group col-4">
+					<label for="regular_price">Regular Price</label>
+					<input type="number" class="form-control form-control-sm" name="regular_price" id="regular_price" min="0" step="0.01" readonly>
+				</div>
+				
+			</div>
+			<div class="form-row">
+				<div class="form-group col-6">
+					<label for="cost">Cost</label>
+					<input type="number" class="form-control form-control-sm" name="cost" min="0" step="0.01" id="cost" readonly>
+				</div>
+				<div class="form-group col-6">
+					<label for="cases_in_pallet">Cases in Pallet</label>
+					<input type="number" class="form-control form-control-sm" name="cases_in_pallet" id="cases_in_pallet" min="0" readonly>
+				</div>
+				
+			</div>
+			<div class="form-row">
+				<div class="form-group col">
+					<label for="single_case_price">Special Price</label>
+					<input type="number" class="form-control form-control-sm" name="single_case_price" id="single_case_price" min="0" step="0.01">
+				</div>
+				
+			</div>
+			
+			<div class="form-row">
+			<div class="form-group col-6">
+					<label for="minimum_qty">Minimum Quantity</label>
+					<input type="number" class="form-control form-control-sm" name="minimum_qty" id="minimum_qty"  min="0">
+					<small class="form-text text-muted">Leave blank or 0 if no minimum quantity is required.</small>
+				</div>
+				<div class="form-group col-6">
+					<label for="free_cases">Free Case/s</label>
+					<input type="number" class="form-control form-control-sm" name="free_cases" id="free_cases"  min="0">
+					<small class="form-text text-muted">Leave blank or 0 if no free case/s offered.</small>
+				</div>
+				
 			</div>
 		</form>
       </div>

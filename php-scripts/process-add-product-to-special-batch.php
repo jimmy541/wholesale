@@ -5,6 +5,16 @@ if (isset($_POST['batch_id']) && !empty($_POST['batch_id']) && isset($_POST['pro
 	$batch_id = $_POST['batch_id'];
 	$product_id = $_POST['product_id'];
 	$single_case_price = $_POST['single_case_price'];
+	$minimum_qty = '0';
+	$free_cases = '0';
+	
+	if(isset($_POST['minimum_qty']) && !empty($_POST['minimum_qty'])){
+		$minimum_qty = $_POST['minimum_qty'];
+	}
+	if(isset($_POST['free_cases']) && !empty($_POST['free_cases'])){
+		$free_cases = $_POST['free_cases'];
+	}
+	
 	$item_code = '';
 	$description = '';
 	$size = '';
@@ -24,8 +34,8 @@ if (isset($_POST['batch_id']) && !empty($_POST['batch_id']) && isset($_POST['pro
 		$product_uid = $pruid;
 	}
 	
-	$stmt = $link->prepare('INSERT INTO `special_batch_products`(`id`, `item_code`, `single_case_price`, `group_qty`, `group_case_price`, `clientid`, `description`, `size`, `product_uid`) VALUES (?,?,?,?,?,?,?,?,?)');
-	$stmt->bind_param('sssssssss',$batch_id, $item_code , $single_case_price, $group_qty, $group_case_price, $clientid, $description, $size, $product_uid);
+	$stmt = $link->prepare('INSERT INTO `special_batch_products`(`id`, `item_code`, `single_case_price`, `minimum_qty`, `clientid`, `description`, `size`, `product_uid`, `free_cases`) VALUES (?,?,?,?,?,?,?,?,?)');
+	$stmt->bind_param('sssssssss',$batch_id, $item_code , $single_case_price, $minimum_qty, $clientid, $description, $size, $product_uid, $free_cases);
 	$stmt->execute();
 	
 	header("location: ../edit-special-batch.php?id=".htmlspecialchars($batch_id));
