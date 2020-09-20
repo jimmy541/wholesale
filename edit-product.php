@@ -49,22 +49,20 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 	$special_start = '';
 	$special_end = '';
 	$special_price = '';
-	$special_batch = '';
 	$push_item = '0';
 	$push_reason = '';
-	$push_batch = '';
 	$special_ongoing = '0';
 	$cloneunique = '';
 	$clean_uniqueid = '';
 
-	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed`,`cases_on_pallet`,`on_special`, `special_ongoing`, `special_start`,`special_end`,`special_price`,`special_batch`,`push_item`,`push_reason`,`push_batch` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
+	$query="SELECT `cert_code`, `upc`, `case_barcode`, `size_unit`, `description`, `Pack`, `size_amount`, `QtyOnHand`, `package`, `normal_price`, `case_price`, `cost`, `case_cost`, `weight_case`, `weight_unit`, `memo`, `supplier`, `supplier_code`, `department`, `sub_department`, `category`, `brand`, `active`, `tax_id`, `lowest_allowed`, `highest_allowed`,`cases_on_pallet`,`on_special`, `special_ongoing`, `special_start`,`special_end`,`special_price`,`push_item`,`push_reason` FROM `grocery_products` WHERE `uniqueid` = ? AND `clientid` = ?";
 	
 	
 	$stmt = $link->prepare($query);
 	$stmt->bind_param('ss', $uniqueid, $clientid);
 	
 	$stmt->execute();
-	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV, $lowest_allowedV, $highest_allowedV,$cases_on_palletV, $on_specialV, $special_ongoingV, $special_startV, $special_endV, $special_priceV, $special_batchV, $push_itemV, $push_reasonV, $push_batchV);
+	$stmt->bind_result($certcodeV, $upcV, $case_barcodeV, $size_unitV, $descriptionV, $PackV, $size_amountV, $QtyOnHandV, $packageV, $normal_priceV, $case_priceV, $costV, $case_costV,$weight_caseV, $weight_unitV, $memoV, $supplierV, $supplier_codeV, $departmentV, $sub_departmentV, $categoryV, $brandV, $activeV, $tax_idV, $lowest_allowedV, $highest_allowedV,$cases_on_palletV, $on_specialV, $special_ongoingV, $special_startV, $special_endV, $special_priceV, $push_itemV, $push_reasonV);
 	 //switch to false when done testing
 	while ($stmt->fetch()) {
 		$found = 'true';
@@ -99,10 +97,8 @@ if(isset($_GET['product']) && !empty($_GET['product'])){
 		$special_start = $special_startV;
 		$special_end = $special_endV;
 		$special_price = $special_priceV; 
-		$special_batch = $special_batchV; 
 		$push_item = $push_itemV; 
-		$push_reason = $push_reasonV; 
-		$push_batch = $push_batchV;
+		$push_reason = $push_reasonV;
 		$cloneunique = $uniqueid;
 		$clean_uniqueid = $uniqueid;
 		$special_ongoing = $special_ongoingV;
@@ -361,16 +357,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 					</div>
 				</div>	
 				
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="special_batch">Special Batch:</label>
-						<select class="form-control select2" id="special_batch" name="special_batch"></select>
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="push_batch">Push Batch</label>
-						<select class="form-control select2"  id="push_batch" name="push_batch"></select>
-					</div>
-				</div>	
+				
 					
 				<hr class="mb-4">
 					<h4 id="item-6">Price Allowance</h4>

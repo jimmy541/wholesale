@@ -37,10 +37,9 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	$special_start = '';
 	$special_end = '';
 	$special_price = '';
-	$special_batch = '';
 	$push_item = '0';
 	$push_reason = '';
-	$push_batch = '';
+	
 	$special_ongoing = '0';
 	
 	if (isset($_POST['upc']) && !empty($_POST['upc'])){$upc = $_POST['upc'];}
@@ -75,10 +74,9 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	if (isset($_POST['special_start']) && !empty($_POST['special_start'])){$special_start= $_POST['special_start'];}
 	if (isset($_POST['special_end']) && !empty($_POST['special_end'])){$special_end= $_POST['special_end'];}
 	if (isset($_POST['special_price']) && !empty($_POST['special_price'])){$special_price= $_POST['special_price'];}
-	if (isset($_POST['special_batch']) && !empty($_POST['special_batch'])){$special_batch= $_POST['special_batch'];}
 	if (isset($_POST['push_item'])){$push_item= '1';}
 	if (isset($_POST['push_reason']) && !empty($_POST['push_reason'])){$push_reason= $_POST['push_reason'];}
-	if (isset($_POST['push_batch']) && !empty($_POST['push_batch'])){$push_batch= $_POST['push_batch'];}
+	
 		
 	//get qty on hand in database
 	$qtyinsystem = '';
@@ -91,8 +89,8 @@ if (isset($_POST['cert_code']) && !empty($_POST['cert_code']) && isset($_POST['d
 	}
 	
 	
-	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`department`= ?,`sub_department`= ?,`category`= ?,`brand`= ?,`active`= ?, `tax_id` = ?, `lowest_allowed` = ?, `highest_allowed` = ?,`cases_on_pallet`=?,`on_special`=?, `special_ongoing` = ?, `special_start`=?,`special_end`=?,`special_price`=?,`special_batch`=?,`push_item`=?,`push_reason`=?,`push_batch`=? WHERE `clientid`= ? AND `uniqueid` = ?');
-	$stmt->bind_param('ssssssssssssssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand,$active, $tax_id, $lowest_allowed, $highest_allowed,$cases_on_pallet, $on_special, $special_ongoing, $special_start, $special_end, $special_price, $special_batch, $push_item, $push_reason, $push_batch, $clientid, $uniqueid);
+	$stmt = $link->prepare('UPDATE `grocery_products` SET `cert_code` = ?, `upc`= ?,`case_barcode`= ?,`size_unit`= ?,`description`= ?,`Pack`= ?,`size_amount`= ?,`QtyOnHand`= ?,`package`= ?,`normal_price`= ?,`case_price`= ?,`cost`= ?,`case_cost`= ?,`weight_case`= ?,`weight_unit`= ?,`memo`= ?,`supplier`= ?,`supplier_code`= ?,`department`= ?,`sub_department`= ?,`category`= ?,`brand`= ?,`active`= ?, `tax_id` = ?, `lowest_allowed` = ?, `highest_allowed` = ?,`cases_on_pallet`=?,`on_special`=?, `special_ongoing` = ?, `special_start`=?,`special_end`=?,`special_price`=?,`push_item`=?,`push_reason`=? WHERE `clientid`= ? AND `uniqueid` = ?');
+	$stmt->bind_param('ssssssssssssssssssssssssssssssssssss',$cert_code,$upc,$case_barcode,$size_unit,$description,$Pack,$size_amount,$QtyOnHand,$package,$normal_price,$case_price,$cost,$case_cost,$weight_case,$weight_unit,$memo,$supplier,$supplier_code,$department,$sub_department,$category,$brand,$active, $tax_id, $lowest_allowed, $highest_allowed,$cases_on_pallet, $on_special, $special_ongoing, $special_start, $special_end, $special_price, $push_item, $push_reason, $clientid, $uniqueid);
 	$stmt->execute();
 	$stmt->close();
 	

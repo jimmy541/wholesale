@@ -296,17 +296,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 						<input class="form-control" type="text"  id="push_reason" name="push_reason"/>
 						</div>
 				</div>
-				<div class="row">
-					<div class="col-md-6 mb-3">
-						<label for="special_batch">Special Batch:</label>
-						<select class="form-control select2" id="special_batch" name="special_batch"><?php if($found=='true'){echo getValue($link, $clientid, 'special_batch', $special_batch);} ?></select>
-					</div>
-					<div class="col-md-6 mb-3">
-						<label for="push_batch">Push Batch</label>
-						<select class="form-control select2"  id="push_batch" name="push_batch"><?php if($found=='true'){echo getValue($link, $clientid, 'push_batch', $push_batch);} ?></select>
-					</div>
-					
-				</div>
+				
 				
 				<hr class="mb-4">
 				<h4 id="item-6">Price Allowance</h4>
