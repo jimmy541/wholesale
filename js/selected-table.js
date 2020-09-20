@@ -735,9 +735,9 @@ $(document).ready(function() {
 			
 		});
 	
-//Special batch and push batch start	
-$("#products_modal_gtable").width("100%");
+//Special batch and push batch start
 
+$("#products_modal_gtable").width("100%");
 $('#add_products_push_specials').on('shown.bs.modal', function() {
     $('#single_case_price').trigger('focus');
   });
@@ -753,6 +753,22 @@ var products_modal_gtable = $('#products_modal_gtable').DataTable({
             },
 			{
                 "targets": [ 8 ],
+                "searchable": false
+            }
+        ]
+});	
+var products_specials = $('#special_products').DataTable({
+	"columnDefs": [
+            {
+                "targets": [ 7 ],
+                "searchable": false
+            },
+			{
+                "targets": [ 8 ],
+                "searchable": false
+            },
+			{
+                "targets": [ 9 ],
                 "searchable": false
             }
         ]
@@ -773,11 +789,12 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
 				$('#regular_price').val(item[5]);
 				$('#cost').val(item[7]);
 				$('#cases_in_pallet').val(item[8]);
+				$('#special_batch_product_price_form').attr('action', 'php-scripts/process-add-product-to-special-batch.php');
 				
 			});
         }
     } );
-$(document).on('click','i',function(){
+		$(document).on('click','i',function(){
 			clickedRow = $(this).attr('id');
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
@@ -788,6 +805,45 @@ $(document).on('click','i',function(){
 				}
 			}
 		});
+		$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("special_batch") >= 0){
+					
+					$( "#modal_remove_product" ).modal("toggle");
+					id = $(this).attr('id').replace('special_batch', '');
+					$('#batch_id').val(id);
+					
+				}
+			}
+		});
+		$(document).on('click','#delete_special_batch',function(){
+			var batchid = $('#batch_id').val();
+			var data = {subject: "special_batch", batchid: batchid};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-remove.php',
+            data: data,
+            success: function(response) {
+				
+				
+				
+					var t = $('#list_special_batches_table').DataTable();
+					t
+					
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					
+					clickedRow = '';
+					id = '';
+					$( "#modal_remove_product" ).modal("toggle");
+				
+			}
+			});
+		});
+		
 		$(document).on('click','#delete_product_special_batch',function(){
 			var batchid = $('#batch_id').val();
 			var data = {subject: "special_batch_product", batchid: batchid, recordid:id};
@@ -799,8 +855,7 @@ $(document).on('click','i',function(){
 				
 				
 				
-					var t = $('#gtable').DataTable();
-					t
+					products_specials					
 					.row( $('#'+clickedRow).parents('tr') )
 					.remove()
 					.draw();
@@ -811,6 +866,35 @@ $(document).on('click','i',function(){
 				
 			}
 			});
+		});
+		$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("update_batch_product") >= 0){
+					
+					$(this).closest('tr').addClass('selected');
+					var special_products = $('#special_products').DataTable();
+					var ids = $.map(special_products.rows('.selected').data(), function (item) {
+					
+					$('#product_description').val(item[1]);
+					$('#regular_price').val(item[8]);
+					$('#cost').val(item[7]);
+					$('#cases_in_pallet').val(item[9]);
+					
+					$('#single_case_price').val(item[3]);
+					$('#minimum_qty').val(item[4]);
+					$('#free_cases').val(item[5]);
+					
+				
+					});
+					$(this).closest('tr').removeClass('selected');
+					id = $(this).attr('id').replace('update_batch_product', '');
+					$('#product_id_form_1').val(id);
+					$( "#add_products_push_specials" ).modal("toggle");
+					$('#special_batch_product_price_form').attr('action', 'php-scripts/process-edit-product-to-special-batch.php');
+				}
+			}
 		});
 //Special batch and push batch end 
 	

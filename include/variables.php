@@ -8,7 +8,8 @@ $products_links = '
 	<a class="nav-link" href="list-products-brands.php" title="Brands">Brands</a>
 	<a class="nav-link"  href="list-products-packages.php" title="Packages">Packages</a>
 	<a class="nav-link" href="list-products-weight-units.php" title="Weight Units">Weight Units</a>
-	<a class="nav-link" href="list-products-tax-type.php" title="Weight Units">Tax Types</a>
+	<a class="nav-link" href="list-products-tax-type.php" title="Tax Types">Tax Types</a>
+	<a class="nav-link" href="list-special-batches.php" title="Specials">Specials</a>
 </ul>';
 
 

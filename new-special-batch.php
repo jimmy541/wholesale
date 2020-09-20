@@ -14,6 +14,13 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 ?>
 
 <div class="container-fluid">
+<div class="row">
+		<div class="col">
+			<ul class="nav">
+				<a class="nav-link" href="list-special-batches.php" title="Special Batches">Special Batches</a>
+			</ul>
+		</div>
+	</div>
 <!-- open row -->
 	<div class="row">
 	<!-- open col -->

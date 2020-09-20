@@ -200,6 +200,35 @@ $(document).ready(function(){
 		}
 	});
 	
+	$( "#special_batch_product_price_form" ).submit(function( event ) {
+		var oktoproceed = 'true';
+		var currentinput = '';
+		$( ".errordiv" ).remove();
+		$( ".mb-3 input" ).css("background-color", "white");
+		$( ".mb-3 select" ).css("background-color", "white");
+		
+		currentinput = '#single_case_price';
+		if (checklength(currentinput, 1) == 'false'){
+			oktoproceed = 'false';
+			$(currentinput).css("background-color", "#FEDCDC");
+			displayerrormsg(currentinput, 'Price is required');
+		}
+		currentinput = '#free_cases';
+		if (checklength(currentinput, 1) == 'true'){
+			if(checklength('#minimum_qty', 1) == 'false'){
+				oktoproceed = 'false';
+			$('#minimum_qty').css("background-color", "#FEDCDC");
+			displayerrormsg('#minimum_qty', 'You must specifiy minimum quanitity required to get the free case/s');
+			}
+			
+		}
+		
+			
+		if(oktoproceed == 'false'){
+			event.preventDefault();
+		}
+	});
+	
 	$( "#security-profile" ).submit(function( event ) {
 		var oktoproceed = 'true';
 		var currentinput = '';

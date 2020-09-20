@@ -121,6 +121,22 @@ if (isset($_POST['subject']) && !empty($_POST['subject'])){ //condition 1
 		}
 	}
 	
+	if($tb=='special_batch'){
+		
+		if(isset($_POST['batchid']) && !empty($_POST['batchid'])){
+			$stmt = $link->prepare("DELETE FROM `special_batch_products` WHERE `id` = ? AND `clientid` = '$clientid'");
+			$stmt->bind_param('s', $_POST['batchid']);
+			$stmt->execute();
+			$stmt->close();
+			
+			$stmt = $link->prepare("DELETE FROM `special_batch` WHERE `id` = ? AND `clientid` = '$clientid'");
+			$stmt->bind_param('s', $_POST['batchid']);
+			$stmt->execute();
+			$stmt->close();
+			
+		}
+	}
+	
 	if($tb=='inactivecustomer'){
 		
 		if(isset($_POST['id']) && !empty($_POST['id'])){

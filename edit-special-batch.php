@@ -1,4 +1,4 @@
-<?php $page_title = 'New Specials Batch';
+<?php $page_title = 'Edit Specials Batch';
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
@@ -33,6 +33,15 @@ while ($stmt->fetch()) {
 }
 ?>
 <div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<ul class="nav">
+				<a class="nav-link" href="list-special-batches.php" title="Special Batches">Special Batches</a>
+			</ul>
+		</div>
+	</div>
+	
+	
 <!-- open row -->
 	<div class="row mb-3">
 	<!-- open col -->
@@ -44,9 +53,9 @@ while ($stmt->fetch()) {
 							<input type="hidden" name="batch_id" id="batch_id" value="<?php echo $cleanid; ?>" />
 							<div class="row">
 								<div class="col-md-6 mb-3">
-							<div class="custom-control custom-switch">
-										<input class="custom-control-input" type="checkbox" id="is_active" name="is_active" <?php if($active=='1'){echo ' checked';} ?>>
-										<label class="custom-control-label" for="active">Active</label>
+									<div class="custom-control custom-switch">
+											<input class="custom-control-input" type="checkbox" id="is_active" name="is_active" <?php if($active=='1'){echo ' checked';} ?>>
+											<label class="custom-control-label" for="is_active">Active</label>
 									</div>
 							</div>
 							</div>
@@ -88,35 +97,41 @@ while ($stmt->fetch()) {
 				</div>
 				<div class="row">
 				<div class="col">
-					<table class="row-border" id="gtable">
+					<table class="row-border" id="special_products">
 						<thead>
 							<tr>
-								<th></th>
-								<th></th>
+								
+								
 								<th>Item Code</th>
 								<th>Description</th>
 								<th>Size</th>
-								<th>Case Price</th>
+								<th>Special Price</th>
 								<th>Min Qty</th>
 								<th>Free Case/s</th>
 								<th>Action</th>
+								<th style="display:none;"></th>
+								<th style="display:none;"></th>
+								<th style="display:none;"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php
-							$query = "SELECT * FROM `special_batch_products` WHERE `clientid` = '$clientid' AND `id` = '$cleanid' ORDER BY `uid` DESC";
+							$query = "SELECT a.`item_code`, a.`description`, a.`size`, a.`single_case_price`, a.`minimum_qty`, a.`free_cases`, a.`uid`, b.`case_cost`, b.`case_price`, b.`cases_on_pallet`  FROM `special_batch_products` a left join `grocery_products` b on a.`item_code` = b.`cert_code` AND a.`clientid` = '$clientid' WHERE a.`clientid` = '$clientid' AND a.`id` = '$cleanid' ORDER BY a.`uid` DESC";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) { 
 								echo '<tr>
-								<td></td>
-								<td></td>
+								
+								
 								<td data-label="Item Code">'.htmlspecialchars($row["item_code"]).'</a></td>
 								<td data-label="Description">'.htmlspecialchars($row["description"]).'</td>
 								<td data-label="Size">'.$row['size'].'</td>
 								<td data-label="Case Price">'.$row['single_case_price'].'</td>
 								<td data-label="Min Qty">'.$row['minimum_qty'].'</td>
 								<td data-label="Free Case">'.$row['free_cases'].'</td>
-								<td><span class="action-icons"><i class="fas fa-edit"></i><i class="fas fa-trash-alt" id="remove_item_from_batch'.$row['uid'].'"></i></span></td>
+								<td><span class="action-icons"><i class="fas fa-edit" id="update_batch_product'.$row['uid'].'"></i><i class="fas fa-trash-alt" id="remove_item_from_batch'.$row['uid'].'"></i></span></td>
+								<td style="display:none;">'.$row['case_cost'].'</td>
+								<td style="display:none;">'.$row['case_price'].'</td>
+								<td style="display:none;">'.$row['cases_on_pallet'].'</td>
 								</tr>'; 
 							}
 							?>
@@ -163,7 +178,7 @@ while ($stmt->fetch()) {
 			
 			<tbody>
 				<?php 
-				$query="SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand`, a.`cost`, a.`cases_on_pallet` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' WHERE  a.`clientid` = '$clientid'" ;
+				$query="SELECT a.`uniqueid`, a.`cert_code`, a.`description`, a.`size_amount`, c.`description` brnd, b.`description` wd, a.`case_cost`, a.`case_price`, a.`QtyOnHand`, a.`cost`, a.`cases_on_pallet` FROM `grocery_products` a LEFT JOIN `weight_units` b ON a.`size_unit` = b.`id` AND b.`clientid` = '$clientid' LEFT JOIN `brands` c ON a.`brand` = c.`id` AND c.`clientid` = '$clientid' LEFT OUTER JOIN `special_batch_products` d ON a.`uniqueid` = d.`product_uid` AND d.`clientid` = '$clientid'  WHERE  a.`clientid` = '$clientid' AND d.`product_uid` IS NULL" ;
 				$result = mysqli_query($link, $query);
 				while($row = mysqli_fetch_array($result)) {
 					echo '<tr>';
@@ -236,7 +251,7 @@ while ($stmt->fetch()) {
         </button>
       </div>
       <div class="modal-body">
-        <form id="form_1" method="post" action="php-scripts/process-add-product-to-special-batch.php">
+        <form id="special_batch_product_price_form" method="post" action="php-scripts/process-add-product-to-special-batch.php">
 		<input type="hidden" name="batch_id" value="<?php echo $cleanid; ?>" />
 		<input type="hidden" value="" id="product_id_form_1" name="product_id"/>
 			<div class="form-row">
@@ -286,7 +301,7 @@ while ($stmt->fetch()) {
       </div>
       <div class="modal-footer">
         
-        <button type="submit" form="form_1" class="btn btn-primary">Save</button>
+        <button type="submit" form="special_batch_product_price_form" class="btn btn-primary">Save</button>
       </div>
     </div>
   </div>
@@ -295,8 +310,8 @@ while ($stmt->fetch()) {
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#gtable').DataTable();
-	$('#gtable').parent().addClass('table-responsive');
+    $('#special_products').DataTable();
+	$('#special_products').parent().addClass('table-responsive');
 	$('#products_modal_gtable').DataTable();
 	$('#products_modal_gtable').parent().addClass('table-responsive');
 } );
