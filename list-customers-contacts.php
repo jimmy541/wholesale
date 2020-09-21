@@ -1,8 +1,9 @@
 <?php
 $page_title = 'Customers Contacts';
-$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+$more_css = '<link rel="stylesheet" href="css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
+
+$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 $found = 'false';
 if(isset($_GET['account']) && !empty($_GET['account']) && isset($_GET['token']) && !empty($_GET['token'])){

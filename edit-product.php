@@ -1,7 +1,11 @@
 <?php $page_title = 'Edit Product';
-$more_script = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script><script type="text/javascript" src="js/popup-requesting-page.js"></script>
+
+$more_css = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
+
+$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/popup-requesting-page.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
+
 include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php");
 echo '<h3 class="page-header">'.$page_title.'</h3>';
 

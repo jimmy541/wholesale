@@ -1,4 +1,7 @@
-<?php $page_title='Profile' ;$more_script='<script type="text/javascript" src="js/form-validation.js"></script>' ;?><?php include($_SERVER['DOCUMENT_ROOT' ]."/wholesale/include/header.php" ); ?>
+<?php 
+$page_title='Profile' ;
+$more_script='<script type="text/javascript" src="js/form-validation.js"></script>' ;?>
+<?php include($_SERVER['DOCUMENT_ROOT' ]."/wholesale/include/header.php" ); ?>
 <h3 class="page-header">
 	<?php echo $page_title; ?></h3>
 <?php if (isset($_SESSION['user' ])){$result = mysqli_query($link, "SELECT * FROM `users` WHERE `email_address` = '$user' AND `clientid` = '$clientid'" );$active='0' ;$user_first_name='' ;$user_last_name='' ;$profile_picture='' ;while($row=mysqli_fetch_array($result)){$active = $row['active' ];$user_first_name = htmlspecialchars($row['first_name' ]);$user_last_name = htmlspecialchars($row['last_name' ]);$profile_picture = htmlspecialchars($row['profile-picture' ]);}if ($active =='0' ){$message='<br /><span style="font-size:20px; padding:20px;"><a href="resend-activation-link.php">Resend Activation Link</span>' ;if (isset($_GET['sent' ])){if ($_GET['sent' ] =='1' ){$message='<br /><div class="alert alert-success" role="alert">Check message; (spam or junk)</div>' ;}}echo '<span style="font-size:20px; display:block; padding:20px; margin-top:20px;">Not Sure what this is</span>' ;echo $message;}else{//show profile:?><ul class="nav">

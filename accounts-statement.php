@@ -1,9 +1,12 @@
 <?php
 $page_title = 'Account Statement';
-$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+$more_css = '
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
+<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
+
+$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
+
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	$hashed_customer_number = $_GET['customer'];

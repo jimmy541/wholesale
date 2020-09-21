@@ -1,8 +1,11 @@
 <?php
 $page_title = 'Special Batch';
-$more_script = '<style>#gtable_filter{display:none;}</style><script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+
+$more_css = '<style>#gtable_filter{display:none;}</style>
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
-<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
+<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
+
+$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 

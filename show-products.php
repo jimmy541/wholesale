@@ -1,8 +1,10 @@
 <?php $page_title = 'Show Orders';?>
-<?php $more_script = '<link rel="stylesheet" type="text/css" href="css/orderpage.css">
-<script type="text/javascript" src="js/order-page.js"></script>
+
+<?php  $more_css = '<link rel="stylesheet" type="text/css" href="css/orderpage.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">
-<link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="css/thickbox.css" type="text/css" media="screen" />';  ?>
+
+<?php $more_script = '<script type="text/javascript" src="js/order-page.js"></script>
 <script type="text/javascript" src="js/thickbox.js"></script>'; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>

@@ -1,8 +1,11 @@
 <?php $page_title = 'Edit Specials Batch';
+
+$more_css = '<link rel="stylesheet" href="css/jquery.dataTables.min.css">';
+
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">
 <script type="text/javascript" src="js/selected-table.js"></script>';
+
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>

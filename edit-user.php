@@ -1,6 +1,7 @@
 <?php $page_title = 'Edit User';
+$more_css = '';
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>';
-//?>
+?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>

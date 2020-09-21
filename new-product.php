@@ -1,6 +1,7 @@
 <?php $page_title = 'Add New Product';
-$more_script = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script><script type="text/javascript" src="js/popup-requesting-page.js"></script>
+$more_css = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
+$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/popup-requesting-page.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
