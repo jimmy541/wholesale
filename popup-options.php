@@ -1,6 +1,6 @@
 <?php
-$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">
+$more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/popup-form-header.php');
 if(isset($_GET['reid']) && $_GET['reid']=='f146aa9099b551a29e4d4ae56e170c7'){

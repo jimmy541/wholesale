@@ -1,9 +1,9 @@
 <?php $page_title = 'Edit Specials Batch';
 
-$more_css = '<link rel="stylesheet" href="css/jquery.dataTables.min.css">';
+$more_css = '<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">';
 
 $more_script = '<script type="text/javascript" src="js/form-validation.js"></script>
-<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
 
 ?>

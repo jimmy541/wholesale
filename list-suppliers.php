@@ -2,9 +2,9 @@
 $page_title = 'Suppliers';
 
 $more_css = '<style>#gtable_filter{display:none;}</style>
-<link rel="stylesheet" href="css/jquery.dataTables.min.css">';
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">';
 
-$more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>';
+$more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 echo '<h3 class="page-header">'.$page_title.'</h3>';
 
