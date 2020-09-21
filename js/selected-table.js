@@ -4,6 +4,635 @@ $(document).ready(function() {
 	var subject = $('#subject').val();
 	var clickedRow = '';
 	var clickedPayment = '';
+
+	//{list-products.php  start
+	$("#list_products_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Brand" || title == "Item" || title == "Description" || title == "Size"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_php_table1 = $("#list_products_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$("#list_products_php_table1").parent().addClass("table-responsive");
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_php_table1_delete', '');
+					$( "#modal_remove_product" ).modal("toggle");
+				}
+			}
+	});
+	$(document).on('click','#list_products_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+		
+	//}list-products.php end
+	//{list-products-departments.php start
+	$("#list_products_departments_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_departments_php_table1 = $("#list_products_departments_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_departments_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_departments_php_table1_delete', '');
+					$( "#modal_remove_product_department" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_departments_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_departments_php_table1_edit', '');
+					$( "#modal_edit_product_department" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_departments_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_department" ).modal("toggle");
+				var t = $('#list_products_departments_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_departments_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_department" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_departments_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-departments.php end
+	//{list-products-sub-departments.php start
+	$("#list_products_sub_department_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_sub_department_php_table1 = $("#list_products_sub_department_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_sub_departments_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_sub_departments_php_table1_delete', '');
+					$( "#modal_remove_product_sub_department" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_sub_departments_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_sub_departments_php_table1_edit', '');
+					$( "#modal_edit_product_sub_department" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_sub_departments_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_sub_department" ).modal("toggle");
+				var t = $('#list_products_sub_department_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_sub_departments_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_sub_department" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_sub_department_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-sub-departments.php end
+	//{list-products-brands.php start
+	$("#list_products_brands_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_brands_php_table1 = $("#list_products_brands_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_brands_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_brands_php_table1_delete', '');
+					$( "#modal_remove_product_brand" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_brands_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_brands_php_table1_edit', '');
+					$( "#modal_edit_product_brand" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_brands_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_brand" ).modal("toggle");
+				var t = $('#list_products_brands_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_brands_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_brand" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_brands_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-brands.php end
+	//{list-products-categories.php start
+	$("#list_products_categories_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_categories_php_table1 = $("#list_products_categories_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_categories_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_categories_php_table1_delete', '');
+					$( "#modal_remove_product_categories" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_categories_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_categories_php_table1_edit', '');
+					$( "#modal_edit_product_category" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_categories_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_category" ).modal("toggle");
+				var t = $('#list_products_categories_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_categories_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_categories" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_categories_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-categories.php end
+	//{list-products-packages.php start
+	$("#list_products_packages_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_packages_php_table1 = $("#list_products_packages_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_packages_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_packages_php_table1_delete', '');
+					$( "#modal_remove_product_package" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_packages_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_packages_php_table1_edit', '');
+					$( "#modal_edit_product_package" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_packages_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_package" ).modal("toggle");
+				var t = $('#list_products_packages_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_packages_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_package" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_packages_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-packages.php end
+	//{list-products-weight-units.php start
+	$("#list_products_weight_units_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_weight_units_php_table1 = $("#list_products_weight_units_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_weight_units_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_weight_units_php_table1_delete', '');
+					$( "#modal_remove_product_weight_units" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_weight_units_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_weight_units_php_table1_edit', '');
+					$( "#modal_edit_product_weight_unit" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_weight_unit_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var data = {subject: subject, id: id, newDesc: updatedvalue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_weight_unit" ).modal("toggle");
+				var t = $('#list_products_weight_units_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				if(subject == 'tt'){
+					
+					var cell2 = t.cell('#tdidV'+id);
+					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+					cell2.data(newValue2).draw();
+				}
+			}
+			});
+		});
+		$(document).on('click','#list_products_weight_units_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_weight_units" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_weight_units_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-unit-weights.php end
+	//{list-products-tax-type.php start
+	$("#list_products_tax_type_php_table1 tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Description"){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+    var list_products_tax_type_php_table1 = $("#list_products_tax_type_php_table1").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$(document).on('click','i',function(){
+			clickedRow = $(this).attr('id');
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_tax_type_php_table1_delete") >= 0){
+					id = $(this).attr('id').replace('list_products_tax_type_php_table1_delete', '');
+					$( "#modal_remove_product_tax_type" ).modal("toggle");
+				}
+				if (str.indexOf("list_products_tax_type_php_table1_edit") >= 0){
+					id = $(this).attr('id').replace('list_products_tax_type_php_table1_edit', '');
+					$( "#modal_edit_product_tax_type" ).modal("toggle");
+					$('#updatedvalue').val($("#desc"+id).text());
+					$('#updatedvalueV').val($("#tdidV"+id).text());
+				}
+				
+			}
+	});
+	$(document).on('click','#list_products_tax_type_php_save_btn',function(){
+			var updatedvalue = $('#updatedvalue').val();
+			var newValue = $('#updatedvalueV').val();
+			data = {subject: subject, id: id, newDesc: updatedvalue, newV: newValue};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/process-general-edit.php',
+            data: data,
+			dataType: 'json',
+            success: function(response) {
+				
+				$( "#modal_edit_product_tax_type" ).modal("toggle");
+				var t = $('#list_products_tax_type_php_table1').DataTable();
+				var cell = t.cell('#tdid'+id);
+				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
+				cell.data(newValue).draw();
+				
+				var cell2 = t.cell('#tdidV'+id);
+				var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
+				cell2.data(newValue2).draw();
+				
+				
+			}
+			});
+		});
+		$(document).on('click','#list_products_tax_type_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_product_tax_type" ).modal("toggle");
+					id = '';
+					var t = $('#list_products_tax_type_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-products-tax-type.php end
 	
 	/* Handling selected rows button clicks */
 	

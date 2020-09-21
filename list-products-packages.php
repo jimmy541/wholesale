@@ -1,11 +1,11 @@
 <?php
 $page_title = 'Packages';
-$more_css = '<style>#gtable_filter{display:none;}</style>
+$more_css = '<style>#list_products_packages_php_table1_filter{display:none;}</style>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="css/populateContainers.css">';
 
 $more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/popgeneral.js"></script>';
+<script src="js/selected-table.js"></script>';
 
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
 $table = 'packages';
@@ -52,7 +52,7 @@ if(isset($_GET['rs'])){
 		<div class="card">
 			<div class="card-body">
 
-<table class="row-border" id="gtable">
+<table class="row-border" id="list_products_packages_php_table1">
 
 	<thead>
 		<tr>
@@ -71,7 +71,7 @@ if(isset($_GET['rs'])){
 		$query = "SELECT * FROM `$table` WHERE `clientid` = '$clientid'";
 		$result = mysqli_query($link, $query); 
 		while($row = mysqli_fetch_array($result)) { 
-			echo '<tr><td data-label="Description" id="tdid'.$row['id'].'"><span id="desc'.$row['id'].'">'.htmlspecialchars($row["description"]).'</span></td><td data-label="Action"> <span class="actionicon" id="edit'.$row['id'].'"><i class="fa fa-edit"></i> </span> - <span class="actionicon" id="del'.$row['id'].'"><i class="fas fa-trash-alt"></i></span></td></tr>';  
+			echo '<tr><td data-label="Description" id="tdid'.$row['id'].'"><span id="desc'.$row['id'].'">'.htmlspecialchars($row["description"]).'</span></td><td data-label="Action"> <span class="actionicon" ><i class="fa fa-edit" id="list_products_packages_php_table1_edit'.$row['id'].'"></i> </span> - <span class="actionicon" ><i class="fas fa-trash-alt" id="list_products_packages_php_table1_delete'.$row['id'].'"></i></span></td></tr>';  
 		}
 		?>
 </tbody>
@@ -80,68 +80,74 @@ if(isset($_GET['rs'])){
 		</div>
 	</div>
 </div>
-<div class="populateDivGenDelete" id="populateDivGen">
-	<div class="container text-center">
-		<p class="mb-3">Are you sure you want to delete the selected record?</p>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
+<!-- Modal -->
+<div class="modal fade" id="modal_remove_product_package" tabindex="-1" role="dialog" aria-labelledby="remove_product_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="remove_product_title">Remove Package</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>Are you sure you want to remove the selected package?</h6>
+				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
-			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="list_products_packages_php_yes_btn">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
-<div class="populateDivGenEdit" id="populateDivGenEdit">
-	<div class="container-fluid">
-		<div class="mb-3">
-			<input class="form-control" type="text" value="" id="updatedvalue" />
-		</div>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="saveBtn">Save</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_product_package" tabindex="-1" role="dialog" aria-labelledby="edit_product_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit_product_title">Edit Package</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<input class="form-control" type="text" value="" id="updatedvalue" />
+				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="cancelBtn">Cancel</button>
-			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Cancel</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="list_products_packages_php_save_btn">Save</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
 
 
 <?php
-$additional_script = '<script type="text/javascript">
-$(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $("#gtable tfoot th").each( function () {
-        var title = $(this).text();
-		if(title == "Description"){
-			$(this).html( \'<input type="text" placeholder="Search \'+title+\'" />\' );
-		}
-    } );
- 
-    // DataTable
-    var table = $("#gtable").DataTable({
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( "input", this.footer() ).on( "keyup change clear", function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
- 
-} );
-</script>'; ?>
+$additional_script = ''; ?>
 
 
 
