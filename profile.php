@@ -169,13 +169,14 @@ echo '<div class="activation-page-message"><a href="login.php" style="text-decor
 }
 
 ?>
-
-<script>
+<?php
+$additional_script = '<script>
 $("#change-profile-image").click(function () {
 	
-    $("#fileToUpload").trigger('click');
+    $("#fileToUpload").trigger("click");
 });
-</script>
+</script>'; ?>
+
 
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

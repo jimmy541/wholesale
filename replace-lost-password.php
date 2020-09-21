@@ -69,10 +69,6 @@ if (isset($_GET['email']) && isset($_GET['id']) && isset($_GET['token'])){
 }
 
 ?>
-
-
-
-
-
-
+<?php
+$additional_script = ''; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

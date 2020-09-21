@@ -199,20 +199,21 @@ function get_salesperson_list($link, $clientid){
 }
 
 ?>
-<script>
+<?php
+$additional_script = '<script>
 $(document).ready(function() {
-	$('.salesperson').css('width', '100%');
-	$('.salesperson').select2({
+	$(".salesperson").css("width", "100%");
+	$(".salesperson").select2({
 		dropdownParent: $("#assing_salesperson")
 	});
-	 $('#gtable tbody').on( 'click', 'tr', function () {
-		if ( $(this).hasClass('disable-select') ) {
+	 $("#gtable tbody").on( "click", "tr", function () {
+		if ( $(this).hasClass("disable-select") ) {
 			
 		}else{
-			$('#assign-salesperson-customer').attr('data-target', '');
-			if ( $(this).hasClass('selected') ) {
+			$("#assign-salesperson-customer").attr("data-target", "");
+			if ( $(this).hasClass("selected") ) {
 				
-				$('#assign-salesperson-customer').attr('data-target', '#assing_salesperson');
+				$("#assign-salesperson-customer").attr("data-target", "#assing_salesperson");
 				
 			}
 			else {
@@ -222,7 +223,6 @@ $(document).ready(function() {
 		}
     });
 });
-</script>
-
+</script>'; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

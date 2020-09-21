@@ -245,56 +245,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-/*
-$(document).ready(function() {
-    $('#gtable').DataTable({
-		columnDefs: [
-			{
-				targets: -1,
-				className: 'dt-left'
-			}
-		]
-	});
-	
-	
-});
-*/
-$(document).ready(function() {
-	
-    // Setup - add a text input to each footer cell
-    $('#gtable tfoot th').each( function () {
-        var title = $(this).text();
-		if(title == 'Brand' || title == 'Item' || title == 'Description' || title == 'Size'){
-			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-		}
-    } );
- 
-    // DataTable
-    var table = $('#gtable').DataTable({
-		
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
-	$('#gtable').parent().addClass('table-responsive');
-	
-} );
 
-</script>
-<!-- The following div closes the main body div -->
-</div>
 <input type="hidden" id="subject" name="subject" value="product" />
 <div class="populateDivGenDelete" id="populateDivGenCustDel">
 	<div class="container text-center">
@@ -309,10 +260,35 @@ $(document).ready(function() {
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
+<?php
+$additional_script = '<script type="text/javascript">
+$(document).ready(function() {
+	
+    // Setup - add a text input to each footer cell
+    $("#gtable tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Brand" || title == "Item" || title == "Description" || title == "Size"){
+			$(this).html( "<input type="text" placeholder="Search "+title+"" />" );
+		}
+    } );
+    // DataTable
+    var table = $("#gtable").DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$("#gtable").parent().addClass("table-responsive");
+} );
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

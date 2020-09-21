@@ -1,5 +1,4 @@
 <?php
-
 $more_script = '<script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
@@ -129,9 +128,9 @@ if(isset($_GET['rs'])){
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#gtable').dataTable( {
+    $("#gtable").dataTable( {
 		paging: false,
-		scrollY:        '32vh',
+		scrollY:        "32vh",
 		"bInfo" : false,
         scrollCollapse: true,
         paging:         false,
@@ -141,11 +140,11 @@ $(document).ready(function() {
 		 columnDefs: [
     {
         targets: -1,
-        className: 'dt[-head|-body]-center'
+        className: "dt[-head|-body]-center"
     }
   ]
 	} );
-	$('#gtable').parent().addClass('table-responsive');
+	$("#gtable").parent().addClass("table-responsive");
 } );
 
-</script>
+</script>'

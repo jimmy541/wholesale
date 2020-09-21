@@ -215,13 +215,11 @@ function getValue($link, $clientid, $account_number, $vlu){
 }
 
 ?>
-
-<script>
+<?php
+$additional_script = '<script>
 $(document).ready(function() {
-    $('.select_state').select2();
+    $(".select_state").select2();
 });
-</script>
-
-
+</script>'; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

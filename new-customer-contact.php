@@ -96,6 +96,7 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 <!-- close container -->
 </div>
-
+<?php
+$additional_script = ''; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

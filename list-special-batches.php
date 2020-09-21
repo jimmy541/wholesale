@@ -237,54 +237,7 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-/*
-$(document).ready(function() {
-    $('#gtable').DataTable({
-		columnDefs: [
-			{
-				targets: -1,
-				className: 'dt-left'
-			}
-		]
-	});
-	
-	
-});
-*/
-$(document).ready(function() {
-	
-    // Setup - add a text input to each footer cell
-    $('#list_special_batches_table tfoot th').each( function () {
-        var title = $(this).text();
-		if(title == 'Brand' || title == 'Item' || title == 'Description' || title == 'Size'){
-			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
-		}
-    } );
- 
-    // DataTable
-    var table = $('#list_special_batches_table').DataTable({
-		
-        initComplete: function () {
-            // Apply the search
-            this.api().columns().every( function () {
-                var that = this;
- 
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
-                    if ( that.search() !== this.value ) {
-                        that
-                            .search( this.value )
-                            .draw();
-                    }
-                } );
-            } );
-        }
-    });
-	$('#list_special_batches_table').parent().addClass('table-responsive');
-	
-} );
 
-</script>
 <input type="hidden" id="batch_id" value="" />
 <!-- Modal -->
 <div class="modal fade" id="modal_remove_product" tabindex="-1" role="dialog" aria-labelledby="remove_product_title" aria-hidden="true">
@@ -320,7 +273,38 @@ $(document).ready(function() {
 </div>
 
 
-
+<?php
+$additional_script = '<script type="text/javascript">
+$(document).ready(function() {
+	
+    // Setup - add a text input to each footer cell
+    $("#list_special_batches_table tfoot th").each( function () {
+        var title = $(this).text();
+		if(title == "Brand" || title == "Item" || title == "Description" || title == "Size"){
+			$(this).html( \'<input type="text" placeholder="Search \'+title+\'" />\' );
+		}
+    } );
+    // DataTable
+    var table = $("#list_special_batches_table").DataTable({
+		
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+ 
+                $( "input", this.footer() ).on( "keyup change clear", function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+	$("#list_special_batches_table").parent().addClass("table-responsive");
+} );
+</script>'; ?>
 
 
 

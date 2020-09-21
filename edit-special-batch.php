@@ -309,14 +309,13 @@ while ($stmt->fetch()) {
     </div>
   </div>
 </div>
-
-
-<script type="text/javascript">
+<?php
+$additional_script = '<script type="text/javascript">
 $(document).ready(function() {
-    $('#special_products').DataTable();
-	$('#special_products').parent().addClass('table-responsive');
-	$('#products_modal_gtable').DataTable();
-	$('#products_modal_gtable').parent().addClass('table-responsive');
+    $("#special_products").DataTable();
+	$("#special_products").parent().addClass("table-responsive");
+	$("#products_modal_gtable").DataTable();
+	$("#products_modal_gtable").parent().addClass("table-responsive");
 } );
-</script>
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

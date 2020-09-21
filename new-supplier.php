@@ -158,16 +158,13 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 <!-- close container -->
 </div>
-<script>
+
+
+<?php
+$additional_script = '<script>
 $(document).ready(function() {
-    $('.select_state').select2();
+    $(".select_state").select2();
 });
-</script>
-
-<!-- The following div closes the main body div -->
-</div>
-
-
-
+</script>'; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

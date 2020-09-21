@@ -349,13 +349,14 @@ function getValue($link, $clientid, $account_number, $vlu){
 
 ?>
 
-<script>
-$(document).ready(function() {
-    $('.select_shipping_state').select2();
-	$('.select_mailling_state').select2();
-});
-</script>
 
+<?php
+$additional_script = '<script>
+$(document).ready(function() {
+    $(".select_shipping_state").select2();
+	$(".select_mailling_state").select2();
+});
+</script>'; ?>
 
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

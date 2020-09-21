@@ -520,54 +520,44 @@ function getValue($link, $clientid, $table, $id){
 	</div>
 </div>
 
-<script>
+
+<?php
+$additional_script = '<script>
 $("#change-profile-image").click(function () {
-	
-    $("#fileToUpload").trigger('click');
+    $("#fileToUpload").trigger("click");
 });
 </script>
 <script>
 $( document ).ready(function() {
-
-$("#on_special").on('change', function() {
-    if ($(this).is(':checked')) {
-        $('#on_special_row').show();
-		$('#row_special_price').show();
+$("#on_special").on("change", function() {
+    if ($(this).is(":checked")) {
+        $("#on_special_row").show();
+		$("#row_special_price").show();
     }
     else {
-       $('#on_special_row').hide();
-	   $('#row_special_price').hide();
+       $("#on_special_row").hide();
+	   $("#row_special_price").hide();
     }
 });
-$("#push_item").on('change', function() {
-    if ($(this).is(':checked')) {
-        $('#row_push_reason').show();
-        
-		
+$("#push_item").on("change", function() {
+    if ($(this).is(":checked")) {
+        $("#row_push_reason").show();
     }
     else {
-       $('#row_push_reason').hide();
-      
+       $("#row_push_reason").hide();
     }
 });
-$(document).on('change', '[type="radio"]', function() {
+$(document).on("change", \'[type="radio"]\', function() {
     var checked_option = $(this).val();
-
-    if(checked_option == 'option2'){
-		$('#special_start_div').show();
-		$('#special_end_div').show();
+    if(checked_option == "option2"){
+		$("#special_start_div").show();
+		$("#special_end_div").show();
 	}
-	 if(checked_option == 'option1'){
-		$('#special_start_div').hide();
-		$('#special_end_div').hide();
+	 if(checked_option == "option1"){
+		$("#special_start_div").hide();
+		$("#special_end_div").hide();
 	}
 });
-	
-	
-	
 });
-
-
-</script>
-
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

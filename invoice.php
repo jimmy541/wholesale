@@ -286,17 +286,17 @@ if(isset($_GET['invoice']) && !empty($_GET['invoice'])){
 <?php 
 require('include/invoice-popups.php'); 
 ?>
-<script type="text/javascript">
+<?php
+$additional_script = '<script type="text/javascript">
 $(document).ready(function() {
     Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 	});
-	$('#payment_date').val(new Date().toDateInputValue());
+	$("#payment_date").val(new Date().toDateInputValue());
 } );
-</script>
-
+</script>'; ?>
 
 
 

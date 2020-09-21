@@ -56,9 +56,11 @@ $more_script='<script type="text/javascript" src="js/form-validation.js"></scrip
 				</div>
 			</div>
 		</div>
-		<?php }}else{echo '<div class="activation-page-message"><a href="login.php" style="text-decoration:none;">Message here</a></div>' ;}?><script>
+		<?php }}else{echo '<div class="activation-page-message"><a href="login.php" style="text-decoration:none;">Message here</a></div>' ;}?>
+		<?php
+$additional_script = '<script>
 			$("#change-profile-image").click(function () {
-			$("#fileToUpload").trigger('click');
+			$("#fileToUpload").trigger("click");
 			});
-		</script>
+		</script>'; ?>
 		<?php include($_SERVER['DOCUMENT_ROOT' ]."/wholesale/include/footer.php" ); ?>

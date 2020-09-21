@@ -72,14 +72,7 @@ if(isset($_GET['rs'])){
 	
 
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#gtable').DataTable();
-	$('#gtable').parent().addClass('table-responsive');
-} );
-</script>
-<!-- The following div closes the main body div -->
-</div>
+
 <input type="hidden" id="subject" name="subject" value="users" />
 <div class="populateDivGenDelete" id="populateDivGenCustDel">
 	<div class="container text-center">
@@ -95,7 +88,13 @@ $(document).ready(function() {
 	</div>
 </div>
 
-
+<?php
+$additional_script = '<script type="text/javascript">
+$(document).ready(function() {
+    $("#gtable").DataTable();
+	$("#gtable").parent().addClass("table-responsive");
+} );
+</script>'; ?>
 
 
 

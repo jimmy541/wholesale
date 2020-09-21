@@ -8,28 +8,20 @@
 
 
 <link rel="shortcut icon" href="favicon.ico"/>
-<?php/* echo $page_meta; */?>
 <title><?php echo $page_title; ?></title>
-
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="<?php echo $site_address; ?>css/sidebar-themes.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" type="text/css" href="<?php echo $site_address; ?>css/populateContainers.css">
 <link rel="stylesheet" type="text/css" href="<?php echo $site_address; ?>css/style.css">
-
-
 <?php
 if (isset($more_css)) {
     echo $more_css;
 } 
  ?>
-
 </head>
-
 <body>
-
 <noscript>
 	<div class="no-javascript">This site needs Javascript to work</div>
 	<style>
@@ -38,7 +30,6 @@ if (isset($more_css)) {
 	}
 	</style>
 </noscript>
-
 <?php
 if(isset($_SESSION['user'])){
 $userFullName = '';

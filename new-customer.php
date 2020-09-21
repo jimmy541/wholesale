@@ -249,14 +249,15 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 <!-- close container -->
 </div>
-<script>
+
+
+<?php
+$additional_script = '<script>
 $(document).ready(function() {
-    $('.select_shipping_state').select2();
-	$('.select_mailling_state').select2();
+    $(".select_shipping_state").select2();
+	$(".select_mailling_state").select2();
 });
-</script>
-
-
+</script>'; ?>
 
 
 

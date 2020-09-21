@@ -83,17 +83,21 @@ if($found == 'true'){
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#gtable').DataTable();
-} );
-</script>
+
 <?php 
 }else{
 	echo 'oops!! this page does not exist.';
 }
 ?>
+<?php
+$additional_script = '
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#gtable").DataTable();
+} );
+</script>';
 
+?>
 
 
 

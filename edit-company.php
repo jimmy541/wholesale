@@ -207,10 +207,11 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 <!-- close container -->
 </div>
 
-<script>
-$(document).ready(function() {
-    $('.select_state').select2();
-});
-</script>
 
+<?php
+$additional_script = '<script>
+$(document).ready(function() {
+    $(".select_state").select2();
+});
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

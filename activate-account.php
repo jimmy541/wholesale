@@ -40,9 +40,4 @@ if (isset($_GET['token']) && !empty($_GET['token'])){
 header("location: profile.php");
 
 }
-
-
-
-
-
 ?>

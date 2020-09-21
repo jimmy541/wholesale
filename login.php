@@ -69,7 +69,9 @@ if(isset($_GET['pwdrst']) && $_GET['pwdrst'] == '2'){
 
 
 
-
+<?php
+$additional_script = ''; 
+?>
 
 
 

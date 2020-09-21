@@ -184,19 +184,16 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 	</div>
 </div>
 
-
-
-
-
-<script type="text/javascript">
+<?php
+$additional_script = '<script type="text/javascript">
 $(document).ready(function() {
     Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 	});
-	$('#payment_date').val(new Date().toDateInputValue());
-	$('#gtable').parent().addClass('table-responsive');
+	$("#payment_date").val(new Date().toDateInputValue());
+	$("#gtable").parent().addClass("table-responsive");
 } );
-</script>
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

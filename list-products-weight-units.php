@@ -108,24 +108,26 @@ if(isset($_GET['rs'])){
 	</div>
 </div>
 
-<script type="text/javascript">
+
+<?php
+$additional_script = '<script type="text/javascript">
 $(document).ready(function() {
     // Setup - add a text input to each footer cell
-    $('#gtable tfoot th').each( function () {
+    $("#gtable tfoot th").each( function () {
         var title = $(this).text();
-		if(title == 'Description'){
-			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		if(title == "Description"){
+			$(this).html( \'<input type="text" placeholder="Search \'+title+\'" />\' );
 		}
     } );
  
     // DataTable
-    var table = $('#gtable').DataTable({
+    var table = $("#gtable").DataTable({
         initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
  
-                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
                             .search( this.value )
@@ -137,12 +139,5 @@ $(document).ready(function() {
     });
  
 } );
-</script>
-<!-- The following div closes the main body div -->
-</div>
-
-
-
-
-
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

@@ -222,13 +222,6 @@ $sub_depts = '';
 	<!-- close container-fluid -->
 </div>
 
-
-
-
-
-
-
-
 <?php 
 function getDescription($link, $table, $clientid, $id){
 			$rslt = '';
@@ -263,5 +256,6 @@ function checkForGreenCircle($link, $cert_code, $clientid, $customer, $order){
 }
 
 ?>
-
+<?php
+$additional_script = ''; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

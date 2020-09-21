@@ -152,11 +152,7 @@ function getValue($link, $clientid, $account_number, $vlu){
 	
 }
 ?>
-
-<!-- The following div closes the main body div -->
-</div>
-
-
-
+<?php
+$additional_script = ''; ?>
 
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

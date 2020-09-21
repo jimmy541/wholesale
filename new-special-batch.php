@@ -68,10 +68,8 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 
 </div>
 
-
-<!-- The following div closes the main body div -->
-</div>
-
+<?php
+$additional_script = ''; ?>
 
 
 

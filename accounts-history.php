@@ -331,22 +331,18 @@ function validateDate($date, $format = 'Y-m-d')
 	</div>
 </div>
 
-
-
-
-
-<script type="text/javascript">
+<?php
+$additional_script = '<script type="text/javascript">
 $(document).ready(function() {
-	$('.customer_select').select2();
+	$(".customer_select").select2();
 	
     Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 	});
-	$('#payment_date').val(new Date().toDateInputValue());
-	$('#gtable').parent().addClass('table-responsive');
+	$("#payment_date").val(new Date().toDateInputValue());
+	$("#gtable").parent().addClass("table-responsive");
 } );
-</script>
-
+</script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
