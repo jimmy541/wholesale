@@ -1,7 +1,7 @@
 <?php $page_title = 'Add New Product';
 $more_css = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
 $more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/popup-requesting-page.js"></script>
+<script type="text/javascript" src="js/selected-table.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
 ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); ?>
@@ -376,7 +376,24 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 	</div>
 <!-- close container -->
 </div>
-<div class="populateDiv" id="popBrand"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_product_select_popups" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="popup_title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="popBrand">
+        
+      </div>
+     </div>
+  </div>
+</div>
+
 <input type="hidden" value="<?php echo $roundformat; ?>" id="roundformat" />
 <div class="populateDivGen" id="calculateprice">
 	<div class="container-fluid">

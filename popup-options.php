@@ -1,5 +1,6 @@
 <?php
-$more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+$more_script = '<style>.dataTables_wrapper table thead{display:none;}</style>
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/popup-form-header.php');
@@ -24,33 +25,11 @@ if(isset($_GET['reid']) && $_GET['reid']=='trae3bad2dca266a568ecbc82e698c8'){
 	$title = "Suppliers";
 }
 ?>
-<?php
-if(isset($_GET['as'])){
-	if($_GET['as'] == '1'){
-		echo '<div class="alert alert-success" role="alert">Successfully Added</div>';
-	}
-}
-if(isset($_GET['es'])){
-	if($_GET['es'] == '1'){
-		echo '<div class="alert alert-success" role="alert">Successfully Updated</div>';
-	}
-}
-if(isset($_GET['rs'])){
-	if($_GET['rs'] == '1'){
-		echo '<div class="alert alert-success" role="alert">Successfully Removed</div>';
-	}
-}
- ?>
-<button type="button" class="close" aria-label="Close" id="closeBtn">
-			<span aria-hidden="true">&times;</span>
-</button>
-
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
 			<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#add-form" aria-expanded="false" aria-controls="add-form">Add New</button>
 			<button  class="btn btn-link" id="removecurrent">Remove</button>
-			
 		</div>
 	</div>
 	<div class="row">
@@ -62,7 +41,6 @@ if(isset($_GET['rs'])){
 						<input type="text" class="form-control form-control-sm" <?php if($table=='supplier'){ echo 'placeholder="Add supplier"'; }else echo 'placeholder="New '.$title.'"'?> id="newDesc" name="newDesc" />
 					</div>
 				</div>
-					
 				<?php if($table=='supplier'){?>
 				<div class="row mb-1">
 					<div class="col">
@@ -72,7 +50,6 @@ if(isset($_GET['rs'])){
 				</div>
 				<div class="row mb-1">
 					<div class="col">
-						
 						<label for="" class="sr-only">Contact:</label>
 						<input type="text" class="form-control form-control-sm" placeholder="Phone Number" id="newphnu" name="newphnu" />
 					</div>
@@ -81,12 +58,9 @@ if(isset($_GET['rs'])){
 				<div class="row mb-2">
 					<div class="col">
 					<button type="button" class="btn btn-primary shadow mb-1 btn-sm mr-1" id="submitbtngen">Add</button>
-					
-						
 					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 	<div class="row">
@@ -97,10 +71,8 @@ if(isset($_GET['rs'])){
 		<tr>
 		<?php if($table != 'supplier'){?>
 			<th><?php echo $title; ?></th>
-			
 		<?php }else{ ?>
 			<th>Supplier Name</th>
-			
 		<?php } ?>
 		</tr>
 	</thead>
@@ -125,7 +97,6 @@ if(isset($_GET['rs'])){
 		</div>
 	</div>
 </div>
-
 <script type="text/javascript">
 $(document).ready(function() {
     $("#gtable").dataTable( {
@@ -146,5 +117,4 @@ $(document).ready(function() {
 	} );
 	$("#gtable").parent().addClass("table-responsive");
 } );
-
 </script>'

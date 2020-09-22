@@ -3,7 +3,7 @@
 $more_css = '<link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
 
 $more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="js/popup-requesting-page.js"></script>
+<script type="text/javascript" src="js/selected-table.js"></script>
 <script type="text/javascript" src="js/form-validation.js"></script>';
 
 include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php");

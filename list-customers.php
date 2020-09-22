@@ -1,15 +1,11 @@
 <?php
 $page_title = 'Customers';
-
-$more_css = '<style>#gtable_filter{display:none;}</style>
+$more_css = '<style>#list_customers_php_table1_filter{display:none;}</style>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
-
 $more_script = '<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/selected-table.js"></script>';
-
 require($_SERVER['DOCUMENT_ROOT'].'/wholesale/include/header.php');
-
 ?>
 <h3 class="page-header"><?php echo $page_title; ?></h3>
 <?php
@@ -39,7 +35,6 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 <input type="hidden" id="customerid" value="" />
 <input type="hidden" id="todaydate" value="<?php echo date('Y-m-d'); ?>" />
 <input type="hidden" id="prior3months" value="<?php echo date('Y-m-d', strtotime("-3 months")); ?>" /> 
-
 <div class="container-fluid">
 	 <?php if($role != 'Sales Representative') { ?><div class="row">
 		<div class="col">
@@ -48,8 +43,6 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 		</div>
 	</div>
 	 <?php } ?>
-	
-
 	<div class="row">
 		<div class="col">
 			<div class="card">
@@ -57,7 +50,6 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 				<div class="row">
 		<div class="col">
 			<ul class="invoice-top-buttons-disabled">
-				<?php if($role != 'Sales Representative') { ?><li id="edit-customer"><i class="fas fa-edit"></i>Edit</li><?php } ?>
 				<li id="view-customer-invoices"><i class="fas fa-file-invoice"></i>Invoices</li>
 				<li id="customer-statement-ll"><i class="fas fa-list-alt"></i>Statement</li>
 				<li id="customer-list-acchistory"><i class="fas fa-list"></i>History</li>
@@ -68,10 +60,9 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 	</div>
 	<div class="row">
 	<div class="col">
-					<table class="row-border" id="gtable">
+					<table class="row-border" id="list_customers_php_table1">
 						<thead>
 							<tr>
-								
 								<th style="display:none;">Account ID</th>
 								<th style="display:none;">Customer ID</th>
 								<th>Account Number</th>
@@ -82,7 +73,6 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 						</thead>
 						<tfoot>
 							<tr>
-								
 								<th style="display:none;">Account ID</th>
 								<th style="display:none;">Customer ID</th>
 								<th>Account Number</th>
@@ -102,15 +92,16 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 							$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query $only_assigned_query";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) {
-								$del_id_type = 'delete';
-								if($row['has_orders'] == 'yes'){$del_id_type = 'inactive';}
+								$del_id_type = 'list_customers_php_delete';
+								if($row['has_orders'] == 'yes'){$del_id_type = 'list_customers_php_inactive';}
 								echo '<tr>
 								<td style="display:none;">'.htmlspecialchars($row["account_number"]).'</td>
 								<td data-label="Customer ID" style="display:none;">'.htmlspecialchars($row["hashed_id"]).'</td>
 								<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
 								<td data-label="Business Name">'.htmlspecialchars($row["business_name"]).'</td>
 								<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>';
-								if($role != 'Sales Representative') { echo '<td><span class="action-icons"><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>'; }
+								if($role != 'Sales Representative') { echo '<td><span class="action-icons"><a href="edit-customer.php?account='.htmlspecialchars($row["account_number"]).'&token='.htmlspecialchars($row["hashed_id"]).'">
+				<i class="fas fa-edit"></i></a><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>'; }
 								echo '</tr>'; 
 							}
 							?>
@@ -123,40 +114,71 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 		</div>
 	</div>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#gtable').DataTable();
-	$('#gtable').parent().addClass('table-responsive');
-} );
-</script>
 <input type="hidden" id="subject" name="subject" value="cust" />
-<div class="populateDivGenDelete" id="populateDivGenCustDel">
-	<div class="container text-center">
-		<p class="mb-3">Are you sure you want to delete the selected record?</p>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="yesBtn">Yes</button>
+<!-- Modal -->
+<div class="modal fade" id="modal_delete_customer" tabindex="-1" role="dialog" aria-labelledby="modal_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_title">Delete Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>Are you sure you want to delete the selected customer?</h6>
+				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
-			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="list_customers_php_yes_btn">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
-<div class="populateDivGenDelete" id="populateDivGenCustInactive">
-	<div class="container text-center">
-		<p class="mb-3">This customer is linked to existing invoices. Would you like to make it inactive?</p>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="yesInactiveBtn">Yes</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_deactivate_customer" tabindex="-1" role="dialog" aria-labelledby="modal_title2" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_title2">Deactivate Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>This customer is linked to existing invoices. Would you like to make it inactive?</h6>
+				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
-			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="list_customers_php_yes_deactivate_btn">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
+
 <div class="modal fade" id="assing_salesperson" tabindex="-1" aria-labelledby="assing_salespersonLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -181,9 +203,7 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
-
 <?php 
-
 function get_salesperson_list($link, $clientid){
 	$options = '';
 	$query = "SELECT `uid`, `first_name`, `last_name` FROM `users` WHERE `clientid` = '$clientid'";
@@ -195,34 +215,8 @@ function get_salesperson_list($link, $clientid){
 		$option.= '</option>';
 	}
 	return $options;
-	
 }
-
 ?>
 <?php
-$additional_script = '<script>
-$(document).ready(function() {
-	$(".salesperson").css("width", "100%");
-	$(".salesperson").select2({
-		dropdownParent: $("#assing_salesperson")
-	});
-	 $("#gtable tbody").on( "click", "tr", function () {
-		if ( $(this).hasClass("disable-select") ) {
-			
-		}else{
-			$("#assign-salesperson-customer").attr("data-target", "");
-			if ( $(this).hasClass("selected") ) {
-				
-				$("#assign-salesperson-customer").attr("data-target", "#assing_salesperson");
-				
-			}
-			else {
-				
-				
-			}
-		}
-    });
-});
-</script>'; ?>
-
+$additional_script = ''; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>
