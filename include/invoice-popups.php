@@ -1,38 +1,123 @@
 <input type="hidden" id="subject" name="subject" value="invoice" />
-<div class="populateDivGenDelete" id="populateDivGenCustDel">
-	<div class="container text-center">
-		<p class="mb-3">Are you sure you want to delete the selected record?</p>
-		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="delete-invoice-yesBtn">Yes</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modal_delete_order" tabindex="-1" role="dialog" aria-labelledby="modal_delete_order_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_delete_order_title">Delete Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>Are you sure you want to delete the current order?</h6>
+				</div>
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="noBtn">No</button>
-			</div>
-		</div>
-	</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="delete_order_yes_btn">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
-<div class="populateDivGenDelete" id="populateDivGenPaymentDel">
-	<div class="container text-center">
-		<p class="mb-3">Are you sure you want to delete the selected record?</p>
+<!-- Modal -->
+<div class="modal fade" id="populateDivPaymentHis" tabindex="-1" role="dialog" aria-labelledby="modal_show_payment_history_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_show_payment_history_title">Payments History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="container-fluid">
+		<!-- open row -->
 		<div class="row">
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="delete-payment-yesBtn">Yes</button>
+			<!-- open col -->
+			<div class="col">
+				<ul class="invoice-top-buttons-disabled">
+							<li id="edit-payment"><i class="fas fa-edit"></i>Edit</li>
+							<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
+				</ul>
+			<!-- close col -->
 			</div>
-			<div class="col-md-6 mb-3">
-				<button class="btn btn-primary shadow btn-lg btn-block" id="noDelPayBtn">No</button>
-			</div>
+		<!-- close row -->
 		</div>
+		<!-- open row -->
+		<div class="row">
+			<!-- open col -->
+			<div class="col" id="modal_payment_history_body">
+				
+			<!-- close col -->
+			</div>
+		<!-- close row -->
+		</div>
+	<!-- close container -->
 	</div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
-<div class="populateDivGenDelete" id="populatechangeorderstatus" style="height:auto !important">
-<button type="button" class="close" aria-label="Close" id="closeIcon">
-		<span aria-hidden="true">&times;</span>
-	</button>
-	<div class="container text-center">
-		<p class="mb-3">Change order status to:</p>
-		<div class="row">
+<!-- Modal -->
+<div class="modal fade" id="modal_delete_payment" tabindex="-1" role="dialog" aria-labelledby="modal_delete_payment_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_delete_payment_title">Delete Payment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row mb-3">
+				<div class="col">
+					<h6>Are you sure you want to delete the current payment?</h6>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">No</button>
+				</div>
+				<div class="col-md-6 ml-auto">
+					<button type="button" class="btn btn-primary btn-block" id="delete_payment_yes_btn">Yes</button>
+				</div>
+			</div>		
+		  </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_change_order_status" tabindex="-1" role="dialog" aria-labelledby="modal_change_order_status_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_change_order_status_title">Change Order Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+			<div class="row">
 			<div class="col">
 			
 			<div class="mb-3">
@@ -51,29 +136,39 @@
 			
 			</div>
 		</div>
-	</div>
+				
+		  </div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
 <?php if($order_type == 'invoice'){ ?>
-<div class="populateDivPayment" id="populateDivPayment">
-	<input type="hidden" value="" id="payment-saving-mode"/>
-	
-	<button type="button" class="close" aria-label="Close" id="closeIcon">
-		<span aria-hidden="true">&times;</span>
-	</button>
-	<div class="container-fluid">
+<!-- Modal -->
+<div class="modal fade" id="modal_show_payment" tabindex="-1" role="dialog" aria-labelledby="modal_show_payment_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_change_order_status_title">Payments</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="container-fluid">
 		<!-- open row -->
 		<div class="row">
 			<!-- open col -->
 			<div class="col">
-				
+				<input type="hidden" value="" id="payment-saving-mode"/>
 				<div class="mb-3">
 					<label>Payment Date</label>
-					<input class="form-control" type="date" id="payment_date" />
+					<input class="form-control" type="date" id="payment_date" value=""/>
 				</div>
 				<div class="mb-3">
 					<label>Payment Amount</label>
-					<input class="form-control" type="number" id="payment_amount" min="0" step="0.01"/>
+					<input class="form-control" type="number" id="payment_amount" min="0" step="0.01" value=""/>
 				</div>
 				<div class="mb-3">
 					<label>Payment Method</label>
@@ -99,6 +194,10 @@
 		</div>
 	<!-- close container -->
 	</div>
+      </div>
+      
+    </div>
+  </div>
 </div>
 
 <div class="populateDivSend" id="populateDivSend">
@@ -140,7 +239,6 @@
 	<!-- close container -->
 	</div>
 </div>
-<div class="populateDivPaymentHis" id="populateDivPaymentHis">
 
-</div>
+
 <?php } ?>

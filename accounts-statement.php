@@ -96,7 +96,7 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 				
 	<div class="row">
 	<div class="col">
-					<table class="row-border" id="gtable">
+					<table class="row-border" id="accounts_statement_php_table1">
 					<caption>Account Statement</caption>
 						<thead>
 							<tr>
@@ -185,15 +185,5 @@ if(isset($_GET['customer']) && !empty($_GET['customer'])){
 </div>
 
 <?php
-$additional_script = '<script type="text/javascript">
-$(document).ready(function() {
-    Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-	});
-	$("#payment_date").val(new Date().toDateInputValue());
-	$("#gtable").parent().addClass("table-responsive");
-} );
-</script>'; ?>
+$additional_script = ''; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

@@ -1,7 +1,7 @@
 <?php
 $page_title = 'Payments';
 
-$more_css = '<style>#gtable_filter{display:none;}</style>
+$more_css = '<style>#list_payments_php_table1_filter{display:none;}</style>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="css/populateContainers.css">';
 
@@ -168,7 +168,7 @@ function validateDate($date, $format = 'Y-m-d')
 					
 				
 				
-<table class="row-border" id="gtable">
+<table class="row-border" id="list_payments_php_table1">
 
 
 	<thead>
@@ -241,14 +241,7 @@ function validateDate($date, $format = 'Y-m-d')
 $additional_script = '<script type="text/javascript">
 $(document).ready(function() {
 	$(".customer_select").select2();
-    Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-	});
-	$("#payment_date").val(new Date().toDateInputValue());
-	$("#gtable").parent().addClass("table-responsive");
-	$("#paymentsTable").parent().addClass("table-responsive");
+   
 } );
 </script>'; ?>
 <?php include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/footer.php"); ?>

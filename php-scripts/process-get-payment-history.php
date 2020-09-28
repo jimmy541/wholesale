@@ -2,15 +2,10 @@
 		if(isset($_POST['id']) && !empty($_POST['id']) && isset($_POST['customerid']) && !empty($_POST['customerid'])){ // condition 3
 			$id = $_POST['id'];
 			$customerid = $_POST['customerid'];
-			$result = '<button type="button" class="close" aria-label="Close" id="closeIcon">
-						<span aria-hidden="true">&times;</span>
-						</button>';
-			$result .= '<ul class="invoice-top-buttons-disabled" style="width:95%">
-							<li id="edit-payment"><i class="fas fa-edit"></i>Edit</li>
-							<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
-						</ul>';
-			$result .= '<table class="row-border" id="paymentsTable" style="width:95%">
-			<caption>Payments</caption>
+			
+			$result = '';
+			$result .= '<table class="row-border" id="paymentsTable">
+			
 				<thead>
 					<tr>
 						<th style="display:none;">ID</th>

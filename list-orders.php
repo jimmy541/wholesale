@@ -59,6 +59,7 @@ if(isset($_GET['rs'])){
 <input type="hidden" id="invoice-number" value="<?php echo $invoice_number; ?>" />
 <input type="hidden" id="paymentid" value="" />
 <input type="hidden" id="doc-type" value="invoice" />
+<input type="hidden" id="page-requesting" value="list-orders" />
 <div class="container-fluid">
 <div class="row">
 <div class="col">
@@ -92,7 +93,7 @@ if(isset($_GET['rs'])){
 	<div class="row">
 	<div class="col">
 					<span style="display:none" id="email-sent-success">E-mail successfully sent.</span>
-					<table class="row-border" id="gtable">
+					<table class="row-border" id="list_order_php_table1">
 
 						<thead>
 							<tr>
@@ -183,17 +184,7 @@ if(isset($_GET['rs'])){
 
 
 <?php
-$additional_script = '<script type="text/javascript">
-$(document).ready(function() {
-    Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-	});
-	$("#gtable").parent().addClass("table-responsive");
-	$("#paymentsTable").parent().addClass("table-responsive");
-	$("#payment_date").val(new Date().toDateInputValue());
-} );</script>'; 
+$additional_script = ''; 
 ?>
 
 

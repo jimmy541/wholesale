@@ -4,7 +4,13 @@ $(document).ready(function() {
 	var subject = $('#subject').val();
 	var clickedRow = '';
 	var clickedPayment = '';
-
+	
+	
+		var now = new Date();
+		var day = ("0" + now.getDate()).slice(-2);
+		var month = ("0" + (now.getMonth() + 1)).slice(-2);
+		var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+	
 	//{list-products.php  start
 	$("#list_products_php_table1 tfoot th").each( function () {
         var title = $(this).text();
@@ -17,7 +23,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -30,10 +35,11 @@ $(document).ready(function() {
     });
 	$("#list_products_php_table1").parent().addClass("table-responsive");
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_php_table1_delete") >= 0){
+					clickedRow = $(this).attr('id');
 					id = $(this).attr('id').replace('list_products_php_table1_delete', '');
 					$( "#modal_remove_product" ).modal("toggle");
 				}
@@ -56,7 +62,6 @@ $(document).ready(function() {
 					}
 				});
 		});
-		
 	//}list-products.php end
 	//{list-products-departments.php start
 	$("#list_products_departments_php_table1 tfoot th").each( function () {
@@ -70,7 +75,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -82,19 +86,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_departments_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_departments_php_table1_delete', '');
 					$( "#modal_remove_product_department" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_departments_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_departments_php_table1_edit', '');
 					$( "#modal_edit_product_department" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_departments_php_save_btn',function(){
@@ -106,15 +111,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_department" ).modal("toggle");
 				var t = $('#list_products_departments_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -152,7 +154,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -164,19 +165,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_sub_departments_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_sub_departments_php_table1_delete', '');
 					$( "#modal_remove_product_sub_department" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_sub_departments_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_sub_departments_php_table1_edit', '');
 					$( "#modal_edit_product_sub_department" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_sub_departments_php_save_btn',function(){
@@ -188,15 +190,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_sub_department" ).modal("toggle");
 				var t = $('#list_products_sub_department_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -234,7 +233,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -246,19 +244,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_brands_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_brands_php_table1_delete', '');
 					$( "#modal_remove_product_brand" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_brands_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_brands_php_table1_edit', '');
 					$( "#modal_edit_product_brand" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_brands_php_save_btn',function(){
@@ -270,15 +269,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_brand" ).modal("toggle");
 				var t = $('#list_products_brands_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -316,7 +312,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -328,19 +323,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_categories_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_categories_php_table1_delete', '');
 					$( "#modal_remove_product_categories" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_categories_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_categories_php_table1_edit', '');
 					$( "#modal_edit_product_category" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_categories_php_save_btn',function(){
@@ -352,15 +348,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_category" ).modal("toggle");
 				var t = $('#list_products_categories_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -398,7 +391,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -410,19 +402,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_packages_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_packages_php_table1_delete', '');
 					$( "#modal_remove_product_package" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_packages_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_packages_php_table1_edit', '');
 					$( "#modal_edit_product_package" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_packages_php_save_btn',function(){
@@ -434,15 +427,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_package" ).modal("toggle");
 				var t = $('#list_products_packages_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -480,7 +470,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -492,19 +481,20 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_weight_units_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_weight_units_php_table1_delete', '');
 					$( "#modal_remove_product_weight_units" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_weight_units_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_weight_units_php_table1_edit', '');
 					$( "#modal_edit_product_weight_unit" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_weight_unit_php_save_btn',function(){
@@ -516,15 +506,12 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_weight_unit" ).modal("toggle");
 				var t = $('#list_products_weight_units_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				if(subject == 'tt'){
-					
 					var cell2 = t.cell('#tdidV'+id);
 					var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 					cell2.data(newValue2).draw();
@@ -562,7 +549,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -574,20 +560,21 @@ $(document).ready(function() {
         }
     });
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_products_tax_type_php_table1_delete") >= 0){
 					id = $(this).attr('id').replace('list_products_tax_type_php_table1_delete', '');
 					$( "#modal_remove_product_tax_type" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
 				if (str.indexOf("list_products_tax_type_php_table1_edit") >= 0){
 					id = $(this).attr('id').replace('list_products_tax_type_php_table1_edit', '');
 					$( "#modal_edit_product_tax_type" ).modal("toggle");
 					$('#updatedvalue').val($("#desc"+id).text());
 					$('#updatedvalueV').val($("#tdidV"+id).text());
+					clickedRow = $(this).attr('id');
 				}
-				
 			}
 	});
 	$(document).on('click','#list_products_tax_type_php_save_btn',function(){
@@ -600,18 +587,14 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				
 				$( "#modal_edit_product_tax_type" ).modal("toggle");
 				var t = $('#list_products_tax_type_php_table1').DataTable();
 				var cell = t.cell('#tdid'+id);
 				var newValue = '<span id="desc'+response[0]+'">'+response[1]+'</span>';
 				cell.data(newValue).draw();
-				
 				var cell2 = t.cell('#tdidV'+id);
 				var newValue2 = '<span id="value'+response[0]+'">'+response[2]+'</span>';
 				cell2.data(newValue2).draw();
-				
-				
 			}
 			});
 		});
@@ -640,7 +623,6 @@ $(document).ready(function() {
 		$("#popup_title").text("Select Brand");
 		$( "#popBrand" ).load( "popup-options.php?reid=f146aa9099b551a29e4d4ae56e170c7" );
 		$('#poprequester').val("f146aa9099b551a29e4d4ae56e170c7");
-			
 	});
 	$('#department').click(function(){
 		$(this).blur();
@@ -670,7 +652,6 @@ $(document).ready(function() {
 		$( "#popBrand" ).load( "popup-options.php?reid=trae3bad2dca266a568ecbc82e698c8" );
 		$('#poprequester').val("trae3bad2dca266a568ecbc82e698c8");
 	});
-		
 	//}edit-product.php, new-product.php end
 	//{list-suppliers.php start
 		$("#list_suppliers_php_table1 tfoot th").each( function () {
@@ -679,14 +660,12 @@ $(document).ready(function() {
 			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
 		}
     } );
- 
     // DataTable
-    var table = $("#list_suppliers_php_table1").DataTable({
+    var list_suppliers_php_table1 = $("#list_suppliers_php_table1").DataTable({
         initComplete: function () {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( "input", this.footer() ).on( "keyup change clear", function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -698,16 +677,15 @@ $(document).ready(function() {
         }
     });
 	$("#list_suppliers_php_table1").parent().addClass("table-responsive");
-	
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_suppliers_php_delete") >= 0){
 					id = $(this).attr('id').replace('list_suppliers_php_delete', '');
 					$( "#modal_delete_supplier" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
-							
 			}
 	});
 	$(document).on('click','#list_suppliers_php_yes_btn',function(){
@@ -734,7 +712,6 @@ $(document).ready(function() {
 	$(".salesperson").select2({
 		dropdownParent: $("#assing_salesperson")
 	});
-	
 	$('#list_customers_php_table1 tfoot th').each( function () {
         var title = $(this).text();
 		if(title == 'Account Number' || title == 'Business Name'){
@@ -746,7 +723,6 @@ $(document).ready(function() {
             // Apply the search
             this.api().columns().every( function () {
                 var that = this;
- 
                 $( 'input', this.footer() ).on( 'keyup change clear', function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -768,28 +744,23 @@ $(document).ready(function() {
                 "visible": false,
                 "searchable": false
             },
-			
 		]
-		
-		
 	});
-	
 	$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("list_customers_php_delete") >= 0){
 					id = $(this).attr('id').replace('list_customers_php_delete', '');
 					$( "#modal_delete_customer" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}else if(str.indexOf("list_customers_php_inactive") >= 0){
 					id = $(this).attr('id').replace('list_customers_php_inactive', '');
 					$( "#modal_deactivate_customer" ).modal("toggle");
+					clickedRow = $(this).attr('id');
 				}
-							
 			}
 	});
-	
-	
 	$(document).on('click','#list_customers_php_yes_btn',function(){
 			var data = {subject: subject, id: id};
 				jQuery.ajax({
@@ -826,7 +797,6 @@ $(document).ready(function() {
 		});
 	$('#list_customers_php_table1 tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('disable-select') ) {
-			
 		}else{
 			if ( $(this).hasClass('selected') ) {
 				$(this).removeClass('selected');
@@ -841,73 +811,316 @@ $(document).ready(function() {
 				$(this).addClass('selected');
 				$("#assign-salesperson-customer").attr("data-target", "#assing_salesperson");
 				var ids = $.map(list_customers_php_table1.rows('.selected').data(), function (item) {
-					
 					$('#customerid').val(item[0]);
 					$('#customerhash').val(item[1]);
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
-					
 				});
 			}
 		}
     });
-		
-	
+	$(document).on('click', '#save-assign-salesperson', function(){
+			var customerid = $('#customerhash').val();
+			var saleseperson_id = $('#salesperson option:selected').val();
+			var data = {customerid:customerid, saleseperson_id:saleseperson_id};
+			jQuery.ajax({
+            type: 'POST',
+            url: 'php-scripts/update-customer-salesperson.php',
+            data: data,
+            success: function(response) {
+				$('#assing_salesperson').modal('toggle');
+			}
+			});
+		});
 	//}list-customers.php end
+	//{accounts-unpaid.php start 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/* Handling selected rows button clicks */
-	
-	/*
-    $('#gtable tbody').on( 'click', 'tr', function () {
+	$("#accounts_unpaid_php_table1").parent().addClass("table-responsive");
+	$('#accounts_unpaid_php_table1 tfoot th').each( function () {
+        var title = $(this).text();
+		if(title == 'Account Number' || title == 'Business Name'){
+			$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+		}
+    } );
+	var accounts_unpaid_php_table1 = $('#accounts_unpaid_php_table1').DataTable({
+		initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        },
+		 "order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            },
+		]
+	});
+	$('#accounts_unpaid_php_table1 tbody').on( 'click', 'tr', function () {
 		if ( $(this).hasClass('disable-select') ) {
-			
 		}else{
-			
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				$('#customerhash').val('');
+				$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
+				$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+			}
+			else {
+				accounts_unpaid_php_table1.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				var ids = $.map(accounts_unpaid_php_table1.rows('.selected').data(), function (item) {
+					$('#customerhash').val(item[1]);
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+				});
+			}
+		}
+    });
+	//} accounts-unpaid.php end
+	//{accounts-statement.php start 
+	var accounts_statement_php_table1 = $('#accounts_statement_php_table1').DataTable({
+		
+		 "order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            },
+		]
+	});
+	
+	
+	$("#accounts_statement_php_table1").parent().addClass("table-responsive");
+	$('#accounts_statement_php_table1 tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('disable-select') ) {
+		}else{
 			if ( $(this).hasClass('selected') ) {
 				$(this).removeClass('selected');
 				$('#invoicehash').val('');
-				$('#customerid').val('');
 				$('#customerhash').val('');
-				$('#paymentid').val('');
-				$('#invoice-number').val('');
 				$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
 				$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
-				
-				
 			}
 			else {
-				table.$('tr.selected').removeClass('selected');
+				accounts_statement_php_table1.$('tr.selected').removeClass('selected');
 				$(this).addClass('selected');
-				var ids = $.map(table.rows('.selected').data(), function (item) {
+				var ids = $.map(accounts_statement_php_table1.rows('.selected').data(), function (item) {
 					$('#invoicehash').val(item[0]);
-					$('#customerid').val(item[0]);
 					$('#customerhash').val(item[1]);
-					$('#paymentid').val(item[2]);
-					$('#invoice-number').val(item[3]);
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
-					
 				});
 			}
 		}
     });
 
+	//}accounts-statement.php end
+	//{accounts-history.php start
+	
+	$("#accounts_history_php_table1").parent().addClass("table-responsive");
+	var accounts_history_php_table1 = $('#accounts_history_php_table1').DataTable({
+		"order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            },
+		]
+	});
+	
+	//}accounts-history.php end
+	//{list-payments.php start
+	
+	
+	$("#list_payments_php_table1").parent().addClass("table-responsive");
+	$("#paymentsTable").parent().addClass("table-responsive");
+	var list_payments_php_table1 = $('#list_payments_php_table1').DataTable({
+		"order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            },{
+                "targets": [ 2 ],
+                "visible": false,
+                "searchable": false
+            },
+		]
+	});
+	
+	$('#list_payments_php_table1 tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('disable-select') ) {
+		}else{
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				$('#invoicehash').val('');
+				$('#customerhash').val('');
+				$('#paymentid').val('');
+				$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
+				$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+			}
+			else {
+				list_payments_php_table1.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				var ids = $.map(list_payments_php_table1.rows('.selected').data(), function (item) {
+					$('#invoicehash').val(item[0]);
+					$('#customerhash').val(item[1]);
+					$('#paymentid').val(item[2]);
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+				});
+			}
+		}
+    });
+	
+	//}list-payments.php end
+	//{list-orders.php start 
+	
+	$("#payment_date").val(today);
+	$("#list_order_php_table1").parent().addClass("table-responsive");
+	var list_order_php_table1 = $('#list_order_php_table1').DataTable({
+		"order": [],
+		"columnDefs": [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+			{
+                "targets": [ 1 ],
+                "visible": false,
+                "searchable": false
+            }
+		]
+	});
+	
+	$('#list_order_php_table1 tbody').on( 'click', 'tr', function () {
+		if ( $(this).hasClass('disable-select') ) {
+		}else{
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				$('#invoicehash').val('');
+				$('#customerhash').val('');
+				$('#paymentid').val('');
+				$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
+				$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+			}
+			else {
+				list_order_php_table1.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				var ids = $.map(list_order_php_table1.rows('.selected').data(), function (item) {
+					$('#invoicehash').val(item[0]);
+					$('#customerhash').val(item[1]);
+					$('#paymentid').val(item[2]);
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
+					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+				});
+			}
+		}
+    });
+	$(document).on('click','#delete_order_yes_btn',function(){
+			var data = {subject: subject, id: id};
+			if(subject == 'invoice-single-item'){
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				dataType: 'json',
+				success: function(response) {
+					$( "#modal_delete_order" ).modal("toggle");
+					$('#delete'+id).closest('tr').remove();
+					id = '';
+					$('#invoice_sub_total').text(response[1]);
+					$('#invoice_tax').text(response[2]);
+					$('#invoice_grand_total').text(response[3]);
+					}
+				});
+			}else{
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$('#invoicehash').val('');
+					$( "#modal_delete_order" ).modal("toggle");
+						id = '';
+					var t = $('#list_order_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+			}
+		});
+	//}list-orders.php end
+	//{list-users.php start
+	$("#list_users_php_table1").DataTable();
+	$("#list_users_php_table1").parent().addClass("table-responsive");
+	$(document).on('click','i',function(){
+			
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_users_php_delete") >= 0){
+					id = $(this).attr('id').replace('list_users_php_delete', '');
+					$( "#modal_remove_users" ).modal("toggle");
+					clickedRow = $(this).attr('id');
+				}
+			}
+	});
+	$(document).on('click','#list_users_php_yes_btn',function(){
+			var data = {subject: subject, id: id};
+				jQuery.ajax({
+				type: 'POST',
+				url: 'php-scripts/process-general-remove.php',
+				data: data,
+				success: function(response) {
+					$( "#modal_remove_users" ).modal("toggle");
+					id = '';
+					var t = $('#list_users_php_table1').DataTable();
+					t
+					.row( $('#'+clickedRow).parents('tr') )
+					.remove()
+					.draw();
+					}
+				});
+		});
+	//}list-users.php end
+	
+	
 
-	
-	
 	$(document).on( 'click', '#paymentsTable tbody tr', function () {
 		var tb = $(this);
         if ( tb.hasClass('selected') ) {
@@ -915,21 +1128,18 @@ $(document).ready(function() {
 			$('#paymentid').val('');
 			$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
 			$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
-			
         }
         else {
-			
             pTable.$('tr.selected').removeClass('selected');
             tb.addClass('selected');
 			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
 			var ids = $.map(pTable.rows('.selected').data(), function (item) {
 				$('#paymentid').val(item[0]);
-				
 			});
         }
     });
-	*/
+	
 	$('#uncusstatement').click(function(){
 		var currentSel = $('#customerhash').val();
 		if(currentSel){
@@ -1001,14 +1211,12 @@ $(document).ready(function() {
 		if(currentSel){
 			$.get("pdf-invoice.php?s=1&invoice="+currentSel);
 			//return false;
-			
 			$('#closeIcon2').hide();
 			$('#closeIcon').show();
 		    $( "#populateDivSend" ).show();
 			var cushash = $('#customerhash').val();
 			$('#emailsubject').val('Invoice '+$('#invoice-number').val());
 			$('#message_text').val('Dear Client, \nAttached is your invoice. \n\nThank you for your business!\n');
-			
 			$('#gray-background').show();
 					$.ajax({
 						url: 'php-scripts/process-get-emails-of-customer.php',
@@ -1034,14 +1242,12 @@ $(document).ready(function() {
 		if(currentSel){
 			$.get("pdf-customer-statement.php?s=1&customer="+currentSel);
 			//return false;
-			
 			$('#closeIcon2').hide();
 			$('#closeIcon').show();
 		    $( "#populateDivSend" ).show();
 			var cushash = $('#customerhash').val();
 			$('#emailsubject').val('Statement');
 			$('#message_text').val('Dear Client, \nAttached is your statement. \n\nThank you for your business!\n');
-			
 			$('#gray-background').show();
 					$.ajax({
 						url: 'php-scripts/process-get-emails-of-customer.php',
@@ -1069,14 +1275,12 @@ $(document).ready(function() {
 			var dateto = $('#dateto').val();
 			$.get("pdf-account-history.php?s=1&customer="+currentSel+"&datefrom="+datefrom+"&dateto="+dateto);
 			//return false;
-			
 			$('#closeIcon2').hide();
 			$('#closeIcon').show();
 		    $( "#populateDivSend" ).show();
 			var cushash = $('#customerhash').val();
 			$('#emailsubject').val('Account history');
 			$('#message_text').val('Dear Client, \nAttached is your account history. \n\nThank you for your business!\n');
-			
 			$('#gray-background').show();
 					$.ajax({
 						url: 'php-scripts/process-get-emails-of-customer.php',
@@ -1107,16 +1311,19 @@ $(document).ready(function() {
 		var currentSel = $('#invoicehash').val();
 		$('#closeIcon2').hide();
 		$('#closeIcon').show();
-		
 		$('#payment-saving-mode').val('new');
 		if (currentSel){
-				$( "#populateDivPayment" ).show();
-				$('#gray-background').show();
+				
 				$('#payment_amount').val('');
 				$('#ref_no').val('');
+				
+				$("#payment_date").val(today);
+				$('#payment_amount').val('');
+				
+				
+				$( "#modal_show_payment" ).modal("toggle");
 		}
 	});
-	
 	$('#view-customer-invoices').click(function(){
 		var currentSel = $('#customerhash').val();
 		if(currentSel){
@@ -1133,7 +1340,6 @@ $(document).ready(function() {
 		var currentSel = $('#customerhash').val();
 		var dToday = $('#todaydate').val();
 		var d3months = $('#prior3months').val();
-		
 		if(currentSel){
 			window.location.href = "accounts-history.php?datefrom="+d3months+"&dateto="+dToday+"&customer_select="+currentSel;
 		}
@@ -1149,26 +1355,21 @@ $(document).ready(function() {
 		var pdto = $('#pdateto').val();
 		var pcustomer = $('#customerfilter').val();
 			window.location.href = "pdf-payments.php?dfrom="+pdfrom+"&dto="+pdto+"&customer="+pcustomer;
-		
 	});
 	$('#download-payment-history').click(function(){
 		var pdfrom = $('#pdatefrom').val();
 		var pdto = $('#pdateto').val();
 		var pcustomer = $('#customerfilter').val();
 			window.location.href = "pdf-payments.php?d=1&dfrom="+pdfrom+"&dto="+pdto+"&customer="+pcustomer;
-		
 	});
 	$(document).on('click','#edit-payment',function(){
-		
 		$('#closeIcon').show();
 		$('#closeIcon2').show();
 		var currentSel = $('#invoicehash').val();
 		var paymentid = $('#paymentid').val();
 		$('#payment-saving-mode').val('edit');
 		if (currentSel){
-				
 			var data = {id:paymentid};
-			
 			jQuery.ajax({
             type: 'POST',
             url: 'php-scripts/process-get-invoice-fields.php',
@@ -1179,84 +1380,55 @@ $(document).ready(function() {
 				var amnt = response[1];
 				var mop = response[2];
 				var ref = response[3];
-				$( "#populateDivPayment" ).show();
-				$('#gray-background').show();
+				$( "#modal_show_payment" ).modal("toggle");
 				$('#ref_no').val('');
 				$('#payment_amount').val('');
 				document.getElementById("payment_date").value = dtValue;
 				$('#payment_amount').val(amnt);
 				$("#mop").val(mop);
 				$('#ref_no').val(ref);
-				
 			}
 			});
-				
-				
 			}
 	});
 	$('#payment-history').click(function(){
 		var currentSel = $('#invoicehash').val();
 		if (currentSel){
-				
-			
 			var customerid = $('#customerhash').val();
 			var data = {id:currentSel, customerid:customerid};
-			
 			jQuery.ajax({
             type: 'POST',
             url: 'php-scripts/process-get-payment-history.php',
             data: data,
             success: function(response) {
-				
-				$('#populateDivPaymentHis').html(response);
+				$('#modal_payment_history_body').html(response);
 				pTable = $('#paymentsTable').DataTable({
-					
 					"paging":   false,
 					"info":     false,
 					"scrollCollapse": true
 				});
-				$( "#populateDivPaymentHis" ).show();
-				$('#gray-background').show();
+				$( "#populateDivPaymentHis" ).modal("toggle");
 			}
 			});
 			}
 	});
-	
-	
 	/* Handling buttons inside the buttons*/
-	
 	$('#delete-order').click(function(){
 			clickedRow = $('#invoicehash').val();
 			id = $('#invoicehash').val();
 			if (id){
-				$( "#populateDivGenCustDel" ).show();
-				$('#gray-background').show();
+				$( "#modal_delete_order" ).modal("toggle");
+				
 			}
 		});
 		$(document).on('click', '#delete-payment',function(){
 			clickedPayment = $('#paymentid').val();
 			id = $('#invoicehash').val();
 			if (clickedPayment){
-				$( "#populateDivGenPaymentDel" ).show();
-				$('#gray-background').show();
+				$( "#modal_delete_payment" ).modal("toggle");
 			}
 		});
-		$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
-			var str = $(this).attr('id');
-			if(typeof str != 'undefined'){
-				if (str.indexOf("delete") >= 0){
-					$( "#populateDivGenCustDel" ).show();
-					id = $(this).attr('id').replace('delete', '');
-					$('#gray-background').show();
-				}
-				if (str.indexOf("inactive") >= 0){
-					$("#populateDivGenCustInactive" ).show();
-					id = $(this).attr('id').replace('inactive', '');
-					$('#gray-background').show();
-				}
-			}
-		});
+		
 		$(document).on('click','button',function(){
 			//clickedRow = $(this).attr('id');
 			var str = $(this).attr('id');
@@ -1264,9 +1436,9 @@ $(document).ready(function() {
 			if (str.indexOf("changestatus") >= 0){
 				clickedRow = $('#invoicehash').val();
 				id = $('#invoicehash').val();
-				$( "#populatechangeorderstatus" ).show();
+				$( "#modal_change_order_status" ).modal("toggle");
 				id = $(this).attr('id').replace('changestatus', '');
-				$('#gray-background').show();
+				
 			}
 		}
 		});
@@ -1277,8 +1449,7 @@ $(document).ready(function() {
             url: 'php-scripts/process-change-invoice-status.php',
             data: data,
             success: function(response) {
-				$( "#populatechangeorderstatus" ).hide();
-				$('#gray-background').hide();
+				$( "#modal_change_order_status" ).modal("toggle");
 				$('#changestatus'+id).text("Processing");
 				$('#changestatus'+id).addClass('btn-warning').removeClass('btn-success').removeClass('btn-info');
 				//$('#changestatus'+id).css("background-color","#ffc107");
@@ -1294,8 +1465,7 @@ $(document).ready(function() {
             url: 'php-scripts/process-change-invoice-status.php',
             data: data,
             success: function(response) {
-				$( "#populatechangeorderstatus" ).hide();
-				$('#gray-background').hide();
+				$( "#modal_change_order_status" ).modal("toggle");
 				$('#changestatus'+id).text("Shipped");
 				$('#changestatus'+id).addClass('btn-info').removeClass('btn-success').removeClass('btn-warning');
 				//$('#changestatus'+id).css("background-color","#17a2b8");
@@ -1311,8 +1481,7 @@ $(document).ready(function() {
             url: 'php-scripts/process-change-invoice-status.php',
             data: data,
             success: function(response) {
-				$( "#populatechangeorderstatus" ).hide();
-				$('#gray-background').hide();
+				$( "#modal_change_order_status" ).modal("toggle");
 				$('#changestatus'+id).text("Delivered");
 				$('#changestatus'+id).addClass('btn-success').removeClass('btn-warning').removeClass('btn-info');
 				//$('#changestatus'+id).css("background-color","#1e7e34");
@@ -1321,101 +1490,10 @@ $(document).ready(function() {
 				}
 			});
 		});
-		$(document).on('click','#noBtn',function(){
-			$( "#populateDivGenCustDel" ).hide();
-			$( "#populateDivGenCustInactive" ).hide();
-			$('#gray-background').hide();
-		});
-		$(document).on('click','#noDelPayBtn',function(){
-			$( "#populateDivGenPaymentDel" ).hide();
-			$('#gray-background').hide();
-		});
-		$(document).on('click','#closeIcon',function(){
-			$( "#populateDivPayment" ).hide();
-			$( "#populateDivSend" ).hide();
-			$( "#populateDivPaymentHis" ).hide();
-			$("#populateDivGenPaymentDel").hide();
-			$("#paymentid").val('');
-			$("#populatechangeorderstatus").hide();
-			$('#gray-background').hide();
-		});
-		$(document).on('click','#closeIcon2',function(){
-			$( "#populateDivPayment" ).hide();
-		});
-		$(document).on('click','#yesBtn',function(){
-			var data = {subject: subject, id: id};
-				jQuery.ajax({
-				type: 'POST',
-				url: 'php-scripts/process-general-remove.php',
-				data: data,
-				success: function(response) {
-					$( "#populateDivGenCustDel" ).hide();
-					$('#gray-background').hide();
-						id = '';
-					var t = $('#gtable').DataTable();
-					t
-					.row( $('#'+clickedRow).parents('tr') )
-					.remove()
-					.draw();
-					}
-				});
-		});
-		$(document).on('click','#yesInactiveBtn',function(){
-			var data = {subject: 'inactivecustomer', id: id};
-			jQuery.ajax({
-            type: 'POST',
-            url: 'php-scripts/process-general-remove.php',
-            data: data,
-            success: function(response) {
-				$( "#populateDivGenCustInactive" ).hide();
-				$('#gray-background').hide();
-					id = '';
-				var t = $('#gtable').DataTable();
-				t
-				.row( $('#'+clickedRow).parents('tr') )
-				.remove()
-				.draw();
-				}
-			});
-		});
-		$(document).on('click','#delete-invoice-yesBtn',function(){
-			var data = {subject: subject, id: id};
-			if(subject == 'invoice-single-item'){
-				jQuery.ajax({
-				type: 'POST',
-				url: 'php-scripts/process-general-remove.php',
-				data: data,
-				dataType: 'json',
-				success: function(response) {
-					$( "#populateDivGenCustDel" ).hide();
-					$('#gray-background').hide();
-					$('#delete'+id).closest('tr').remove();
-					id = '';
-					$('#invoice_sub_total').text(response[1]);
-					$('#invoice_tax').text(response[2]);
-					$('#invoice_grand_total').text(response[3]);
-					}
-				});
-			}else{
-				jQuery.ajax({
-				type: 'POST',
-				url: 'php-scripts/process-general-remove.php',
-				data: data,
-				success: function(response) {
-					$('#invoicehash').val('');
-					$( "#populateDivGenCustDel" ).hide();
-					$('#gray-background').hide();
-						id = '';
-					var t = $('#gtable').DataTable();
-					t
-					.row( $('#'+clickedRow).parents('tr') )
-					.remove()
-					.draw();
-					}
-				});
-			}
-		});
-		$(document).on('click','#delete-payment-yesBtn',function(){
+		
+		
+		
+		$(document).on('click','#delete_payment_yes_btn',function(){
 			var data = {subject: "payment", id: clickedPayment};
 			jQuery.ajax({
             type: 'POST',
@@ -1424,18 +1502,16 @@ $(document).ready(function() {
 			dataType: 'json',
             success: function(response) {
 				$('#paymentid').val('');
-				$( "#populateDivGenPaymentDel" ).hide();
-				$( "#populateDivPaymentHis" ).hide();
-				$('#gray-background').hide();
+				$( "#modal_delete_payment" ).modal("toggle");
 				var requestingpage = $('#page-requesting').val();
 				if (requestingpage == 'payments-page'){
-					t = $('#gtable').DataTable();
+					var t = $('#list_payments_php_table1').DataTable();
 					t
 					.row( $('#'+clickedPayment).parents('tr') )
 					.remove()
 					.draw();
 				}else{
-					var t = $('#gtable').DataTable();
+					var t = $('#list_order_php_table1').DataTable();
 					var cell = t.cell('#invbalance'+id);
 					var newValue = response[0];
 					cell.data(newValue).draw();
@@ -1496,6 +1572,11 @@ $(document).ready(function() {
 		});
 		$(document).on('click','#save-pay-button',function(){
 			id = $('#invoicehash').val();
+			var requestingpage = $('#page-requesting').val();
+			var table_name = 'list_order_php_table1';
+				if (requestingpage == 'list-orders'){
+					
+				}
 			var customerid = $('#customerhash').val();
 			var paydate = $('#payment_date').val();
 			var amount = $('#payment_amount').val();
@@ -1514,9 +1595,8 @@ $(document).ready(function() {
             data: data,
 			dataType: 'json',
             success: function(response) {
-				$( "#populateDivPayment" ).hide();
-				$('#gray-background').hide();
-				var t = $('#gtable').DataTable();
+				$( "#modal_show_payment" ).modal("toggle");
+				var t = $('#'+table_name).DataTable();
 				var cell = t.cell('#invbalance'+id);
 				var newValue = response[0];
 				cell.data(newValue).draw();
@@ -1538,26 +1618,8 @@ $(document).ready(function() {
 			}
 			});
 		});
-		$(document).on('click', '#save-assign-salesperson', function(){
-			
-			var customerid = $('#customerhash').val();
-			var saleseperson_id = $('#salesperson option:selected').val();
-			var data = {customerid:customerid, saleseperson_id:saleseperson_id};
-			
-			jQuery.ajax({
-            type: 'POST',
-            url: 'php-scripts/update-customer-salesperson.php',
-            data: data,
-            success: function(response) {
-				$('#assing_salesperson').modal('toggle');
-				
-			}
-			});
-			
-		});
-	
-//Special batch and push batch start
-
+		
+//{Special batch and push batch start
 $("#products_modal_gtable").width("100%");
 $('#add_products_push_specials').on('shown.bs.modal', function() {
     $('#single_case_price').trigger('focus');
@@ -1611,31 +1673,29 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
 				$('#cost').val(item[7]);
 				$('#cases_in_pallet').val(item[8]);
 				$('#special_batch_product_price_form').attr('action', 'php-scripts/process-add-product-to-special-batch.php');
-				
 			});
         }
     } );
 		$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("remove_item_from_batch") >= 0){
 					$( "#modal_remove_product" ).modal("toggle");
 					id = $(this).attr('id').replace('remove_item_from_batch', '');
-					
+					clickedRow = $(this).attr('id');
 				}
 			}
 		});
 		$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("special_batch") >= 0){
-					
 					$( "#modal_remove_product" ).modal("toggle");
 					id = $(this).attr('id').replace('special_batch', '');
 					$('#batch_id').val(id);
-					
+					clickedRow = $(this).attr('id');
 				}
 			}
 		});
@@ -1647,24 +1707,17 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
             url: 'php-scripts/process-general-remove.php',
             data: data,
             success: function(response) {
-				
-				
-				
 					var t = $('#list_special_batches_table').DataTable();
 					t
-					
 					.row( $('#'+clickedRow).parents('tr') )
 					.remove()
 					.draw();
-					
 					clickedRow = '';
 					id = '';
 					$( "#modal_remove_product" ).modal("toggle");
-				
 			}
 			});
 		});
-		
 		$(document).on('click','#delete_product_special_batch',function(){
 			var batchid = $('#batch_id').val();
 			var data = {subject: "special_batch_product", batchid: batchid, recordid:id};
@@ -1673,41 +1726,32 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
             url: 'php-scripts/process-general-remove.php',
             data: data,
             success: function(response) {
-				
-				
-				
 					products_specials					
 					.row( $('#'+clickedRow).parents('tr') )
 					.remove()
 					.draw();
-					
 					clickedRow = '';
 					id = '';
 					$( "#modal_remove_product" ).modal("toggle");
-				
 			}
 			});
 		});
 		$(document).on('click','i',function(){
-			clickedRow = $(this).attr('id');
+			
 			var str = $(this).attr('id');
 			if(typeof str != 'undefined'){
 				if (str.indexOf("update_batch_product") >= 0){
-					
+					clickedRow = $(this).attr('id');
 					$(this).closest('tr').addClass('selected');
 					var special_products = $('#special_products').DataTable();
 					var ids = $.map(special_products.rows('.selected').data(), function (item) {
-					
 					$('#product_description').val(item[1]);
 					$('#regular_price').val(item[8]);
 					$('#cost').val(item[7]);
 					$('#cases_in_pallet').val(item[9]);
-					
 					$('#single_case_price').val(item[3]);
 					$('#minimum_qty').val(item[4]);
 					$('#free_cases').val(item[5]);
-					
-				
 					});
 					$(this).closest('tr').removeClass('selected');
 					id = $(this).attr('id').replace('update_batch_product', '');
@@ -1717,12 +1761,7 @@ $('#products_modal_gtable tbody').on( 'click', 'tr', function () {
 				}
 			}
 		});
-//Special batch and push batch end 
-	
-	
-	
-	
-	
+//}Special batch and push batch end 
 	/* Functions */
 	function generate_token(length){
 		//edit the token allowed characters
