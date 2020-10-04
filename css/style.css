@@ -418,7 +418,7 @@ fieldset
 .select2-selection__arrow {
     height: 34px !important;
 }
-.invoice-top-buttons, .invoice-top-buttons-disabled{
+.invoice-top-buttons, .invoice-top-buttons-disabled, .invoice-top-buttons2, .invoice-top-buttons-disabled2{
 	display:block;
 	
 	background: rgb(248,249,250);
@@ -429,7 +429,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endCo
 	
 	width:100%;
 }
-.invoice-top-buttons li{
+.invoice-top-buttons li, .invoice-top-buttons2 li{
 	display:inline-block;
 	color:#343a40;
 	width:80px;
@@ -445,7 +445,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endCo
 	background: linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endColorstr="#f9fafb",GradientType=1);
 }
-.invoice-top-buttons-disabled li{
+.invoice-top-buttons-disabled li, .invoice-top-buttons-disabled2 li{
 	display:inline-block;
 	color:#6c757d !important;
 	width:80px;
@@ -461,11 +461,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endCo
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f8f9fa",endColorstr="#f9fafb",GradientType=1);
 }
 
-.invoice-top-buttons li:hover{
+.invoice-top-buttons li:hover, .invoice-top-buttons2 li:hover{
 background:#fff;
 color:#000;
 }
-.invoice-top-buttons-disabled li:hover{
+.invoice-top-buttons-disabled li:hover, .invoice-top-buttons-disabled2 li:hover{
 background: rgb(248,249,250) !important;
 background: -moz-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%)!important;
 background: -webkit-linear-gradient(180deg, rgba(248,249,250,1) 35%, rgba(249,250,251,1) 100%)!important;
@@ -477,14 +477,14 @@ color:#6c757d !important;
 
 
 
-.invoice-top-buttons-disabled li i, .invoice-top-buttons li i{
+.invoice-top-buttons-disabled li i, .invoice-top-buttons li i, .invoice-top-buttons-disabled2 li i, .invoice-top-buttons2 li i{
 	display:block;
 	font-size:140%;
 }
-.invoice-top-buttons-disabled a:link, .invoice-top-buttons a:link{
+.invoice-top-buttons-disabled a:link, .invoice-top-buttons a:link, .invoice-top-buttons-disabled2 a:link, .invoice-top-buttons2 a:link{
 	color:inherit;
 }
-.invoice-top-buttons-disabled a:visited, .invoice-top-buttons a:visited{
+.invoice-top-buttons-disabled a:visited, .invoice-top-buttons a:visited, .invoice-top-buttons-disabled2 a:visited, .invoice-top-buttons2 a:visited{
 	color:inherit;
 }
 

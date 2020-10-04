@@ -441,7 +441,22 @@ if(isset($_GET['success']) && $_GET['success'] == 1){$responseMsg = '<div class=
 			    <input class="form-control" type="submit" value="Upload Image" name="submitbtn" style="display:none;">
 				</form>
 
-<div class="populateDiv" id="popBrand"></div>
+<!-- Modal -->
+<div class="modal fade" id="modal_product_select_popups" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="popup_title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="popBrand">
+        
+      </div>
+     </div>
+  </div>
+</div>
 <?php }else{
 	echo 'oops!!! this page does not exist.';
 }

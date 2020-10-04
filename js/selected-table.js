@@ -815,6 +815,14 @@ $(document).ready(function() {
 					$('#customerhash').val(item[1]);
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+					var assigned_salesrep = item[5];
+					$("#salesperson option").filter(function() {
+  //may want to use $.trim in here
+  return $(this).text() == assigned_salesrep;
+}).prop('selected', true);
+					
+					
+					
 				});
 			}
 		}
@@ -1126,14 +1134,14 @@ $(document).ready(function() {
         if ( tb.hasClass('selected') ) {
             tb.removeClass('selected');
 			$('#paymentid').val('');
-			$( ".invoice-top-buttons" ).closest( "ul" ).addClass("invoice-top-buttons-disabled");
-			$( ".invoice-top-buttons" ).closest( "ul" ).removeClass("invoice-top-buttons");
+			$( ".invoice-top-buttons2" ).closest( "ul" ).addClass("invoice-top-buttons-disabled2");
+			$( ".invoice-top-buttons2" ).closest( "ul" ).removeClass("invoice-top-buttons2");
         }
         else {
             pTable.$('tr.selected').removeClass('selected');
             tb.addClass('selected');
-			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).addClass("invoice-top-buttons");
-			$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
+			$( ".invoice-top-buttons-disabled2" ).closest( "ul" ).addClass("invoice-top-buttons2");
+			$( ".invoice-top-buttons-disabled2" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled2");
 			var ids = $.map(pTable.rows('.selected').data(), function (item) {
 				$('#paymentid').val(item[0]);
 			});

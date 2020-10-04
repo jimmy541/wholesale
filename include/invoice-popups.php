@@ -47,7 +47,7 @@
 		<div class="row">
 			<!-- open col -->
 			<div class="col">
-				<ul class="invoice-top-buttons-disabled">
+				<ul class="invoice-top-buttons-disabled2">
 							<li id="edit-payment"><i class="fas fa-edit"></i>Edit</li>
 							<li id="delete-payment"><i class="fas fa-trash-alt"></i>Delete</li>
 				</ul>

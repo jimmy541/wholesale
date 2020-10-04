@@ -24,10 +24,10 @@ if(isset($_GET['rs'])){
 		echo '<div class="alert alert-success" role="alert">Successfully Removed</div>';
 	}
 }
-$active_query = " AND `active` = 'yes'";
+$active_query = " AND a.`active` = 'yes'";
 $active_link = '<form class="float-right" style="display:inline-block;" action="list-customers.php" method="get"><input type="hidden" name="active" value="1" /><button type="submit" class="btn btn-secondary btn-sm shadow">Show Inactive</button></form>';
 if(isset($_GET['active']) && !empty($_GET['active'])){
-	$active_query = " AND `active` = 'no'";
+	$active_query = " AND a.`active` = 'no'";
 	$active_link = '<form class="float-right" style="display:inline-block;" action="list-customers.php"><button type="submit" class="btn btn-secondary btn-sm shadow">Show Active</button></form>';
 }
  ?>
@@ -68,6 +68,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<th>Account Number</th>
 								<th>Business Name</th>
 								<th>State</th>
+								<th>Assigned Sales Rep.</th>
 								<?php if($role != 'Sales Representative') { ?><th>Action</th><?php } ?>
 							</tr>
 						</thead>
@@ -78,6 +79,7 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<th>Account Number</th>
 								<th>Business Name</th>
 								<th></th>
+								<th></th>
 								<?php if($role != 'Sales Representative') { ?><th></th><?php } ?>
 							</tr>
 						</tfoot>
@@ -86,10 +88,10 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 							$only_assigned_query = '';
 							if($role == 'Sales Representative' || $role == 'Backend Operator'){
 								if($show_assigned_customers_only == '1'){
-									$only_assigned_query = " AND `salesperson_id` = '$user_id'";
+									$only_assigned_query = " AND a.`salesperson_id` = '$user_id'";
 								}
 							}
-							$query = "SELECT * FROM `customers` WHERE `clientid` = '$clientid' $active_query $only_assigned_query";
+							$query = "SELECT a.`has_orders`, a.`account_number`, a.`hashed_id`, a.`business_name`, a.`shipping_city`, a.`shipping_state`, a.`salesperson_id`, b.`first_name`, b.`last_name` FROM `customers` a left join `users` b on a.`salesperson_id` = b.`uid`  WHERE a.`clientid` = '$clientid' $active_query $only_assigned_query";
 							$result = mysqli_query($link, $query); 
 							while($row = mysqli_fetch_array($result)) {
 								$del_id_type = 'list_customers_php_delete';
@@ -98,8 +100,9 @@ if(isset($_GET['active']) && !empty($_GET['active'])){
 								<td style="display:none;">'.htmlspecialchars($row["account_number"]).'</td>
 								<td data-label="Customer ID" style="display:none;">'.htmlspecialchars($row["hashed_id"]).'</td>
 								<td data-label="Account Number">'.htmlspecialchars($row["account_number"]).'</td>
-								<td data-label="Business Name">'.htmlspecialchars($row["business_name"]).'</td>
-								<td data-label="State">'.htmlspecialchars($row['shipping_state']).'</td>';
+								<td data-label="Business Name">'.htmlspecialchars(ucwords(strtolower($row["business_name"]))).'</td>
+								<td data-label="State">'.htmlspecialchars(ucwords(strtolower($row['shipping_city']))).' '.htmlspecialchars(strtoupper($row['shipping_state'])).'</td>
+								<td data-label="Salesperson" id="'.htmlspecialchars($row['salesperson_id']).'">'.htmlspecialchars(ucwords(strtolower($row['first_name']))). ' '.htmlspecialchars(ucwords(strtolower($row['last_name']))).'</td>';
 								if($role != 'Sales Representative') { echo '<td><span class="action-icons"><a href="edit-customer.php?account='.htmlspecialchars($row["account_number"]).'&token='.htmlspecialchars($row["hashed_id"]).'">
 				<i class="fas fa-edit"></i></a><i id="'.$del_id_type.$row['hashed_id'].'" class="fas fa-trash-alt"></i></span></td>'; }
 								echo '</tr>'; 
@@ -212,7 +215,7 @@ function get_salesperson_list($link, $clientid){
 	while($row=mysqli_fetch_array($result)){
 		$options.= '<option value="'.$row['uid'].'">';
 		$options.= htmlspecialchars($row['first_name']).' '.htmlspecialchars($row['last_name']);
-		$option.= '</option>';
+		$options.= '</option>';
 	}
 	return $options;
 }
