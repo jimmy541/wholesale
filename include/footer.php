@@ -63,10 +63,12 @@ if (isset($additional_script)) {
     echo $additional_script;
 } 
 ?>
+
 <script>
 $(document).ready(function() {
 	$('.select-customer').css('width', '100%');
     $('.select-customer').select2();
+	$('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 </body>

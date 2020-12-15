@@ -233,7 +233,14 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
 						echo '<td data-label="Case Retail">'.$mrgn.'</td>
 						<td data-label="Qty">'.htmlspecialchars($row['QtyOnHand']).'</td>';
 						
-						if($role != 'Sales Representative') { echo '<td><span class="action-icons"><a href="edit-product.php?product='.htmlspecialchars($row['uniqueid']).'"><i class="fas fa-edit"></i></a><i id="list_products_php_table1_delete'.htmlspecialchars($row['uniqueid']).'" class="fas fa-trash-alt"></i></span></td>'; }
+						if($role != 'Sales Representative') { echo '
+						<td>
+							<span class="action-icons">
+								<a href="edit-product.php?product='.htmlspecialchars($row['uniqueid']).'"><i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>
+								<i id="list_products_php_edit_inventory" class="fas fa-tags" data-toggle="tooltip" data-placement="top" title="Edit Inventory"></i>
+								<i id="list_products_php_table1_delete'.htmlspecialchars($row['uniqueid']).'" class="fas fa-trash-alt" data-toggle="tooltip" data-placement="top" title="Delete Product"></i>
+							</span>
+						</td>'; }
 						echo '</tr>'; 
 					}
 					?>
@@ -279,7 +286,26 @@ if(isset($_GET['supplier']) && !empty($_GET['supplier'])){
     </div>
   </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="modal_edit_inventory" tabindex="-1" role="dialog" aria-labelledby="edit_inventory_title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit_inventory_title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php
 $additional_script = ''; ?>

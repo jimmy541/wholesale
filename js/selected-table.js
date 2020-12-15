@@ -45,6 +45,17 @@ $(document).ready(function() {
 				}
 			}
 	});
+	$(document).on('click','i',function(){
+			
+			var str = $(this).attr('id');
+			if(typeof str != 'undefined'){
+				if (str.indexOf("list_products_php_edit_inventory") >= 0){
+					clickedRow = $(this).attr('id');
+					id = $(this).attr('id').replace('list_products_php_edit_inventory', '');
+					$( "#modal_edit_inventory" ).modal("toggle");
+				}
+			}
+	});
 	$(document).on('click','#list_products_php_yes_btn',function(){
 			var data = {subject: subject, id: id};
 				jQuery.ajax({
@@ -817,9 +828,9 @@ $(document).ready(function() {
 					$( ".invoice-top-buttons-disabled" ).closest( "ul" ).removeClass("invoice-top-buttons-disabled");
 					var assigned_salesrep = item[5];
 					$("#salesperson option").filter(function() {
-  //may want to use $.trim in here
-  return $(this).text() == assigned_salesrep;
-}).prop('selected', true);
+					 
+					  return $(this).text() == assigned_salesrep;
+					}).prop('selected', true);
 					
 					
 					
