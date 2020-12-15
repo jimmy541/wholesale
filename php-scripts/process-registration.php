@@ -9,8 +9,11 @@ require 'PHPMailer.php';
 require 'SMTP.php';
 
 
+
+
 if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['company_name'])){
 	if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['company_name'])){
+		
 		//$recaptcha_secret = "6LedkEgUAAAAAMNs2jtuHW2zw8PTNPOBhwgDo02U";
         //$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$recaptcha_secret."&response=".$_POST['g-recaptcha-response']);
         //$response = json_decode($response, true);	
@@ -27,7 +30,8 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 			$password = hash('sha512',$_POST['password'].$salt);
 			
 			
-			$role = 'Owner';
+			
+			
 			$todayDate = date('Y-m-d');
 			$activationCode = hash("sha256", rand(100, 5000).$salt); // do not remove - also used to create new setting id in settings table
 			
@@ -51,21 +55,28 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 			
 			
 			if ($found == 'false'){
-				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`, `allow_price_override`, `	allow_free_override`, `show_assigned_customers_only`) VALUES (UUID(),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT INTO `users`(`uid`,`password`, `salt`, `first_name`, `last_name`, `role`, `email_address`, `date_created`, `active`, `activation-code`, `failed_attempts`, `clientid`, `email_verified`, `allow_price_override`, `allow_free_override`, `show_assigned_customers_only`) VALUES (UUID(),?,?,?,?,'Owner',?,?,?,?,?,?,?,?,?,?)";
+				//echo $query.'<br>';
+				$owner = 'Owner';
 				$activeV = '1';
 				$fatmps = '0';
 				$email_verified = '0';
 				$allow_price_override = '1';
 				$allow_free_override = '1';
 				$show_assigned_customers = '1';
+				
+				//echo $password.','.$salt.','.$firstName.','.$lastName.','.$email.','.$todayDate.','.$activeV.','.$activationCode.','.$fatmps.','.$clientid.','.$email_verified.','.$allow_price_override.','.$allow_free_override.','.$show_assigned_customers;
+				
 				if ($stmt = $link->prepare($query)) {
-					$stmt->bind_param("sssssssssssssss", $password,$salt,$firstName,$lastName,$role,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $email_verified, $allow_price_override, $allow_free_override,$show_assigned_customers);
 					
-
+					$stmt->bind_param("ssssssssssssss", $password,$salt,$firstName,$lastName,$email,$todayDate,$activeV,$activationCode,$fatmps, $clientid, $email_verified, $allow_price_override, $allow_free_override,$show_assigned_customers);
+					
 					$stmt->execute();
 					$stmt->close();
+					
+					
 				}
-
+			
 				$query = "INSERT INTO `clients`(`clientid`, `company_name`, `date_created`) VALUES ('$clientid', ?, now())";
 				if ($stmt = $link->prepare($query)) {
 					$stmt->bind_param("s", $companyname);
@@ -95,9 +106,9 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				   $mail->isHTML(true);
 
 				   /* Set the mail message body. */
-				   $mail->Body = '<p>Dear '.$firstName.',</p><p>Welcome to Wholesale.</p><p>To activate the account please <a href="'.$site-address.'activate-account.php?token='.$activationCode.'">click here</a>.</p>
+				   $mail->Body = '<p>Dear '.$firstName.',</p><p>Welcome to Wholesale.</p><p>To activate the account please <a href="'.$site_address.'activate-account.php?token='.$activationCode.'">click here</a>.</p>
 				   <p>Thanks for joining Wholesale. We know you will enjoy the power and simplicity of Wholesale. </p><p>Sincerely,<br>Wholesale Customer Service</p>
-				   <p>If you are unable to activate your account by clicking on the link above, please copy and paste the entire URL below into your web browser:<br> '.$site-address.'activate-account.php?token='.$activationCode.'</p>';
+				   <p>If you are unable to activate your account by clicking on the link above, please copy and paste the entire URL below into your web browser:<br> '.$site_address.'activate-account.php?token='.$activationCode.'</p>';
 					
 					// Attachments
 					
@@ -109,12 +120,12 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				catch (Exception $e)
 				{
 				   /* PHPMailer exception. */
-				   echo $e->errorMessage();
+				   //echo $e->errorMessage();
 				}
 				catch (\Exception $e)
 				{
 				   /* PHP exception (note the backslash to select the global namespace Exception class). */
-				   echo $e->getMessage();
+				   //echo $e->getMessage();
 				}
 				
 				
@@ -127,7 +138,7 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['e
 				foreach (array_rand($seed, 60) as $k) 
 				$cookie_value1 .= $seed[$k];
 				
-				$cookie_value1 = hash("sha256", $email_escaped.$cookie_value1);
+				$cookie_value1 = hash("sha256", $email.$cookie_value1);
 				setcookie("userid", $cookie_value1, $cookietime, "/"); // 86400 = 1 day
 				
 				$seed = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()');
@@ -175,7 +186,7 @@ if (isset($_POST['userToCheck'])){
 				}
 				$stmt->close();
 			}
-	echo $found;
+	//echo $found;
 	
 	}
 }
