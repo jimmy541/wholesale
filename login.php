@@ -3,10 +3,11 @@ $page_title = 'Login';
 $preventLoginPageLoop = 'fd5as431';
 ?>
 <?php
+
 include($_SERVER['DOCUMENT_ROOT']."/wholesale/include/header.php"); 
 if (isset($_SESSION['user'])){
-	header('location: dashboard.php');
-exit();
+echo '<script type="text/javascript">window.location = "dashboard.php";</script>';
+die();
 }
 ?>
 <?php
